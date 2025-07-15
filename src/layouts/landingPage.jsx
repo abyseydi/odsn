@@ -512,7 +512,7 @@ export default function LandingPage() {
           <img src="img/logo_accel.png" alt="Logo Accel" className="h-14 w-auto" />
           <div className="flex gap-4 items-center">
             <FiSearch className="text-white text-xl cursor-pointer" />
-            <FiMenu className="text-white text-xl cursor-pointer" />
+            {/* <FiMenu className="text-white text-xl cursor-pointer" /> */}
             <button className="bg-pink-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
               CONTACTS
             </button>
@@ -523,9 +523,11 @@ export default function LandingPage() {
           <div className="w-full flex flex-col md:flex-row px-6 gap-8 items-center md:items-stretch">
             <div className="md:w-1/2 flex flex-col justify-center h-full">
               <div className="max-w-xl">
-                <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-                  Transformez Votre Organisation avec Nous
-                </h2>
+                      <h1 className="text-3xl md:text-5xl font-bold mb-6 text-purple-400 leading-tight">
+DEM'Oya!           </h1>
+                <h4 className="text-3xl md:text-2xl font-bold mb-6 leading-tight">
+                Libérez le potentiel de vos données avec l'IA souveraine.
+                </h4>
                 <p className="text-gray-200 text-base md:text-lg mb-6">
                   Transformez les défis en opportunités grâce à nos solutions avancées en Data & IA,
                   conçues pour optimiser la prise de décision et propulser la croissance.
@@ -570,33 +572,35 @@ export default function LandingPage() {
       </section>
 
       {/* SECTEUR PRIVE */}
-      <section className="bg-white px-4 py-10">
+      {/* <section className="bg-white px-4 py-10">
         <h2 className="text-2xl md:text-3xl font-bold text-purple-700 text-center mb-10">
           Accélérez Votre Croissance dans le Secteur Privé
         </h2>
 
-        <div className="flex flex-col md:flex-row justify-center items-center gap-10">
-          <div className="rounded-[70%] bg-gradient-to-br from-purple-600 to-blue-500 p-2">
-            <div className="h-[350px] w-[230px] bg-black rounded-[32%] flex items-center justify-center text-white text-center text-sm p-4">
-              Carte Afrique<br />(placeholder)
-            </div>
-          </div>
+ 
+             <div className="flex flex-col md:flex-row justify-center items-center gap-2 mb-10">
+             <img src="img/secteur_prive.png" alt="Réseau" className="w-full max-w-xl object-contain" />
+           </div>
+      </section> */}
+<section className="bg-white px-4 py-20">
+    <h1 className="text-3xl md:text-4xl font-bold text-purple-700 text-center mb-12">
+    Accélérez Votre Croissance dans le Secteur Privé
+  </h1>
+  <h2 className="text-3xl md:text-2xl font-bold text-purple-300 text-center mb-12">
+    Nos solutions Data & IA sont spécifiquement adaptées aux besoins dynamiques du secteur privé, offrant des avantages concurrentiels et une efficacité opérationnelle. </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {["Banque et Finance", "Immobilier", "Agro, Industrie & Commerce", "BTP et Génie Civil"].map((label, i) => (
-              <div key={i} className="h-32 w-32 rounded-full p-[3px] bg-gradient-to-br from-blue-500 to-pink-500">
-                <div className="flex items-center justify-center h-full w-full bg-[#1c1c3c] rounded-full text-white font-semibold text-sm text-center px-2">
-                  {label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+  <div className="flex flex-col md:flex-row justify-center items-center gap-3">
+    <img
+      src="img/secteur_prive.png"
+      alt="Secteur privé"
+      className="w-full max-w-[1280px] object-contain"
+    />
+  </div>
+</section>
 
       {/* SECTEUR PUBLIC */}
       <section className="bg-white px-4 py-10 text-center">
-        <h2 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 mb-10">
+        <h2 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pink-500 mb-10">
           Accompagner les Secteurs Publics pour l’Innovation
         </h2>
 
@@ -644,7 +648,7 @@ export default function LandingPage() {
         </h2>
 
         <div className="flex justify-center gap-8 flex-wrap">
-          {["logo1", "logo2", "logo3", "logo4", "logo5"].map((logo, i) => (
+          {["redhat", "redhat", "pytorch", "tensorflow", "scikit-learn"].map((logo, i) => (
             <div
               key={i}
               className="w-[100px] h-[100px] md:w-[110px] md:h-[110px] bg-gray-200 rounded-full overflow-hidden flex items-center justify-center shadow-md hover:scale-105 transition"
@@ -660,7 +664,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-sm">
           <div className="flex flex-col items-start">
             <p className="text-lg font-bold mb-2">Powered By</p>
-            <img src="img/logo_accel.png" alt="Accel Logo" className="h-10" />
+            <img src="img/logo_accel.png" alt="Accel Logo" className="h-20" />
           </div>
 
           <div>
