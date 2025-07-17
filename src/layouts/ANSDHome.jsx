@@ -257,7 +257,7 @@ export function ANSDHome() {
               <th className="px-4 py-2 border">À ajouter</th>
             </tr>
           </thead>
-          <tbody>
+          {/* <tbody>
             {couvertureData.map((row, idx) => (
               <tr key={idx} className="hover:bg-gray-100">
                 <td className="px-4 py-2 border">{row.year}</td>
@@ -270,7 +270,26 @@ export function ANSDHome() {
                 </td>
               </tr>
             ))}
-          </tbody>
+          </tbody> */}
+          <tbody>
+  {couvertureData.map((row, idx) => (
+    <tr key={idx} className="hover:bg-gray-100">
+      <td className="px-4 py-2 border">{row.year}</td>
+      <td className="px-4 py-2 border">
+        {row.norm_oms != null ? Math.round(row.norm_oms) : "-"}
+      </td>
+      <td className="px-4 py-2 border">
+        {row.nb_str != null ? Math.round(row.nb_str) : "-"}
+      </td>
+      <td className="px-4 py-2 border">
+        {row.norm_oms != null && row.nb_str != null
+          ? Math.max(Math.round(row.norm_oms - row.nb_str))
+          : ""}
+      </td>
+    </tr>
+  ))}
+</tbody>
+
         </table>
       </div>
     </div>
