@@ -30,16 +30,20 @@ export default function LandingPage() {
         link: "/secteur-public/education",
       },
       {
-        title: "Santé & Médico-social",
+        title: "Santé & Protection sociale",
         link: "/secteur-public/sante",
       },
       {
-        title: "Financement des partenaires",
+        title: "Financement",
         link: "/secteur-public/financement",
       },
       {
         title: "Politique publique",
         link: "/ANSDHome"
+      },
+          {
+        title: " Energie – Mines",
+        link: ""
       },
     ],
   };
@@ -82,12 +86,12 @@ Shirik'IA          </h1>
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
     {[
       {
-        title: "Stratégie, Gouvernance et Architecture",
+        title: "Stratégie, Gouvernance et Ingénierie",
         picto: "/img/strategy.png",
         text: "Nous bénéficions d'une triple expertise en Data Stratégie, Gouvernance & Architecture issue des nombreuses missions réalisées dans le cadre d'accompagnement de CDO et dans la structuration de Data Office.",
       },
       {
-        title: "Compétences Data & AI",
+        title: "Valorisation Data & IA ",
         picto: "/img/competence.png",
         text: "Nous croyons fortement que les cas d'usage métiers sont le point de départ pour maximiser la valeur apportée et décliner les principales dimensions du plan d'opérationnalisation Data & AI.",
       },
@@ -211,12 +215,12 @@ Shirik'IA          </h1>
         link: "/tableaux/cnsa-depenses",
       },
       {
-        title: "SRMT : suivi de l'information financière au Sénégal",
+        title: "Suivi des recettes de l’Etat pour les décideurs",
         image: "/img/dgid.png",
         link: "/tableaux/aide-cnsa",
       },
       {
-        title: "FONSIS : exploitation d'états financiers pour aide à la prise de décision",
+        title: "Fond souverain : exploitation d'états financiers pour aide à la prise de décision",
         image: "/img/fonsis.png",
         link: "/tableaux/habitats-inclusifs",
       },

@@ -1,142 +1,266 @@
-// import React from "react";
-
-// export default function ANSDHome() {
-//   return (
-//     <div className="bg-white text-[#1e1446] font-sans min-h-screen px-4 py-20">
-//       <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">
-//         Politique Publique - ANSD
-//       </h1>
-//       <p className="max-w-4xl mx-auto text-center text-lg text-gray-700 mb-12">
-//         Cette section met en lumière l'utilisation de la donnée dans l'élaboration, le suivi et l'évaluation des politiques publiques au Sénégal. À travers une approche centrée sur la donnée, l'ANSD permet une meilleure transparence et efficacité dans la prise de décision publique.
-//       </p>
-
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-//         {[1, 2, 3].map((el) => (
-//           <div
-//             key={el}
-//             className="bg-[#eef8f5] rounded-2xl p-6 shadow-md hover:shadow-lg transition duration-300"
-//           >
-//             <h3 className="text-xl font-semibold mb-3">Projet {el}</h3>
-//             <p className="text-sm text-gray-600">
-//               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam
-//               consequatur laudantium molestias veritatis similique!
-//             </p>
-//           </div>
-//         ))}
-//       </div>
-
-//       <div className="text-center mt-12">
-//         <a
-//           href="/tableaux/politique-publique"
-//           className="inline-block bg-[#1e1446] text-white font-semibold px-6 py-3 rounded-full hover:bg-[#0f0a2b] transition"
-//         >
-//           Voir les Tableaux de Suivi
-//         </a>
-//       </div>
-//     </div>
-//   );
-// }
-
-
-// import { Routes, Route } from "react-router-dom";
-// import { Cog6ToothIcon } from "@heroicons/react/24/solid";
-// import { IconButton } from "@material-tailwind/react";
-
+// import React, { useState } from "react";
 // import {
-//   Sidenav,
-//   DashboardNavbar,
-//   Configurator,
-//   Footer,
-// } from "@/widgets/layout";
-// import routes from "@/routes";
-// import { useMaterialTailwindController, setOpenConfigurator } from "@/context";
+//   Tabs,
+//   TabsHeader,
+//   TabsBody,
+//   Tab,
+//   TabPanel,
+//   IconButton,
+//   Input,
+//   Select,
+//   Option,
+// } from "@material-tailwind/react";
+// import { Cog6ToothIcon } from "@heroicons/react/24/solid";
+// import {
+//   useMaterialTailwindController,
+//   setOpenConfigurator,
+// } from "@/context";
+// import {
+//   LineChart,
+//   Line,
+//   CartesianGrid,
+//   XAxis,
+//   YAxis,
+//   Tooltip,
+//   ResponsiveContainer,
+// } from "recharts";
 
 // export function ANSDHome() {
 //   const [controller, dispatch] = useMaterialTailwindController();
-//   const { sidenavType } = controller;
+//   const [activeTab, setActiveTab] = useState("tableaux");
+
+//   const demoData = [
+//     { year: "2010", population: 12300000 },
+//     { year: "2012", population: 13200000 },
+//     { year: "2014", population: 14100000 },
+//     { year: "2016", population: 15000000 },
+//     { year: "2018", population: 15800000 },
+//     { year: "2020", population: 16700000 },
+//     { year: "2022", population: 17500000 },
+//   ];
+
+//   const tabs = [
+//     {
+//       label: "Démographie et population",
+//       value: "tableaux",
+//       content: (
+//         <div className="h-[600px]">
+//           <ResponsiveContainer width="100%" height="100%">
+//             <LineChart data={demoData}>
+//               <CartesianGrid strokeDasharray="3 3" />
+//               <XAxis dataKey="year" />
+//               <YAxis tickFormatter={(value) => `${value / 1_000_000}M`} />
+//               <Tooltip formatter={(value) => `${value.toLocaleString()} hab`} />
+//               <Line
+//                 type="monotone"
+//                 dataKey="population"
+//                 stroke="#1e1446"
+//                 strokeWidth={3}
+//               />
+//             </LineChart>
+//           </ResponsiveContainer>
+//         </div>
+//       ),
+//     },
+//     {
+//       label: "Couverture sanitaire",
+//       value: "indicateurs",
+//       content: <div>📈 Indicateurs</div>,
+//     },
+//     {
+//       label: "Structures sanitaires",
+//       value: "rapports",
+//       content: <div>🏥 Rapports</div>,
+//     },
+//     {
+//       label: "Recommandations OMS",
+//       value: "professionnels",
+//       content: <div>🩺 Effectifs & répartition</div>,
+//     },
+//   ];
 
 //   return (
-//     <div className="min-h-screen bg-blue-gray-50/50">
-//       <Sidenav
-//         routes={routes}
-//         brandImg={
-//           sidenavType === "dark" ? "/img/logo-ct.png" : "/img/logo-ct-dark.png"
-//         }
-//       />
-//       <div className="p-4 xl:ml-80">
-//         <DashboardNavbar />
-//         <Configurator />
-//         <IconButton
-//           size="lg"
-//           color="white"
-//           className="fixed bottom-8 right-8 z-40 rounded-full shadow-blue-gray-900/10"
-//           ripple={false}
-//           onClick={() => setOpenConfigurator(dispatch, true)}
-//         >
-//           <Cog6ToothIcon className="h-5 w-5" />
-//         </IconButton>
-//         <Routes>
-//           {routes.map(
-//             ({ layout, pages }) =>
-//               layout === "dashboard" &&
-//               pages.map(({ path, element }) => (
-//                 <Route exact path={path} element={element} key={path} />
-//               ))
-//           )}
-//         </Routes>
-//         <div className="text-blue-gray-600">
-//           <Footer />
+//     <div className="flex min-h-screen bg-gray-100">
+//       {/* FILTRES À GAUCHE */}
+//       <aside className="w-full lg:w-[18%] bg-[#1e1446] text-white p-6 flex flex-col justify-between shadow-lg">
+//         <div>
+//           <img src="/img/logo_accel.png" alt="Logo Accel" className="h-14 mb-4" />
+//           <h2 className="text-lg font-semibold mb-6">Filtres</h2>
+//           <div className="space-y-6">
+//             <Select label="Année" className="text-black bg-white rounded">
+//               <Option>2020</Option>
+//               <Option>2021</Option>
+//               <Option>2022</Option>
+//               <Option>2023</Option>
+//             </Select>
+//             <Select
+//               label="Région"
+//               className="text-black bg-white rounded"
+//               multiple
+//               value={[]}
+//               onChange={() => {}}
+//             >
+//               <Option>Dakar</Option>
+//               <Option>Thiès</Option>
+//               <Option>Kaolack</Option>
+//               <Option>Tamba</Option>
+//             </Select>
+//             <Input label="Mot-clé" className="text-black bg-white rounded" />
+//             <button className="w-full mt-2 bg-[#e30613] hover:bg-red-800 text-white py-2 rounded-lg font-semibold transition">
+//               Appliquer
+//             </button>
+//           </div>
 //         </div>
-//       </div>
+//         <p className="text-xs text-gray-300 mt-10">© Accel Technologies</p>
+//       </aside>
+
+//       {/* CONTENU PRINCIPAL */}
+//       <main className="flex-1 flex flex-col">
+//         {/* HEADER */}
+//         <div className="flex justify-between items-center bg-white shadow px-6 py-4">
+//           <h1 className="text-xl md:text-2xl font-bold text-[#1e1446] max-w-5xl leading-tight">
+//             ANSD – Application de planification : Vers une meilleure couverture sanitaire au Sénégal – État des lieux & perspectives à l’horizon 2030
+//           </h1>
+//           <IconButton
+//             size="lg"
+//             color="white"
+//             className="rounded-full shadow-md"
+//             ripple={false}
+//             onClick={() => setOpenConfigurator(dispatch, true)}
+//           >
+//             <Cog6ToothIcon className="h-5 w-5 text-blue-gray-600" />
+//           </IconButton>
+//         </div>
+
+//         {/* TABS */}
+//         <div className="flex-1 p-6 overflow-auto">
+//           <Tabs value={activeTab}>
+//             <TabsHeader
+//               className="bg-white shadow rounded-xl mb-6"
+//               indicatorProps={{
+//                 className: "bg-[#1e1446] text-white shadow-md",
+//               }}
+//             >
+//               {tabs.map(({ label, value }) => (
+//                 <Tab
+//                   key={value}
+//                   value={value}
+//                   onClick={() => setActiveTab(value)}
+//                   className={`h-14 py-3 text-lg ${
+//                     activeTab === value ? "text-white" : "text-[#1e1446]"
+//                   }`}
+//                 >
+//                   {label}
+//                 </Tab>
+//               ))}
+//             </TabsHeader>
+
+//             <TabsBody>
+//               {tabs.map(({ value, content }) => (
+//                 <TabPanel
+//                   key={value}
+//                   value={value}
+//                   className="bg-white p-6 rounded-xl shadow"
+//                 >
+//                   {content}
+//                 </TabPanel>
+//               ))}
+//             </TabsBody>
+//           </Tabs>
+//         </div>
+//       </main>
 //     </div>
 //   );
 // }
 
-// ANSDHome.displayName = "/src/layouts/ANSDHome.jsx";
-
 // export default ANSDHome;
-import React, { useState } from "react";
+
+
+import React, { useEffect, useState } from "react";
 import {
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-  IconButton,
-  Input,
-  Select,
-  Option,
+  Tabs, TabsHeader, TabsBody, Tab, TabPanel,
+  IconButton, Select, Option
 } from "@material-tailwind/react";
 import { Cog6ToothIcon } from "@heroicons/react/24/solid";
 import {
   useMaterialTailwindController,
   setOpenConfigurator,
 } from "@/context";
+import {
+  LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer,
+} from "recharts";
 
 export function ANSDHome() {
   const [controller, dispatch] = useMaterialTailwindController();
   const [activeTab, setActiveTab] = useState("tableaux");
+  const [region, setRegion] = useState("ALL"); // par défaut tout le Sénégal
+  const [regions, setRegions] = useState([]);
+  const [populationData, setPopulationData] = useState([]);
+
+  // Charger toutes les régions dynamiquement
+  useEffect(() => {
+    fetch("http://localhost:5000/api/regions")
+      .then(res => res.json())
+      .then(data => setRegions(["ALL", ...data])) // Ajouter option ALL
+      .catch(err => console.error("Erreur chargement des régions :", err));
+  }, []);
+
+  // Charger les données en fonction de la région sélectionnée
+  useEffect(() => {
+    const url =
+      region === "ALL"
+        ? "http://localhost:5000/api/population"
+        : `http://localhost:5000/api/population?region=${encodeURIComponent(region)}`;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        const parsed = data.map(d => ({
+          year: d.annee.toString(),
+          population: d.pop_value,
+        }));
+        setPopulationData(parsed);
+      })
+      .catch(err => console.error("Erreur de chargement des données :", err));
+  }, [region]);
 
   const tabs = [
     {
       label: "Démographie et population",
       value: "tableaux",
-      content: <div> Données Tableau</div>,
+      content: (
+        <div className="h-[600px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={populationData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="year" />
+              <YAxis tickFormatter={(value) => `${(value / 1_000_000).toFixed(1)}M`} />
+              <Tooltip formatter={(value) => `${value.toLocaleString()} hab`} />
+              <Line
+                type="monotone"
+                dataKey="population"
+                stroke="#1e1446"
+                strokeWidth={3}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      ),
     },
     {
       label: "Couverture sanitaire",
       value: "indicateurs",
-      content: <div> Indicateurs</div>,
+      content: <div>📈 Indicateurs</div>,
     },
     {
       label: "Structures sanitaires",
       value: "rapports",
-      content: <div> Rapports</div>,
+      content: <div>🏥 Rapports</div>,
     },
     {
       label: "Recommandations OMS",
       value: "professionnels",
-      content: <div> Effectifs & répartition</div>,
+      content: <div>🩺 Effectifs & répartition</div>,
     },
   ];
 
@@ -148,22 +272,18 @@ export function ANSDHome() {
           <img src="/img/logo_accel.png" alt="Logo Accel" className="h-14 mb-4" />
           <h2 className="text-lg font-semibold mb-6">Filtres</h2>
           <div className="space-y-6">
-            <Select label="Année" className="text-black bg-white rounded">
-              <Option>2020</Option>
-              <Option>2021</Option>
-              <Option>2022</Option>
-              <Option>2023</Option>
+            <Select
+              label="Région"
+              className="text-black bg-white rounded"
+              value={region}
+              onChange={setRegion}
+            >
+              {regions.map((r) => (
+                <Option key={r} value={r}>
+                  {r === "ALL" ? "Tout le Sénégal" : r}
+                </Option>
+              ))}
             </Select>
-            <Select label="Région" className="text-black bg-white rounded">
-              <Option>Dakar</Option>
-              <Option>Thiès</Option>
-              <Option>Kaolack</Option>
-              <Option>Tamba</Option>
-            </Select>
-            <Input label="Mot-clé" className="text-black bg-white rounded" />
-            <button className="w-full mt-2 bg-[#e30613] hover:bg-red-800 text-white py-2 rounded-lg font-semibold transition">
-              Appliquer
-            </button>
           </div>
         </div>
         <p className="text-xs text-gray-300 mt-10">© Accel Technologies</p>
@@ -171,10 +291,9 @@ export function ANSDHome() {
 
       {/* CONTENU PRINCIPAL */}
       <main className="flex-1 flex flex-col">
-        {/* HEADER */}
         <div className="flex justify-between items-center bg-white shadow px-6 py-4">
           <h1 className="text-xl md:text-2xl font-bold text-[#1e1446] max-w-5xl leading-tight">
-            ANSD – Application de planification : Vers une meilleure couverture sanitaire au Sénégal – État des lieux & perspectives à l’horizon 2030
+            ANSD – Vers une meilleure couverture sanitaire au Sénégal – État des lieux & perspectives 2030
           </h1>
           <IconButton
             size="lg"
@@ -187,7 +306,6 @@ export function ANSDHome() {
           </IconButton>
         </div>
 
-        {/* TABS */}
         <div className="flex-1 p-6 overflow-auto">
           <Tabs value={activeTab}>
             <TabsHeader
@@ -201,9 +319,7 @@ export function ANSDHome() {
                   key={value}
                   value={value}
                   onClick={() => setActiveTab(value)}
-                  className={`h-14 py-3 text-lg ${
-                    activeTab === value ? "text-white" : "text-[#1e1446]"
-                  }`}
+                  className={`h-14 py-3 text-lg ${activeTab === value ? "text-white" : "text-[#1e1446]"}`}
                 >
                   {label}
                 </Tab>
