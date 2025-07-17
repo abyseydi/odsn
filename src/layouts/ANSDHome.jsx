@@ -71,9 +71,15 @@ export function ANSDHome() {
   const tabs = [
     {
       label: "Démographie et population",
+      
       value: "tableaux",
       content: (
         <div className="h-[600px]">
+                 <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
+ Démographie et population : évolution au Sénégal de 2012 à 2025, avec projections jusqu’en 2030
+
+
+      </h3>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={populationData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -96,6 +102,11 @@ export function ANSDHome() {
       value: "indicateurs",
       content: (
         <div className="h-[600px]">
+               <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
+  Évolution du nombre de structures sanitaires au Sénégal : 2018–2025 et perspectives jusqu’en 2030
+
+
+      </h3>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={couvertureData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -121,6 +132,10 @@ export function ANSDHome() {
       value: "rapports",
       content: (
         <div className="h-[600px]">
+             <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
+  Couverture sanitaires : tendances de 2018 à 2025 et projections à l’horizon 2030
+
+      </h3>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={couvertureData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -148,63 +163,116 @@ export function ANSDHome() {
         </div>
       ),
     },
-    // {
-    //   label: "Recommandations OMS",
-    //   value: "professionnels",
-    //   content: (
-    //     <div className="h-[600px]">
-    //       <ResponsiveContainer width="100%" height="100%">
-    //         <LineChart data={couvertureData}>
-    //           <CartesianGrid strokeDasharray="3 3" />
-    //           <XAxis dataKey="year" />
-    //           <YAxis
-    //             domain={[0, 'auto']}
-    //             label={{
-    //               value: "Norme OMS",
-    //               angle: -90,
-    //               position: "insideLeft",
-    //             }}
-    //           />
-    //           <Tooltip formatter={(value) => `${value} structures / 10.000 hab`} />
-    //           <Line
-    //             type="monotone"
-    //             dataKey="norm_oms"
-    //             stroke="#d97706"
-    //             strokeWidth={3}
-    //             name="Norme OMS"
-    //           />
-    //         </LineChart>
-    //       </ResponsiveContainer>
-    //     </div>
-    //   ),
-    // },
-    {
+
+//     {
+//   label: "Recommandations OMS",
+//   value: "professionnels",
+//   content: (
+//     <div className="h-[600px]">
+//          <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
+//      Normes de couverture sanitaire : recommandations de l’OMS à atteindre à partir de 2025
+
+//       </h3>
+//          <p className="text-lg font-semibold text-[#1e1446] mb-2">
+//    Méthode :
+// Recommandation OMS: 1 hopital pour 150 000 habitants
+
+//       </p>
+//       <ResponsiveContainer width="100%" height="100%">
+//         <LineChart data={couvertureData}>
+//           <CartesianGrid strokeDasharray="3 3" />
+//           <XAxis dataKey="year" />
+//           <YAxis
+//             domain={[0, 'auto']}
+//             label={{
+//               value: "Norme OMS (structures)",
+//               angle: -90,
+//               position: "insideLeft",
+//             }}
+//           />
+//           <Tooltip formatter={(value) => `${value} structures / 10.000 hab`} />
+//           <Line
+//             type="monotone"
+//             dataKey="norm_oms"
+//             stroke="#d97706"
+//             strokeWidth={3}
+//             name="Norme OMS"
+//           />
+//         </LineChart>
+//       </ResponsiveContainer>
+      
+//     </div>
+    
+//   ),
+// }
+{
   label: "Recommandations OMS",
   value: "professionnels",
   content: (
-    <div className="h-[600px]">
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={couvertureData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="year" />
-          <YAxis
-            domain={[0, 'auto']}
-            label={{
-              value: "Norme OMS (structures / 10 000 hab)",
-              angle: -90,
-              position: "insideLeft",
-            }}
-          />
-          <Tooltip formatter={(value) => `${value} structures / 10.000 hab`} />
-          <Line
-            type="monotone"
-            dataKey="norm_oms"
-            stroke="#d97706"
-            strokeWidth={3}
-            name="Norme OMS"
-          />
-        </LineChart>
-      </ResponsiveContainer>
+    <div className="h-[600px] flex flex-col gap-4">
+      {/* Titre et méthode */}
+      <div className="text-center">
+        <h3 className="text-lg font-semibold text-[#1e1446] mb-1">
+          Normes de couverture sanitaire : recommandations de l’OMS à atteindre à partir de 2025
+        </h3>
+        <p className="text-sm text-[#1e1446]">
+          Méthode : Recommandation OMS = 1 hôpital pour 150 000 habitants
+        </p>
+      </div>
+
+      {/* GRAPHE */}
+      <div className="h-[60%]">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={couvertureData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="year" />
+            <YAxis
+              domain={[0, 'auto']}
+              label={{
+                value: "Norme OMS (structures)",
+                angle: -90,
+                position: "insideLeft",
+              }}
+            />
+            <Tooltip formatter={(value) => `${value} structures / 10.000 hab`} />
+            <Line
+              type="monotone"
+              dataKey="norm_oms"
+              stroke="#d97706"
+              strokeWidth={3}
+              name="Norme OMS"
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* TABLEAU */}
+      <div className="overflow-x-auto max-h-[35%]">
+        <table className="min-w-full text-sm text-left border border-gray-300 rounded">
+          <thead className="bg-[#f3f4f6] text-gray-700 font-medium sticky top-0">
+            <tr>
+              <th className="px-4 py-2 border">Année</th>
+              <th className="px-4 py-2 border">Norme OMS</th>
+              <th className="px-4 py-2 border">Structures existantes</th>
+              <th className="px-4 py-2 border">À ajouter</th>
+            </tr>
+          </thead>
+          <tbody>
+            {couvertureData.map((row, idx) => (
+              <tr key={idx} className="hover:bg-gray-100">
+                <td className="px-4 py-2 border">{row.year}</td>
+                <td className="px-4 py-2 border">{row.norm_oms ?? "-"}</td>
+                <td className="px-4 py-2 border">{row.nb_str ?? "-"}</td>
+                <td className="px-4 py-2 border">
+                  {row.norm_oms && row.nb_str
+                    ? Math.max(Math.round(row.norm_oms - row.nb_str))
+                    : ""}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   ),
 }
@@ -240,7 +308,7 @@ export function ANSDHome() {
       <main className="flex-1 flex flex-col">
         <div className="flex justify-between items-center bg-white shadow px-6 py-4">
           <h1 className="text-xl md:text-2xl font-bold text-[#1e1446] max-w-5xl leading-tight">
-            ANSD – Vers une meilleure couverture sanitaire au Sénégal – État des lieux & perspectives 2030
+            ANSD – Planification : vers une meilleure couverture sanitaire au Sénégal – État des lieux & perspectives 2030
           </h1>
           <IconButton
             size="lg"
