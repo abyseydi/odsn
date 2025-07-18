@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import React, { useEffect, useState } from "react";
 import {
   Tabs, TabsHeader, TabsBody, Tab, TabPanel,
@@ -303,8 +305,9 @@ export function ANSDHome() {
       {/* FILTRES À GAUCHE */}
       <aside className="w-full lg:w-[18%] bg-[#1e1446] text-white p-6 flex flex-col justify-between shadow-lg">
         <div>
-          <img src="/img/logo_accel.png" alt="Logo Accel" className="h-14 mb-4" />
-          <h2 className="text-lg font-semibold mb-6">Filtres</h2>
+<Link to="/">
+  <img src="/img/logo_accel.png" alt="Logo Accel" className="h-14 mb-4 cursor-pointer" />
+</Link>          <h2 className="text-lg font-semibold mb-6">Régions</h2>
           <div className="space-y-6">
             <Select
               label="Région"

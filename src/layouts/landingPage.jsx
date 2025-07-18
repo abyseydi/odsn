@@ -24,7 +24,10 @@ export default function LandingPage() {
         link: "/secteur-prive/btp",
       },
     ],
-    public: [
+    public: [     {
+        title: "Politique publique",
+        link: "/ANSDHome"
+      },
       {
         title: "Éducation & Formation",
         link: "/secteur-public/education",
@@ -37,10 +40,7 @@ export default function LandingPage() {
         title: "Financement",
         link: "/secteur-public/financement",
       },
-      {
-        title: "Politique publique",
-        link: "/ANSDHome"
-      },
+ 
           {
         title: " Energie – Mines",
         link: ""
