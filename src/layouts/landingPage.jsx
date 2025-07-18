@@ -210,7 +210,7 @@ Shirik'IA          </h1>
   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-4">
     {[
       {
-        title: "IMMO SN : cartographie du parc locatif sénégalais",
+        title: "Cartographie du parc locatif sénégalais",
         image: "/img/senegal.png",
         link: "/tableaux/cnsa-depenses",
       },
@@ -287,9 +287,9 @@ Shirik'IA          </h1>
           <div>
             <h3 className="font-bold mb-4">Contact</h3>
             <ul className="space-y-3">
-              <li className="flex items-center gap-2">📞 
+              <li className="flex items-center gap-2">
 +221 33 820 83 83 </li>
-              <li className="flex items-center gap-2">✉️ 
+              <li className="flex items-center gap-2">
 info@accel-tech.net</li>
               <li className="flex items-center gap-2">
 165 virage, Route de l'aéroport

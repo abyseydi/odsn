@@ -160,7 +160,7 @@ db = SQLAlchemy(app)
 # 📊 Modèle Population
 # ============================
 class Population(db.Model):
-    __tablename__ = 'population'
+    __tablename__ = 'population_bis'
     id = db.Column(db.Integer, primary_key=True)
     indicateur = db.Column(db.String(50))
     region = db.Column(db.String(50))
@@ -184,7 +184,7 @@ class Population(db.Model):
 # 🏥 Modèle Couverture
 # ============================
 class Couverture(db.Model):
-    __tablename__ = 'couverture'
+    __tablename__ = 'couverture_bis_bis'
     id = db.Column(db.Integer, primary_key=True)
     region = db.Column(db.String(50))
     unit = db.Column(db.String(50))
@@ -193,13 +193,17 @@ class Couverture(db.Model):
     nb_str = db.Column(db.Integer)
     couv_san = db.Column(db.Float)
     norm_oms = db.Column(db.Float)
+    ajouter = db.Column(db.Float)
+    pred = db.Column(db.Float)
 
     def to_dict(self):
         return {
             "annee": self.annee,
             "nb_str": self.nb_str,
             "couv_san": self.couv_san,
-            "norm_oms": self.norm_oms
+            "norm_oms": self.norm_oms,
+            "ajouter": self.ajouter,
+            "pred": self.pred,
         }
 
 # ============================
