@@ -284,32 +284,47 @@ def get_regions():
 #             ])
 #     except Exception as e:
 #         return jsonify({"error": str(e)}), 500
-
 @app.route('/api/couverture')
 def get_couverture():
     region = request.args.get('region', default='ALL')
 
-    if region == 'ALL':
+    if region.upper() == 'ALL':
         results = (
             db.session.query(
                 Couverture.annee,
                 func.sum(Couverture.nb_str).label("nb_str"),
                 func.avg(Couverture.couv_san).label("couv_san"),
-                func.avg(Couverture.norm_oms).label("norm_oms"),
-                func.sum(Couverture.ajouter).label("ajouter"),
-                func.sum(Couverture.pred).label("pred")
+                func.sum(Couverture.norm_oms).label("norm_oms"),  # ✅ somme, pas moyenne
             )
             .group_by(Couverture.annee)
             .order_by(Couverture.annee)
             .all()
         )
+
+        # Calculer ajouter = norme_oms - nb_str
+        data = []
+        for r in results:
+            if r.annee is None:
+                continue  # ⛔️ éviter les lignes vides
+            ajouter = float(r.norm_oms or 0) - float(r.nb_str or 0)
+            data.append({
+                "annee": int(r.annee),
+                "nb_str": int(r.nb_str),
+                "couv_san": round(float(r.couv_san), 2) if r.couv_san is not None else None,
+                "norm_oms": round(float(r.norm_oms), 2) if r.norm_oms is not None else None,
+                "ajouter": round(ajouter, 2),
+                "pred": None  # Si tu veux ajouter une prédiction plus tard
+            })
+        return jsonify(data)
+
     else:
+        # Région spécifique
         results = (
             db.session.query(
                 Couverture.annee,
                 func.sum(Couverture.nb_str).label("nb_str"),
                 func.avg(Couverture.couv_san).label("couv_san"),
-                func.avg(Couverture.norm_oms).label("norm_oms"),
+                func.sum(Couverture.norm_oms).label("norm_oms"),
                 func.sum(Couverture.ajouter).label("ajouter"),
                 func.sum(Couverture.pred).label("pred")
             )
@@ -319,17 +334,80 @@ def get_couverture():
             .all()
         )
 
-    return jsonify([
-        {
-            "annee": int(r.annee),
-            "nb_str": int(r.nb_str) if r.nb_str is not None else None,
-            "couv_san": round(float(r.couv_san), 2) if r.couv_san is not None else None,
-            "norm_oms": round(float(r.norm_oms), 2) if r.norm_oms is not None else None,
-            "ajouter": round(float(r.ajouter), 2) if r.ajouter is not None else None,
-            "pred": round(float(r.pred), 2) if r.pred is not None else None
-        }
-        for r in results
-    ])
+        return jsonify([
+            {
+                "annee": int(r.annee),
+                "nb_str": int(r.nb_str) if r.nb_str is not None else None,
+                "couv_san": round(float(r.couv_san), 2) if r.couv_san is not None else None,
+                "norm_oms": round(float(r.norm_oms), 2) if r.norm_oms is not None else None,
+                "ajouter": round(float(r.ajouter), 2) if r.ajouter is not None else None,
+                "pred": round(float(r.pred), 2) if r.pred is not None else None
+            }
+            for r in results
+        ])
+
+# @app.route('/api/couverture')
+# def get_couverture():
+#     region = request.args.get('region', default='ALL')
+
+#     if region.upper() == 'ALL':
+#         results = (
+#             db.session.query(
+#                 Couverture.annee,
+#                 func.sum(Couverture.nb_str).label("nb_str"),
+#                 func.avg(Couverture.couv_san).label("couv_san"),
+#                 func.sum(Couverture.norm_oms).label("norm_oms"),  # ✅ somme, pas moyenne
+#             )
+#             .group_by(Couverture.annee)
+#             .order_by(Couverture.annee)
+#             .all()
+#         )
+
+#         # Calculer ajouter = norme_oms - nb_str
+#         data = []
+#         for r in results:
+#             if r.annee is None:
+#                 continue  # ⛔️ éviter les lignes vides
+#             ajouter = float(r.norm_oms or 0) - float(r.nb_str or 0)
+#             data.append({
+#                 "annee": int(r.annee),
+#                 "nb_str": int(r.nb_str),
+#                 "couv_san": round(float(r.couv_san), 2) if r.couv_san is not None else None,
+#                 "norm_oms": round(float(r.norm_oms), 2) if r.norm_oms is not None else None,
+#                 "ajouter": round(ajouter, 2),
+#                 "pred": None  # Si tu veux ajouter une prédiction plus tard
+#             })
+#         return jsonify(data)
+
+#     else:
+#         # Région spécifique
+#         results = (
+#             db.session.query(
+#                 Couverture.annee,
+#                 func.sum(Couverture.nb_str).label("nb_str"),
+#                 func.avg(Couverture.couv_san).label("couv_san"),
+#                 func.sum(Couverture.norm_oms).label("norm_oms"),
+#                 func.sum(Couverture.ajouter).label("ajouter"),
+#                 func.sum(Couverture.pred).label("pred")
+#             )
+#             .filter(Couverture.region == region)
+#             .group_by(Couverture.annee)
+#             .order_by(Couverture.annee)
+#             .all()
+#         )
+
+#         return jsonify([
+#             {
+#                 "annee": int(r.annee),
+#                 "nb_str": int(r.nb_str) if r.nb_str is not None else None,
+#                 "couv_san": round(float(r.couv_san), 2) if r.couv_san is not None else None,
+#                 "norm_oms": round(float(r.norm_oms), 2) if r.norm_oms is not None else None,
+#                 "ajouter": round(float(r.ajouter), 2) if r.ajouter is not None else None,
+#                 "pred": round(float(r.pred), 2) if r.pred is not None else None
+#             }
+#             for r in results
+#         ])
+
 
 # ============================
 # 🚀 Lancement de l'application

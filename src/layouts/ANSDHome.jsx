@@ -188,7 +188,7 @@ export function ANSDHome() {
                   <th className="px-4 py-2 border">À ajouter</th>
                 </tr>
               </thead>
-              <tbody>
+              {/* <tbody>
                 {couvertureData.map((row, idx) => (
                   <tr key={idx} className="hover:bg-gray-100">
                     <td className="px-4 py-2 border">{row.year}</td>
@@ -197,7 +197,28 @@ export function ANSDHome() {
                     <td className="px-4 py-2 border">{row.ajouter != null ? Math.round(row.ajouter) : "-"}</td>
                   </tr>
                 ))}
-              </tbody>
+              </tbody> */}
+                  <tbody>
+          {couvertureData
+            // Ne pas afficher les lignes vides ou nulles (ex: quand Sénégal donne 0/0/0)
+            .filter(
+              (row) =>
+                row.norm_oms !== null &&
+                row.nb_str !== null &&
+                row.ajouter !== null &&
+                (row.norm_oms !== 0 || row.nb_str !== 0 || row.ajouter !== 0)
+            )
+            .map((row, idx) => (
+              <tr key={idx} className="hover:bg-gray-50">
+                <td className="px-4 py-2 border text-center">{row.year}</td>
+                <td className="px-4 py-2 border text-center">{Math.round(row.norm_oms)}</td>
+                <td className="px-4 py-2 border text-center">{Math.round(row.nb_str)}</td>
+                <td className="px-4 py-2 border text-center text-red-600 font-semibold">
+                  {Math.round(row.ajouter)}
+                </td>
+              </tr>
+            ))}
+        </tbody>
             </table>
           </div>
         </div>
