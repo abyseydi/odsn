@@ -1,4 +1,4 @@
-
+import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
@@ -7,8 +7,27 @@ from sqlalchemy import func
 app = Flask(__name__)
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:@localhost/ansd'
+# Configuration de la base de données via variables d'environnement
+DB_HOST = os.environ.get('DB_HOST', 'localhost')
+DB_PORT = os.environ.get('DB_PORT', '3306')
+DB_USER = os.environ.get('DB_USER', 'root')
+DB_PASSWORD = os.environ.get('DB_PASSWORD', '')
+DB_NAME = os.environ.get('DB_NAME', 'ansddb')
+
+# Construction de l'URI de connexion
+DATABASE_URI = f'mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Configuration pour la production
+if os.environ.get('NODE_ENV') == 'production':
+    app.config['DEBUG'] = False
+    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+        'pool_pre_ping': True,
+        'pool_recycle': 300,
+        'connect_args': {'connect_timeout': 60}
+    }
 
 db = SQLAlchemy(app)
 
@@ -157,5 +176,17 @@ def get_couverture():
             for r in results
         ])
 
+@app.route('/health')
+def health_check():
+    """Health check endpoint pour OpenShift"""
+    try:
+        # Test de connexion à la base de données
+        db.session.execute('SELECT 1')
+        return jsonify({"status": "healthy", "database": "connected"}), 200
+    except Exception as e:
+        return jsonify({"status": "unhealthy", "error": str(e)}), 500
+
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    debug_mode = os.environ.get('NODE_ENV') != 'production'
+    app.run(debug=debug_mode, host="0.0.0.0", port=port)
