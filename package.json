@@ -5,10 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "flask": "python app.py",
+    "flask:dev": "flask --app app.py --debug run",
+    "backend": "cd backend && npm run dev",
+    "start:all": "concurrently \"npm run backend\" \"npm run dev\" \"npm run flask\""
   },
   "dependencies": {
+    "vite": "4.5.0",
     "@heroicons/react": "2.0.18",
     "@material-tailwind/react": "2.1.4",
     "apexcharts": "3.44.0",
@@ -25,10 +31,10 @@
     "@types/react-dom": "18.2.14",
     "@vitejs/plugin-react": "4.1.0",
     "autoprefixer": "10.4.16",
+    "concurrently": "^8.2.2",
     "postcss": "8.4.31",
     "prettier": "3.0.3",
     "prettier-plugin-tailwindcss": "0.5.6",
-    "tailwindcss": "3.3.4",
-    "vite": "4.5.0"
+    "tailwindcss": "3.3.4"
   }
 }

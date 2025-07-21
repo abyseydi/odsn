@@ -1,6 +1,6 @@
 
 import { Routes, Route } from "react-router-dom";
-import LandingPage from "./layouts/LandingPage";
+import LandingPage from "./layouts/landingPage";
 import ANSDHome from "./layouts/ANSDHome";
 
 function App() {
