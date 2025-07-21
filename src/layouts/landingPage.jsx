@@ -50,15 +50,14 @@ export default function LandingPage() {
 
   return (
     <div className="text-white font-sans">
-      {/* NAV + HERO */}
       <div
         className="bg-cover bg-center min-h-[700px] flex flex-col justify-between"
-        style={{ backgroundImage: "url('img/bg_1.png')" }}
+        style={{ backgroundImage: "url('img/bg2.png')" }}
       >
         <nav className="flex justify-between items-center px-6 py-4">
           <img src="img/logo_accel.png" alt="Logo Accel" className="h-14 w-auto" />
           <div className="flex gap-4 items-center">
-            <FiSearch className="text-white text-xl cursor-pointer" />
+            <FiSearch className="text-[#1C2452] text-xl cursor-pointer" />
             <button className="bg-[#1e1446] text-white px-4 py-1 rounded-full text-sm font-semibold">
               CONTACT
             </button>
@@ -71,7 +70,7 @@ export default function LandingPage() {
               <div className="max-w-xl">
                       <h1 className="text-3xl md:text-5xl font-bold mb-6 text-purple-400 leading-tight">
 Shirik'IA          </h1>
-                <h4 className="text-3xl md:text-2xl font-bold mb-6 leading-tight">
+                <h4 className="text-3xl text-[#1E1446] md:text-2xl font-bold mb-6 leading-tight">
                 Libérez le potentiel de vos données avec l'IA souveraine.
                 </h4>
             
@@ -110,14 +109,12 @@ Shirik'IA          </h1>
         key={index}
         className="bg-[#1e1446] text-white px-6 py-6 min-h-[380px] rounded-2xl shadow-xl border border-fuchsia-600 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl"
       >
-        {/* Titre avec hauteur fixe */}
         <div className="h-[80px] flex items-center justify-center mb-4">
           <h3 className="text-xl font-bold text-blue-200 leading-tight">
             {card.title}
           </h3>
         </div>
 
-        {/* Icône */}
         <div className="flex justify-center items-center mb-6">
           <img
             src={card.picto}
@@ -126,10 +123,8 @@ Shirik'IA          </h1>
           />
         </div>
 
-        {/* Ligne de séparation */}
         <div className="w-16 h-[3px] bg-fuchsia-500 mb-3 rounded-full"></div>
 
-        {/* Texte */}
         <p className="text-sm text-gray-300">{card.text}</p>
       </div>
     ))}
@@ -137,46 +132,51 @@ Shirik'IA          </h1>
 </section>
 
 
-<section className="bg-white px-4 py-20">
-  <h1 className="text-3xl md:text-6xl font-bold text-[#bb2fd3] text-center mb-12">
-    Cas d'usage Data & IA
-  </h1>
+<section className="bg-[#1e1446] px-4 py-20">
 
-  <h2 className="text-3xl md:text-2xl font-bold-500 text-[#bb2fd3] text-center mb-12">
-    Nos solutions Data & IA sont spécifiquement adaptées aux besoins dynamiques des secteurs privé et public, offrant des avantages concurrentiels et une efficacité opérationnelle.
-  </h2>
+ <section className="bg-[#1E1446] text-white py-16 px-4 text-center">
+      <div className="flex justify-center mb-6">
+        <img
+          src="/img/ai_picto.png"
+          alt="AI Logo"
+          className="h-16 w-16"
+        />
+      </div>
 
-  {/* Onglets switch */}
-  <div className="flex justify-center mb-10 space-x-4">
-    <button
-      onClick={() => setActiveTab("privé")}
-      className={`px-6 py-2 font-semibold rounded-full border-2 text-sm md:text-base transition-all duration-300 ${
-        activeTab === "privé"
-          ? "bg-gradient-to-r from-[#1e1446] to-[#96cbbe] text-white border-transparent shadow-lg"
-          : "bg-white text-[#1e1446] border-[#1e1446] hover:bg-[#f3f3f3]"
-      }`}
-    >
-      Secteur Privé
-    </button>
-    <button
-      onClick={() => setActiveTab("public")}
-      className={`px-6 py-2 font-semibold rounded-full border-2 text-sm md:text-base transition-all duration-300 ${
-        activeTab === "public"
-          ? "bg-gradient-to-r from-[#1e1446] to-[#96cbbe] text-white border-transparent shadow-lg"
-          : "bg-white text-[#1e1446] border-[#1e1446] hover:bg-[#f3f3f3]"
-      }`}
-    >
-      Secteur Public
-    </button>
-  </div>
+ 
+      <div className="flex justify-center space-x-6">
+        <button
+          onClick={() => setActiveTab("public")}
+          className={`px-8 py-2 font-semibold rounded-full border-2 text-sm md:text-base transition-all duration-300 
+            ${
+              activeTab === "public"
+                ? "bg-[#A7D7C5] text-white border-white"
+                : "bg-transparent text-white border-white hover:bg-white hover:text-[#1E1446]"
+            }`}
+        >
+          Secteur Public
+        </button>
 
+        <button
+          onClick={() => setActiveTab("privé")}
+          className={`px-8 py-2 font-semibold rounded-full border-2 text-sm md:text-base transition-all duration-300 
+            ${
+              activeTab === "privé"
+                ? "bg-[#A7D7C5] text-white border-white"
+                : "bg-transparent text-white border-white hover:bg-white hover:text-[#1E1446]"
+            }`}
+        >
+          Secteur Privé
+        </button>
+      </div>
+    </section>
   {/* Cartes animées */}
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full px-4">
   {tabs[activeTab].map((item, idx) => (
     <Link
       to={item.link}
       key={idx}
-      className="relative rounded-3xl border-2 border-[#1e1446] bg-white text-[#1e1446] font-semibold text-left px-6 py-16 min-h-[220px] shadow-md transition duration-300 hover:scale-105 hover:shadow-lg hover:bg-gradient-to-br hover:from-[#1e1446] hover:to-[#96cbbe] hover:text-white flex items-center"
+      className="relative rounded-3xl border-2 border-[#1e1446] bg-white text-[#1e1446] font-semibold text-left px-6 py-16 min-h-[220px] shadow-md transition duration-300 hover:scale-105 hover:shadow-lg hover:bg-[#A7D7C5] hover:text-white flex items-center"
     >
       <div className="w-full pr-6">
         <p className="text-md md:text-lg leading-snug">{item.title}</p>
@@ -187,6 +187,7 @@ Shirik'IA          </h1>
     </Link>
   ))}
 </div>
+
 
 
   <div className="text-center mt-10">
@@ -247,10 +248,16 @@ Shirik'IA          </h1>
 
 
 <section className="bg-white py-12 text-center">
-  <h2 className="text-2xl md:text-3xl font-bold text-[#1e1446] mb-6">
+  <h2 className="text-1xl md:text-3xl text-[#1e1446] mb-6">
     Les technologies les plus innovantes au service de notre expertise.
   </h2>
-
+    <div className="flex justify-center mb-6">
+        <img
+          src="/img/tech.png"
+          alt="AI Logo"
+          className="h-16 w-16"
+        />
+      </div>
   <div className="flex justify-center gap-8 flex-wrap">
     {["redhat", "redhat", "pytorch", "tensorflow", "scikit-learn"].map((logo, i) => (
       <div
@@ -266,7 +273,6 @@ Shirik'IA          </h1>
     ))}
   </div>
 </section>
-      {/* FOOTER */}
       <footer className="bg-[#1e1446] text-white px-6 py-10 font-sans">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-sm">
           <div className="flex flex-col items-start">
