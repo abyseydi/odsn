@@ -252,38 +252,84 @@ def get_regions():
 # ============================
 # 🩺 Endpoint Couverture Sanitaire
 # ============================
-@app.route("/api/couverture")
-def get_couverture():
-    """Retourne les données couverture sanitaire (nb structures, couverture, norme OMS)"""
-    try:
-        region_param = request.args.get("region", "").strip()
+# @app.route("/api/couverture")
+# def get_couverture():
+#     """Retourne les données couverture sanitaire (nb structures, couverture, norme OMS)"""
+#     try:
+#         region_param = request.args.get("region", "").strip()
 
-        if region_param and region_param.upper() != "ALL":
-            data = Couverture.query.filter(Couverture.region.ilike(region_param)).order_by(Couverture.annee).all()
-            return jsonify([d.to_dict() for d in data])
-        else:
-            results = (
-                db.session.query(
-                    Couverture.annee,
-                    func.sum(Couverture.nb_str).label("nb_str"),
-                    func.avg(Couverture.couv_san).label("couv_san"),
-                    func.avg(Couverture.norm_oms).label("norm_oms")
-                )
-                .group_by(Couverture.annee)
-                .order_by(Couverture.annee)
-                .all()
+#         if region_param and region_param.upper() != "ALL":
+#             data = Couverture.query.filter(Couverture.region.ilike(region_param)).order_by(Couverture.annee).all()
+#             return jsonify([d.to_dict() for d in data])
+#         else:
+#             results = (
+#                 db.session.query(
+#                     Couverture.annee,
+#                     func.sum(Couverture.nb_str).label("nb_str"),
+#                     func.avg(Couverture.couv_san).label("couv_san"),
+#                     func.avg(Couverture.norm_oms).label("norm_oms")
+#                 )
+#                 .group_by(Couverture.annee)
+#                 .order_by(Couverture.annee)
+#                 .all()
+#             )
+#             return jsonify([
+#                 {
+#                     "annee": int(r.annee),
+#                     "nb_str": int(r.nb_str),
+#                     "couv_san": round(float(r.couv_san), 2),
+#                     "norm_oms": round(float(r.norm_oms), 2) if r.norm_oms is not None else None
+#                 }
+#                 for r in results
+#             ])
+#     except Exception as e:
+#         return jsonify({"error": str(e)}), 500
+
+@app.route('/api/couverture')
+def get_couverture():
+    region = request.args.get('region', default='ALL')
+
+    if region == 'ALL':
+        results = (
+            db.session.query(
+                Couverture.annee,
+                func.sum(Couverture.nb_str).label("nb_str"),
+                func.avg(Couverture.couv_san).label("couv_san"),
+                func.avg(Couverture.norm_oms).label("norm_oms"),
+                func.sum(Couverture.ajouter).label("ajouter"),
+                func.sum(Couverture.pred).label("pred")
             )
-            return jsonify([
-                {
-                    "annee": int(r.annee),
-                    "nb_str": int(r.nb_str),
-                    "couv_san": round(float(r.couv_san), 2),
-                    "norm_oms": round(float(r.norm_oms), 2) if r.norm_oms is not None else None
-                }
-                for r in results
-            ])
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+            .group_by(Couverture.annee)
+            .order_by(Couverture.annee)
+            .all()
+        )
+    else:
+        results = (
+            db.session.query(
+                Couverture.annee,
+                func.sum(Couverture.nb_str).label("nb_str"),
+                func.avg(Couverture.couv_san).label("couv_san"),
+                func.avg(Couverture.norm_oms).label("norm_oms"),
+                func.sum(Couverture.ajouter).label("ajouter"),
+                func.sum(Couverture.pred).label("pred")
+            )
+            .filter(Couverture.region == region)
+            .group_by(Couverture.annee)
+            .order_by(Couverture.annee)
+            .all()
+        )
+
+    return jsonify([
+        {
+            "annee": int(r.annee),
+            "nb_str": int(r.nb_str) if r.nb_str is not None else None,
+            "couv_san": round(float(r.couv_san), 2) if r.couv_san is not None else None,
+            "norm_oms": round(float(r.norm_oms), 2) if r.norm_oms is not None else None,
+            "ajouter": round(float(r.ajouter), 2) if r.ajouter is not None else None,
+            "pred": round(float(r.pred), 2) if r.pred is not None else None
+        }
+        for r in results
+    ])
 
 # ============================
 # 🚀 Lancement de l'application
