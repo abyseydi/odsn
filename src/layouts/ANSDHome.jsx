@@ -17,7 +17,7 @@ import {
 export function ANSDHome() {
   const [controller, dispatch] = useMaterialTailwindController();
   const [activeTab, setActiveTab] = useState("tableaux");
-  const [region, setRegion] = useState("DAKAR"); // ✅ Par défaut DAKAR
+  const [region, setRegion] = useState("DAKAR"); 
   const [regions, setRegions] = useState([]);
   const [populationData, setPopulationData] = useState([]);
   const [couvertureData, setCouvertureData] = useState([]);
@@ -90,15 +90,7 @@ export function ANSDHome() {
                 strokeWidth={3}
                 dot={false}
               />
-              {/* <Line
-                type="monotone"
-                dataKey="population"
-                data={populationData.filter((d) => +d.year >= 2025)}
-                stroke="red"
-                strokeDasharray="5 5"
-                strokeWidth={3}
-                dot={false}
-              /> */}
+          
             </LineChart>
           </ResponsiveContainer>
         </div>
@@ -188,19 +180,9 @@ export function ANSDHome() {
                   <th className="px-4 py-2 border">À ajouter</th>
                 </tr>
               </thead>
-              {/* <tbody>
-                {couvertureData.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-gray-100">
-                    <td className="px-4 py-2 border">{row.year}</td>
-                    <td className="px-4 py-2 border">{row.norm_oms != null ? Math.round(row.norm_oms) : "-"}</td>
-                    <td className="px-4 py-2 border">{row.nb_str != null ? Math.round(row.nb_str) : "-"}</td>
-                    <td className="px-4 py-2 border">{row.ajouter != null ? Math.round(row.ajouter) : "-"}</td>
-                  </tr>
-                ))}
-              </tbody> */}
+           
                   <tbody>
           {couvertureData
-            // Ne pas afficher les lignes vides ou nulles (ex: quand Sénégal donne 0/0/0)
             .filter(
               (row) =>
                 row.norm_oms !== null &&

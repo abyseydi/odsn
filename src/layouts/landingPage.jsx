@@ -189,7 +189,6 @@ Shirik'IA          </h1>
 </div>
 
 
-  {/* Lien vers toutes les données */}
   <div className="text-center mt-10">
     <a
       href="/toutes-les-donnees"
