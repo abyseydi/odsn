@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { FiSearch, FiMenu } from "react-icons/fi";
-import { Link } from "react-router-dom"; 
+// import { Link } from "react-router-dom"; 
+import { Link } from "react-scroll";
+
 import { Dashboard } from "@/layouts";
+
 
 export default function LandingPage() {
   const [activeTab, setActiveTab] = useState("privé");
@@ -54,7 +57,8 @@ export default function LandingPage() {
         className="bg-cover bg-center min-h-[700px] flex flex-col justify-between"
         style={{ backgroundImage: "url('img/bg2.png')" }}
       >
-        <nav className="flex justify-between items-center px-6 py-4">
+        
+        {/* <nav className="flex justify-between items-center px-6 py-4">
           <img src="img/logo_accel.png" alt="Logo Accel" className="h-14 w-auto" />
           <div className="flex gap-4 items-center">
             <FiSearch className="text-[#1C2452] text-xl cursor-pointer" />
@@ -62,14 +66,33 @@ export default function LandingPage() {
               CONTACT
             </button>
           </div>
+        </nav> */}
+           <nav className="flex justify-between items-center px-6 py-4">
+          <img src="img/logo_accel.png" alt="Logo Accel" className="h-14 w-auto" />
+          <div className="flex gap-8 items-center text-[#1C2452] font-semibold">
+            <Link to="section-accueil" smooth={true} duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5] transition-colors duration-300">Accueil</Link>
+            <Link to="section-services" smooth={true} duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5] transition-colors duration-300">Services</Link>
+                        <Link to="cas-usage" smooth={true} duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5] transition-colors duration-300">Cas d'usage</Link>
+
+                        <Link to="section-produits" smooth={true} duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5] transition-colors duration-300">Produits</Link>
+
+            {/* <Link to="section-contact" smooth={true} duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5] transition-colors duration-300">Contact</Link> */}
+            {/* <FiSearch className="text-[#1C2452] text-xl cursor-pointer hover:bg-[#A7D7C5] rounded-full p-1" /> */}
+            <button className="bg-[#1e1446] text-white px-4 py-1 rounded-full text-sm font-semibold">CONTACT</button>
+          </div>
         </nav>
+
 
         <section className="min-h-[600px] flex items-center">
           <div className="w-full flex flex-col md:flex-row px-6 gap-8 items-center md:items-stretch">
             <div className="md:w-1/2 flex flex-col justify-center h-full">
               <div className="max-w-xl">
-                      <h1 className="text-3xl md:text-5xl font-bold mb-6 text-purple-400 leading-tight">
-Shirik'IA          </h1>
+                      {/* <h1 className="text-3xl md:text-5xl font-bold mb-6 text-purple-400 leading-tight">
+Shirik'IA          </h1> */}
+<h1 className="text-3xl md:text-5xl font-bold mb-6 text-purple-400 leading-tight transform -translate-y-14">
+  Shirik'IA
+</h1>
+
                 <h4 className="text-3xl text-[#1E1446] md:text-2xl font-bold mb-6 leading-tight">
                 Libérez le potentiel de vos données avec l'IA souveraine.
                 </h4>
@@ -81,7 +104,7 @@ Shirik'IA          </h1>
       </div>
 
  
-      <section className="-mt-24 relative z-20 px-4 sm:px-6 lg:px-10 pb-12">
+      <section id="section-services" className="-mt-24 relative z-20 px-4 sm:px-6 lg:px-10 pb-12">
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
     {[
       {
@@ -132,7 +155,7 @@ Shirik'IA          </h1>
 </section>
 
 
-<section className="bg-[#1e1446] px-4 py-20">
+<section id="cas-usage" className="bg-[#1e1446] px-4 py-20">
 
  <section className="bg-[#1E1446] text-white py-16 px-4 text-center">
       <div className="flex justify-center mb-6">
@@ -202,7 +225,7 @@ Shirik'IA          </h1>
 
 
 
-<section className="bg-[#eef8f5] px-4 py-20 text-white font-sans w-full">
+<section id="section-produits" className="bg-[#eef8f5] px-4 py-20 text-white font-sans w-full">
   <h2 className="text-3xl md:text-4xl font-bold text-center text-[#1e1446] mb-12">
    Nos produits
   </h2>
