@@ -368,16 +368,50 @@ export default function LandingPage() {
         className="bg-cover bg-center min-h-[700px] flex flex-col justify-between"
         style={{ backgroundImage: "url('img/bg2.png')" }}
       >
-        <nav className="flex justify-between items-center px-6 py-4">
-          <img src="img/logo_accel.png" alt="Logo Accel" className="h-14 w-auto" />
+        {/* <nav className="flex justify-between-left items-center px-6 py-4">
+          <img src="img/logo_accel.png" alt="Logo Accel" className="h-20 w-auto" />
           <div className="flex gap-8 items-center text-[#1C2452] font-semibold">
-            <Link to="section-accueil" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">Accueil</Link>
-            <Link to="section-services" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">Services</Link>
-            <Link to="cas-usage" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">Cas d’usage</Link>
-            <Link to="section-produits" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">Produits</Link>
+            <Link to="section-services" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">Nos expertises</Link>
+            <Link to="cas-usage" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">Catalogue des cas d'usage</Link>
+            <Link to="section-produits" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">Publications</Link>
+            <Link to="section-produits" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">Actualités IA</Link>
+            <Link to="section-accueil" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">Découvrez ACCEL Tech</Link>
+
             <button className="bg-[#1e1446] text-white px-4 py-1 rounded-full text-sm font-semibold">CONTACT</button>
           </div>
-        </nav>
+        </nav> */}
+<nav className="flex items-center justify-between px-6 py-4">
+  {/* Logo à gauche */}
+  <div className="flex-shrink-0">
+    <img src="img/logo_accel.png" alt="Logo Accel" className="h-20 w-auto" />
+  </div>
+
+  {/* Liens centrés */}
+  <div className="flex-1 flex justify-center gap-10 items-center text-[#1C2452] font-semibold">
+    <Link to="section-services" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">
+      Nos expertises
+    </Link>
+    <Link to="cas-usage" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">
+      Catalogue des cas d'usage
+    </Link>
+    <Link to="section-produits" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">
+      Publications
+    </Link>
+    <Link to="section-produits" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">
+      Actualités IA
+    </Link>
+    <Link to="section-accueil" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">
+      Découvrez ACCEL Tech
+    </Link>
+  </div>
+
+  {/* Bouton à droite */}
+  <div className="flex-shrink-0">
+    <button className="bg-[#1e1446] text-white px-4 py-1 rounded-full text-sm font-semibold">
+      CONTACT
+    </button>
+  </div>
+</nav>
 
         <section id="section-accueil" className="min-h-[600px] flex items-center">
           <div className="w-full flex flex-col md:flex-row px-6 gap-8 items-center md:items-stretch">
@@ -426,7 +460,7 @@ export default function LandingPage() {
               className="bg-[#1e1446] text-white px-6 py-6 min-h-[380px] rounded-2xl shadow-xl border border-fuchsia-600 flex flex-col items-center text-center transition duration-300 hover:scale-105"
             >
               <div className="h-[80px] flex items-center justify-center mb-4">
-                <h3 className="text-xl font-bold text-blue-200 leading-tight">{card.title}</h3>
+                <h3 className="text-xl font-bold text-white leading-tight">{card.title}</h3>
               </div>
               <div className="flex justify-center items-center mb-6">
                 <img src={card.picto} alt={card.title} className="w-12 object-contain" />
