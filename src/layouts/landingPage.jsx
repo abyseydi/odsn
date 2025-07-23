@@ -40,21 +40,30 @@ export default function LandingPage() {
 
   {/* Liens centrés */}
   <div className="flex-1 flex justify-center gap-10 items-center text-[#1C2452] font-semibold">
-    <Link to="section-services" smooth duration={700} offset={-70} className="cursor-pointer hover:text-white">
+    <Link to="section-services" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#26509e]">
       Nos expertises
     </Link>
-    <Link to="cas-usage" smooth duration={700} offset={-70} className="cursor-pointer hover:text-white">
+    <Link to="cas-usage" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#26509e]">
  Use Cases IA
     </Link>
-    <Link to="section-produits" smooth duration={700} offset={-70} className="cursor-pointer hover:text-white">
+    <Link to="section-produits" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#26509e]">
       Publications
     </Link>
-    <Link to="section-produits" smooth duration={700} offset={-70} className="cursor-pointer hover:text-white">
+    <Link to="" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#26509e]">
       Actualités IA
     </Link>
-    <Link to="section-accueil" smooth duration={700} offset={-70} className="cursor-pointer hover:text-white">
+    {/* <a href="https://www.accel-tech.net" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#26509e]">
       Découvrez ACCEL Tech
-    </Link>
+    </a> */}
+<a
+  href="https://www.accel-tech.net/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="cursor-pointer hover:text-[#26509e]"
+>
+  Découvrez ACCEL Tech
+</a>
+
   </div>
 
   {/* Bouton à droite */}
@@ -66,31 +75,19 @@ export default function LandingPage() {
 </nav>
   </div>
 
-  {/* Optionnel : overlay sombre pour améliorer la lisibilité */}
   <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30 z-0" />
 
 
 
-        {/* <section id="section-accueil" className="min-h-[600px] flex items-center">
-          <div className="w-full flex flex-col md:flex-row px-6 gap-8 items-center md:items-stretch">
-            <div className="md:w-1/2 flex flex-col justify-center h-full">
-              <div className="max-w-xl">
-              <h1 className="text-7xl md:text-6xl font-bold mb-6 text-purple-400 leading-tight transform -translate-y-14">
-  ShiriK'IA
-</h1>
-
-                <h4 className="text-3xl text-[#1E1446] md:text-2xl font-bold mb-6 leading-tight">
-                  Maitrisez vos données avec l'IA souveraine.
-                </h4>
-
-              </div>
-            </div>
-          </div>
-        </section> */}
       </div>
 
-      {/* SERVICES */}
-      <section id="section-services" className="-mt-20 relative z-20 px-4 sm:px-6 lg:px-10 pb-12">
+  
+<section
+  id="section-services"
+  className="relative z-20 px-4 sm:px-6 lg:px-10 pb-12 mt-8 sm:mt-12 md:mt-16 lg:mt-60"
+>
+
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
           {[
             {
@@ -100,7 +97,7 @@ export default function LandingPage() {
             },
             {
               title: "Valorisation Data & IA",
-              picto: "/img/competence.png",
+              picto: "/img/valorisation.png",
               text: "Les cas d’usage métiers sont le point de départ pour maximiser la valeur et décliner les dimensions d’un plan Data & AI.",
             },
             {
@@ -110,7 +107,7 @@ export default function LandingPage() {
             },
             {
               title: "Openshift AI",
-              picto: "/img/diamond.png",
+              picto: "/img/rhoai.png",
               text: "OpenShift® AI permet de gérer les modèles IA à grande échelle dans des environnements sécurisés hybrides.",
             },
           ].map((card, index) => (
@@ -123,29 +120,23 @@ export default function LandingPage() {
 
               </div>
               <div className="flex justify-center items-center mb-6">
-                <img src={card.picto} alt={card.title} className="w-14 object-contain" />
+                <img src={card.picto} alt={card.title} className="w-20 object-contain" />
               </div>
               <div className="w-16 h-[3px] bg-fuchsia-500 mb-3 rounded-full"></div>
-              <h3 className="text-sm font-bold text-white-500">{card.text}</h3>
+              <h3 className="text-sm  text-white-500">{card.text}</h3>
             </div>
           ))}
         </div>
       </section>
-  <p className="text-[#1e1446] text-lg md:text-xl font-bold mb-4 leading-snug max-w-3xl mx-auto text-center">
-  Nos solutions Data & AI sont spécifiques et adaptées aux besoins dynamiques des secteurs privé et public, offrant des avantages concurrentiels et une efficacité opérationnelle
+  <p className="text-[#26509e] text-lg md:text-xl font-bold mb-4 leading-snug max-w-3xl mx-auto text-center">
+  Nos solutions Data & AI sont spécifiques et adaptées aux besoins dynamiques des secteurs privé et public, offrant des avantages concurrentiels et une efficacité opérationnelle.
 </p>
-
       <div className="flex justify-center mb-4">
-
-      <img src="/img/ai_picto.png" alt="AI Logo" className="h-12 w-12" />
+      <img src="/img/ai_blue.png" alt="AI Logo" className="h-20 w-20"/>
     </div>
       <section id="cas-usage" className="bg-[#1e1446] px-4 ">
-
-
 <section id="cas-usage" className="bg-[#1e1446] px-4 h-22" >
   <section className="text-white py-10 px-4 text-center">
-
-
     <div className="flex justify-center space-x-4">
       <button
         onClick={() => setActiveTab("public")}
@@ -204,8 +195,8 @@ export default function LandingPage() {
       </section>
 
       {/* PRODUITS */}
-      <section id="section-produits" className="bg-[#eef8f5] px-4 py-2 text-white w-full">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#1e1446] mb-12">Nos produits</h2>
+      <section id="section-produits" className="bg-white px-4 py-12 text-white w-full">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#1e1446] mb-12">Nos réalisations</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-4">
           {[
             {
@@ -244,9 +235,9 @@ export default function LandingPage() {
         <h2 className="text-1xl md:text-3xl text-[#1e1446] mb-6">
           Les technologies les plus innovantes au service de notre expertise.
         </h2>
-        <div className="flex justify-center mb-6">
+        {/* <div className="flex justify-center mb-6">
           <img src="/img/tech.png" alt="Tech Icon" className="h-16 w-16" />
-        </div>
+        </div> */}
         <div className="flex justify-center gap-8 flex-wrap">
           {["redhat", "redhat", "pytorch", "tensorflow", "scikit-learn"].map((logo, i) => (
             <div key={i} className="w-[140px] h-[140px] bg-gray-200 rounded-full overflow-hidden flex items-center justify-center shadow-md hover:scale-105 transition">
@@ -270,7 +261,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-sm">
           <div>
             <p className="text-lg font-bold mb-2">Powered By</p>
-            <img src="img/logo_accel.png" alt="Accel Logo" className="h-20" />
+            <img src="img/accel_logo_light.png" alt="Accel Logo" className="h-20" />
           </div>
           <div>
             <h3 className="font-bold mb-4">Liens utiles</h3>
