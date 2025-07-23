@@ -26,22 +26,8 @@ export default function LandingPage() {
   return (
     <div className="text-white font-sans scroll-smooth">
 
-      {/* HERO & NAV */}
-      {/* <div
-        className="bg-cover bg-center min-h-[700px] flex flex-col justify-between"
-        style={{ backgroundImage: "url('img/bg2.png')" }}
-      > */}
 <div className="relative min-h-[700px] flex flex-col justify-between overflow-hidden">
-  {/* Vidéo de fond */}
-  {/* <video
-    className="absolute top-0 left-0 w-full h-full object-cover"
-    autoPlay
-    muted
-    loop
-    playsInline
-  >
-    <source src="img/intro.mp4" type="video/mp4" />
-  </video> */}
+
 
   {/* Contenu par-dessus la vidéo */}
   <div className="relative z-10 w-full h-full flex flex-col justify-between">
