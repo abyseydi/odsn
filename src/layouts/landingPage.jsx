@@ -82,7 +82,7 @@ export default function LandingPage() {
   
 <section
   id="section-services"
-  className="relative z-20 px-4 sm:px-6 lg:px-10 pb-12 mt-8 sm:mt-12 md:mt-16 lg:mt-60"
+  className="relative z-20 px-4 sm:px-6 lg:px-10 pb-12 mt-8 sm:mt-12 md:mt-16 lg:mt-4"
 >
 
 

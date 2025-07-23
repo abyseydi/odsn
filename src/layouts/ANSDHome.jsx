@@ -1,4 +1,5 @@
 
+
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import {
@@ -21,11 +22,9 @@ export function ANSDHome() {
   const [regions, setRegions] = useState([]);
   const [populationData, setPopulationData] = useState([]);
   const [couvertureData, setCouvertureData] = useState([]);
-  //const [baseUrl] = "https://odsn-app-ansd-app.apps.origins.heritage.africa";
-  const [baseUrl] = "http://localhost:8080";
 
   useEffect(() => {
-    fetch("${baseUrl}/api/regions")
+    fetch("http://localhost:5000/api/regions")
       .then(res => res.json())
       .then(data => setRegions(["ALL", ...data]))
       .catch(err => console.error("Erreur chargement des régions :", err));
@@ -34,8 +33,8 @@ export function ANSDHome() {
   useEffect(() => {
     const url =
       region === "ALL"
-        ? "${baseUrl}/api/population"
-        : `${baseUrl}/api/population?region=${encodeURIComponent(region)}`;
+        ? "http://localhost:5000/api/population"
+        : `http://localhost:5000/api/population?region=${encodeURIComponent(region)}`;
 
     fetch(url)
       .then(res => res.json())
@@ -52,8 +51,8 @@ export function ANSDHome() {
   useEffect(() => {
     const url =
       region === "ALL"
-        ? "${baseUrl}/api/couverture"
-        : `${baseUrl}/api/couverture?region=${encodeURIComponent(region)}`;
+        ? "http://localhost:5000/api/couverture"
+        : `http://localhost:5000/api/couverture?region=${encodeURIComponent(region)}`;
 
     fetch(url)
       .then(res => res.json())
