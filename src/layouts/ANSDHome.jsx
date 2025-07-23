@@ -97,7 +97,7 @@ export function ANSDHome() {
       ),
     },
     {
-      label: "Structures sanitaires",
+      label: "Structures sanitaires (hôpitaux publics)",
       value: "indicateurs",
       content: (
         <div className="h-[600px]">
@@ -116,7 +116,7 @@ export function ANSDHome() {
                 yAxisId="left"
                 type="monotone"
                 dataKey="nb_str"
-                stroke="#2f855a"
+                stroke="#e84041"
                 strokeWidth={3}
               />
             </LineChart>
@@ -168,7 +168,7 @@ export function ANSDHome() {
               <XAxis dataKey="year" />
               <YAxis label={{ value: "Norme OMS (structures)", angle: -90, position: "insideLeft" }} />
               <Tooltip formatter={(value) => `${value} structures / 10.000 hab`} />
-              <Line type="monotone" dataKey="norm_oms" stroke="#d97706" strokeWidth={3} name="Norme OMS" />
+              <Line type="monotone" dataKey="norm_oms" stroke="#1e1446" strokeWidth={3} name="Norme OMS" />
             </LineChart>
           </ResponsiveContainer>
         </div>

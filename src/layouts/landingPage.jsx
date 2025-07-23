@@ -52,9 +52,7 @@ export default function LandingPage() {
     <Link to="" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#26509e]">
       Actualités IA
     </Link>
-    {/* <a href="https://www.accel-tech.net" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#26509e]">
-      Découvrez ACCEL Tech
-    </a> */}
+
 <a
   href="https://www.accel-tech.net/"
   target="_blank"
@@ -207,7 +205,7 @@ export default function LandingPage() {
             {
               title: "Suivi des recettes de l’État",
               image: "/img/dgid.png",
-              link: "/tableaux/aide-cnsa",
+              link: "/https://bi-srmt-srmt.apps.origins.heritage.africa/Reports",
             },
             {
               title: "Fond souverain & décisions",
