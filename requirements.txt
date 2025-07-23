@@ -1,0 +1,22 @@
+# Dépendances Python pour appserver.py
+# Adaptez selon vos besoins réels
+
+Flask==2.3.3
+Flask-CORS==4.0.0
+Flask-SQLAlchemy==3.0.5
+SQLAlchemy==2.0.21
+
+# Connecteurs de base de données
+mysql-connector-python==8.1.0
+PyMySQL==1.1.0
+psycopg2-binary==2.9.7
+
+requests==2.31.0
+python-dotenv==1.0.0
+gunicorn==21.2.0
+
+# Optionnel selon votre stack :
+# fastapi==0.103.1
+# uvicorn==0.23.2
+# pandas==2.1.1
+# numpy==1.24.3

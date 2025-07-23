@@ -17,13 +17,15 @@ import {
 export function ANSDHome() {
   const [controller, dispatch] = useMaterialTailwindController();
   const [activeTab, setActiveTab] = useState("tableaux");
-  const [region, setRegion] = useState("DAKAR"); 
+  const [region, setRegion] = useState("DAKAR");
   const [regions, setRegions] = useState([]);
   const [populationData, setPopulationData] = useState([]);
   const [couvertureData, setCouvertureData] = useState([]);
+  const baseUrl = getApiURL()
+
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/regions")
+    fetch(`${baseUrl}/api/regions`)
       .then(res => res.json())
       .then(data => setRegions(["ALL", ...data]))
       .catch(err => console.error("Erreur chargement des régions :", err));
@@ -32,8 +34,8 @@ export function ANSDHome() {
   useEffect(() => {
     const url =
       region === "ALL"
-        ? "http://localhost:5000/api/population"
-        : `http://localhost:5000/api/population?region=${encodeURIComponent(region)}`;
+        ? `${baseUrl}/api/population`
+        : `${baseUrl}/api/population?region=${encodeURIComponent(region)}`;
 
     fetch(url)
       .then(res => res.json())
@@ -50,8 +52,8 @@ export function ANSDHome() {
   useEffect(() => {
     const url =
       region === "ALL"
-        ? "http://localhost:5000/api/couverture"
-        : `http://localhost:5000/api/couverture?region=${encodeURIComponent(region)}`;
+        ? `${baseUrl}/api/couverture`
+        : `${baseUrl}/api/couverture?region=${encodeURIComponent(region)}`;
 
     fetch(url)
       .then(res => res.json())
@@ -90,7 +92,7 @@ export function ANSDHome() {
                 strokeWidth={3}
                 dot={false}
               />
-          
+
             </LineChart>
           </ResponsiveContainer>
         </div>
@@ -180,27 +182,27 @@ export function ANSDHome() {
                   <th className="px-4 py-2 border">À ajouter</th>
                 </tr>
               </thead>
-           
-                  <tbody>
-          {couvertureData
-            .filter(
-              (row) =>
-                row.norm_oms !== null &&
-                row.nb_str !== null &&
-                row.ajouter !== null &&
-                (row.norm_oms !== 0 || row.nb_str !== 0 || row.ajouter !== 0)
-            )
-            .map((row, idx) => (
-              <tr key={idx} className="hover:bg-gray-50">
-                <td className="px-4 py-2 border text-center">{row.year}</td>
-                <td className="px-4 py-2 border text-center">{Math.round(row.norm_oms)}</td>
-                <td className="px-4 py-2 border text-center">{Math.round(row.nb_str)}</td>
-                <td className="px-4 py-2 border text-center text-red-600 font-semibold">
-                  {Math.round(row.ajouter)}
-                </td>
-              </tr>
-            ))}
-        </tbody>
+
+              <tbody>
+                {couvertureData
+                  .filter(
+                    (row) =>
+                      row.norm_oms !== null &&
+                      row.nb_str !== null &&
+                      row.ajouter !== null &&
+                      (row.norm_oms !== 0 || row.nb_str !== 0 || row.ajouter !== 0)
+                  )
+                  .map((row, idx) => (
+                    <tr key={idx} className="hover:bg-gray-50">
+                      <td className="px-4 py-2 border text-center">{row.year}</td>
+                      <td className="px-4 py-2 border text-center">{Math.round(row.norm_oms)}</td>
+                      <td className="px-4 py-2 border text-center">{Math.round(row.nb_str)}</td>
+                      <td className="px-4 py-2 border text-center text-red-600 font-semibold">
+                        {Math.round(row.ajouter)}
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
             </table>
           </div>
         </div>
@@ -281,4 +283,11 @@ export function ANSDHome() {
   );
 }
 
+function getApiURL() {
+  if (window.location.pathname.includes("localhost")) {
+    return "http://localhost:8080"
+  } else {
+    return "https://odsnback-ansd-app.apps.origins.heritage.africa"
+  }
+}
 export default ANSDHome;
