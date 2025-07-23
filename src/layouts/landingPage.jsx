@@ -1,341 +1,3 @@
-// import React, { useState } from "react";
-// import { FiSearch, FiMenu } from "react-icons/fi";
-// // import { Link } from "react-router-dom"; 
-// import { Link } from "react-scroll";
-
-// import { Dashboard } from "@/layouts";
-
-
-// export default function LandingPage() {
-//   const [activeTab, setActiveTab] = useState("privé");
-//  const tabs = {
-//     privé: [
-//       {
-//         title: "Banque et Finance",
-//         link: "/secteur-prive/banque",
-//       },
-//       {
-//         title: "Agro, Industrie & Commerce",
-//         link: "/secteur-prive/agro",
-//       },
-//       {
-//         title: "Immobilier",
-//         link: "/secteur-prive/immobilier",
-//       },
-//       {
-//         title: "BTP et Génie Civil",
-//         link: "/secteur-prive/btp",
-//       },
-//     ],
-//     public: [     {
-//         title: "Politique publique",
-//         link: "/ANSDHome"
-//       },
-//       {
-//         title: "Éducation & Formation",
-//         link: "/secteur-public/education",
-//       },
-//       {
-//         title: "Santé & Protection sociale",
-//         link: "/secteur-public/sante",
-//       },
-//       {
-//         title: "Financement",
-//         link: "/secteur-public/financement",
-//       },
- 
-//           {
-//         title: " Energie – Mines",
-//         link: ""
-//       },
-//     ],
-//   };
-
-//   return (
-//     <div className="text-white font-sans">
-//       <div
-//         className="bg-cover bg-center min-h-[700px] flex flex-col justify-between"
-//         style={{ backgroundImage: "url('img/bg2.png')" }}
-//       >
-        
-//         {/* <nav className="flex justify-between items-center px-6 py-4">
-//           <img src="img/logo_accel.png" alt="Logo Accel" className="h-14 w-auto" />
-//           <div className="flex gap-4 items-center">
-//             <FiSearch className="text-[#1C2452] text-xl cursor-pointer" />
-//             <button className="bg-[#1e1446] text-white px-4 py-1 rounded-full text-sm font-semibold">
-//               CONTACT
-//             </button>
-//           </div>
-//         </nav> */}
-//            <nav className="flex justify-between items-center px-6 py-4">
-//           <img src="img/logo_accel.png" alt="Logo Accel" className="h-14 w-auto" />
-//           <div className="flex gap-8 items-center text-[#1C2452] font-semibold">
-//             <Link to="section-accueil" smooth={true} duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5] transition-colors duration-300">Accueil</Link>
-//             <Link to="section-services" smooth={true} duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5] transition-colors duration-300">Services</Link>
-//                         <Link to="cas-usage" smooth={true} duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5] transition-colors duration-300">Cas d'usage</Link>
-
-//                         <Link to="section-produits" smooth={true} duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5] transition-colors duration-300">Produits</Link>
-
-//             {/* <Link to="section-contact" smooth={true} duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5] transition-colors duration-300">Contact</Link> */}
-//             {/* <FiSearch className="text-[#1C2452] text-xl cursor-pointer hover:bg-[#A7D7C5] rounded-full p-1" /> */}
-//             <button className="bg-[#1e1446] text-white px-4 py-1 rounded-full text-sm font-semibold">CONTACT</button>
-//           </div>
-//         </nav>
-
-
-//         <section className="min-h-[600px] flex items-center">
-//           <div className="w-full flex flex-col md:flex-row px-6 gap-8 items-center md:items-stretch">
-//             <div className="md:w-1/2 flex flex-col justify-center h-full">
-//               <div className="max-w-xl">
-//                       {/* <h1 className="text-3xl md:text-5xl font-bold mb-6 text-purple-400 leading-tight">
-// Shirik'IA          </h1> */}
-// <h1 className="text-3xl md:text-5xl font-bold mb-6 text-purple-400 leading-tight transform -translate-y-14">
-//   Shirik'IA
-// </h1>
-
-//                 <h4 className="text-3xl text-[#1E1446] md:text-2xl font-bold mb-6 leading-tight">
-//                 Libérez le potentiel de vos données avec l'IA souveraine.
-//                 </h4>
-            
-//               </div>
-//             </div>
-//           </div>
-//         </section>
-//       </div>
-
- 
-//       <section id="section-services" className="-mt-24 relative z-20 px-4 sm:px-6 lg:px-10 pb-12">
-//   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
-//     {[
-//       {
-//         title: "Stratégie, Gouvernance et Ingénierie",
-//         picto: "/img/strategy.png",
-//         text: "Nous bénéficions d'une triple expertise en Data Stratégie, Gouvernance & Architecture issue des nombreuses missions réalisées dans le cadre d'accompagnement de CDO et dans la structuration de Data Office.",
-//       },
-//       {
-//         title: "Valorisation Data & IA ",
-//         picto: "/img/competence.png",
-//         text: "Nous croyons fortement que les cas d'usage métiers sont le point de départ pour maximiser la valeur apportée et décliner les principales dimensions du plan d'opérationnalisation Data & AI.",
-//       },
-//       {
-//         title: "Nos accélérateurs",
-//         picto: "/img/accelerateur.png",
-//         text: "Une approche Data, un questionnaire de maturité, des Frameworks, des guides d'ateliers et des méthodologies éprouvées  pour accélérer votre  démarche.",
-//       },
-//       {
-//         title: "Openshift AI",
-//         picto: "/img/diamond.png",
-//         text: "OpenShift® AI permet de gérer le cycle de vie des modèles d'IA générative et prédictive, à grande échelle, dans les environnements de cloud hybride sécurisés. Il offre des fonctionnalités fiables et cohérentes pour faire des expériences, déployer des modèles et distribuer des applications innovantes.",
-//       },
-//     ].map((card, index) => (
-//       <div
-//         key={index}
-//         className="bg-[#1e1446] text-white px-6 py-6 min-h-[380px] rounded-2xl shadow-xl border border-fuchsia-600 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl"
-//       >
-//         <div className="h-[80px] flex items-center justify-center mb-4">
-//           <h3 className="text-xl font-bold text-blue-200 leading-tight">
-//             {card.title}
-//           </h3>
-//         </div>
-
-//         <div className="flex justify-center items-center mb-6">
-//           <img
-//             src={card.picto}
-//             alt={card.title}
-//             className="w-12 object-contain"
-//           />
-//         </div>
-
-//         <div className="w-16 h-[3px] bg-fuchsia-500 mb-3 rounded-full"></div>
-
-//         <p className="text-sm text-gray-300">{card.text}</p>
-//       </div>
-//     ))}
-//   </div>
-// </section>
-
-
-// <section id="cas-usage" className="bg-[#1e1446] px-4 py-20">
-
-//  <section className="bg-[#1E1446] text-white py-16 px-4 text-center">
-//       <div className="flex justify-center mb-6">
-//         <img
-//           src="/img/ai_picto.png"
-//           alt="AI Logo"
-//           className="h-16 w-16"
-//         />
-//       </div>
-
- 
-//       <div className="flex justify-center space-x-6">
-//         <button
-//           onClick={() => setActiveTab("public")}
-//           className={`px-8 py-2 font-semibold rounded-full border-2 text-sm md:text-base transition-all duration-300 
-//             ${
-//               activeTab === "public"
-//                 ? "bg-[#A7D7C5] text-white border-white"
-//                 : "bg-transparent text-white border-white hover:bg-white hover:text-[#1E1446]"
-//             }`}
-//         >
-//           Secteur Public
-//         </button>
-
-//         <button
-//           onClick={() => setActiveTab("privé")}
-//           className={`px-8 py-2 font-semibold rounded-full border-2 text-sm md:text-base transition-all duration-300 
-//             ${
-//               activeTab === "privé"
-//                 ? "bg-[#A7D7C5] text-white border-white"
-//                 : "bg-transparent text-white border-white hover:bg-white hover:text-[#1E1446]"
-//             }`}
-//         >
-//           Secteur Privé
-//         </button>
-//       </div>
-//     </section>
-//   {/* Cartes animées */}
-// <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full px-4">
-//   {tabs[activeTab].map((item, idx) => (
-//     <Link
-//       to={item.link}
-//       key={idx}
-//       className="relative rounded-3xl border-2 border-[#1e1446] bg-white text-[#1e1446] font-semibold text-left px-6 py-16 min-h-[220px] shadow-md transition duration-300 hover:scale-105 hover:shadow-lg hover:bg-[#A7D7C5] hover:text-white flex items-center"
-//     >
-//       <div className="w-full pr-6">
-//         <p className="text-md md:text-lg leading-snug">{item.title}</p>
-//       </div>
-//       <span className="absolute right-6 top-1/2 -translate-y-1/2 text-2xl font-bold">
-//         &gt;
-//       </span>
-//     </Link>
-//   ))}
-// </div>
-
-
-
-//   <div className="text-center mt-10">
-//     <a
-//       href="/toutes-les-donnees"
-//       className="text-[#1e1446] font-semibold hover:underline text-sm md:text-base"
-//     >
-//       Voir toutes nos réalisations &gt;
-//     </a>
-//   </div>
-// </section>
-
-
-
-// <section id="section-produits" className="bg-[#eef8f5] px-4 py-20 text-white font-sans w-full">
-//   <h2 className="text-3xl md:text-4xl font-bold text-center text-[#1e1446] mb-12">
-//    Nos produits
-//   </h2>
-
-//   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-4">
-//     {[
-//       {
-//         title: "Cartographie du parc locatif sénégalais",
-//         image: "/img/senegal.png",
-//         link: "/tableaux/cnsa-depenses",
-//       },
-//       {
-//         title: "Suivi des recettes de l’Etat pour les décideurs",
-//         image: "/img/dgid.png",
-//         link: "/tableaux/aide-cnsa",
-//       },
-//       {
-//         title: "Fond souverain : exploitation d'états financiers pour aide à la prise de décision",
-//         image: "/img/fonsis.png",
-//         link: "/tableaux/habitats-inclusifs",
-//       },
-//     ].map((item, i) => (
-//       <div
-//         key={i}
-//         className="bg-white text-[#1e1446] rounded-2xl overflow-hidden shadow-lg flex flex-col justify-between hover:shadow-xl transition duration-300 min-h-[420px]"
-//       >
-//         <div>
-//           <h3 className="text-lg md:text-xl font-bold px-6 py-4">{item.title}</h3>
-//           <img src={item.image} alt={item.title} className="w-full h-64 object-cover" />
-//         </div>
-//         <div className="px-6 py-4">
-//           <a
-//             href={item.link}
-//             className="bg-[#1e1446] hover:bg-[#0f0a2b] text-white text-sm font-semibold px-5 py-2 rounded-full transition"
-//           >
-//             Voir le tableau de bord
-//           </a>
-//         </div>
-//       </div>
-//     ))}
-//   </div>
-// </section>
-
-
-// <section className="bg-white py-12 text-center">
-//   <h2 className="text-1xl md:text-3xl text-[#1e1446] mb-6">
-//     Les technologies les plus innovantes au service de notre expertise.
-//   </h2>
-//     <div className="flex justify-center mb-6">
-//         <img
-//           src="/img/tech.png"
-//           alt="AI Logo"
-//           className="h-16 w-16"
-//         />
-//       </div>
-//   <div className="flex justify-center gap-8 flex-wrap">
-//     {["redhat", "redhat", "pytorch", "tensorflow", "scikit-learn"].map((logo, i) => (
-//       <div
-//         key={i}
-//         className="w-[140px] h-[140px] md:w-[160px] md:h-[160px] bg-gray-200 rounded-full overflow-hidden flex items-center justify-center shadow-md hover:scale-105 transition"
-//       >
-//         <img
-//           src={`img/${logo}.png`}
-//           alt={logo}
-//           className="w-full h-full object-cover"
-//         />
-//       </div>
-//     ))}
-//   </div>
-// </section>
-//       <footer className="bg-[#1e1446] text-white px-6 py-10 font-sans">
-//         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-sm">
-//           <div className="flex flex-col items-start">
-//             <p className="text-lg font-bold mb-2">Powered By</p>
-//             <img src="img/logo_accel.png" alt="Accel Logo" className="h-20" />
-//           </div>
-
-//           <div>
-//             <h3 className="font-bold mb-4">Liens utiles</h3>
-//             <ul className="space-y-3">
-//               <li className="flex items-center gap-2">🔗 Red Hat Enterprise Linux</li>
-//               <li className="flex items-center gap-2">🔗 Openshift AI</li>
-//               <li className="flex items-center gap-2">🔗 Heritage Cloud</li>
-//             </ul>
-//           </div>
-
-//           <div>
-//             <h3 className="font-bold mb-4">Contact</h3>
-//             <ul className="space-y-3">
-//               <li className="flex items-center gap-2">
-// +221 33 820 83 83 </li>
-//               <li className="flex items-center gap-2">
-// info@accel-tech.net</li>
-//               <li className="flex items-center gap-2">
-// 165 virage, Route de l'aéroport
-
-// Dakar, Sénégal</li>
-//             </ul>
-//           </div>
-
-//           <div className="flex items-end justify-start md:justify-center space-x-6 text-fuchsia-500 text-2xl mt-4 md:mt-0">
-//             <i className="fab fa-facebook-f"></i>
-//             <i className="fab fa-linkedin-in"></i>
-//             <i className="fab fa-youtube"></i>
-//           </div>
-//         </div>
-//       </footer>
-//     </div>
-//   );
-// }
 
 
 import React, { useState } from "react";
@@ -347,57 +9,83 @@ export default function LandingPage() {
 
   const tabs = {
     privé: [
-      { title: "Banque et Finance", link: "/secteur-prive/banque" },
-      { title: "Agro, Industrie & Commerce", link: "/secteur-prive/agro" },
-      { title: "Immobilier", link: "/secteur-prive/immobilier" },
-      { title: "BTP et Génie Civil", link: "/secteur-prive/btp" },
+      { title: "Banque et Finance", img: "/img/banque.png", link: "" },
+      { title: "Agro, Industrie & Commerce", img: "/img/agro.png", link: "" },
+      { title: "Immobilier",img: "/img/immo.png", link: "" },
+      { title: "BTP et Génie Civil", img: "/img/btp.png",link: "" },
     ],
     public: [
-      { title: "Politique publique", link: "/ANSDHome" },
-      { title: "Éducation & Formation", link: "/secteur-public/education" },
-      { title: "Santé & Protection sociale", link: "/secteur-public/sante" },
-      { title: "Financement", link: "/secteur-public/financement" },
-      { title: "Energie – Mines", link: "" },
+      { title: "Politique publique",img: "/img/politique_publique.png", link: "/ANSDHome" },
+      { title: "Éducation & Formation", img: "/img/education.png",link: "" },
+      { title: "Santé & Protection sociale", img: "/img/sante.png",link: "" },
+      { title: "Financement", img: "/img/financement.png",link: "" },
+      { title: "Energie – Mines",img: "/img/energie.png", link: "" },
     ],
   };
 
   return (
     <div className="text-white font-sans scroll-smooth">
-      {/* HERO & NAV */}
-      <div
-        className="bg-cover bg-center min-h-[700px] flex flex-col justify-between"
-        style={{ backgroundImage: "url('img/bg2.png')" }}
-      >
-        <nav className="flex justify-between items-center px-6 py-4">
-          <img src="img/logo_accel.png" alt="Logo Accel" className="h-14 w-auto" />
-          <div className="flex gap-8 items-center text-[#1C2452] font-semibold">
-            <Link to="section-accueil" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">Accueil</Link>
-            <Link to="section-services" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">Services</Link>
-            <Link to="cas-usage" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">Cas d’usage</Link>
-            <Link to="section-produits" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">Produits</Link>
-            <button className="bg-[#1e1446] text-white px-4 py-1 rounded-full text-sm font-semibold">CONTACT</button>
-          </div>
-        </nav>
 
-        <section id="section-accueil" className="min-h-[600px] flex items-center">
-          <div className="w-full flex flex-col md:flex-row px-6 gap-8 items-center md:items-stretch">
-            <div className="md:w-1/2 flex flex-col justify-center h-full">
-              <div className="max-w-xl">
-              <h1 className="text-7xl md:text-6xl font-bold mb-6 text-purple-400 leading-tight transform -translate-y-14">
-  ShiriK'IA
-</h1>
+<div className="relative min-h-[700px] flex flex-col justify-between overflow-hidden">
 
-                <h4 className="text-3xl text-[#1E1446] md:text-2xl font-bold mb-6 leading-tight">
-                  Libérez le potentiel de vos données avec l'IA souveraine.
-                </h4>
-              </div>
-            </div>
-          </div>
-        </section>
+
+  {/* Contenu par-dessus la vidéo */}
+  <div className="relative z-10 w-full h-full flex flex-col justify-between">
+    {/* ... ton contenu (textes, boutons, etc.) ici ... */}
+    <nav className="flex items-center justify-between px-6 py-4">
+  {/* Logo à gauche */}
+  <div className="flex-shrink-0">
+    <img src="img/logo_accel.png" alt="Logo Accel" className="h-20 w-auto" />
+  </div>
+
+  {/* Liens centrés */}
+  <div className="flex-1 flex justify-center gap-10 items-center text-[#1C2452] font-semibold">
+    <Link to="section-services" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#26509e]">
+      Nos expertises
+    </Link>
+    <Link to="cas-usage" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#26509e]">
+ Use Cases IA
+    </Link>
+    <Link to="section-produits" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#26509e]">
+      Publications
+    </Link>
+    <Link to="" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#26509e]">
+      Actualités IA
+    </Link>
+
+<a
+  href="https://www.accel-tech.net/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="cursor-pointer hover:text-[#26509e]"
+>
+  Découvrez ACCEL Tech
+</a>
+
+  </div>
+
+  {/* Bouton à droite */}
+  <div className="flex-shrink-0">
+    <button className="bg-[#1e1446] text-white px-4 py-1 rounded-full text-sm font-semibold">
+      CONTACT
+    </button>
+  </div>
+</nav>
+  </div>
+
+  <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30 z-0" />
+
+
+
       </div>
 
-      {/* SERVICES */}
-      <section id="section-services" className="-mt-24 relative z-20 px-4 sm:px-6 lg:px-10 pb-12">
+  
+<section
+  id="section-services"
+  className="relative z-20 px-4 sm:px-6 lg:px-10 pb-12 mt-8 sm:mt-12 md:mt-16 lg:mt-4"
+>
+
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
           {[
             {
@@ -407,7 +95,7 @@ export default function LandingPage() {
             },
             {
               title: "Valorisation Data & IA",
-              picto: "/img/competence.png",
+              picto: "/img/valorisation.png",
               text: "Les cas d’usage métiers sont le point de départ pour maximiser la valeur et décliner les dimensions d’un plan Data & AI.",
             },
             {
@@ -417,7 +105,7 @@ export default function LandingPage() {
             },
             {
               title: "Openshift AI",
-              picto: "/img/diamond.png",
+              picto: "/img/rhoai.png",
               text: "OpenShift® AI permet de gérer les modèles IA à grande échelle dans des environnements sécurisés hybrides.",
             },
           ].map((card, index) => (
@@ -426,62 +114,27 @@ export default function LandingPage() {
               className="bg-[#1e1446] text-white px-6 py-6 min-h-[380px] rounded-2xl shadow-xl border border-fuchsia-600 flex flex-col items-center text-center transition duration-300 hover:scale-105"
             >
               <div className="h-[80px] flex items-center justify-center mb-4">
-                <h3 className="text-xl font-bold text-blue-200 leading-tight">{card.title}</h3>
+                                <h1 className="text-xl font-bold text-white leading-tight">{card.title}</h1>
+
               </div>
               <div className="flex justify-center items-center mb-6">
-                <img src={card.picto} alt={card.title} className="w-12 object-contain" />
+                <img src={card.picto} alt={card.title} className="w-20 object-contain" />
               </div>
               <div className="w-16 h-[3px] bg-fuchsia-500 mb-3 rounded-full"></div>
-              <p className="text-sm text-gray-300">{card.text}</p>
+              <h3 className="text-sm  text-white-500">{card.text}</h3>
             </div>
           ))}
         </div>
       </section>
-  <p className="text-[#1e1446] text-lg md:text-xl font-bold mb-4 leading-snug max-w-3xl mx-auto text-center">
-  Nos solutions Data & AI sont spécifiques et adaptées aux besoins dynamiques des secteurs privé et public, offrant des avantages concurrentiels et une efficacité opérationnelle
+  <p className="text-[#26509e] text-lg md:text-xl font-bold mb-4 leading-snug max-w-3xl mx-auto text-center">
+  Nos solutions Data & AI sont spécifiques et adaptées aux besoins dynamiques des secteurs privé et public, offrant des avantages concurrentiels et une efficacité opérationnelle.
 </p>
-
-      <div className="flex justify-center mb-4"> {/* Réduction mb-6 → mb-4 */}
-        
-      <img src="/img/ai_picto.png" alt="AI Logo" className="h-12 w-12" /> {/* Réduction taille icône */}
+      <div className="flex justify-center mb-4">
+      <img src="/img/ai_blue.png" alt="AI Logo" className="h-20 w-20"/>
     </div>
-      {/* CAS D’USAGE */}
       <section id="cas-usage" className="bg-[#1e1446] px-4 ">
-        {/* <section className="text-white py-16 px-4 text-center">
-          <div className="flex justify-center mb-6">
-            <img src="/img/ai_picto.png" alt="AI Logo" className="h-16 w-16" />
-          </div>
-              <p className="text-white text-3xl text-[#1E1446] md:text-2xl font-bold mb-6 leading-tight">
-                  Nos solutions Data & AI sont spécifiques adaptées aux besoins dynamiques des secteurs privé et public, offant des avantages concurenntiels et une efficacité opérationnelle
-                </p>
-          <div className="flex justify-center space-x-6">
-            <button
-              onClick={() => setActiveTab("public")}
-              className={`px-8 py-2 font-semibold rounded-full border-2 transition-all duration-300 ${
-                activeTab === "public"
-                  ? "bg-[#26509e] text-white"
-                  : "bg-transparent text-white hover:bg-white hover:text-[#1E1446]"
-              }`}
-            >
-              Secteur Public
-            </button>
-            <button
-              onClick={() => setActiveTab("privé")}
-              className={`px-8 py-2 font-semibold rounded-full border-2 transition-all duration-300 ${
-                activeTab === "privé"
-                  ? "bg-[#26509e] text-white"
-                  : "bg-transparent text-white hover:bg-white hover:text-[#1E1446]"
-              }`}
-            >
-              Secteur Privé
-            </button>
-          </div>
-        </section> */}
-        
 <section id="cas-usage" className="bg-[#1e1446] px-4 h-22" >
-  <section className="text-white py-10 px-4 text-center"> {/* Réduction py-16 → py-10 */}
-  
-
+  <section className="text-white py-10 px-4 text-center">
     <div className="flex justify-center space-x-4">
       <button
         onClick={() => setActiveTab("public")}
@@ -507,40 +160,30 @@ export default function LandingPage() {
   </section>
 </section>
 
-   
-{/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full px-4">
-  {tabs[activeTab].map((item, idx) => (
-    <a
-      href={item.link}
-      key={idx}
-      // className="relative rounded-3xl bg-white text-black font-semibold px-6 py-16 min-h-[220px] shadow-md transition-all duration-300 hover:scale-165 hover:text-white hover:bg-gradient-to-br hover:from-[#1e1446] hover:via-[#ffffff] hover:to-[#ffffff] flex items-center group"
-    >
-      <div className="w-full pr-6">
-        <p className="text-md md:text-lg leading-snug">
-          {item.title}
-        </p>
-      </div>
-      <span className="absolute right-6 top-1/2 -translate-y-1/2 text-2xl font-bold group-hover:translate-x-1 transition">&gt;</span>
-    </a>
-  ))}
-</div> */}
+
+
 
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full px-4">
   {tabs[activeTab].map((item, idx) => (
     <a
       href={item.link}
       key={idx}
-      className="relative rounded-3xl bg-white text-[#26509e] font-semibold px-6 py-16 min-h-[220px] shadow-md transition-all duration-300 hover:scale-105 hover:text-white hover:bg-gradient-to-br hover:from-[#26509e] hover:to-white flex items-center group"
+      className="relative rounded-3xl bg-white text-[#26509e] font-semibold px-6 py-16 min-h-[220px] shadow-md transition-all duration-300 hover:scale-105 hover:text-white hover:bg-gradient-to-br hover:from-[#26509e] hover:to-white flex items-center justify-center text-center"
     >
-      <div className="w-full pr-6">
-        <p className="text-md md:text-lg leading-snug">{item.title}</p>
+      <div className="w-full">
+            <div className="flex justify-center mb-4">
+
+      <img src=   {item.img} alt="AI Logo" className="h-15 w-20" />
+    </div>
+        <p className="text-xl md:text-2xl font-bold leading-snug">
+          {item.title}
+        </p>
       </div>
-      <span className="absolute right-6 top-1/2 -translate-y-1/2 text-2xl font-bold group-hover:translate-x-1 transition">
-        &gt;
-      </span>
     </a>
   ))}
 </div>
+
+
 
         <div className="text-center mt-10">
           <a href="/toutes-les-donnees" className="text-[#1e1446] font-semibold hover:underline">
@@ -550,8 +193,8 @@ export default function LandingPage() {
       </section>
 
       {/* PRODUITS */}
-      <section id="section-produits" className="bg-[#eef8f5] px-4 py-2 text-white w-full">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#1e1446] mb-12">Nos produits</h2>
+      <section id="section-produits" className="bg-white px-4 py-12 text-white w-full">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#1e1446] mb-12">Nos réalisations</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-4">
           {[
             {
@@ -562,7 +205,7 @@ export default function LandingPage() {
             {
               title: "Suivi des recettes de l’État",
               image: "/img/dgid.png",
-              link: "/tableaux/aide-cnsa",
+              link: "/https://bi-srmt-srmt.apps.origins.heritage.africa/Reports",
             },
             {
               title: "Fond souverain & décisions",
@@ -590,9 +233,9 @@ export default function LandingPage() {
         <h2 className="text-1xl md:text-3xl text-[#1e1446] mb-6">
           Les technologies les plus innovantes au service de notre expertise.
         </h2>
-        <div className="flex justify-center mb-6">
+        {/* <div className="flex justify-center mb-6">
           <img src="/img/tech.png" alt="Tech Icon" className="h-16 w-16" />
-        </div>
+        </div> */}
         <div className="flex justify-center gap-8 flex-wrap">
           {["redhat", "redhat", "pytorch", "tensorflow", "scikit-learn"].map((logo, i) => (
             <div key={i} className="w-[140px] h-[140px] bg-gray-200 rounded-full overflow-hidden flex items-center justify-center shadow-md hover:scale-105 transition">
@@ -601,13 +244,22 @@ export default function LandingPage() {
           ))}
         </div>
       </section>
-
+  <video
+    className="absolute top-0 left-0 w-full h-1000px object-cover"
+    autoPlay
+    muted
+    loop
+    playsInline
+  >
+    <source src="img/intro.mp4" type="video/mp4" />
+    {/* Ton navigateur ne supporte pas la vidéo HTML5. */}
+  </video>
       {/* FOOTER */}
       <footer className="bg-[#1e1446] text-white px-6 py-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-sm">
           <div>
             <p className="text-lg font-bold mb-2">Powered By</p>
-            <img src="img/logo_accel.png" alt="Accel Logo" className="h-20" />
+            <img src="img/accel_logo_light.png" alt="Accel Logo" className="h-20" />
           </div>
           <div>
             <h3 className="font-bold mb-4">Liens utiles</h3>
