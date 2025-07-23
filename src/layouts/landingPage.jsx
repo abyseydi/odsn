@@ -9,17 +9,17 @@ export default function LandingPage() {
 
   const tabs = {
     privé: [
-      { title: "Banque et Finance", img: "/img/financement.png", link: "" },
-      { title: "Agro, Industrie & Commerce", img: "/img/financement.png", link: "" },
-      { title: "Immobilier",img: "/img/financement.png", link: "" },
-      { title: "BTP et Génie Civil", img: "/img/financement.png",link: "" },
+      { title: "Banque et Finance", img: "/img/banque.png", link: "" },
+      { title: "Agro, Industrie & Commerce", img: "/img/agro.png", link: "" },
+      { title: "Immobilier",img: "/img/immo.png", link: "" },
+      { title: "BTP et Génie Civil", img: "/img/btp.png",link: "" },
     ],
     public: [
-      { title: "Politique publique",img: "/img/financement.png", link: "/ANSDHome" },
+      { title: "Politique publique",img: "/img/politique_publique.png", link: "/ANSDHome" },
       { title: "Éducation & Formation", img: "/img/education.png",link: "" },
-      { title: "Santé & Protection sociale", img: "/img/sante_blue.png",link: "" },
+      { title: "Santé & Protection sociale", img: "/img/sante.png",link: "" },
       { title: "Financement", img: "/img/financement.png",link: "" },
-      { title: "Energie – Mines",img: "/img/financement.png", link: "" },
+      { title: "Energie – Mines",img: "/img/energie.png", link: "" },
     ],
   };
 
@@ -123,10 +123,10 @@ export default function LandingPage() {
 
               </div>
               <div className="flex justify-center items-center mb-6">
-                <img src={card.picto} alt={card.title} className="w-12 object-contain" />
+                <img src={card.picto} alt={card.title} className="w-14 object-contain" />
               </div>
               <div className="w-16 h-[3px] bg-fuchsia-500 mb-3 rounded-full"></div>
-              <p className="text-sm text-gray-300">{card.text}</p>
+              <h3 className="text-sm font-bold text-white-500">{card.text}</h3>
             </div>
           ))}
         </div>
