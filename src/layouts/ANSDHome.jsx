@@ -21,9 +21,11 @@ export function ANSDHome() {
   const [regions, setRegions] = useState([]);
   const [populationData, setPopulationData] = useState([]);
   const [couvertureData, setCouvertureData] = useState([]);
+  //const [baseUrl] = "https://odsn-app-ansd-app.apps.origins.heritage.africa";
+  const [baseUrl] = "http://localhost:8080";
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/regions")
+    fetch("${baseUrl}/api/regions")
       .then(res => res.json())
       .then(data => setRegions(["ALL", ...data]))
       .catch(err => console.error("Erreur chargement des régions :", err));
@@ -32,8 +34,8 @@ export function ANSDHome() {
   useEffect(() => {
     const url =
       region === "ALL"
-        ? "http://localhost:5000/api/population"
-        : `http://localhost:5000/api/population?region=${encodeURIComponent(region)}`;
+        ? "${baseUrl}/api/population"
+        : `${baseUrl}/api/population?region=${encodeURIComponent(region)}`;
 
     fetch(url)
       .then(res => res.json())
@@ -50,8 +52,8 @@ export function ANSDHome() {
   useEffect(() => {
     const url =
       region === "ALL"
-        ? "http://localhost:5000/api/couverture"
-        : `http://localhost:5000/api/couverture?region=${encodeURIComponent(region)}`;
+        ? "${baseUrl}/api/couverture"
+        : `${baseUrl}/api/couverture?region=${encodeURIComponent(region)}`;
 
     fetch(url)
       .then(res => res.json())

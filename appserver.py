@@ -12,7 +12,7 @@ DB_HOST = os.environ.get('DB_HOST', 'localhost')
 DB_PORT = os.environ.get('DB_PORT', '3306')
 DB_USER = os.environ.get('DB_USER', 'root')
 DB_PASSWORD = os.environ.get('DB_PASSWORD', '')
-DB_NAME = os.environ.get('DB_NAME', 'ansd')
+DB_NAME = os.environ.get('DB_NAME', 'ansddb')
 
 # Construction de l'URI de connexion
 DATABASE_URI = f'mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
@@ -187,6 +187,6 @@ def health_check():
         return jsonify({"status": "unhealthy", "error": str(e)}), 500
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 8080))
     debug_mode = os.environ.get('NODE_ENV') != 'production'
     app.run(debug=debug_mode, host="0.0.0.0", port=port)
