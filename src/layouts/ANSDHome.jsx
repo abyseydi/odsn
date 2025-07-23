@@ -21,7 +21,8 @@ export function ANSDHome() {
   const [regions, setRegions] = useState([]);
   const [populationData, setPopulationData] = useState([]);
   const [couvertureData, setCouvertureData] = useState([]);
-  const [baseUrl] = "https://odsn-app-ansd-app.apps.origins.heritage.africa";
+  //const [baseUrl] = "https://odsn-app-ansd-app.apps.origins.heritage.africa";
+  const [baseUrl] = "http://localhost:8080";
 
   useEffect(() => {
     fetch("${baseUrl}/api/regions")
