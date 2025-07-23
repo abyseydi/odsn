@@ -145,89 +145,72 @@ export function ANSDHome() {
       ),
     },
     {
-      label: "Recommandations OMS",
-      value: "professionnels",
-      content: (
-        <div className="h-[600px] flex flex-col gap-4">
-          <div className="text-center">
-            <h3 className="text-lg font-semibold text-[#1e1446] mb-1">
-              Normes de couverture sanitaire : recommandations de l’OMS à atteindre à partir de 2025
-            </h3>
-            <p className="text-sm text-[#1e1446]">
-              Méthode : Recommandation OMS = 1 hôpital pour 150 000 habitants
-            </p>
-          </div>
+  label: "Recommandations OMS",
+  value: "professionnels",
+  content: (() => {
+    const filteredData = couvertureData.filter((row) => row.year >= 2025 && row.year <= 2030);
 
-          <div className="h-[60%]">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={couvertureData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="year" />
-                <YAxis label={{ value: "Norme OMS (structures)", angle: -90, position: "insideLeft" }} />
-                <Tooltip formatter={(value) => `${value} structures / 10.000 hab`} />
-                <Line type="monotone" dataKey="norm_oms" stroke="#d97706" strokeWidth={3} name="Norme OMS" />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-
-          <div className="overflow-x-auto max-h-[35%]">
-            <table className="min-w-full text-sm text-left border border-gray-300 rounded">
-              <thead className="bg-[#f3f4f6] text-gray-700 font-medium sticky top-0">
-                <tr>
-                  <th className="px-4 py-2 border">Année</th>
-                  <th className="px-4 py-2 border">Norme OMS</th>
-                  <th className="px-4 py-2 border">Structures existantes</th>
-                  <th className="px-4 py-2 border">À ajouter</th>
-                </tr>
-              </thead>
-           
-                  {/* <tbody>
-          {couvertureData
-            .filter(
-              (row) =>
-                row.norm_oms !== null &&
-                row.nb_str !== null &&
-                row.ajouter !== null &&
-                (row.norm_oms !== 0 || row.nb_str !== 0 || row.ajouter !== 0)
-            )
-            .map((row, idx) => (
-              <tr key={idx} className="hover:bg-gray-50">
-                <td className="px-4 py-2 border text-center">{row.year}</td>
-                <td className="px-4 py-2 border text-center">{Math.round(row.norm_oms)}</td>
-                <td className="px-4 py-2 border text-center">{Math.round(row.nb_str)}</td>
-                <td className="px-4 py-2 border text-center text-red-600 font-semibold">
-                  {Math.round(row.ajouter)}
-                </td>
-              </tr>
-            ))}
-        </tbody> */}
-        <tbody>
-  {couvertureData
-    .filter(
-      (row) =>
-        row.year >= 2025 && row.year <= 2030 && // ✅ Filtre années
-        row.norm_oms !== null &&
-        row.nb_str !== null &&
-        row.ajouter !== null &&
-        (row.norm_oms !== 0 || row.nb_str !== 0 || row.ajouter !== 0)
-    )
-    .map((row, idx) => (
-      <tr key={idx} className="hover:bg-gray-50">
-        <td className="px-4 py-2 border text-center">{row.year}</td>
-        <td className="px-4 py-2 border text-center">{Math.round(row.norm_oms)}</td>
-        <td className="px-4 py-2 border text-center">{Math.round(row.nb_str)}</td>
-        <td className="px-4 py-2 border text-center text-red-600 font-semibold">
-          {Math.round(row.ajouter)}
-        </td>
-      </tr>
-    ))}
-</tbody>
-
-            </table>
-          </div>
+    return (
+      <div className="h-[600px] flex flex-col gap-4">
+        <div className="text-center">
+          <h3 className="text-lg font-semibold text-[#1e1446] mb-1">
+            Normes de couverture sanitaire : recommandations de l’OMS à atteindre à partir de 2025
+          </h3>
+          <p className="text-sm text-[#1e1446]">
+            Méthode : Recommandation OMS = 1 hôpital pour 150 000 habitants
+          </p>
         </div>
-      ),
-    },
+
+        <div className="h-[60%]">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={filteredData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="year" />
+              <YAxis label={{ value: "Norme OMS (structures)", angle: -90, position: "insideLeft" }} />
+              <Tooltip formatter={(value) => `${value} structures / 10.000 hab`} />
+              <Line type="monotone" dataKey="norm_oms" stroke="#d97706" strokeWidth={3} name="Norme OMS" />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+
+        <div className="overflow-x-auto max-h-[35%]">
+          <table className="min-w-full text-sm text-left border border-gray-300 rounded">
+            <thead className="bg-[#f3f4f6] text-gray-700 font-medium sticky top-0">
+              <tr>
+                <th className="px-4 py-2 border">Année</th>
+                <th className="px-4 py-2 border">Norme OMS</th>
+                <th className="px-4 py-2 border">Structures existantes</th>
+                <th className="px-4 py-2 border">À ajouter</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredData
+                .filter(
+                  (row) =>
+                    row.norm_oms !== null &&
+                    row.nb_str !== null &&
+                    row.ajouter !== null &&
+                    (row.norm_oms !== 0 || row.nb_str !== 0 || row.ajouter !== 0)
+                )
+                .map((row, idx) => (
+                  <tr key={idx} className="hover:bg-gray-50">
+                    <td className="px-4 py-2 border text-center">{row.year}</td>
+                    <td className="px-4 py-2 border text-center">{Math.round(row.norm_oms)}</td>
+                    <td className="px-4 py-2 border text-center">{Math.round(row.nb_str)}</td>
+                    <td className="px-4 py-2 border text-center text-red-600 font-semibold">
+                      {Math.round(row.ajouter)}
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  })(),
+}
+
+
   ];
 
   return (
