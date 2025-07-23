@@ -181,7 +181,7 @@ export function ANSDHome() {
                 </tr>
               </thead>
            
-                  <tbody>
+                  {/* <tbody>
           {couvertureData
             .filter(
               (row) =>
@@ -200,7 +200,29 @@ export function ANSDHome() {
                 </td>
               </tr>
             ))}
-        </tbody>
+        </tbody> */}
+        <tbody>
+  {couvertureData
+    .filter(
+      (row) =>
+        row.year >= 2025 && row.year <= 2030 && // ✅ Filtre années
+        row.norm_oms !== null &&
+        row.nb_str !== null &&
+        row.ajouter !== null &&
+        (row.norm_oms !== 0 || row.nb_str !== 0 || row.ajouter !== 0)
+    )
+    .map((row, idx) => (
+      <tr key={idx} className="hover:bg-gray-50">
+        <td className="px-4 py-2 border text-center">{row.year}</td>
+        <td className="px-4 py-2 border text-center">{Math.round(row.norm_oms)}</td>
+        <td className="px-4 py-2 border text-center">{Math.round(row.nb_str)}</td>
+        <td className="px-4 py-2 border text-center text-red-600 font-semibold">
+          {Math.round(row.ajouter)}
+        </td>
+      </tr>
+    ))}
+</tbody>
+
             </table>
           </div>
         </div>
@@ -213,7 +235,7 @@ export function ANSDHome() {
       <aside className="w-full lg:w-[18%] bg-[#1e1446] text-white p-6 flex flex-col justify-between shadow-lg">
         <div>
           <Link to="/">
-            <img src="/img/logo_accel.png" alt="Logo Accel" className="h-14 mb-4 cursor-pointer" />
+            <img src="/img/accel_logo_light.png" alt="Logo Accel" className="h-14 mb-4 cursor-pointer" />
           </Link>
           <h2 className="text-lg font-semibold mb-6">Régions</h2>
           <div className="space-y-6">

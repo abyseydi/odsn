@@ -9,29 +9,44 @@ export default function LandingPage() {
 
   const tabs = {
     privé: [
-      { title: "Banque et Finance", link: "/secteur-prive/banque" },
-      { title: "Agro, Industrie & Commerce", link: "/secteur-prive/agro" },
-      { title: "Immobilier", link: "/secteur-prive/immobilier" },
-      { title: "BTP et Génie Civil", link: "/secteur-prive/btp" },
+      { title: "Banque et Finance", img: "/img/financement.png", link: "" },
+      { title: "Agro, Industrie & Commerce", img: "/img/financement.png", link: "" },
+      { title: "Immobilier",img: "/img/financement.png", link: "" },
+      { title: "BTP et Génie Civil", img: "/img/financement.png",link: "" },
     ],
     public: [
-      { title: "Politique publique", link: "/ANSDHome" },
-      { title: "Éducation & Formation", link: "/secteur-public/education" },
-      { title: "Santé & Protection sociale", link: "/secteur-public/sante" },
-      { title: "Financement", link: "/secteur-public/financement" },
-      { title: "Energie – Mines", link: "" },
+      { title: "Politique publique",img: "/img/financement.png", link: "/ANSDHome" },
+      { title: "Éducation & Formation", img: "/img/education.png",link: "" },
+      { title: "Santé & Protection sociale", img: "/img/sante_blue.png",link: "" },
+      { title: "Financement", img: "/img/financement.png",link: "" },
+      { title: "Energie – Mines",img: "/img/financement.png", link: "" },
     ],
   };
 
   return (
     <div className="text-white font-sans scroll-smooth">
+
       {/* HERO & NAV */}
-      <div
+      {/* <div
         className="bg-cover bg-center min-h-[700px] flex flex-col justify-between"
         style={{ backgroundImage: "url('img/bg2.png')" }}
-      >
+      > */}
+<div className="relative min-h-[700px] flex flex-col justify-between overflow-hidden">
+  {/* Vidéo de fond */}
+  {/* <video
+    className="absolute top-0 left-0 w-full h-full object-cover"
+    autoPlay
+    muted
+    loop
+    playsInline
+  >
+    <source src="img/intro.mp4" type="video/mp4" />
+  </video> */}
 
-<nav className="flex items-center justify-between px-6 py-4">
+  {/* Contenu par-dessus la vidéo */}
+  <div className="relative z-10 w-full h-full flex flex-col justify-between">
+    {/* ... ton contenu (textes, boutons, etc.) ici ... */}
+    <nav className="flex items-center justify-between px-6 py-4">
   {/* Logo à gauche */}
   <div className="flex-shrink-0">
     <img src="img/logo_accel.png" alt="Logo Accel" className="h-20 w-auto" />
@@ -39,19 +54,19 @@ export default function LandingPage() {
 
   {/* Liens centrés */}
   <div className="flex-1 flex justify-center gap-10 items-center text-[#1C2452] font-semibold">
-    <Link to="section-services" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">
+    <Link to="section-services" smooth duration={700} offset={-70} className="cursor-pointer hover:text-white">
       Nos expertises
     </Link>
-    <Link to="cas-usage" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">
-      Catalogue des cas d'usage
+    <Link to="cas-usage" smooth duration={700} offset={-70} className="cursor-pointer hover:text-white">
+ Use Cases IA
     </Link>
-    <Link to="section-produits" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">
+    <Link to="section-produits" smooth duration={700} offset={-70} className="cursor-pointer hover:text-white">
       Publications
     </Link>
-    <Link to="section-produits" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">
+    <Link to="section-produits" smooth duration={700} offset={-70} className="cursor-pointer hover:text-white">
       Actualités IA
     </Link>
-    <Link to="section-accueil" smooth duration={700} offset={-70} className="cursor-pointer hover:text-[#A7D7C5]">
+    <Link to="section-accueil" smooth duration={700} offset={-70} className="cursor-pointer hover:text-white">
       Découvrez ACCEL Tech
     </Link>
   </div>
@@ -63,8 +78,14 @@ export default function LandingPage() {
     </button>
   </div>
 </nav>
+  </div>
 
-        <section id="section-accueil" className="min-h-[600px] flex items-center">
+  {/* Optionnel : overlay sombre pour améliorer la lisibilité */}
+  <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30 z-0" />
+
+
+
+        {/* <section id="section-accueil" className="min-h-[600px] flex items-center">
           <div className="w-full flex flex-col md:flex-row px-6 gap-8 items-center md:items-stretch">
             <div className="md:w-1/2 flex flex-col justify-center h-full">
               <div className="max-w-xl">
@@ -73,16 +94,17 @@ export default function LandingPage() {
 </h1>
 
                 <h4 className="text-3xl text-[#1E1446] md:text-2xl font-bold mb-6 leading-tight">
-                  Libérez le potentiel de vos données avec l'IA souveraine.
+                  Maitrisez vos données avec l'IA souveraine.
                 </h4>
+
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </div>
 
       {/* SERVICES */}
-      <section id="section-services" className="-mt-24 relative z-20 px-4 sm:px-6 lg:px-10 pb-12">
+      <section id="section-services" className="-mt-20 relative z-20 px-4 sm:px-6 lg:px-10 pb-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
           {[
             {
@@ -111,7 +133,8 @@ export default function LandingPage() {
               className="bg-[#1e1446] text-white px-6 py-6 min-h-[380px] rounded-2xl shadow-xl border border-fuchsia-600 flex flex-col items-center text-center transition duration-300 hover:scale-105"
             >
               <div className="h-[80px] flex items-center justify-center mb-4">
-                <h1 className="text-xl font-bold text-white leading-tight">{card.title}</h1>
+                                <h1 className="text-xl font-bold text-white leading-tight">{card.title}</h1>
+
               </div>
               <div className="flex justify-center items-center mb-6">
                 <img src={card.picto} alt={card.title} className="w-12 object-contain" />
@@ -126,46 +149,16 @@ export default function LandingPage() {
   Nos solutions Data & AI sont spécifiques et adaptées aux besoins dynamiques des secteurs privé et public, offrant des avantages concurrentiels et une efficacité opérationnelle
 </p>
 
-      <div className="flex justify-center mb-4"> {/* Réduction mb-6 → mb-4 */}
-        
-      <img src="/img/ai_picto.png" alt="AI Logo" className="h-12 w-12" /> {/* Réduction taille icône */}
+      <div className="flex justify-center mb-4">
+
+      <img src="/img/ai_picto.png" alt="AI Logo" className="h-12 w-12" />
     </div>
-      {/* CAS D’USAGE */}
       <section id="cas-usage" className="bg-[#1e1446] px-4 ">
-        {/* <section className="text-white py-16 px-4 text-center">
-          <div className="flex justify-center mb-6">
-            <img src="/img/ai_picto.png" alt="AI Logo" className="h-16 w-16" />
-          </div>
-              <p className="text-white text-3xl text-[#1E1446] md:text-2xl font-bold mb-6 leading-tight">
-                  Nos solutions Data & AI sont spécifiques adaptées aux besoins dynamiques des secteurs privé et public, offant des avantages concurenntiels et une efficacité opérationnelle
-                </p>
-          <div className="flex justify-center space-x-6">
-            <button
-              onClick={() => setActiveTab("public")}
-              className={`px-8 py-2 font-semibold rounded-full border-2 transition-all duration-300 ${
-                activeTab === "public"
-                  ? "bg-[#26509e] text-white"
-                  : "bg-transparent text-white hover:bg-white hover:text-[#1E1446]"
-              }`}
-            >
-              Secteur Public
-            </button>
-            <button
-              onClick={() => setActiveTab("privé")}
-              className={`px-8 py-2 font-semibold rounded-full border-2 transition-all duration-300 ${
-                activeTab === "privé"
-                  ? "bg-[#26509e] text-white"
-                  : "bg-transparent text-white hover:bg-white hover:text-[#1E1446]"
-              }`}
-            >
-              Secteur Privé
-            </button>
-          </div>
-        </section> */}
-        
+
+
 <section id="cas-usage" className="bg-[#1e1446] px-4 h-22" >
-  <section className="text-white py-10 px-4 text-center"> {/* Réduction py-16 → py-10 */}
-  
+  <section className="text-white py-10 px-4 text-center">
+
 
     <div className="flex justify-center space-x-4">
       <button
@@ -192,23 +185,8 @@ export default function LandingPage() {
   </section>
 </section>
 
-   
-{/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full px-4">
-  {tabs[activeTab].map((item, idx) => (
-    <a
-      href={item.link}
-      key={idx}
-      // className="relative rounded-3xl bg-white text-black font-semibold px-6 py-16 min-h-[220px] shadow-md transition-all duration-300 hover:scale-165 hover:text-white hover:bg-gradient-to-br hover:from-[#1e1446] hover:via-[#ffffff] hover:to-[#ffffff] flex items-center group"
-    >
-      <div className="w-full pr-6">
-        <p className="text-md md:text-lg leading-snug">
-          {item.title}
-        </p>
-      </div>
-      <span className="absolute right-6 top-1/2 -translate-y-1/2 text-2xl font-bold group-hover:translate-x-1 transition">&gt;</span>
-    </a>
-  ))}
-</div> */}
+
+
 
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full px-4">
   {tabs[activeTab].map((item, idx) => (
@@ -218,6 +196,10 @@ export default function LandingPage() {
       className="relative rounded-3xl bg-white text-[#26509e] font-semibold px-6 py-16 min-h-[220px] shadow-md transition-all duration-300 hover:scale-105 hover:text-white hover:bg-gradient-to-br hover:from-[#26509e] hover:to-white flex items-center justify-center text-center"
     >
       <div className="w-full">
+            <div className="flex justify-center mb-4">
+
+      <img src=   {item.img} alt="AI Logo" className="h-15 w-20" />
+    </div>
         <p className="text-xl md:text-2xl font-bold leading-snug">
           {item.title}
         </p>
@@ -287,7 +269,16 @@ export default function LandingPage() {
           ))}
         </div>
       </section>
-
+  <video
+    className="absolute top-0 left-0 w-full h-1000px object-cover"
+    autoPlay
+    muted
+    loop
+    playsInline
+  >
+    <source src="img/intro.mp4" type="video/mp4" />
+    {/* Ton navigateur ne supporte pas la vidéo HTML5. */}
+  </video>
       {/* FOOTER */}
       <footer className="bg-[#1e1446] text-white px-6 py-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 text-sm">
