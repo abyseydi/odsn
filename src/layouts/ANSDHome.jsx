@@ -141,16 +141,25 @@ export function ANSDHome() {
 
     // Taux de croissance annuelle moyeene (Structure Sanitaire)
 
-    const current_year_nbre_struct = couvertureData.at(-1).nb_str;
-    const previous_year_nbre_struct = couvertureData.at(-2).nb_str;
-    const structGrowthrate = ((current_year_nbre_struct - previous_year_nbre_struct) / previous_year_nbre_struct) * 100;
+    let structGrowthrate = 0;
+    if (couvertureData.length >= 2) {
+      const current_year_nbre_struct = couvertureData.at(-1).nb_str;
+      const previous_year_nbre_struct = couvertureData.at(-2).nb_str;
+      if (previous_year_nbre_struct > 0) {
+        structGrowthrate = ((current_year_nbre_struct - previous_year_nbre_struct) / previous_year_nbre_struct) * 100;
+      }
+    }
 
+    // Taux de croissance annuelle moyeene (Couverture Sanitaire)
 
-    // Taux de croissance annuelle moyeene (Structure Sanitaire)
-
-    const current_year_couv = couvertureData.at(-1).couv_san;
-    const previous_year_couv = couvertureData.at(-2).couv_san;
-    const couvGrowthrate = ((current_year_couv - previous_year_couv) / previous_year_couv) * 100;
+    let couvGrowthrate = 0;
+    if (couvertureData.length >= 2) {
+      const current_year_couv = couvertureData.at(-1).couv_san;
+      const previous_year_couv = couvertureData.at(-2).couv_san;
+      if (previous_year_couv > 0) {
+        couvGrowthrate = ((current_year_couv - previous_year_couv) / previous_year_couv) * 100;
+      }
+    }
 
 
 //
