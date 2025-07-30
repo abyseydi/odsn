@@ -139,13 +139,104 @@ def get_couverture():
             if r.annee is None:
                 continue 
             ajouter = float(r.norm_oms or 0) - float(r.nb_str or 0)
+            
+
+            nb_str_val = int(r.nb_str or 0)
+            couv_san_val = float(r.couv_san or 0)
+            norm_oms_val = float(r.norm_oms or 0)
+            ajouter_val = round(ajouter, 2)
+            
+
+            if (nb_str_val == 0 and couv_san_val == 0 and norm_oms_val == 0 and ajouter_val == 0) or int(r.annee) == 0:
+                continue
+                
             data.append({
                 "annee": int(r.annee),
+                "nb_str": nb_str_val,
+                "couv_san": round(float(r.couv_san), 2) if r.couv_san is not None else None,
+                "norm_oms": round(float(r.norm_oms), 2) if r.norm_oms is not None else None,
+                "ajouter": ajouter_val,
+                "pred": None  
+            })
+        return jsonify(data)
+
+    else:
+        results = (
+            db.session.query(
+                Couverture.annee,
+                func.sum(Couverture.nb_str).label("nb_str"),
+                func.avg(Couverture.couv_san).label("couv_san"),
+                func.sum(Couverture.norm_oms).label("norm_oms"),
+                func.sum(Couverture.ajouter).label("ajouter"),
+                func.sum(Couverture.pred).label("pred")
+            )
+            .filter(Couverture.region == region)
+            .group_by(Couverture.annee)
+            .order_by(Couverture.annee)
+            .all()
+        )
+
+        data = []
+        for r in results:
+
+            nb_str_val = int(r.nb_str or 0)
+            couv_san_val = float(r.couv_san or 0)
+            norm_oms_val = float(r.norm_oms or 0)
+            ajouter_val = float(r.ajouter or 0)
+            pred_val = float(r.pred or 0)
+            
+
+            if (nb_str_val == 0 and couv_san_val == 0 and norm_oms_val == 0 and ajouter_val == 0 and pred_val == 0) or int(r.annee) == 0:
+                continue
+                
+            data.append({
+                "annee": int(r.annee),
+                "nb_str": nb_str_val if r.nb_str is not None else None,
+                "couv_san": round(float(r.couv_san), 2) if r.couv_san is not None else None,
+                "norm_oms": round(float(r.norm_oms), 2) if r.norm_oms is not None else None,
+                "ajouter": round(ajouter_val, 2) if r.ajouter is not None else None,
+                "pred": round(pred_val, 2) if r.pred is not None else None
+            })
+        return jsonify(data)
+
+
+@app.route('/api/couverture/by_region')
+def get_couverture_by_region():
+    region = request.args.get('region', default='ALL')
+
+    if region.upper() == 'ALL':
+        results = (
+            db.session.query(
+                Couverture.region,
+                func.sum(Couverture.nb_str).label("nb_str"),
+                func.avg(Couverture.couv_san).label("couv_san"),
+                func.sum(Couverture.norm_oms).label("norm_oms"),
+            )
+            .group_by(Couverture.region)
+            .order_by(Couverture.region)
+            .all()
+        )
+
+        data = []
+        for r in results:
+
+
+            #if r.region is None or
+            if (
+                r.region is None or
+                str(r.region).strip().lower() == "region" or
+                str(r.region).strip().upper() == "SENEGAL"
+            ):
+                continue
+            ajouter = float(r.norm_oms or 0) - float(r.nb_str or 0)
+            data.append({
+                # "annee": int(r.annee),  # r.annee does not exist in this query, so remove or fix if needed
+                "region": r.region,
                 "nb_str": int(r.nb_str),
                 "couv_san": round(float(r.couv_san), 2) if r.couv_san is not None else None,
                 "norm_oms": round(float(r.norm_oms), 2) if r.norm_oms is not None else None,
                 "ajouter": round(ajouter, 2),
-                "pred": None  
+                "pred": None
             })
         return jsonify(data)
 
@@ -176,6 +267,10 @@ def get_couverture():
             }
             for r in results
         ])
+
+
+
+
 
 @app.route('/health')
 def health_check():
