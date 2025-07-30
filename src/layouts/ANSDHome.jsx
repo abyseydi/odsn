@@ -13,8 +13,10 @@ export function ANSDHome() {
   const [regions, setRegions] = useState([]);
   const [populationData, setPopulationData] = useState([]); 
   const [couvertureData, setCouvertureData] = useState([]); 
-  const [regionalPopulationBreakdown, setRegionalPopulationBreakdown] = useState([]); 
+  const [regionalPopulationBreakdown, setRegionalPopulationBreakdown] = useState([]);
+  const  [couvertureRegion, setCouvertureRegion] = useState([]);
 
+  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     fetch("http://localhost:5000/api/regions")
@@ -63,6 +65,38 @@ export function ANSDHome() {
       .catch(err => console.error("Erreur de chargement des données couverture :", err));
   }, [region]);
 
+
+ // Couverture par région
+
+  useEffect(() => {
+    // const url =
+    //     region === "ALL"
+    //         ? "http://localhost:5000/api/couverture/by_region"
+    //         : `http://localhost:5000/api/couverture/by_region?region=${encodeURIComponent(region)}`;
+
+    const url = "http://localhost:5000/api/couverture/by_region"
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          console.log("couvertureRegion",data);
+          const parsed = data.map(d => ({
+            //year: d.annee.toString(),
+            nb_str: d.nb_str,
+            couv_san: d.couv_san,
+            norm_oms: d.norm_oms,
+            ajouter: d.ajouter,
+            region: d.region
+          }));
+          setCouvertureRegion(parsed);
+
+
+        })
+        .catch(err => console.error("Erreur de chargement des données couverture :", err));
+  }, []);
+
+
+
   // Charge les données de population par région pour le tableau de répartition
   useEffect(() => {
     // Cette partie ne s'exécute que si "Tout le Sénégal" est sélectionné
@@ -103,7 +137,32 @@ export function ANSDHome() {
   const kpi = useMemo(() => {
     const latestPopulation = populationData.length ? populationData.at(-1).population : 0;
     const population2030 = populationData.find(d => d.year === "2030")?.population || 0;
+    const population_current_year = populationData.find(d => d.year === currentYear.toString())?.population ;
 
+    // Taux de croissance annuelle moyeene (Structure Sanitaire)
+
+    let structGrowthrate = 0;
+    if (couvertureData.length >= 2) {
+      const current_year_nbre_struct = couvertureData.at(-1).nb_str;
+      const previous_year_nbre_struct = couvertureData.at(-2).nb_str;
+      if (previous_year_nbre_struct > 0) {
+        structGrowthrate = ((current_year_nbre_struct - previous_year_nbre_struct) / previous_year_nbre_struct) * 100;
+      }
+    }
+
+    // Taux de croissance annuelle moyeene (Couverture Sanitaire)
+
+    let couvGrowthrate = 0;
+    if (couvertureData.length >= 2) {
+      const current_year_couv = couvertureData.at(-1).couv_san;
+      const previous_year_couv = couvertureData.at(-2).couv_san;
+      if (previous_year_couv > 0) {
+        couvGrowthrate = ((current_year_couv - previous_year_couv) / previous_year_couv) * 100;
+      }
+    }
+
+
+//
     let growthRate = 0;
     if (populationData.length >= 2) {
       const currentYearPop = populationData.at(-1).population;
@@ -113,10 +172,16 @@ export function ANSDHome() {
       }
     }
 
+
+
+
     const nbStructures = couvertureData.length ? couvertureData.at(-1).nb_str : 0;
     const couvertureSan = couvertureData.length ? couvertureData.at(-1).couv_san : 0;
     const normOms = couvertureData.length ? couvertureData.at(-1).norm_oms : 0;
     const ajouter = couvertureData.length ? couvertureData.at(-1).ajouter : 0;
+    const nbre_structure_current= couvertureData.find(d => d.year === currentYear.toString())?.nb_str;
+    const couverture_current = couvertureData.find(d => d.year === currentYear.toString())?.couv_san ;
+
 
     return {
       population: latestPopulation,
@@ -126,6 +191,12 @@ export function ANSDHome() {
       couverture: couvertureSan,
       norme_oms: normOms,
       ajouter: ajouter,
+      population_current_year: population_current_year,
+      nbre_structure_current: nbre_structure_current,
+      couverture_current: couverture_current,
+      structGrowthrate: Number(structGrowthrate.toFixed(3)),
+      couvGrowthrate: Number(couvGrowthrate.toFixed(3))
+
     };
   }, [populationData, couvertureData]);
 
@@ -188,13 +259,15 @@ export function ANSDHome() {
       label: "Structures sanitaires (hôpitaux publics)",
       value: "indicateurs",
       content: (
-        <div className="h-[600px]">
+
+          <div className="flex flex-col lg:flex-row gap-6 h-[600px]">
+            <div className="flex-1 min-h-[300px] lg:min-h-full">
           <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
             Évolution du nombre de structures sanitaires au Sénégal : 2018–2025 et perspectives jusqu’en 2030
           </h3>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={couvertureData}>
-              <CartesianGrid strokeDasharray="3 3" />
+              <CartesianGrid strokeDasharray="33" />
               <XAxis dataKey="year" />
               <YAxis yAxisId="left" label={{ value: "Structures", angle: -90, position: "insideLeft" }} />
               <Tooltip formatter={(value, name) =>
@@ -210,13 +283,45 @@ export function ANSDHome() {
             </LineChart>
           </ResponsiveContainer>
         </div>
+
+
+            {region === "ALL" && couvertureData.length > 0 && (
+                <div className="w-full lg:w-1/3 min-h-[300px] lg:min-h-full overflow-y-auto bg-white p-4 rounded-xl shadow">
+                  <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
+                    Structures Sanitaires ({populationData.length ? populationData.at(-1).year : 'N/A'})
+                  </h3>
+                  <table className="min-w-full text-sm text-left border border-gray-300 rounded">
+                    <thead className="bg-[#f3f4f6] text-gray-700 font-medium sticky top-0">
+                    <tr>
+                      <th className="px-4 py-2 border">Région</th>
+                      <th className="px-4 py-2 border text-right">Structures</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {couvertureRegion.map((row, idx) => (
+                        <tr key={idx} className="hover:bg-gray-50">
+                          <td className="px-4 py-2 border">{row.region}</td>
+                          <td className="px-4 py-2 border text-right">{row.nb_str.toLocaleString()}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                  </table>
+                </div>
+            )}
+
+
+          </div>
+
+
       ),
     },
     {
       label: "Couverture sanitaire",
       value: "rapports",
       content: (
-        <div className="h-[600px]">
+        //<div className="h-[600px]">
+          <div className="flex flex-col lg:flex-row gap-6 h-[600px]">
+            <div className="flex-1 min-h-[300px] lg:min-h-full">
           <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
             Couverture sanitaires : tendances de 2018 à 2025 et projections à l’horizon 2030
           </h3>
@@ -230,6 +335,34 @@ export function ANSDHome() {
             </LineChart>
           </ResponsiveContainer>
         </div>
+
+
+            {region === "ALL" && couvertureData.length > 0 && (
+                <div className="w-full lg:w-1/3 min-h-[300px] lg:min-h-full overflow-y-auto bg-white p-4 rounded-xl shadow">
+                  <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
+                    Structures Sanitaires ({populationData.length ? populationData.at(-1).year : 'N/A'})
+                  </h3>
+                  <table className="min-w-full text-sm text-left border border-gray-300 rounded">
+                    <thead className="bg-[#f3f4f6] text-gray-700 font-medium sticky top-0">
+                    <tr>
+                      <th className="px-4 py-2 border">Région</th>
+                      <th className="px-4 py-2 border text-right">Couverture</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {couvertureRegion.map((row, idx) => (
+                        <tr key={idx} className="hover:bg-gray-50">
+                          <td className="px-4 py-2 border">{row.region}</td>
+                          <td className="px-4 py-2 border text-right">{row.couv_san.toLocaleString()}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                  </table>
+                </div>
+            )}
+
+          </div>
+
       ),
     },
     {
@@ -305,9 +438,11 @@ export function ANSDHome() {
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             <div className="bg-white p-4 rounded-xl shadow text-center">
-              <h4 className="text-sm font-medium text-gray-600">Population ({populationData.length ? populationData.at(-1).year : 'N/A'})</h4>
+              <h4 className="text-sm font-medium text-gray-600">Année Courrante ({currentYear})</h4>
               <p className="text-2xl font-bold text-[#1e1446]">
-                {kpi.population.toLocaleString()} hab
+                {/*{kpi.population.toLocaleString()} hab*/}
+
+                {kpi.population_current_year} hab
               </p>
             </div>
             <div className="bg-white p-4 rounded-xl shadow text-center">
@@ -317,7 +452,7 @@ export function ANSDHome() {
               </p>
             </div>
             <div className="bg-white p-4 rounded-xl shadow text-center">
-              <h4 className="text-sm font-medium text-gray-600">Taux de croissance annuelle</h4>
+              <h4 className="text-sm font-medium text-gray-600">Taux de croissance annuelle moyenne</h4>
               <p className="text-2xl font-bold text-[#1e1446]">
                 {kpi.growthRate.toFixed(2)} %
               </p>
@@ -328,9 +463,24 @@ export function ANSDHome() {
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             <div className="bg-white p-4 rounded-xl shadow text-center">
-              <h4 className="text-sm font-medium text-gray-600">Structures sanitaires</h4>
+              <h4 className="text-sm font-medium text-gray-600">Structures Sanitaires(Année Courrante)</h4>
+              <p className="text-2xl font-bold text-[#1e1446]">
+                {kpi.nbre_structure_current}
+              </p>
+            </div>
+
+            <div className="bg-white p-4 rounded-xl shadow text-center">
+              <h4 className="text-sm font-medium text-gray-600">Structures Sanitaires(2030)</h4>
               <p className="text-2xl font-bold text-[#1e1446]">
                 {kpi.nb_structures}
+              </p>
+            </div>
+
+
+            <div className="bg-white p-4 rounded-xl shadow text-center">
+              <h4 className="text-sm font-medium text-gray-600">Taux de croissance annuelle moyenne</h4>
+              <p className="text-2xl font-bold text-[#1e1446]">
+                 {kpi.structGrowthrate} %
               </p>
             </div>
           </div>
@@ -339,9 +489,23 @@ export function ANSDHome() {
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             <div className="bg-white p-4 rounded-xl shadow text-center">
-              <h4 className="text-sm font-medium text-gray-600">Couverture sanitaire</h4>
+              <h4 className="text-sm font-medium text-gray-600">Couverture Sanitaire(Année Courrante)</h4>
               <p className="text-2xl font-bold text-[#1e1446]">
-                {kpi.couverture} %
+                {kpi.couverture_current}
+              </p>
+            </div>
+
+            <div className="bg-white p-4 rounded-xl shadow text-center">
+              <h4 className="text-sm font-medium text-gray-600">Couverture Sanitaire(2030)</h4>
+              <p className="text-2xl font-bold text-[#1e1446]">
+                {kpi.couverture}
+              </p>
+            </div>
+
+            <div className="bg-white p-4 rounded-xl shadow text-center">
+              <h4 className="text-sm font-medium text-gray-600">Taux de croissance annuelle moyenne(2030)</h4>
+              <p className="text-2xl font-bold text-[#1e1446]">
+                {kpi.couvGrowthrate} %
               </p>
             </div>
           </div>
@@ -393,7 +557,7 @@ export function ANSDHome() {
                 ))}
               </select>
               <label className="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t peer-focus:before:border-l peer-focus:before:border-blue-500 before:pointer-events-none before:transition-all after:content[' '] after:block after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t peer-focus:after:border-r peer-focus:after:border-blue-500 after:pointer-events-none after:transition-all !text-blue-gray-400 peer-focus:text-blue-500">
-                Région
+
               </label>
             </div>
           </div>
