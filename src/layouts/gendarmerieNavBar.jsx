@@ -64,8 +64,6 @@
 //   );
 // }
 
-
-
 import React from "react";
 import {
   HomeIcon,
@@ -77,11 +75,12 @@ import {
 
 const sidebarRoutes = [
   { name: "Accueil", key: "dashboard", icon: HomeIcon },
-  { name: "Plaintes", key: "plaintes", icon: ClipboardDocumentListIcon },
-  { name: "Tendances", key: "tendances", icon: ClockIcon },
-  { name: "Critiques", key: "critiques", icon: ExclamationTriangleIcon },
-  { name: "Traitées", key: "traitees", icon: CheckBadgeIcon },
-];
+  { name: "Nouvelles plaintes", key: "newplainte", icon: ClockIcon },
+  { name: "Liste des Plaintes", key: "plaintes", icon: ClipboardDocumentListIcon },
+  { name: "Prediction des crimes", key: "prediction", icon: CheckBadgeIcon },
+  { name: "Prediction d'effectif", key: "effectif", icon: ExclamationTriangleIcon },
+ 
+  ];
 
 export default function GendarmerieNavBar({ onSectionChange, activeSection }) {
   return (
