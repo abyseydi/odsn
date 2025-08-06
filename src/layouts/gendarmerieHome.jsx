@@ -6,6 +6,11 @@ import NewPlaintesForm from "./NewPlaintesForm";
 import Prediction from "./Prediction";
 import Effectifpred from "./Effectif";
 import { faker } from "@faker-js/faker";
+import CriticalComplaints from "./critical";
+import TablePlaintes from "./TablePlaintes"; // Bloc Gamma
+import CarteChaleur from "./CarteChaleur"; 
+
+
 
 const STATUTS = ["Traitée", "En attente de traitement", "En cours de traitement", "Classée sans suite"];
 const PRIORITES = ["Critique", "Élevée", "Moyenne", "Faible"];
@@ -111,7 +116,7 @@ export default function GendarmerieHome() {
       <div className="flex items-center justify-center mt-[60px] mb-16 space-x-4">
       {/* Logo gauche */}
       <img
-        src="../../public/img/armee.png"
+        src="../../public/img/senegal1.png"
         alt="Logo gauche"
         className="w-20 h-35 object-contain"
       />
@@ -156,31 +161,40 @@ export default function GendarmerieHome() {
               <div className="bg-white rounded-lg shadow-md h-[200px]" />
             </div>
 
-            {/* bloc en bas avec scroll horizontal si besoin */}
+            {/* bloc Alpha */}
             <div className="w-full overflow-x-auto pb-6">
               <div className="flex gap-6 min-w-[900px]">
-                <div className="bg-white rounded-lg shadow-md h-[180px] flex-1 min-w-[400px]" />
-                
+
+
+                <div className="bg-white rounded-lg shadow-md flex-1 min-w-[500px] max-w-[1050px]">
+            <CriticalComplaints />
+            </div> 
+
               </div>
+              
             </div>
 
 
-            {/* Blocs en bas avec scroll horizontal si besoin */}
+            {/* Blocs Beta */}
             <div className="w-full overflow-x-auto pb-6">
-              <div className="flex gap-6 min-w-[900px]">
+              <div className="flex gap-6 min-w-[900px] h-[500px]">
                 
-                <div className="bg-white rounded-lg shadow-md h-[180px] flex-1 min-w-[400px]" />
+                <div className="bg-white rounded-lg shadow-md h-[180px] flex-1 min-w-[400px]" > <CarteChaleur />
+</div>
               </div>
             </div>
          
 
-         {/* Blocs en bas avec scroll horizontal si besoin */}
-            <div className="w-full overflow-x-auto pb-6">
-              <div className="flex gap-6 min-w-[900px]">
-                
-                <div className="bg-white rounded-lg shadow-md h-[180px] flex-1 min-w-[400px]" />
-              </div>
-            </div>
+         {/* Blocs Gamma */}
+         <div className="w-full pb-6">
+         <div className="flex gap-6 flex-wrap">
+         <div className="bg-white rounded-lg shadow-md flex-1 min-w-[300px] max-w-full overflow-hidden">
+         <TablePlaintes />
+         </div>
+         </div>
+         </div>
+
+
 
           </>
         )}
