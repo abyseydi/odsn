@@ -13,7 +13,7 @@ export default function Effectifpred() {
     if (risk === "Moyen") base += 10;
     if (risk === "Élevé") base += 20;
     if (risk === "Très élevé") base += 30;
-    if (affluence > 1000) base += 20;
+    if (affluence > 1000) base += 50;
     return base;
   };
 

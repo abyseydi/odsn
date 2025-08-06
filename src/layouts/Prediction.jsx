@@ -17,7 +17,7 @@ const regions = [
   "Dakar", "Thiès", "Saint-Louis", "Kaolack", "Fatick", "Diourbel", "Louga",
   "Tambacounda", "Matam", "Kédougou", "Kolda", "Sédhiou", "Ziguinchor", "Podor",
 ];
-const annees = Array.from({ length: 2030 - 2015 + 1 }, (_, i) => 2015 + i);
+const annees = Array.from({ length: 2030 - 2025 + 1 }, (_, i) => 2025 + i);
 const trimestres = ["1er trimestre", "2em trimestre", "3em trimestre", "4em trimestre"];
 const categories = [
   "VOL ET CAMBRIOLAGE",
@@ -27,8 +27,9 @@ const categories = [
   "Autre infraction",
 ];
 
+// Fonction de couleur dynamique
 const getColorFromValue = (value, min, max) => {
-  const ratio = (value - min) / (max - min);
+  const ratio = (value - min) / (max - min || 1);
   const blue = Math.round(150 + ratio * 100);
   return `rgba(30, 36, ${blue}, 0.85)`;
 };
@@ -43,26 +44,26 @@ export default function Prediction() {
 
   const [prediction, setPrediction] = useState([]);
 
+  // Met à jour automatiquement les prédictions lors d’un changement
   useEffect(() => {
-    const initialPrediction = generatePrediction();
-    setTimeout(() => setPrediction(initialPrediction), 800);
-  }, []);
+    const newPrediction = generatePrediction();
+    setPrediction([]);
+    const timeout = setTimeout(() => {
+      setPrediction(newPrediction);
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [formData.region, formData.annee, formData.trimestre]);
 
   const generatePrediction = () => {
     return categories.map((cat) => ({
       categorie: cat,
-      nombre: Math.floor(Math.random() * 100 + 10),
+      nombre: Math.floor(Math.random() * 1000 + 10),
     }));
   };
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handlePredict = () => {
-    const simulated = generatePrediction();
-    setPrediction([]);
-    setTimeout(() => setPrediction(simulated), 500);
   };
 
   const filteredPrediction = formData.categorie
@@ -113,33 +114,26 @@ export default function Prediction() {
   return (
     <div className="h-[700px] w-[1000px] p-6 overflow-hidden">
       <div className="grid grid-cols-2 grid-rows-[60%_40%] gap-4 h-full">
-        {/* Formulaire */}
+        {/* Formulaire de filtres */}
         <div className="bg-gray-200 border-l-4 border-blue-500 text-black rounded-xl shadow-md p-4 overflow-auto">
-          <h2 className="text-xl font-semibold mb-4"> Paramètres</h2>
+          <h2 className="text-xl font-semibold mb-4">Paramètres</h2>
           <div className="space-y-3 text-sm">
-            <SelectInput label="Région" name="region" options={regions} onChange={handleChange} />
-            <SelectInput label="Année" name="annee" options={annees} onChange={handleChange} />
-            <SelectInput label="Trimestre" name="trimestre" options={trimestres} onChange={handleChange} />
+            <SelectInput label="Région" name="region" options={regions} onChange={handleChange} value={formData.region} />
+            <SelectInput label="Année" name="annee" options={annees} onChange={handleChange} value={formData.annee} />
+            <SelectInput label="Trimestre" name="trimestre" options={trimestres} onChange={handleChange} value={formData.trimestre} />
             <SelectInput
               label="Catégorie"
               name="categorie"
               options={["Toutes les catégories", ...categories]}
               onChange={handleChange}
               value={formData.categorie}
-              defaultValue=""
             />
           </div>
-          <button
-            onClick={handlePredict}
-            className="mt-4 w-full bg-white text-[#1e2454] font-bold py-2 rounded-md hover:bg-gray-100"
-          >
-             Générer
-          </button>
         </div>
 
-        {/* Tableau */}
-        <div className="bg-white rounded-xl shadow-md p-4 overflow-auto" >
-          <h2 className="text-xl font-semibold text-[#1e2454] mb-4"> Résultats</h2>
+        {/* Tableau des prédictions */}
+        <div className="bg-white rounded-xl shadow-md p-4 overflow-auto">
+          <h2 className="text-xl font-semibold text-[#1e2454] mb-4">Résultats</h2>
           {filteredPrediction.length === 0 ? (
             <p className="text-gray-500">Chargement des données...</p>
           ) : (
@@ -162,8 +156,12 @@ export default function Prediction() {
           )}
         </div>
 
-        {/* Graphe */}
+        {/* Graphique */}
         <div className="col-span-2 bg-white rounded-xl shadow-md p-4">
+          <p className="text-sm text-gray-600 text-center mb-2">
+            Région : <strong>{formData.region}</strong> | Année : <strong>{formData.annee}</strong> | Trimestre : <strong>{formData.trimestre}</strong>
+          </p>
+
           {filteredPrediction.length === 0 ? (
             <p className="text-gray-500 text-center">Chargement du graphique...</p>
           ) : (
@@ -177,8 +175,8 @@ export default function Prediction() {
   );
 }
 
-// Composant Select
-function SelectInput({ label, name, options, onChange, value, defaultValue }) {
+// Composant de sélection générique
+function SelectInput({ label, name, options, onChange, value }) {
   return (
     <div>
       <label className="block text-xs font-medium mb-1">{label}</label>
@@ -186,7 +184,6 @@ function SelectInput({ label, name, options, onChange, value, defaultValue }) {
         name={name}
         onChange={onChange}
         value={value}
-        defaultValue={defaultValue}
         className="w-full border border-gray-300 rounded-md p-2 text-sm"
       >
         {options.map((opt, idx) => (

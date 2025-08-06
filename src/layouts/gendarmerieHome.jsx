@@ -97,6 +97,9 @@ export default function GendarmerieHome() {
 
       {/* Contenu principal scrollable */}
 
+
+
+
        <div className="absolute top-0 left-0 w-full h-[50vh] bg-[#1e2454] z-0">
           <svg className="absolute bottom-0 left-0 w-full h-[150px]" viewBox="0 0 1440 320" preserveAspectRatio="none">
             <path fill="#f2f2f2" d="M0,224 C160,160 320,96 480,128 C640,160 800,256 960,240 C1120,224 1280,128 1440,160 L1440,320 L0,320 Z" />
@@ -104,19 +107,27 @@ export default function GendarmerieHome() {
         </div>
       <main className="ml-[300px] flex-1 overflow-y-auto h-screen px-4 pt-6 relative z-10">
        
-        <div className="flex justify-center mt-[60px] mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white text-center">GENDARMERIE NATIONALE DU SENEGAL</h2>
-        </div>
-{/* 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          {cardData.map((card, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-4 h-[130px] relative flex flex-col justify-center items-center text-center">
-              <div className={`absolute top-0 left-0 h-full w-[6px] rounded-l bg-${card.color}`} />
-              <p className="text-2xl font-bold text-gray-900">{card.value}</p>
-              <p className="text-sm font-medium text-gray-600 mt-2">{card.title}</p>
-            </div>
-          ))}
-        </div> */}
+        
+      <div className="flex items-center justify-center mt-[60px] mb-16 space-x-4">
+      {/* Logo gauche */}
+      <img
+        src="../../public/img/armee.png"
+        alt="Logo gauche"
+        className="w-20 h-35 object-contain"
+      />
+
+      {/* Texte principal */}
+      <h2 className="text-2xl sm:text-3xl font-bold text-white text-center">
+        GENDARMERIE NATIONALE DU SENEGAL
+      </h2>
+
+      {/* Logo droit */}
+      <img
+        src="../../public/img/gendarmerie.png"
+        alt="Logo droit"
+        className="w-20 h-25 object-contain"
+      />
+      </div>
 
         {activeSection === "dashboard" && (
           <>
