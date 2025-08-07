@@ -135,11 +135,11 @@ import {
 } from "recharts";
 
 const data = [
-  { name: "Escroquerie et fraude", value: 320 },
-  { name: "Autre infraction", value: 100 },
-  { name: "Vol et cambriolage", value: 210 },
-  { name: "Agression et violence", value: 130 },
-  { name: "Trouble à l'ordre public", value: 90 }
+  { name: "Fraude et corruption", value: 3044 },
+  { name: "Autre infraction", value:  1274},
+  { name: "Vol et cambriolage", value: 3997 },
+  { name: "Agression et violence", value: 155 },
+  { name: "Cyber", value: 451 }
 ];
 
 const COLORS = [

@@ -31,7 +31,7 @@ const TablePlaintes = () => (
   <div className="rounded-xl shadow-md p-6 h-[500px] bg-white">
     <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2 text-gray-800">
       <FiBarChart className="text-blue-600 text-xl" />
-      Statistiques par région
+      Statistiques des plaintes critiques par région
     </h2>
 
     <div className="overflow-auto max-h-[400px]">

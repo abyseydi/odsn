@@ -25,7 +25,7 @@ const CarteChaleur = () => (
   <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-[1100px] mx-auto">
     <h2 className="text-2xl font-extrabold mb-6 flex items-center gap-3 text-gray-900">
       <FiMapPin className="text-red-600 text-3xl" /> 
-      Carte de chaleur des plaintes par région
+      Carte de chaleur des plaintes critiques par région
     </h2>
 
     <div className="flex flex-col md:flex-row gap-8 items-start">

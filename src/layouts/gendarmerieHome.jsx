@@ -7,7 +7,7 @@ import Prediction from "./Prediction";
 import Effectifpred from "./Effectif";
 import { faker } from "@faker-js/faker";
 import CriticalComplaints from "./critical";
-import TablePlaintes from "./TablePlaintes"; // Bloc Gamma
+import TablePlaintes from "./TablePlaintes"; 
 import CarteChaleur from "./CarteChaleur"; 
 
 
@@ -59,11 +59,32 @@ export default function GendarmerieHome() {
   const complaints = generateComplaints(50);
 
   const cardData = [
-    { color: "pink-500", title: "Total plaintes", value: complaints.length },
-    { color: "red-500", title: "En attente", value: complaints.filter(c => c.statut === "En attente de traitement").length },
-    { color: "blue-500", title: "Cas critiques", value: complaints.filter(c => c.priorite === "Critique").length },
-    { color: "green-500", title: "Traitées aujourd'hui", value: faker.number.int({ min: 10, max: 50 }) },
-  ];
+  {
+    color: "pink-500",
+    title: "Total Plaintes",
+    subtitle: "Cumulé",
+    value: 12913
+  },
+  {
+    color: "red-500",
+    title: "En Attente",
+    subtitle: "Non traitées",
+    value: 4280
+  },
+  {
+    color: "blue-500",
+    title: "Cas Critiques",
+    subtitle: "Priorité haute",
+    value: 3182
+  },
+  {
+    color: "green-500",
+    title: "Traitées Aujourd'hui",
+    subtitle: "Dernières 24h",
+    value: 0
+  },
+];
+
 
   const filteredComplaints = complaints.filter((c) =>
     (!filters.statut || c.statut === filters.statut) &&

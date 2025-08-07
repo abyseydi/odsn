@@ -11,10 +11,10 @@ import {
 
 // Données fictives (à adapter dynamiquement si besoin)
 const data = [
-  { priority: "Faible", value: 80 },
-  { priority: "Moyenne", value: 160 },
-  { priority: "Élevée", value: 240 },
-  { priority: "Critique", value: 120 },
+  { priority: "Faible", value: 3164 },
+  { priority: "Moyenne", value: 3314 },
+  { priority: "Élevée", value: 3219 },
+  { priority: "Critique", value: 3182 },
 ];
 
 // Couleurs modernes pour chaque niveau de priorité
