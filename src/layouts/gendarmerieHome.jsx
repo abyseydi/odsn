@@ -7,10 +7,8 @@ import Prediction from "./Prediction";
 import Effectifpred from "./Effectif";
 import { faker } from "@faker-js/faker";
 import CriticalComplaints from "./critical";
-import TablePlaintes from "./TablePlaintes"; 
-import CarteChaleur from "./CarteChaleur"; 
-
-
+import TablePlaintes from "./TablePlaintes";
+import CarteChaleur from "./CarteChaleur";
 
 const STATUTS = ["Traitée", "En attente de traitement", "En cours de traitement", "Classée sans suite"];
 const PRIORITES = ["Critique", "Élevée", "Moyenne", "Faible"];
@@ -59,32 +57,31 @@ export default function GendarmerieHome() {
   const complaints = generateComplaints(50);
 
   const cardData = [
-  {
-    color: "pink-500",
-    title: "Total Plaintes",
-    subtitle: "Cumulé",
-    value: 12913
-  },
-  {
-    color: "red-500",
-    title: "En Attente",
-    subtitle: "Non traitées",
-    value: 4280
-  },
-  {
-    color: "blue-500",
-    title: "Cas Critiques",
-    subtitle: "Priorité haute",
-    value: 3182
-  },
-  {
-    color: "green-500",
-    title: "Traitées Aujourd'hui",
-    subtitle: "Dernières 24h",
-    value: 0
-  },
-];
-
+    {
+      color: "pink-500",
+      title: "Total Plaintes",
+      subtitle: "Cumulé",
+      value: 12913
+    },
+    {
+      color: "red-500",
+      title: "En Attente",
+      subtitle: "Non traitées",
+      value: 4280
+    },
+    {
+      color: "blue-500",
+      title: "Cas Critiques",
+      subtitle: "Priorité haute",
+      value: 3182
+    },
+    {
+      color: "green-500",
+      title: "Traitées Aujourd'hui",
+      subtitle: "Dernières 24h",
+      value: 0
+    },
+  ];
 
   const filteredComplaints = complaints.filter((c) =>
     (!filters.statut || c.statut === filters.statut) &&
@@ -98,7 +95,7 @@ export default function GendarmerieHome() {
   );
 
   const renderSelect = (label, name, options) => (
-    <div>
+    <div className="w-[200px]">
       <label className="block text-sm text-gray-600 mb-1">{label}</label>
       <select
         name={name}
@@ -115,60 +112,41 @@ export default function GendarmerieHome() {
   );
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      {/* NavBar latérale fixe */}
-     
-        <GendarmerieNavBar className="fixed top-0 left-0 h-screen w-[300px] z-20 bg-white shadow-lg" onSectionChange={setActiveSection} activeSection={activeSection} />
-      
+    <div className="flex bg-gray-100 overflow-hidden min-w-[1500px]">
 
-      {/* Contenu principal scrollable */}
+      {/* Sidebar fixe */}
+      <GendarmerieNavBar className="fixed top-0 left-0 h-screen w-[300px] z-20 bg-white shadow-lg" onSectionChange={setActiveSection} activeSection={activeSection} />
 
-
-
-
-       <div className="absolute top-0 left-0 w-full h-[50vh] bg-[#1e2454] z-0">
-          <svg className="absolute bottom-0 left-0 w-full h-[150px]" viewBox="0 0 1440 320" preserveAspectRatio="none">
-            <path fill="#f2f2f2" d="M0,224 C160,160 320,96 480,128 C640,160 800,256 960,240 C1120,224 1280,128 1440,160 L1440,320 L0,320 Z" />
-          </svg>
-        </div>
-      <main className="ml-[300px] flex-1 overflow-y-auto h-screen px-4 pt-6 relative z-10">
-       
-        
-      <div className="flex items-center justify-center mt-[60px] mb-16 space-x-4">
-      {/* Logo gauche */}
-      <img
-        src="../../public/img/senegal1.png"
-        alt="Logo gauche"
-        className="w-20 h-35 object-contain"
-      />
-
-      {/* Texte principal */}
-      <h2 className="text-2xl sm:text-3xl font-bold text-white text-center">
-        GENDARMERIE NATIONALE DU SENEGAL
-      </h2>
-
-      {/* Logo droit */}
-      <img
-        src="../../public/img/gendarmerie.png"
-        alt="Logo droit"
-        className="w-20 h-25 object-contain"
-      />
+      {/* Bandeau haut bleu */}
+      <div className="absolute top-0 left-0 w-full h-[50vh] bg-[#1e2454] z-0">
+        <svg className="absolute bottom-0 left-0 w-full h-[150px]" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="#f2f2f2" d="M0,224 C160,160 320,96 480,128 C640,160 800,256 960,240 C1120,224 1280,128 1440,160 L1440,320 L0,320 Z" />
+        </svg>
       </div>
 
+      <main className="ml-[300px] pt-6 px-4 relative z-10 min-w-[1200px] overflow-y-auto h-screen">
+
+        {/* Header principal */}
+        <div className="flex items-center justify-center mt-[60px] mb-16 gap-6">
+          <img src="../../public/img/senegal1.png" alt="Logo gauche" className="w-[80px] h-[80px] object-contain" />
+          <h2 className="text-3xl font-bold text-white text-center">GENDARMERIE NATIONALE DU SENEGAL</h2>
+          <img src="../../public/img/gendarmerie.png" alt="Logo droit" className="w-[80px] h-[80px] object-contain" />
+        </div>
+
+        {/* Section Dashboard */}
         {activeSection === "dashboard" && (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-            {cardData.map((card, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-4 h-[130px] relative flex flex-col justify-center items-center text-center">
-              <div className={`absolute top-0 left-0 h-full w-[6px] rounded-l bg-${card.color}`} />
-              <p className="text-2xl font-bold text-gray-900">{card.value}</p>
-              <p className="text-sm font-medium text-gray-600 mt-2">{card.title}</p>
+            <div className="grid grid-cols-4 gap-4 mb-12">
+              {cardData.map((card, index) => (
+                <div key={index} className="bg-white rounded-lg shadow-md p-4 h-[130px] relative flex flex-col justify-center items-center text-center">
+                  <div className={`absolute top-0 left-0 h-full w-[6px] rounded-l bg-${card.color}`} />
+                  <p className="text-2xl font-bold text-gray-900">{card.value}</p>
+                  <p className="text-sm font-medium text-gray-600 mt-2">{card.title}</p>
+                </div>
+              ))}
             </div>
-            ))}
-           </div>
 
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <div className="grid grid-cols-2 gap-6 mb-12">
               <div className="bg-white rounded-lg shadow-md h-[200px]">
                 <ComplaintDonutChart />
               </div>
@@ -177,71 +155,49 @@ export default function GendarmerieHome() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div className="grid grid-cols-2 gap-6 mb-6">
               <div className="bg-white rounded-lg shadow-md h-[200px]" />
               <div className="bg-white rounded-lg shadow-md h-[200px]" />
             </div>
 
-          {/* bloc Alpha */}
-          <div className="w-full overflow-x-auto pb-6">
-          <div className="flex gap-6 ">
-
-
-          <div className="bg-white rounded-lg shadow-md flex-1 min-w-[500px] max-w-[1500px]">
-          <CriticalComplaints />
-          </div> 
-
-          </div>
-              
-          </div>
-
-
-        {/* Blocs Beta */}
-<div className="w-full pb-6">
-  <div className="flex flex-wrap gap-6 justify-center">
-    
-    {/* Bloc de la carte */}
-    <div className="bg-white rounded-lg shadow-md w-full max-w-[1500px] h-[700px] overflow-hidden">
-      <CarteChaleur />
-    </div>
-
-  </div>
-</div>
-         
-
-         {/* Blocs Gamma */}
-         <div className="w-full pb-6">
-         <div className="flex gap-6 flex-wrap">
-         <div className="bg-white rounded-lg shadow-md flex-1 min-w-[300px] max-w-full overflow-hidden">
-         <TablePlaintes />
-         </div>
-         </div>
-         </div>
+            <div className="pb-6">
+              <div className="flex gap-6 flex-nowrap">
+                <div className="bg-white rounded-lg shadow-md flex-1 w-[1400px]">
+                  <CriticalComplaints />
+                </div>
+              </div>
+            </div>
 
 
 
+
+            <div className="pb-6">
+              <div className="flex gap-6 justify-center flex-nowrap">
+                <div className="rounded-2xlshadow-md w-[1400px] h-[660px]">
+                  <CarteChaleur />
+                </div>
+              </div>
+            </div>
+
+            <div className="pb-6">
+              <div className="flex gap-6 flex-nowrap">
+                <div className="bg-white rounded-lg shadow-md w-[1400px]">
+                  <TablePlaintes />
+                </div>
+              </div>
+            </div>
           </>
         )}
-         
-          {activeSection === "newplainte" && (
-          <NewPlaintesForm />
-        )}
 
-        {activeSection === "prediction" && (
-          <Prediction />
-        )}
-
-        {activeSection === "effectif" && (
-          <Effectifpred />
-        )}
-
-
+        {activeSection === "newplainte" && <NewPlaintesForm />}
+        {activeSection === "prediction" && <Prediction />}
+        {activeSection === "effectif" && <Effectifpred />}
 
         {activeSection === "plaintes" && (
           <>
-            <div className="bg-gray-200 p-6 rounded-lg shadow mb-6 border-l-4 border-blue-500" >
+            <div className="bg-gray-200 p-6 rounded-lg shadow mb-6 border-l-4 border-blue-500">
               <h3 className="text-lg font-bold mb-4">Filtres</h3>
-              <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              <div className="flex gap-4 flex-nowrap">
                 {renderSelect("Statut", "statut", STATUTS)}
                 {renderSelect("Priorité", "priorite", PRIORITES)}
                 {renderSelect("Catégorie", "categorie", CATEGORIES)}
@@ -249,10 +205,13 @@ export default function GendarmerieHome() {
                 {renderSelect("Urgence", "urgence", URGENCES)}
                 {renderSelect("Canal", "canal", CANAUX)}
                 {renderSelect("Type", "type", TYPES)}
-                <input type="text" placeholder="Recherche" name="search" value={filters.search} onChange={(e) => setFilters({ ...filters, search: e.target.value })} className="col-span-2 border px-2 py-1 rounded text-sm" />
+                <input type="text" placeholder="Recherche" name="search" value={filters.search}
+                  onChange={(e) => setFilters({ ...filters, search: e.target.value })}
+                  className="border px-2 py-1 rounded text-sm w-[200px]" />
               </div>
             </div>
-            <div className="bg-gray-200 p-6 rounded-lg shadow border-l-4 border-blue-500" >
+
+            <div className="bg-gray-200 p-6 rounded-lg shadow border-l-4 border-blue-500">
               <h3 className="text-lg font-bold mb-4">Liste des plaintes</h3>
               <div className="max-h-[500px] overflow-y-auto">
                 <table className="w-full text-sm">
@@ -268,11 +227,7 @@ export default function GendarmerieHome() {
                   </thead>
                   <tbody>
                     {filteredComplaints.map((complaint) => (
-                      <tr
-                        key={complaint.id}
-                        className="hover:bg-gray-100 cursor-pointer"
-                        onClick={() => setSelectedComplaint(complaint)}
-                      >
+                      <tr key={complaint.id} className="hover:bg-gray-100 cursor-pointer" onClick={() => setSelectedComplaint(complaint)}>
                         <td className="py-2">{complaint.id}</td>
                         <td>{complaint.description}</td>
                         <td>{complaint.statut}</td>

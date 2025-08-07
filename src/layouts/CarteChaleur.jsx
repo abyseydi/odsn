@@ -22,7 +22,7 @@ const colorScale = scaleLinear()
   .range(["#fee5d9", "#a50f15"]);
 
 const CarteChaleur = () => (
-  <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-[1500px] max-h-[1000px] mx-auto">
+  <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-[1500px] max-h-[660px] mx-auto">
     <h2 className="text-2xl font-extrabold mb-6 flex items-center gap-3 text-gray-900">
       <FiMapPin className="text-red-600 text-3xl" /> 
       Carte de chaleur des plaintes critiques par région
