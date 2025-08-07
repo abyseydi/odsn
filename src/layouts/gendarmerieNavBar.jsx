@@ -71,14 +71,16 @@ import {
   ClockIcon,
   ExclamationTriangleIcon,
   CheckBadgeIcon,
+  ShieldExclamationIcon,
+  UserGroupIcon,
 } from "@heroicons/react/24/outline";
 
 const sidebarRoutes = [
   { name: "Accueil", key: "dashboard", icon: HomeIcon },
   { name: "Nouvelles plaintes", key: "newplainte", icon: ClockIcon },
   { name: "Liste des Plaintes", key: "plaintes", icon: ClipboardDocumentListIcon },
-  { name: "Prediction des crimes", key: "prediction", icon: CheckBadgeIcon },
-  { name: "Prediction d'effectif", key: "effectif", icon: ExclamationTriangleIcon },
+  { name: "Prediction plaintes", key: "prediction", icon: ShieldExclamationIcon },
+  { name: "Prediction d'effectif", key: "effectif", icon: UserGroupIcon },
  
   ];
 

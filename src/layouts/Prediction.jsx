@@ -67,8 +67,8 @@ export default function Prediction() {
   };
 
   const filteredPrediction = formData.categorie
-    ? prediction.filter((p) => p.categorie === formData.categorie)
-    : prediction;
+  ? prediction.filter((p) => p.categorie === formData.categorie)
+  : [...prediction].sort((a, b) => a.nombre - b.nombre); 
 
   const values = filteredPrediction.map((p) => p.nombre);
   const min = Math.min(...values);
