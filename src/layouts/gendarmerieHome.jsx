@@ -128,9 +128,9 @@ export default function GendarmerieHome() {
 
         {/* Header principal */}
         <div className="flex items-center justify-center mt-[60px] mb-16 gap-6">
-          <img src="../../public/img/senegal1.png" alt="Logo gauche" className="w-[80px] h-[80px] object-contain" />
+          <img src="/img/senegal1.png" alt="Logo gauche" className="w-[80px] h-[80px] object-contain" />
           <h2 className="text-3xl font-bold text-white text-center">GENDARMERIE NATIONALE DU SENEGAL</h2>
-          <img src="../../public/img/gendarmerie.png" alt="Logo droit" className="w-[80px] h-[80px] object-contain" />
+          <img src="/img/gendarmerie.png" alt="Logo droit" className="w-[80px] h-[80px] object-contain" />
         </div>
 
         {/* Section Dashboard */}
