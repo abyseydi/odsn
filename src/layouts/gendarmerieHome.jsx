@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import ComplaintDonutChart from "./ComplaintDonutChart";
-import ComplaintPriorityBarChart from "./ComplaintPriorityBarChart";
-import GendarmerieNavBar from "./GendarmerieNavBar";
+import ComplaintDonutChart from "./complaintDonutChart";
+import ComplaintPriorityBarChart from "./complaintPriorityBarChart";
+import GendarmerieNavBar from "./gendarmerieNavBar";
 import NewPlaintesForm from "./NewPlaintesForm";
 import Prediction from "./Prediction";
 import Effectifpred from "./Effectif";
