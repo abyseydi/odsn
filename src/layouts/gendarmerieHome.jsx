@@ -182,28 +182,31 @@ export default function GendarmerieHome() {
               <div className="bg-white rounded-lg shadow-md h-[200px]" />
             </div>
 
-            {/* bloc Alpha */}
-            <div className="w-full overflow-x-auto pb-6">
-              <div className="flex gap-6 min-w-[900px]">
+          {/* bloc Alpha */}
+          <div className="w-full overflow-x-auto pb-6">
+          <div className="flex gap-6 ">
 
 
-                <div className="bg-white rounded-lg shadow-md flex-1 min-w-[500px] max-w-[1050px]">
-            <CriticalComplaints />
-            </div> 
+          <div className="bg-white rounded-lg shadow-md flex-1 min-w-[500px] max-w-[1500px]">
+          <CriticalComplaints />
+          </div> 
 
-              </div>
+          </div>
               
-            </div>
+          </div>
 
 
-            {/* Blocs Beta */}
-            <div className="w-full overflow-x-auto pb-6">
-              <div className="flex gap-6 min-w-[900px] h-[500px]">
-                
-                <div className="bg-white rounded-lg shadow-md h-[180px] flex-1 min-w-[400px]" > <CarteChaleur />
+        {/* Blocs Beta */}
+<div className="w-full pb-6">
+  <div className="flex flex-wrap gap-6 justify-center">
+    
+    {/* Bloc de la carte */}
+    <div className="bg-white rounded-lg shadow-md w-full max-w-[1500px] h-[700px] overflow-hidden">
+      <CarteChaleur />
+    </div>
+
+  </div>
 </div>
-              </div>
-            </div>
          
 
          {/* Blocs Gamma */}
