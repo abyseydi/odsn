@@ -22,7 +22,7 @@ const colorScale = scaleLinear()
   .range(["#fee5d9", "#a50f15"]);
 
 const CarteChaleur = () => (
-  <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-[1100px] mx-auto">
+  <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-[1500px] max-h-[1000px] mx-auto">
     <h2 className="text-2xl font-extrabold mb-6 flex items-center gap-3 text-gray-900">
       <FiMapPin className="text-red-600 text-3xl" /> 
       Carte de chaleur des plaintes critiques par région
@@ -30,7 +30,7 @@ const CarteChaleur = () => (
 
     <div className="flex flex-col md:flex-row gap-8 items-start">
       {/* Carte large */}
-      <div className="flex-1 h-[500px] md:h-[350px]">
+      <div className="p-6 flex-1 h-[700px] md:h-[700px]">
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{ center: [-14.5, 14.5], scale: 2800 }}

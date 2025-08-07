@@ -1,4 +1,3 @@
-// critical.jsx
 import React, { useState } from "react";
 import {
   FaExclamationTriangle,
@@ -58,8 +57,8 @@ const plaintesSimulees = [
 ];
 
 const CriticalComplaints = () => {
-  const [nbAfficher, setNbAfficher] = useState(3);
-  const [modeAffichage, setModeAffichage] = useState("simple");
+  const [nbAfficher, setNbAfficher] = useState(3); // ✅ Par défaut à 3
+  const [modeAffichage, setModeAffichage] = useState("detaille"); // ✅ Mode par défaut à "detaille"
 
   const renderStatutBadge = (statut) => {
     const base = "text-xs font-semibold px-3 py-1 rounded-full";
