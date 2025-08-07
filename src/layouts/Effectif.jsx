@@ -20,7 +20,7 @@ export default function Effectifpred() {
   const effectif = predictEffectif();
 
   return (
-    <div className="min-h-screen p-6 p-8 flex flex-col md:flex-row gap-8 items-start justify-center">
+    <div className="min-h-screen p-6 p-8 flex flex-col md:flex-row gap-8 items-start justify-center h-[700px] w-[1375px]">
       {/* Form Section */}
       <div className="bg-gray-200  border-l-4 border-blue-500 rounded-xl shadow-lg w-full md:w-[650px] p-8 space-y-8">
         <h1 className="text-2xl font-semibold text-gray-800 text-center"> Prédiction des Effectifs</h1>

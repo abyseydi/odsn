@@ -65,7 +65,7 @@ export default function NewPlaintesForm() {
   };
 
   return (
-    <div className="p-6 relative">
+    <div className="p-6 relative h-[700px] w-[1100px]">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Section Plaignant */}
         <div className="bg-gray-200 border-l-4 border-blue-500 rounded-lg p-6 shadow">

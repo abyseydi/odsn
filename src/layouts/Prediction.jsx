@@ -112,7 +112,7 @@ export default function Prediction() {
   };
 
   return (
-    <div className="h-[700px] w-[1000px] p-6 overflow-hidden">
+    <div className="h-[700px] w-[1300px] p-6 overflow-hidden">
       <div className="grid grid-cols-2 grid-rows-[60%_40%] gap-4 h-full">
         {/* Formulaire de filtres */}
         <div className="bg-gray-200 border-l-4 border-blue-500 text-black rounded-xl shadow-md p-4 overflow-auto">
