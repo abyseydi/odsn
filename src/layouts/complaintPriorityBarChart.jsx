@@ -19,10 +19,10 @@ const data = [
 
 // Couleurs modernes pour chaque niveau de priorité
 const PRIORITY_COLORS = {
-  Faible: "#1e2454",     // blue-300
-  Moyenne: "#98cfbd",    // yellow-400
-  Élevée: "#26509d",     // orange-400
-  Critique: "#e84141",   // red-500
+  Faible: "#1E2454",     // blue-300
+  Moyenne: "#98CFBD",    // yellow-400
+  Élevée: "#26509D",     // orange-400
+  Critique: "#E84141",   // red-500
 };
 
 export default function ComplaintPriorityBarChart() {

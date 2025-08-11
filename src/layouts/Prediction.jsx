@@ -111,6 +111,30 @@ export default function Prediction() {
     },
   };
 
+
+
+
+  // Déterminer trimestre et année actuels
+const getCurrentQuarter = () => {
+  const month = new Date().getMonth() + 1; // Janvier = 1
+  return Math.floor((month - 1) / 3) + 1;
+};
+
+const currentYear = new Date().getFullYear();
+const currentQuarter = getCurrentQuarter();
+
+// Calculer trimestre suivant
+const nextQuarter = currentQuarter === 4 ? 1 : currentQuarter + 1;
+const nextQuarterYear = currentQuarter === 4 ? currentYear + 1 : currentYear;
+
+// Fonction pour filtrer les trimestres disponibles
+const getAvailableTrimestres = (selectedYear) => {
+  if (selectedYear > nextQuarterYear) return trimestres;
+  if (selectedYear < nextQuarterYear) return []; // Aucun trimestre possible dans le passé
+  return trimestres.slice(nextQuarter - 1); // Garde seulement du trimestre suivant à la fin
+};
+
+
   return (
     <div className="h-[700px] w-[1300px] p-6 overflow-hidden">
       <div className="grid grid-cols-2 grid-rows-[60%_40%] gap-4 h-full">
@@ -120,7 +144,14 @@ export default function Prediction() {
           <div className="space-y-3 text-sm">
             <SelectInput label="Région" name="region" options={regions} onChange={handleChange} value={formData.region} />
             <SelectInput label="Année" name="annee" options={annees} onChange={handleChange} value={formData.annee} />
-            <SelectInput label="Trimestre" name="trimestre" options={trimestres} onChange={handleChange} value={formData.trimestre} />
+            <SelectInput
+  label="Trimestre"
+  name="trimestre"
+  options={getAvailableTrimestres(formData.annee)}
+  onChange={handleChange}
+  value={formData.trimestre}
+/>
+
             <SelectInput
               label="Catégorie"
               name="categorie"

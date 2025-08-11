@@ -1,10 +1,11 @@
 import React from "react";
 import { FiBarChart } from "react-icons/fi";
+import { scaleLinear } from "d3-scale";
 
 const data = [
   { id: "Dakar", value: 1379 },
   { id: "Thiès", value: 1074 },
-  { id: "Saint‑Louis", value: 995 },
+  { id: "Saint-Louis", value: 995 },
   { id: "Kaolack", value: 972 },
   { id: "Matam", value: 910 },
   { id: "Fatick", value: 910 },
@@ -18,14 +19,13 @@ const data = [
   { id: "Kédougou", value: 597 },
 ];
 
+const minValue = Math.min(...data.map((d) => d.value));
 const maxValue = Math.max(...data.map((d) => d.value));
 
-const getBarColor = (percentage) => {
-  if (percentage > 80) return "bg-red-600";
-  if (percentage > 65) return "bg-orange-500";
-  if (percentage > 50) return "bg-yellow-400";
-  return "bg-green-400";
-};
+// 🎯 Même échelle que la carte
+const colorScale = scaleLinear()
+  .domain([minValue, maxValue])
+  .range(["#fee5d9", "#a50f15"]);
 
 const TablePlaintes = () => (
   <div className="rounded-xl shadow-md p-6 h-[500px] bg-white">
@@ -59,8 +59,11 @@ const TablePlaintes = () => (
                     <div className="flex items-center gap-2">
                       <div className="w-full bg-gray-200 rounded-full h-3">
                         <div
-                          className={`h-3 rounded-full ${getBarColor(percent)}`}
-                          style={{ width: `${percent}%` }}
+                          className="h-3 rounded-full"
+                          style={{
+                            width: `${percent}%`,
+                            backgroundColor: colorScale(reg.value), // 💡 même couleur que sur la carte
+                          }}
                         ></div>
                       </div>
                       <span className="text-xs text-gray-700 w-12 text-right">
