@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import PlaignantIcon from "../../public/img/plaignant.png"; // Remplace avec le bon chemin
-import DetailsIcon from "../../public/img/details.png";     // Remplace avec le bon chemin
+import DetailsIcon from "../../public/img/details.png";
+import {API_ODSN_SERVICE} from "@/BASE_API/HttpBase";     // Remplace avec le bon chemin
 
 const initialFormData = {
   prenom: "",
   nom: "",
   telephone: "",
   region: "",
+<<<<<<< Updated upstream
   sexe: "",
   age: "",
+=======
+  plaignant: "",
+>>>>>>> Stashed changes
   identifiant: "",
-  adresse: "",
+  addresse: "",
   langue: "",
   objet: "",
   description: "",
@@ -19,7 +24,7 @@ const initialFormData = {
   canal: "",
   heure: "",
   urgence: "",
-  moyenContact: "",
+  contact: "",
 };
 
 export default function NewPlaintesForm() {
@@ -38,7 +43,7 @@ export default function NewPlaintesForm() {
 
   const handleSubmit = () => {
     const requiredFields = [
-      "prenom", "nom", "identifiant", "typePlaignant", "objet", "description"
+      "prenom", "nom", "identifiant", "plaignant", "objet", "description"
     ];
 
     const isValid = requiredFields.every((field) => formData[field]);
@@ -59,6 +64,14 @@ export default function NewPlaintesForm() {
     });
 
     // Tu peux aussi envoyer les données ici à une API plus tard
+
+     fetch(API_ODSN_SERVICE+'/api/v1/odns/plainte', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
   };
 
   const handleReset = () => {
@@ -87,7 +100,7 @@ export default function NewPlaintesForm() {
               ))}
             </select>
 
-            <select className="border rounded p-2" name="typePlaignant" value={formData.typePlaignant} onChange={handleChange}>
+            <select className="border rounded p-2" name="plaignant" value={formData.plaignant} onChange={handleChange}>
               <option value="">-- Type de plaignant * --</option>
               <option value="PARTICULIER">PARTICULIER</option>
               <option value="ENTREPRISE">ENTREPRISE</option>
@@ -111,8 +124,8 @@ export default function NewPlaintesForm() {
           <textarea
             className="border rounded p-2 w-full mb-4"
             rows={3}
-            name="adresse"
-            value={formData.adresse}
+            name="addresse"
+            value={formData.addresse}
             onChange={handleChange}
           />
 
@@ -164,9 +177,13 @@ export default function NewPlaintesForm() {
               <option value="IMMEDIATE">IMMÉDIATE</option>
             </select>
 
+<<<<<<< Updated upstream
           </div><br></br>
 
           <select className="border rounded p-2 w-full" name="moyenContact" value={formData.moyenContact} onChange={handleChange}>
+=======
+            <select className="border rounded p-2" name="contact" value={formData.contact} onChange={handleChange}>
+>>>>>>> Stashed changes
               <option value="">-- Moyen de contacts --</option>
               <option value="TELEPHONE">TELEPHONE</option>
               <option value="EMAIL">EMAIL</option>
