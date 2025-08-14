@@ -13,10 +13,8 @@ import CarteChaleur from "./CarteChaleur";
 const STATUTS = ["Traitée", "En attente de traitement", "En cours de traitement", "Classée sans suite"];
 const PRIORITES = ["Critique", "Élevée", "Moyenne", "Faible"];
 const CATEGORIES = [
-  "Vol simple", "Vol avec violence", "Cambriolage", "Agression physique",
-  "Agression verbale", "Agression sexuelle", "Accident de la circulation",
-  "Accident domestique", "Escroquerie", "Fraude", "Conflit familial",
-  "Trouble à l'ordre public", "Corruption", "Autre"
+  "Agression et violence", "Autre infraction", "Cyber", "Fraude et corruption",
+  "Vol et cambriloage"
 ];
 const REGIONS = [
   "Dakar", "Diourbel", "Fatick", "Kaolack", "Kolda", "Kedougou", "Matam",
@@ -167,10 +165,7 @@ export default function GendarmerieHome() {
                 </div>
               </div>
             </div>
-
-
-
-
+            
             <div className="pb-6">
               <div className="flex gap-6 justify-center flex-nowrap">
                 <div className="rounded-2xlshadow-md w-[1400px] h-[660px]">

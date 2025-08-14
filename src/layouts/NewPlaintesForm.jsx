@@ -7,7 +7,8 @@ const initialFormData = {
   nom: "",
   telephone: "",
   region: "",
-  typePlaignant: "",
+  sexe: "",
+  age: "",
   identifiant: "",
   adresse: "",
   langue: "",
@@ -91,10 +92,19 @@ export default function NewPlaintesForm() {
               <option value="PARTICULIER">PARTICULIER</option>
               <option value="ENTREPRISE">ENTREPRISE</option>
               <option value="ASSOCIATION">ASSOCIATION</option>
-              <option value="MINEUR">MINEUR</option>
             </select>
 
-            <input className="border rounded p-2" name="identifiant" placeholder="Identifiant *" value={formData.identifiant} onChange={handleChange} />
+            <input className="border rounded p-2" name="identifiant" placeholder="N° CNI*" value={formData.identifiant} onChange={handleChange} />
+
+
+            <input className="border rounded p-2" name="age" placeholder="Âge" type="int" value={formData.age} onChange={handleChange} />
+             
+             <select className="border rounded p-2" name="sexe" value={formData.sexe} onChange={handleChange}>
+              <option value="">Sexe</option>
+              <option value="M">M</option>
+              <option value="F">F</option>
+            </select>
+
           </div>
 
           <label className="block mb-2">Adresse complète</label>
@@ -106,14 +116,17 @@ export default function NewPlaintesForm() {
             onChange={handleChange}
           />
 
-          <label className="block mb-2">Langue préférée</label>
+          <label className="block mb-2">Langue parlée</label>
           <select className="border rounded p-2 w-full" name="langue" value={formData.langue} onChange={handleChange}>
             <option value="">-- Sélectionner --</option>
             <option value="Français">Français</option>
             <option value="Wolof">Wolof</option>
             <option value="Pular">Pular</option>
           </select>
+
         </div>
+
+        
 
         {/* Section Détails */}
         <div className="bg-gray-200 rounded-lg p-6 shadow">
@@ -142,15 +155,7 @@ export default function NewPlaintesForm() {
             <input className="border rounded p-2" name="lieu" placeholder="Lieu de l’incident" value={formData.lieu} onChange={handleChange} />
             <input className="border rounded p-2" type="date" name="date" value={formData.date} onChange={handleChange} />
 
-            <select className="border rounded p-2" name="canal" value={formData.canal} onChange={handleChange}>
-              <option value="">-- Canal de réception --</option>
-              <option value="PHYSIQUE">PHYSIQUE</option>
-              <option value="TELEPHONE">TELEPHONE</option>
-              <option value="EMAIL">EMAIL</option>
-              <option value="INTERNET">INTERNET</option>
-            </select>
-
-            <input className="border rounded p-2" type="time" name="heure" value={formData.heure} onChange={handleChange} />
+            <input className="border rounded p-2" type="input" placeholder="Heure de l'incident" name="heure" value={formData.heure} onChange={handleChange} />
 
             <select className="border rounded p-2" name="urgence" value={formData.urgence} onChange={handleChange}>
               <option value="">-- Niveau d’urgence --</option>
@@ -159,7 +164,9 @@ export default function NewPlaintesForm() {
               <option value="IMMEDIATE">IMMÉDIATE</option>
             </select>
 
-            <select className="border rounded p-2" name="moyenContact" value={formData.moyenContact} onChange={handleChange}>
+          </div><br></br>
+
+          <select className="border rounded p-2 w-full" name="moyenContact" value={formData.moyenContact} onChange={handleChange}>
               <option value="">-- Moyen de contacts --</option>
               <option value="TELEPHONE">TELEPHONE</option>
               <option value="EMAIL">EMAIL</option>
@@ -167,7 +174,6 @@ export default function NewPlaintesForm() {
               <option value="VISITE">VISITE</option>
               <option value="SMS">SMS</option>
             </select>
-          </div>
         </div>
       </div>
 

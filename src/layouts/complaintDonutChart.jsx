@@ -143,11 +143,11 @@ const data = [
 ];
 
 const COLORS = [
-  "#6b150f",
-  "#99d0be",
-  "#e1e1e1",
-  "#26509e",
-  "#303131"
+  "#6B150F",
+  "#99D0BE",
+  "#1E2454",
+  "#26509E",
+  "#706969ff"
 ];
 
 // Label personnalisé : placé à l’extérieur
