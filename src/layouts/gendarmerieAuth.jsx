@@ -1,7 +1,5 @@
 
 
-
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +13,7 @@ export default function GendarmerieAuth() {
 
   return (
     <div
-      className="relative flex items-center justify-center min-h-screen bg-gray-100"
+      className="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 gap-x-16 px-6 md:px-12"
       style={{
         backgroundImage: "url('/img/gend_login_bg.png')",
         backgroundSize: "cover",
@@ -24,23 +22,27 @@ export default function GendarmerieAuth() {
       }}
     >
       {/* Bloc texte à gauche */}
-      <div className="absolute left-20 top-1/2 transform -translate-y-1/2 max-w-md bg-transparent bg-opacity-70 rounded-xl p-8 ">
-        <h1 className="text-3xl font-bold text-blue-600 tracking-wide mb-3">
+      <div className="max-w-md mb-10 md:mb-0 bg-transparent bg-opacity-70 rounded-xl p-6 text-center md:text-left">
+        <h1 className="text-2xl md:text-3xl font-bold text-blue-600 tracking-wide mb-3">
           GENDARMERIE NATIONALE DU SENEGAL
         </h1>
-        <div className="w-16 h-[2px] bg-blue-500 mb-4"></div>
+        <div className="w-16 h-[2px] bg-blue-500 mb-4 mx-auto md:mx-0"></div>
         <img
           src="/img/accel_logo_light.png"
           alt="Logo"
-          className="h-[120px] mb-6"
+          className="h-[100px] md:h-[120px] mb-6 mx-auto md:mx-0"
         />
-        <p className="text-sm text-gray-800">
-          Ce cas d’usage développé pour les Forces de Défense et de Sécurité contient des données sensibles et confidentielles. L’accès à cette démonstration est strictement réservé aux utilisateurs autorisés. Veuillez vous connecter à l’aide de vos identifiants personnels pour accéder à l’environnement sécurisé.
+        <h1 className="text-2xl md:text-3xl font-bold text-blue-600 tracking-wide mb-3">
+          KAARANGE
+        </h1>
+        <p className="text-sm text-gray-800 leading-relaxed">
+          Veuillez vous connecter à l’aide de vos identifiants personnels pour
+          accéder à l’environnement sécurisé.
         </p>
       </div>
 
-      {/* Formulaire centré */}
-      <div className="relative  z-10 bg-white rounded-2xl shadow-xl p-10 w-[400px] h-[450px] right-130">
+      {/* Formulaire à droite */}
+      <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-[400px]">
         <h2 className="text-lg font-bold text-center text-blue-600 mb-8">
           Connexion
         </h2>
@@ -55,7 +57,9 @@ export default function GendarmerieAuth() {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm text-gray-600 mb-1">Mot de passe</label>
+            <label className="block text-sm text-gray-600 mb-1">
+              Mot de passe
+            </label>
             <input
               type="password"
               placeholder="Mot de passe"
