@@ -8,12 +8,9 @@ const initialFormData = {
   nom: "",
   telephone: "",
   region: "",
-<<<<<<< Updated upstream
   sexe: "",
   age: "",
-=======
   plaignant: "",
->>>>>>> Stashed changes
   identifiant: "",
   addresse: "",
   langue: "",
@@ -52,26 +49,47 @@ export default function NewPlaintesForm() {
       setPopup({
         show: true,
         message: "Veuillez remplir tous les champs obligatoires (*)",
-        isError: true,
+        isError: false,
       });
       return;
     }
 
-    setPopup({
-      show: true,
-      message: "Information ajoutée avec succès !",
-      isError: false,
-    });
 
-    // Tu peux aussi envoyer les données ici à une API plus tard
 
-     fetch(API_ODSN_SERVICE+'/api/v1/odns/plainte', {
+     fetch(API_ODSN_SERVICE, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(formData)
-    });
+    }).then((response) => {
+       if (response.ok) {
+         setPopup({
+           show: true,
+           message: "plainte enregistré avec success",
+           isError: false,
+         });
+         setFormData(initialFormData);
+       }
+       return response.json();
+     }).catch((error) => {
+       let message = "Une erreur est survenue !";
+
+       if (error.message === "SERVER_ERROR") {
+         message = "Le serveur a répondu avec une erreur !";
+       } else if (error.message.includes("Failed to fetch") ||
+           error.message.includes("ERR_CONNECTION_REFUSED")) {
+         message = "Impossible de se connecter au serveur.";
+       } else {
+         message = "Vérifiez les informations saisies.";
+       }
+
+       setPopup({
+         show: true,
+         message,
+         isError: true,
+       });
+     });
   };
 
   const handleReset = () => {
@@ -177,13 +195,13 @@ export default function NewPlaintesForm() {
               <option value="IMMEDIATE">IMMÉDIATE</option>
             </select>
 
-<<<<<<< Updated upstream
+
           </div><br></br>
 
-          <select className="border rounded p-2 w-full" name="moyenContact" value={formData.moyenContact} onChange={handleChange}>
-=======
+          {/*<select className="border rounded p-2 w-full" name="moyenContact" value={formData.moyenContact} onChange={handleChange}>*/}
+
             <select className="border rounded p-2" name="contact" value={formData.contact} onChange={handleChange}>
->>>>>>> Stashed changes
+
               <option value="">-- Moyen de contacts --</option>
               <option value="TELEPHONE">TELEPHONE</option>
               <option value="EMAIL">EMAIL</option>

@@ -1,2 +1,2 @@
 
-export const API_ODSN_SERVICE= "http://localhost:8082";
+export const API_ODSN_SERVICE= "http://localhost:8082/api/v1/odsn/plaintes";

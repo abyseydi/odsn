@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import ComplaintDonutChart from "./ComplaintDonutChart";
 import ComplaintPriorityBarChart from "./ComplaintPriorityBarChart";
 import GendarmerieNavBar from "./GendarmerieNavBar";
 import NewPlaintesForm from "./NewPlaintesForm";
 import Prediction from "./Prediction";
 import Effectifpred from "./Effectif";
-import { faker } from "@faker-js/faker";
 import CriticalComplaints from "./critical";
 import TablePlaintes from "./TablePlaintes";
 import CarteChaleur from "./CarteChaleur";
+import {API_ODSN_SERVICE} from "@/BASE_API/HttpBase";
 
 const STATUTS = ["Traitée", "En attente de traitement", "En cours de traitement", "Classée sans suite"];
 const PRIORITES = ["Critique", "Élevée", "Moyenne", "Faible"];
@@ -24,23 +24,11 @@ const URGENCES = ["Immédiate", "Rapide", "Normale"];
 const CANAUX = ["Physique", "Téléphone", "Email"];
 const TYPES = ["Particulier", "Entreprise"];
 
-const generateComplaints = (count) => {
-  return Array.from({ length: count }, (_, i) => ({
-    id: i + 1,
-    description: faker.lorem.sentence(),
-    statut: faker.helpers.arrayElement(STATUTS),
-    priorite: faker.helpers.arrayElement(PRIORITES),
-    categorie: faker.helpers.arrayElement(CATEGORIES),
-    region: faker.helpers.arrayElement(REGIONS),
-    urgence: faker.helpers.arrayElement(URGENCES),
-    canal: faker.helpers.arrayElement(CANAUX),
-    type: faker.helpers.arrayElement(TYPES)
-  }));
-};
 
 export default function GendarmerieHome() {
   const [activeSection, setActiveSection] = useState("dashboard");
   const [selectedComplaint, setSelectedComplaint] = useState(null);
+
   const [filters, setFilters] = useState({
     statut: "",
     priorite: "",
@@ -52,8 +40,46 @@ export default function GendarmerieHome() {
     search: ""
   });
 
-  const complaints = generateComplaints(50);
+  const [plainteData, setPlainteData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  // Real data will populate `plainteData` from the API below
 
+  useEffect(() => {
+
+    const API_URL = API_ODSN_SERVICE;
+
+    fetch(API_URL)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('error');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const normalized = (Array.isArray(data) ? data : [])?.map((d, idx) => ({
+            id: d.id ?? d.plainteId ?? d.code ?? `PL-${idx + 1}`,
+            description: d.description ?? d.titre ?? d.title ?? "",
+            statut: d.statut ?? d.status ?? "",
+            priorite: d.priorite ?? d.priority ?? "",
+            categorie: d.categorie ?? d.category ?? "",
+            region: d.region ?? d.lieu ?? d.commune ?? "",
+            urgence: d.urgence ?? d.urgent ?? "",
+            canal: d.canal ?? d.channel ?? "",
+            type: d.type ?? d.plaignantType ?? d.requesterType ?? "",
+          }));
+          setPlainteData(normalized)
+          console.log("plaintes",data)
+          setLoading(false);
+        })
+        .catch((error) => {
+          setError(error.message);
+          setLoading(false);
+        });
+  }, []);
+
+
+  // Removed unused and malformed listPlaintes function
   const cardData = [
     {
       color: "pink-500",
@@ -81,16 +107,30 @@ export default function GendarmerieHome() {
     },
   ];
 
-  const filteredComplaints = complaints.filter((c) =>
-    (!filters.statut || c.statut === filters.statut) &&
-    (!filters.priorite || c.priorite === filters.priorite) &&
-    (!filters.categorie || c.categorie === filters.categorie) &&
-    (!filters.region || c.region === filters.region) &&
-    (!filters.urgence || c.urgence === filters.urgence) &&
-    (!filters.canal || c.canal === filters.canal) &&
-    (!filters.type || c.type === filters.type) &&
-    (!filters.search || c.description.toLowerCase().includes(filters.search.toLowerCase()))
+
+  const filteredComplaints = plainteData.filter((c) =>
+      (!filters.statut || c.statut === filters.statut) &&
+      (!filters.priorite || c.priorite === filters.priorite) &&
+      (!filters.region || c.region === filters.region) &&
+      (!filters.urgence || c.urgence === filters.urgence) &&
+      (!filters.canal || c.canal === filters.canal) &&
+      (!filters.type || c.type === filters.type) &&
+      (!filters.search || c.description.toLowerCase().includes(filters.search.toLowerCase()))
   );
+
+  // const filteredComplaints = plainteData.filter((c) =>
+  //   (!filters.statut || c.statut === filters.statut) &&
+  //   (!filters.priorite || c.priorite === filters.priorite) &&
+  //   // (!filters.categorie || c.categorie === filters.categorie) &&
+  //   (!filters.region || c.region === filters.region) &&
+  //   (!filters.urgence || c.urgence === filters.urgence) &&
+  //   (!filters.canal || c.canal === filters.canal) &&
+  //   (!filters.type || c.type === filters.type) &&
+  //   (!filters.search || c.description.toLowerCase().includes(filters.search.toLowerCase()))
+  // );
+
+
+
 
   const renderSelect = (label, name, options) => (
     <div className="w-[200px]">
@@ -221,6 +261,10 @@ export default function GendarmerieHome() {
                     </tr>
                   </thead>
                   <tbody>
+
+
+
+                    {/*{data.map((complaint) => (*/}
                     {filteredComplaints.map((complaint) => (
                       <tr key={complaint.id} className="hover:bg-gray-100 cursor-pointer" onClick={() => setSelectedComplaint(complaint)}>
                         <td className="py-2">{complaint.id}</td>
