@@ -4,6 +4,7 @@ import LandingPage from "./layouts/landingPage";
 import ANSDHome from "./layouts/ANSDHome";
 import GendarmerieHome from "./layouts/gendarmerieHome";
 import GendarmerieAuth from "./layouts/gendarmerieAuth";
+import SafetyOrderHome from "./layouts/safetyOrderHome";
 
 
 function App() {
@@ -11,8 +12,8 @@ function App() {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/ANSDHome" element={<ANSDHome />} />
-            <Route path="/GendarmerieAuth" element={<GendarmerieAuth />} />
-
+      <Route path="/GendarmerieAuth" element={<GendarmerieAuth />} />
+      <Route path="/safetyOrderHome" element={<SafetyOrderHome />} />
       <Route path="/GendarmerieHome" element={<GendarmerieHome />} />
 
     </Routes>
