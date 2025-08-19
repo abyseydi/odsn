@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 
 export default function Effectifpred() {
@@ -20,160 +22,191 @@ export default function Effectifpred() {
   const effectif = predictEffectif();
 
   return (
-    <div className="min-h-screen p-6 p-8 flex flex-col md:flex-row gap-8 items-start justify-center h-[700px] w-[1375px]">
-      {/* Form Section */}
-      <div className="bg-gray-200 border-l-4 border-blue-500 rounded-xl shadow-lg w-full md:w-[650px] p-8 space-y-8">
-        <h1 className="text-2xl font-semibold text-gray-800 text-center">
-          Prédiction des Effectifs
-        </h1>
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      {/* Grille responsive : 1 col (mobile) -> 3 cols (lg) */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Formulaire : span 2 colonnes en lg, 1 col sinon */}
+        <div className="lg:col-span-2 bg-gray-200 border-l-4 border-blue-500 rounded-xl shadow-lg p-5 sm:p-6 space-y-6">
+          <h1 className="text-xl sm:text-2xl font-semibold text-gray-800 text-center">
+            Prédiction des Effectifs
+          </h1>
 
-        {/* Section 1: Localisation */}
-        <div>
-          <h2 className="text-lg font-semibold mb-3 text-gray-700">
-            Localisation et Type d'Événement
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Type d'événement
-              </label>
-              <select
-                value={typeEvent}
-                onChange={(e) => setTypeEvent(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200"
-              >
-                <option>Football</option>
-                <option>Lutte</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Zone géographique
-              </label>
-              <select
-                value={zone}
-                onChange={(e) => setZone(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200"
-              >
-                {[
-                  "Dakar",
-                  "Thiès",
-                  "Saint-Louis",
-                  "Kaolack",
-                  "Diourbel",
-                  "Fatick",
-                  "Kaffrine",
-                  "Kédougou",
-                  "Kolda",
-                  "Louga",
-                  "Matam",
-                  "Sédhiou",
-                  "Tambacounda",
-                  "Ziguinchor",
-                ].map((region) => (
-                  <option key={region}>{region}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-        </div>
-
-        {/* Section 2: Risque & Affluence */}
-        <div>
-          <h2 className="text-lg font-semibold mb-3 text-gray-700">
-            Évaluation des Risques et Affluence
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Niveau de risque
-              </label>
-              <select
-                value={risk}
-                onChange={(e) => setRisk(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200"
-              >
-                <option>Faible</option>
-                <option>Moyen</option>
-                <option>Élevé</option>
-                <option>Très élevé</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Affluence prévue
-              </label>
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => setAffluence(Math.max(0, affluence - 100))}
-                  className="px-3 py-1 bg-red-200 hover:bg-red-300 text-red-800 font-bold rounded"
+          {/* Localisation & Type */}
+          <section>
+            <h2 className="text-base sm:text-lg font-semibold mb-3 text-gray-700">
+              Localisation et Type d'Événement
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Type d'événement
+                </label>
+                <select
+                  value={typeEvent}
+                  onChange={(e) => setTypeEvent(e.target.value)}
+                  className="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200"
                 >
-                  -
-                </button>
+                  <option>Football</option>
+                  <option>Lutte</option>
+                </select>
+              </div>
 
-                {/* Saisie directe */}
-                <input
-                  type="number"
-                  value={affluence}
-                  onChange={(e) =>
-                    setAffluence(Math.max(0, Number(e.target.value)))
-                  }
-                  className="w-24 p-2 text-center border border-gray-300 rounded-md focus:ring focus:ring-blue-200"
-                />
-
-                <button
-                  onClick={() => setAffluence(affluence + 100)}
-                  className="px-3 py-1 bg-green-200 hover:bg-green-300 text-green-800 font-bold rounded"
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Zone géographique
+                </label>
+                <select
+                  value={zone}
+                  onChange={(e) => setZone(e.target.value)}
+                  className="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200"
                 >
-                  +
-                </button>
+                  {[
+                    "Dakar",
+                    "Thiès",
+                    "Saint-Louis",
+                    "Kaolack",
+                    "Diourbel",
+                    "Fatick",
+                    "Kaffrine",
+                    "Kédougou",
+                    "Kolda",
+                    "Louga",
+                    "Matam",
+                    "Sédhiou",
+                    "Tambacounda",
+                    "Ziguinchor",
+                  ].map((region) => (
+                    <option key={region}>{region}</option>
+                  ))}
+                </select>
               </div>
             </div>
+          </section>
+
+          {/* Risque & Affluence */}
+          <section>
+            <h2 className="text-base sm:text-lg font-semibold mb-3 text-gray-700">
+              Évaluation des Risques et Affluence
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Niveau de risque
+                </label>
+                <select
+                  value={risk}
+                  onChange={(e) => setRisk(e.target.value)}
+                  className="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200"
+                >
+                  <option>Faible</option>
+                  <option>Moyen</option>
+                  <option>Élevé</option>
+                  <option>Très élevé</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Affluence prévue
+                </label>
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setAffluence(Math.max(0, affluence - 100))}
+                    className="px-3 py-1 bg-red-200 hover:bg-red-300 text-red-800 font-bold rounded"
+                  >
+                    -
+                  </button>
+
+                  <input
+                    type="number"
+                    value={affluence}
+                    onChange={(e) =>
+                      setAffluence(Math.max(0, Number(e.target.value)))
+                    }
+                    className="w-24 p-2 text-center border border-gray-300 rounded-md focus:ring focus:ring-blue-200"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => setAffluence(affluence + 100)}
+                    className="px-3 py-1 bg-green-200 hover:bg-green-300 text-green-800 font-bold rounded"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Planification */}
+          <section>
+            <h2 className="text-base sm:text-lg font-semibold mb-3 text-gray-700">
+              Planification
+            </h2>
+            <label className="block text-sm font-medium mb-1">
+              Date de l'événement
+            </label>
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200"
+            />
+          </section>
+
+          {/* Actions */}
+          <div className="flex justify-end gap-6 pt-2">
+            <button
+              type="button"
+              onClick={() => setAffluence(0)}
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              Réinitialiser affluence
+            </button>
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              Haut de page
+            </button>
           </div>
         </div>
 
-        {/* Section 3: Planification */}
-        <div>
-          <h2 className="text-lg font-semibold mb-3 text-gray-700">
-            Planification
+        {/* Panneau Résultat : 1 colonne en lg, pleine largeur sinon */}
+        <div className="bg-[#1e2454] text-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-center">
+          <h2 className="text-lg sm:text-xl font-bold mb-4 text-center">
+            Résultat de la Prédiction
           </h2>
-          <label className="block text-sm font-medium mb-1">
-            Date de l'événement
-          </label>
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200"
-          />
-        </div>
-      </div>
 
-      {/* Prediction Panel */}
-      <div className="bg-[#1e2454] text-white border border-white rounded-xl shadow-lg w-full md:w-[350px] h-[500px] p-6 flex flex-col items-center justify-center">
-        <h2 className="text-xl font-bold mb-4">Résultat de la Prédiction</h2>
-        <div className="text-green-400 text-7xl font-bold mb-6">{effectif}</div>
+          <div className="text-green-400 text-5xl sm:text-6xl md:text-7xl font-bold mb-6">
+            {effectif}
+          </div>
 
-        <div className="text-left w-full">
-          <h3 className="text-lg font-semibold mb-2">Récapitulatif</h3>
-          <ul className="text-sm space-y-1 list-disc list-inside">
-            <li>
-              <strong>Type:</strong> {typeEvent}
-            </li>
-            <li>
-              <strong>Zone:</strong> {zone}
-            </li>
-            <li>
-              <strong>Date:</strong>{" "}
-              {new Date(date).toLocaleDateString("fr-FR")}
-            </li>
-            <li>
-              <strong>Niveau de risque:</strong> {risk}
-            </li>
-            <li>
-              <strong>Affluence:</strong> {affluence} personnes
-            </li>
-          </ul>
+          <div className="w-full">
+            <h3 className="text-base sm:text-lg font-semibold mb-2">
+              Récapitulatif
+            </h3>
+            <ul className="text-sm sm:text-base space-y-1 list-disc list-inside">
+              <li>
+                <strong>Type :</strong> {typeEvent}
+              </li>
+              <li>
+                <strong>Zone :</strong> {zone}
+              </li>
+              <li>
+                <strong>Date :</strong>{" "}
+                {new Date(date).toLocaleDateString("fr-FR")}
+              </li>
+              <li>
+                <strong>Niveau de risque :</strong> {risk}
+              </li>
+              <li>
+                <strong>Affluence :</strong> {affluence} personnes
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ import {
 
 const sidebarRoutes = [
   { name: "Accueil", key: "dashboard", icon: HomeIcon },
-  { name: "Nouvelles plaintes", key: "newplainte", icon: ClockIcon },
+  { name: "Nouvelle plainte", key: "newplainte", icon: ClockIcon },
   { name: "Liste des Plaintes", key: "plaintes", icon: ClipboardDocumentListIcon },
   { name: "Prediction plaintes", key: "prediction", icon: ShieldExclamationIcon },
   { name: "Prediction d'effectif", key: "effectif", icon: UserGroupIcon },

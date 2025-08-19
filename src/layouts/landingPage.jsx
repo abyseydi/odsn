@@ -17,11 +17,11 @@ export default function LandingPage() {
     ],
     public: [
       { title: "Politique publique", img: "/img/politique_publique.png", link: "/ANSDHome" },
-      { title: "Sûreté et ordre", img: "/img/fds_icon.png", link: "/safetyOrderHome" },
+      { title: "Sûreté & ordre", img: "/img/fds_icon.png", link: "/safetyOrderHome" },
       { title: "Éducation & Formation", img: "/img/education.png", link: "" },
       { title: "Santé & Protection sociale", img: "/img/sante.png", link: "" },
-      { title: "Financement", img: "/img/financement.png", link: "" },
-      { title: "Energie – Mines", img: "/img/energie.png", link: "" },
+      { title: "Économie, Finances & Budget", img: "/img/financement.png", link: "" },
+      { title: "Énergie & Mines", img: "/img/energie.png", link: "" },
     ],
   };
 

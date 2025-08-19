@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   BarChart,
@@ -9,7 +10,6 @@ import {
   Cell,
 } from "recharts";
 
-// Données fictives (à adapter dynamiquement si besoin)
 const data = [
   { priority: "Faible", value: 3164 },
   { priority: "Moyenne", value: 3314 },
@@ -17,51 +17,55 @@ const data = [
   { priority: "Critique", value: 3182 },
 ];
 
-// Couleurs modernes pour chaque niveau de priorité
 const PRIORITY_COLORS = {
-  Faible: "#1E2454",     // blue-300
-  Moyenne: "#98CFBD",    // yellow-400
-  Élevée: "#26509D",     // orange-400
-  Critique: "#E84141",   // red-500
+  Faible: "#1E2454",
+  Moyenne: "#98CFBD",
+  Élevée: "#26509D",
+  Critique: "#E84141",
 };
 
 export default function ComplaintPriorityBarChart() {
   return (
-    <div className="bg-white rounded-xl shadow-md p-6">
-      <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
-        Répartition des plaintes par niveau de priorité
-      </h3>
-      <div className="w-full h-[300px]">
-        <ResponsiveContainer>
-          <BarChart
-            layout="vertical"
-            data={data}
-            margin={{ top: 10, right: 30, left: 20, bottom: 10 }}
+    <div className="w-full h-[180px] sm:h-[200px]">
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          layout="vertical"
+          data={data}
+          margin={{ top: 5, right: 10, left: 8, bottom: 0 }}
+          barCategoryGap="20%"
+        >
+          {/* Axe X masqué (valeurs) */}
+          <XAxis type="number" hide />
+
+          {/* Axe Y compact (catégories) */}
+          <YAxis
+            type="category"
+            dataKey="priority"
+            tick={{ fill: "#4b5563", fontSize: 11 }}
+            width={58}
+          />
+
+          {/* Tooltip discret */}
+          <Tooltip
+            wrapperClassName="rounded-md shadow text-xs"
+            contentStyle={{ backgroundColor: "#f9fafb", border: "none", fontSize: 12 }}
+            itemStyle={{ color: "#374151", fontSize: 12 }}
+            labelStyle={{ color: "#4b5563", fontWeight: 600 }}
+          />
+
+          {/* Barres compactes */}
+          <Bar
+            dataKey="value"
+            radius={[6, 6, 6, 6]}
+            barSize={16}
+            isAnimationActive={false} // comme le donut, pas d'anim pour un rendu net
           >
-            <XAxis type="number" hide />
-            <YAxis
-              type="category"
-              dataKey="priority"
-              tick={{ fill: "#4b5563", fontSize: 14 }}
-              width={100}
-            />
-            <Tooltip
-              wrapperClassName="rounded-md shadow text-sm"
-              contentStyle={{ backgroundColor: "#f9fafb", border: "none" }}
-              itemStyle={{ color: "#374151" }}
-              labelStyle={{ color: "#4b5563", fontWeight: 500 }}
-            />
-            <Bar dataKey="value" radius={[10, 10, 10, 10]}>
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={PRIORITY_COLORS[entry.priority]}
-                />
-              ))}
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+            {data.map((entry, idx) => (
+              <Cell key={`cell-${idx}`} fill={PRIORITY_COLORS[entry.priority]} />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 }
