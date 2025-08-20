@@ -19,7 +19,7 @@ export default function LandingPage() {
     public: [
       { title: "Politique publique", img: "/img/politique_publique.png", link: "/ANSDHome" },
       { title: "Sûreté & ordre", img: "/img/fds_icon.png", link: "/safetyOrderHome" },
-      { title: "Éducation & Formation", img: "/img/education.png", link: "/educationHome" },
+      { title: "Éducation & Formation", img: "/img/education.png", link: "" },
       { title: "Santé & Protection sociale", img: "/img/sante.png", link: "" },
       { title: "Économie, Finances & Budget", img: "/img/financement.png", link: "" },
       { title: "Énergie & Mines", img: "/img/energie.png", link: "" },
@@ -339,7 +339,8 @@ export default function LandingPage() {
           ))}
         </div>
       </section>
-
+  
+   
       {/* ===== FOOTER ===== */}
       <footer className="bg-[#1e1446] text-white px-4 sm:px-6 lg:px-10 py-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 text-sm">

@@ -1,23 +1,25 @@
-
-
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 export default function EducationHome() {
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate("");
-  };
-
   return (
-    <div
-      className="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 gap-x-16 px-6 md:px-12"
-
+    // Conteneur plein écran + safe areas iOS/Android
+    <main
+      className="fixed inset-0 bg-gray-50"
+      style={{
+        paddingTop: "env(safe-area-inset-top)",
+        paddingBottom: "env(safe-area-inset-bottom)",
+        paddingLeft: "env(safe-area-inset-left)",
+        paddingRight: "env(safe-area-inset-right)",
+      }}
     >
-         <iframe id="rapport" src="https://bi-srmt-srmt.apps.origins.heritage.africa/Reports/powerbi/SRMT_PBReportServer%20-%20MFB?rs:Embed=true"></iframe>
-
-    </div>
+     <section className="bg-white py-10 sm:py-12 text-center">
+       <iframe
+        title="Rapport Power BI"
+ src="https://bi-srmt-srmt.apps.origins.heritage.africa/Reports/powerbi/MEN_Performance_Scolaire?rs:Embed=true"        frameBorder="0"
+        allowFullScreen={true}
+        className="w-full h-full"
+      ></iframe>
+      </section>
+    </main>
   );
 }
