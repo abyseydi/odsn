@@ -101,6 +101,7 @@ export default function ComplaintDonutChart() {
             innerRadius="50%"
             outerRadius="72%"
             paddingAngle={2}
+            labelLine={false}
             label={renderPercentOutside} 
             isAnimationActive={false}
           >

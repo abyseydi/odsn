@@ -167,27 +167,27 @@ export default function GendarmerieHome() {
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
       <div className="bg-white rounded-lg shadow p-2">
         <p className="text-xs font-semibold mb-1">
-     Répartion régionale des plaintes
+     Répartion régionale des plaintes (2025)
         </p>
         <CarteChaleur />
       </div>
 
       <div className="bg-white rounded-lg shadow p-2">
         <p className="text-xs font-semibold mb-1">
-          Répartition des plaintes par catégorie
+          Répartition des plaintes par catégorie (2025)
         </p>
         <ComplaintDonutChart />
       </div>
 
       <div className="bg-white rounded-lg shadow p-2">
-        <p className="text-xs font-semibold mb-1">Plaintes par priorité</p>
+        <p className="text-xs font-semibold mb-1">Plaintes par priorité (2025)</p>
         <ComplaintPriorityBarChart />
       </div>
     </div>
 
     <div className="bg-white rounded-lg shadow p-2">
       <p className="text-xs font-semibold mb-1">
-      Plaintes critiques récentes
+      Plaintes critiques récentes (2025)
       </p>
       <CriticalComplaints />
     </div>

@@ -26,7 +26,7 @@ export default function Effectifpred() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 bg-gray-200 border-l-4 border-blue-500 rounded-xl shadow-lg p-5 sm:p-6 space-y-6">
           <h1 className="text-xl sm:text-2xl font-semibold text-gray-800 text-center">
-          Scénario déploiement forces de l'ordre
+          Scénario de déploiement des forces de l'ordre
           </h1>
 
           <section>

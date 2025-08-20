@@ -16,7 +16,7 @@ const sidebarRoutes = [
   { name: "Nouvelle plainte", key: "newplainte", icon: ClockIcon },
   { name: "Liste des Plaintes", key: "plaintes", icon: ClipboardDocumentListIcon },
   { name: "Prediction plaintes", key: "prediction", icon: ShieldExclamationIcon },
-  { name: "Scénario déploiement Forces De l'Ordre", key: "effectif", icon: UserGroupIcon },
+  { name: "Scénario de déploiement des Forces De l'Ordre", key: "effectif", icon: UserGroupIcon },
  
   ];
 
