@@ -5,6 +5,7 @@ import ANSDHome from "./layouts/ANSDHome";
 import GendarmerieHome from "./layouts/gendarmerieHome";
 import GendarmerieAuth from "./layouts/gendarmerieAuth";
 import SafetyOrderHome from "./layouts/safetyOrderHome";
+import EducationHome from "./layouts/educationHome";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path="/GendarmerieAuth" element={<GendarmerieAuth />} />
       <Route path="/safetyOrderHome" element={<SafetyOrderHome />} />
       <Route path="/GendarmerieHome" element={<GendarmerieHome />} />
+      <Route path="/GendarmerieHome" element={<EducationHome />} />
 
     </Routes>
   );
