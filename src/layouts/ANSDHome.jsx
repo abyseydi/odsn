@@ -564,7 +564,16 @@ export function ANSDHome() {
             </div>
           </div>
         </div>
-        <p className="text-xs text-gray-300 mt-10">© Accel Technologies</p>
+
+     <div className="flex flex-col items-center mt-auto space-y-4">
+    <a
+      href="/" 
+      className="px-5 py-2 rounded-lg bg-white text-[#1e1446] font-semibold text-sm shadow hover:bg-gray-100 transition-all"
+    >
+      Retour à l’accueil
+    </a>
+    <p className="text-xs text-gray-300">© Accel Technologies</p>
+  </div>
       </aside>
 
       {/* Main content */}

@@ -10,6 +10,7 @@ import Prediction from "./Prediction";
 import Effectifpred from "./Effectif";
 import CriticalComplaints from "./critical";
 
+
 const STATUTS = ["Traitée", "En attente de traitement", "En cours de traitement", "Classée sans suite"];
 const PRIORITES = ["Critique", "Élevée", "Moyenne", "Faible"];
 const CATEGORIES = [
@@ -180,7 +181,7 @@ export default function GendarmerieHome() {
       </div>
 
       <div className="bg-white rounded-lg shadow p-2">
-        <p className="text-xs font-semibold mb-1">Plaintes par priorité (2025)</p>
+        <p className="text-xs font-semibold mb-1">Répartition des plaintes selon le niveau de gravité (2025)</p>
         <ComplaintPriorityBarChart />
       </div>
     </div>

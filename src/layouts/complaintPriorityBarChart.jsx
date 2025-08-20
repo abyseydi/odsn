@@ -1,5 +1,4 @@
 
-
 import React from "react";
 import {
   BarChart,
@@ -28,23 +27,26 @@ const PRIORITY_COLORS = {
 
 export default function ComplaintPriorityBarChart() {
   return (
-    <div className="w-full h-[180px] sm:h-[200px]">
-      <ResponsiveContainer width="100%" height="100%">
+    <div className="w-full h-[220px] flex justify-center items-center">
+      <ResponsiveContainer width="90%" height="100%">
         <BarChart
           layout="vertical"
           data={data}
-          margin={{ top: 5, right: 20, left: 8, bottom: 0 }}
+          margin={{ top: 10, right: 40, left: 40, bottom: 10 }} // ⚖️ équilibre gauche/droite
           barCategoryGap="20%"
         >
+          {/* Axe X caché */}
           <XAxis type="number" hide />
 
+          {/* Axe Y plus compact */}
           <YAxis
             type="category"
             dataKey="priority"
-            tick={{ fill: "#4b5563", fontSize: 11 }}
-            width={70}
+            tick={{ fill: "#4b5563", fontSize: 12, fontWeight: 600 }}
+            width={60} // réduit la place prise
           />
 
+          {/* Infobulle */}
           <Tooltip
             wrapperClassName="rounded-md shadow text-xs"
             contentStyle={{ backgroundColor: "#f9fafb", border: "none", fontSize: 12 }}
@@ -52,19 +54,21 @@ export default function ComplaintPriorityBarChart() {
             labelStyle={{ color: "#4b5563", fontWeight: 600 }}
           />
 
+          {/* Barres */}
           <Bar
             dataKey="value"
             radius={[6, 6, 6, 6]}
-            barSize={16}
+            barSize={18}
             isAnimationActive={false}
           >
             {data.map((entry, idx) => (
               <Cell key={`cell-${idx}`} fill={PRIORITY_COLORS[entry.priority]} />
             ))}
+            {/* Valeurs au bout des barres */}
             <LabelList
               dataKey="value"
               position="right"
-              style={{ fill: "#374151", fontSize: 11, fontWeight: 600 }}
+              style={{ fill: "#374151", fontSize: 12, fontWeight: 600 }}
             />
           </Bar>
         </BarChart>
@@ -72,4 +76,3 @@ export default function ComplaintPriorityBarChart() {
     </div>
   );
 }
-
