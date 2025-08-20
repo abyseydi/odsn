@@ -8,8 +8,8 @@ import CarteChaleur from "./CarteChaleur";
 import NewPlaintesForm from "./NewPlaintesForm";
 import Prediction from "./Prediction";
 import Effectifpred from "./Effectif";
+import CriticalComplaints from "./critical";
 
-/* ===================== Constantes ===================== */
 const STATUTS = ["Traitée", "En attente de traitement", "En cours de traitement", "Classée sans suite"];
 const PRIORITES = ["Critique", "Élevée", "Moyenne", "Faible"];
 const CATEGORIES = [
@@ -26,7 +26,6 @@ const URGENCES = ["Immédiate", "Rapide", "Normale"];
 const CANAUX = ["Physique", "Téléphone", "Email"];
 const TYPES = ["Particulier", "Entreprise"];
 
-/* ===================== Helpers ===================== */
 const generateComplaints = (count) =>
   Array.from({ length: count }, (_, i) => ({
     id: i + 1,
@@ -40,7 +39,6 @@ const generateComplaints = (count) =>
     type: faker.helpers.arrayElement(TYPES),
   }));
 
-// Pour Tailwind: éviter bg-${dynamic}
 const COLOR_MAP = {
   "pink-500": "bg-pink-500",
   "red-500": "bg-red-500",
@@ -51,7 +49,6 @@ const COLOR_MAP = {
 export default function GendarmerieHome() {
   const [activeSection, setActiveSection] = useState("dashboard");
 
-  // ✅ ÉTATS pour la section "plaintes"
   const [selectedComplaint, setSelectedComplaint] = useState(null);
   const [filters, setFilters] = useState({
     statut: "",
@@ -73,7 +70,6 @@ export default function GendarmerieHome() {
     { color: "indigo-900", title: "Traitées aujourd'hui",  value: faker.number.int({ min: 10, max: 50 }) },
   ]), [complaints]);
 
-  // ✅ FILTRE effectif pour alimenter la table
   const filteredComplaints = useMemo(() => (
     complaints.filter((c) =>
       (!filters.statut   || c.statut   === filters.statut)   &&
@@ -87,7 +83,6 @@ export default function GendarmerieHome() {
     )
   ), [complaints, filters]);
 
-  // ✅ Rendu d’un select (réutilisable) — inchangé
   const renderSelect = (label, name, options) => (
     <div className="w-[200px]">
       <label className="block text-sm text-gray-600 mb-1">{label}</label>
@@ -107,7 +102,6 @@ export default function GendarmerieHome() {
 
   return (
     <div className="relative h-screen overflow-hidden bg-gray-100">
-      {/* Bandeau bleu (plus compact) */}
       <div className="absolute top-0 left-0 w-full h-[25vh] bg-[#1e2454] z-0">
         <svg
           className="absolute bottom-0 left-0 w-full h-[70px]"
@@ -121,26 +115,37 @@ export default function GendarmerieHome() {
         </svg>
       </div>
 
-      {/* Sidebar */}
       <GendarmerieNavBar
         onSectionChange={setActiveSection}
         activeSection={activeSection}
       />
 
-      {/* Conteneur principal (scroll interne si besoin) */}
       <main className="relative z-10 h-full md:pl-[280px] overflow-hidden">
         <div className="flex flex-col h-full">
-          {/* Header compact (fixe) */}
           <header className="px-3 pt-2 shrink-0">
-            <div className="flex items-center justify-center mt-2 mb-4 gap-3">
-              <img src="/img/senegal1.png" alt="Logo gauche" className="w-[44px] h-[44px] md:w-[52px] md:h-[52px]" />
-              <h2 className="text-lg md:text-2xl font-bold text-white text-center">
-                GENDARMERIE NATIONALE DU SENEGAL
-              </h2>
-              <img src="/img/gendarmerie.png" alt="Logo droit" className="w-[44px] h-[44px] md:w-[52px] md:h-[52px]" />
-            </div>
+           <div className="flex flex-col items-center text-center">
+  <div className="flex items-center justify-center gap-3 mb-2">
+    <img
+      src="/img/senegal1.png"
+      alt="Logo gauche"
+      className="w-[44px] h-[44px] md:w-[52px] md:h-[52px]"
+    />
+    <h2 className="text-lg md:text-2xl font-bold text-white">
+      GENDARMERIE NATIONALE DU SENEGAL
+    </h2>
+    <img
+      src="/img/gendarmerie.png"
+      alt="Logo droit"
+      className="w-[44px] h-[44px] md:w-[52px] md:h-[52px]"
+    />
+  </div>
 
-            {/* Cartes KPI (compactes et fluides) */}
+  <p className="text-white max-w-2xl text-sm md:text-base leading-relaxed px-4 mb-4">
+    Solution d’IA pour la classification automatique des plaintes et
+    l’optimisation stratégique du déploiement des Forces De l’Ordre
+  </p>
+</div>
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-2">
               {cardData.map((card, index) => (
                 <div
@@ -155,35 +160,40 @@ export default function GendarmerieHome() {
             </div>
           </header>
 
-          {/* Zone scrollable (s'adapte à la taille de l'écran) */}
+
           <section className="flex-1 min-h-0 px-3 pb-3 overflow-y-auto">
-            {activeSection === "dashboard" && (
-              /* A (2/3) : Carte — B/C (1/3) : Donut + Bar (stack) */
-              <div className="mx-auto w-full max-w-7xl">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-                  {/* A: Carte (2 colonnes) — le bloc s'ajuste à la carte */}
-                  <div className="lg:col-span-2 bg-white rounded-lg shadow p-2">
-                    <p className="text-xs font-semibold mb-1">
-                      Carte de chaleur des plaintes critiques par région
-                    </p>
-                    <CarteChaleur />
-                  </div>
+{activeSection === "dashboard" && (
+  <div className="mx-auto w-full max-w-7xl space-y-3">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+      <div className="bg-white rounded-lg shadow p-2">
+        <p className="text-xs font-semibold mb-1">
+     Répartion régionale des plaintes
+        </p>
+        <CarteChaleur />
+      </div>
 
-                  {/* Colonne droite : B au-dessus, C en bas */}
-                  <div className="flex flex-col gap-3">
-                    <div className="bg-white rounded-lg shadow p-2">
-                      <p className="text-xs font-semibold mb-1">Répartition des plaintes</p>
-                      <ComplaintDonutChart />
-                    </div>
+      <div className="bg-white rounded-lg shadow p-2">
+        <p className="text-xs font-semibold mb-1">
+          Répartition des plaintes par catégorie
+        </p>
+        <ComplaintDonutChart />
+      </div>
 
-                    <div className="bg-white rounded-lg shadow p-2">
-                      <p className="text-xs font-semibold mb-1">Plaintes par priorité</p>
-                      <ComplaintPriorityBarChart />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
+      <div className="bg-white rounded-lg shadow p-2">
+        <p className="text-xs font-semibold mb-1">Plaintes par priorité</p>
+        <ComplaintPriorityBarChart />
+      </div>
+    </div>
+
+    <div className="bg-white rounded-lg shadow p-2">
+      <p className="text-xs font-semibold mb-1">
+      Plaintes critiques récentes
+      </p>
+      <CriticalComplaints />
+    </div>
+  </div>
+)}
+
 
             {activeSection === "newplainte" && <NewPlaintesForm />}
             {activeSection === "prediction" && <Prediction />}
@@ -216,45 +226,49 @@ export default function GendarmerieHome() {
                 </div>
 
                 <div className="bg-gray-200 p-6 rounded-lg shadow border-l-4 border-blue-500">
-                  <h3 className="text-lg font-bold mb-4">Liste des plaintes</h3>
+                  <h3 className="text-lg font-bold mb-4">Liste des plaintes (2025)</h3>
                   <div className="max-h-[520px] overflow-y-auto bg-white rounded">
-                    <table className="w-full text-sm">
-                      <thead className="sticky top-0 bg-white z-10">
-                        <tr className="text-left text-gray-600 border-b">
-                          <th className="py-2 px-3">ID</th>
-                          <th className="px-3">Description</th>
-                          <th className="px-3">Statut</th>
-                          <th className="px-3">Priorité</th>
-                          <th className="px-3">Catégorie</th>
-                          <th className="px-3">Région</th>
-                          <th className="px-3">Urgence</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {filteredComplaints.map((complaint) => (
-                          <tr
-                            key={complaint.id}
-                            className="hover:bg-gray-50 cursor-pointer border-b last:border-b-0"
-                            onClick={() => setSelectedComplaint(complaint)}
-                          >
-                            <td className="py-2 px-3">{complaint.id}</td>
-                            <td className="px-3">{complaint.description}</td>
-                            <td className="px-3">{complaint.statut}</td>
-                            <td className="px-3">{complaint.priorite}</td>
-                            <td className="px-3">{complaint.categorie}</td>
-                            <td className="px-3">{complaint.region}</td>
-                            <td className="px-3">{complaint.urgence}</td>
-                          </tr>
-                        ))}
-                        {filteredComplaints.length === 0 && (
-                          <tr>
-                            <td className="py-6 px-3 text-center text-gray-500" colSpan={7}>
-                              Aucun résultat pour ces filtres.
-                            </td>
-                          </tr>
-                        )}
-                      </tbody>
-                    </table>
+              
+                    <div className="w-full max-h-[300px] overflow-y-auto border rounded-lg">
+  <table className="w-full text-sm">
+    <thead className="sticky top-0 bg-white z-10 shadow-sm">
+      <tr className="text-left text-gray-600 border-b">
+        <th className="py-2 px-3">ID</th>
+        <th className="px-3">Description</th>
+        <th className="px-3">Statut</th>
+        <th className="px-3">Priorité</th>
+        <th className="px-3">Catégorie</th>
+        <th className="px-3">Région</th>
+        <th className="px-3">Urgence</th>
+      </tr>
+    </thead>
+    <tbody>
+      {filteredComplaints.map((complaint) => (
+        <tr
+          key={complaint.id}
+          className="hover:bg-gray-50 cursor-pointer border-b last:border-b-0"
+          onClick={() => setSelectedComplaint(complaint)}
+        >
+          <td className="py-2 px-3">{complaint.id}</td>
+          <td className="px-3">{complaint.description}</td>
+          <td className="px-3">{complaint.statut}</td>
+          <td className="px-3">{complaint.priorite}</td>
+          <td className="px-3">{complaint.categorie}</td>
+          <td className="px-3">{complaint.region}</td>
+          <td className="px-3">{complaint.urgence}</td>
+        </tr>
+      ))}
+      {filteredComplaints.length === 0 && (
+        <tr>
+          <td className="py-6 px-3 text-center text-gray-500" colSpan={7}>
+            Aucun résultat pour ces filtres.
+          </td>
+        </tr>
+      )}
+    </tbody>
+  </table>
+</div>
+
                   </div>
                 </div>
 

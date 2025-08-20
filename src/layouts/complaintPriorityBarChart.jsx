@@ -1,4 +1,5 @@
 
+
 import React from "react";
 import {
   BarChart,
@@ -8,6 +9,7 @@ import {
   Tooltip,
   ResponsiveContainer,
   Cell,
+  LabelList,
 } from "recharts";
 
 const data = [
@@ -31,21 +33,18 @@ export default function ComplaintPriorityBarChart() {
         <BarChart
           layout="vertical"
           data={data}
-          margin={{ top: 5, right: 10, left: 8, bottom: 0 }}
+          margin={{ top: 5, right: 20, left: 8, bottom: 0 }}
           barCategoryGap="20%"
         >
-          {/* Axe X masqué (valeurs) */}
           <XAxis type="number" hide />
 
-          {/* Axe Y compact (catégories) */}
           <YAxis
             type="category"
             dataKey="priority"
             tick={{ fill: "#4b5563", fontSize: 11 }}
-            width={58}
+            width={70}
           />
 
-          {/* Tooltip discret */}
           <Tooltip
             wrapperClassName="rounded-md shadow text-xs"
             contentStyle={{ backgroundColor: "#f9fafb", border: "none", fontSize: 12 }}
@@ -53,19 +52,24 @@ export default function ComplaintPriorityBarChart() {
             labelStyle={{ color: "#4b5563", fontWeight: 600 }}
           />
 
-          {/* Barres compactes */}
           <Bar
             dataKey="value"
             radius={[6, 6, 6, 6]}
             barSize={16}
-            isAnimationActive={false} // comme le donut, pas d'anim pour un rendu net
+            isAnimationActive={false}
           >
             {data.map((entry, idx) => (
               <Cell key={`cell-${idx}`} fill={PRIORITY_COLORS[entry.priority]} />
             ))}
+            <LabelList
+              dataKey="value"
+              position="right"
+              style={{ fill: "#374151", fontSize: 11, fontWeight: 600 }}
+            />
           </Bar>
         </BarChart>
       </ResponsiveContainer>
     </div>
   );
 }
+

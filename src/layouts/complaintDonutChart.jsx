@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useRef, useState } from "react";
 import {
   PieChart,
@@ -18,11 +20,9 @@ const data = [
 
 const COLORS = ["#6B150F", "#99D0BE", "#1E2454", "#26509E", "#706969ff"];
 
-/** Label compact: à l’extérieur, seulement si > 8% */
-const renderCompactLabel = ({ cx, cy, midAngle, outerRadius, percent, index }) => {
-  if (percent < 0.08) return null;
+const renderPercentOutside = ({ cx, cy, midAngle, outerRadius, percent }) => {
   const RADIAN = Math.PI / 180;
-  const r = (outerRadius || 0) + 8;
+  const r = (outerRadius || 0) + 14; 
   const x = cx + r * Math.cos(-midAngle * RADIAN);
   const y = cy + r * Math.sin(-midAngle * RADIAN);
 
@@ -30,7 +30,7 @@ const renderCompactLabel = ({ cx, cy, midAngle, outerRadius, percent, index }) =
     <text
       x={x}
       y={y}
-      fill={COLORS[index % COLORS.length]}
+      fill="#111827"
       textAnchor={x > cx ? "start" : "end"}
       dominantBaseline="central"
       fontSize={11}
@@ -41,7 +41,6 @@ const renderCompactLabel = ({ cx, cy, midAngle, outerRadius, percent, index }) =
   );
 };
 
-/** Légende custom pour contrôler la taille et le wrap */
 function CompactLegend({ payload, fontSize = 12, iconSize = 8 }) {
   if (!payload) return null;
   return (
@@ -78,7 +77,6 @@ export default function ComplaintDonutChart() {
   const wrapRef = useRef(null);
   const [w, setW] = useState(0);
 
-  // Observe la largeur du conteneur pour adapter labels + légende
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
@@ -90,15 +88,11 @@ export default function ComplaintDonutChart() {
     return () => ro.disconnect();
   }, []);
 
-  const hideLabels = w && w < 320;         // masque labels sur petits conteneurs
-  const legendFont = w < 280 ? 11 : 12;    // légende plus petite si étroit
+  const legendFont = w < 280 ? 11 : 12;
   const legendIcon = w < 280 ? 7 : 8;
 
   return (
-    <div
-      ref={wrapRef}
-      className="w-full h-[160px] sm:h-[190px] md:h-[200px]"
-    >
+    <div ref={wrapRef} className="w-full h-[200px] sm:h-[220px] md:h-[240px]">
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
@@ -107,8 +101,7 @@ export default function ComplaintDonutChart() {
             innerRadius="50%"
             outerRadius="72%"
             paddingAngle={2}
-            label={hideLabels ? false : renderCompactLabel}
-            labelLine={false}
+            label={renderPercentOutside} 
             isAnimationActive={false}
           >
             {data.map((entry, i) => (
@@ -121,7 +114,6 @@ export default function ComplaintDonutChart() {
             contentStyle={{ fontSize: 12, padding: "6px 8px" }}
           />
 
-          {/* Légende responsive & compacte (remplace la Legend par défaut) */}
           <Legend
             verticalAlign="bottom"
             align="center"

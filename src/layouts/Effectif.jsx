@@ -23,15 +23,12 @@ export default function Effectifpred() {
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-      {/* Grille responsive : 1 col (mobile) -> 3 cols (lg) */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Formulaire : span 2 colonnes en lg, 1 col sinon */}
         <div className="lg:col-span-2 bg-gray-200 border-l-4 border-blue-500 rounded-xl shadow-lg p-5 sm:p-6 space-y-6">
           <h1 className="text-xl sm:text-2xl font-semibold text-gray-800 text-center">
-            Prédiction des Effectifs
+          Scénario déploiement forces de l'ordre
           </h1>
 
-          {/* Localisation & Type */}
           <section>
             <h2 className="text-base sm:text-lg font-semibold mb-3 text-gray-700">
               Localisation et Type d'Événement
@@ -83,7 +80,6 @@ export default function Effectifpred() {
             </div>
           </section>
 
-          {/* Risque & Affluence */}
           <section>
             <h2 className="text-base sm:text-lg font-semibold mb-3 text-gray-700">
               Évaluation des Risques et Affluence
@@ -139,7 +135,6 @@ export default function Effectifpred() {
             </div>
           </section>
 
-          {/* Planification */}
           <section>
             <h2 className="text-base sm:text-lg font-semibold mb-3 text-gray-700">
               Planification
@@ -155,7 +150,6 @@ export default function Effectifpred() {
             />
           </section>
 
-          {/* Actions */}
           <div className="flex justify-end gap-6 pt-2">
             <button
               type="button"
@@ -174,7 +168,6 @@ export default function Effectifpred() {
           </div>
         </div>
 
-        {/* Panneau Résultat : 1 colonne en lg, pleine largeur sinon */}
         <div className="bg-[#1e2454] text-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-center">
           <h2 className="text-lg sm:text-xl font-bold mb-4 text-center">
             Résultat de la Prédiction

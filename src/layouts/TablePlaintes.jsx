@@ -22,7 +22,6 @@ const data = [
 const minValue = Math.min(...data.map((d) => d.value));
 const maxValue = Math.max(...data.map((d) => d.value));
 
-// 🎯 Même échelle que la carte
 const colorScale = scaleLinear()
   .domain([minValue, maxValue])
   .range(["#fee5d9", "#a50f15"]);
@@ -62,7 +61,7 @@ const TablePlaintes = () => (
                           className="h-3 rounded-full"
                           style={{
                             width: `${percent}%`,
-                            backgroundColor: colorScale(reg.value), // 💡 même couleur que sur la carte
+                            backgroundColor: colorScale(reg.value), 
                           }}
                         ></div>
                       </div>
