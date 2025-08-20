@@ -1,8 +1,8 @@
 
 import React, { useMemo, useState } from "react";
-import ComplaintDonutChart from "./ComplaintDonutChart";
-import ComplaintPriorityBarChart from "./ComplaintPriorityBarChart";
-import GendarmerieNavBar from "./GendarmerieNavBar";
+import ComplaintDonutChart from "./complaintDonutChart";
+import ComplaintPriorityBarChart from "./complaintPriorityBarChart";
+import GendarmerieNavBar from "./gendarmerieNavBar";
 import { faker } from "@faker-js/faker";
 import CarteChaleur from "./CarteChaleur";
 import NewPlaintesForm from "./NewPlaintesForm";
