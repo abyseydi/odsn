@@ -7,6 +7,8 @@ import GendarmerieAuth from "./layouts/gendarmerieAuth";
 import SafetyOrderHome from "./layouts/safetyOrderHome";
 import EducationHome from "./layouts/educationHome";
 import Catalogue from "./layouts/Catalogue";
+import PublicPolicyHome from "./layouts/PublicPolicyHome";
+
 
 
 
@@ -20,6 +22,7 @@ function App() {
       <Route path="/GendarmerieHome" element={<GendarmerieHome />} />
       <Route path="/EducationHome" element={<EducationHome />} />
       <Route path="/Catalogue" element={<Catalogue />} />
+      <Route path="/PublicPolicyHome" element={<PublicPolicyHome />} />
 
     </Routes>
   );

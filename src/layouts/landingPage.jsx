@@ -20,7 +20,7 @@ export default function LandingPage() {
             { title: "Santé & Protection sociale", img: "/img/sante.png", link: "" },
       { title: "Éducation & Formation", img: "/img/education.png", link: "educationHome" },
 
-      { title: "Politique publique", img: "/img/politique_publique.png", link: "/ANSDHome" },
+      { title: "Politique publique", img: "/img/politique_publique.png", link: "/PublicPolicyHome" },
       { title: "Sûreté & ordre", img: "/img/fds_icon.png", link: "/safetyOrderHome" },
       { title: "Économie, Finances & Budget", img: "/img/financement.png", link: "" },
       { title: "Énergie & Mines", img: "/img/energie.png", link: "" },
