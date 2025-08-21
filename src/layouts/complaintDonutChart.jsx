@@ -1,223 +1,127 @@
-// import React from "react";
-// import {
-//   PieChart,
-//   Pie,
-//   Cell,
-//   Tooltip,
-//   Legend,
-//   ResponsiveContainer
-// } from "recharts";
-
-// // Données des catégories de plaintes (valeurs fictives à ajuster)
-// const data = [
-//   { name: "Escroquerie et fraude", value: 320 },
-//   { name: "Disparition", value: 150 },
-//   { name: "Autre infraction", value: 100 },
-//   { name: "Accident", value: 80 },
-//   { name: "Vol et cambriolage", value: 210 },
-//   { name: "Agression et violence", value: 130 },
-//   { name: "Trouble à l'ordre public", value: 90 }
-// ];
-
-// // Couleurs (autant que les catégories)
-// const COLORS = [
-//   "#8884d8",
-//   "#82ca9d",
-//   "#ffc658",
-//   "#ff8042",
-//   "#00C49F",
-//   "#FFBB28",
-//   "#0088FE"
-// ];
-
-// export default function ComplaintDonutChart() {
-//   return (
-//     <div className="bg-white rounded-lg shadow-md p-6">
-//       <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
-//         Répartition des catégories de plaintes
-//       </h3>
-//       <div className="w-full h-[300px]">
-//         <ResponsiveContainer>
-//           <PieChart>
-//             <Pie
-//               data={data}
-//               innerRadius={80}
-//               outerRadius={120}
-//               paddingAngle={3}
-//               dataKey="value"
-//             >
-//               {data.map((entry, index) => (
-//                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-//               ))}
-//             </Pie>
-//             <Tooltip />
-//             <Legend layout="vertical" align="right" verticalAlign="middle" />
-//           </PieChart>
-//         </ResponsiveContainer>
-//       </div>
-//     </div>
-//   );
-// }
-
-// import React from "react";
-// import {
-//   PieChart,
-//   Pie,
-//   Cell,
-//   Tooltip,
-//   Legend,
-//   ResponsiveContainer
-// } from "recharts";
-
-// const data = [
-//   { name: "Escroquerie et fraude", value: 320 },
-//   { name: "Autre infraction", value: 100 },
-//   { name: "Vol et cambriolage", value: 210 },
-//   { name: "Agression et violence", value: 130 },
-//   { name: "Trouble à l'ordre public", value: 90 }
-// ];
-
-// const COLORS = [
-//   "#6b150f",
-//   "#99d0be",
-//   "#e1e1e1",
-//   "#26509e",
-//   "#303131",
-//   "#26509e",
-//   "#e74242"
-// ];
-
-// // Label personnalisé : % arrondi
-// const renderCustomizedLabel = ({ percent }) =>
-//   `${(percent * 100).toFixed(0)}%`;
-
-// export default function ComplaintDonutChart() {
-//   return (
-//     <div className="bg-white rounded-lg shadow-md p-6">
-//       <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
-//         Répartition des catégories de plaintes
-//       </h3>
-//       <div className="w-full h-[300px] ">
-//         <ResponsiveContainer>
-//           <PieChart align="right">
-//             <Pie
-              
-//               data={data}
-//               innerRadius={80}
-//               outerRadius={120}
-//               paddingAngle={3}
-//               dataKey="value"
-//               label={renderCustomizedLabel}
-//               labelLine={false}
-//             >
-//               {data.map((entry, index) => (
-//                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-//               ))}
-//             </Pie>
-//             <Tooltip />
-//             <Legend layout="vertical" align="right" verticalAlign="top" />
-//           </PieChart>
-//         </ResponsiveContainer>
-//       </div>
-//     </div>
-//   );
-// }
 
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   PieChart,
   Pie,
   Cell,
   Tooltip,
   Legend,
-  ResponsiveContainer
+  ResponsiveContainer,
 } from "recharts";
 
 const data = [
   { name: "Fraude et corruption", value: 3044 },
-  { name: "Autre infraction", value:  1274},
+  { name: "Autre infraction", value: 1274 },
   { name: "Vol et cambriolage", value: 3997 },
   { name: "Agression et violence", value: 155 },
-  { name: "Cyber", value: 451 }
+  { name: "Cyber", value: 451 },
 ];
 
-const COLORS = [
-  "#6B150F",
-  "#99D0BE",
-  "#1E2454",
-  "#26509E",
-  "#706969ff"
-];
+const COLORS = ["#6B150F", "#99D0BE", "#1E2454", "#26509E", "#706969ff"];
 
-// Label personnalisé : placé à l’extérieur
-const renderCustomizedLabel = ({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  percent,
-  index
-}) => {
+const renderPercentOutside = ({ cx, cy, midAngle, outerRadius, percent }) => {
   const RADIAN = Math.PI / 180;
-  const radius = outerRadius + 10;
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-  // Ne pas afficher les très petites parts (ex : < 3%)
-  if (percent < 0.03) return null;
+  const r = (outerRadius || 0) + 14; 
+  const x = cx + r * Math.cos(-midAngle * RADIAN);
+  const y = cy + r * Math.sin(-midAngle * RADIAN);
 
   return (
     <text
       x={x}
       y={y}
-      fill={COLORS[index % COLORS.length]}
+      fill="#111827"
       textAnchor={x > cx ? "start" : "end"}
       dominantBaseline="central"
-      fontSize={14}
-      fontWeight="bold"
+      fontSize={11}
+      fontWeight={600}
     >
       {`${(percent * 100).toFixed(0)}%`}
     </text>
   );
 };
 
-export default function ComplaintDonutChart() {
+function CompactLegend({ payload, fontSize = 12, iconSize = 8 }) {
+  if (!payload) return null;
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
-        Répartition des catégories de plaintes
-      </h3>
-      <div className="w-[475px] h-[300px]">
-        <ResponsiveContainer>
-          <PieChart>
-            <Pie
-              data={data}
-              innerRadius={80}
-              outerRadius={120}
-              paddingAngle={3}
-              dataKey="value"
-              label={renderCustomizedLabel}
-              labelLine={false}
-            >
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend
-              layout="vertical"
-              align="right"
-              verticalAlign="top"
-              iconType="circle"
-            />
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        gap: "8px 14px",
+        lineHeight: "14px",
+        fontSize,
+        marginTop: 4,
+      }}
+    >
+      {payload.map((entry, i) => (
+        <div key={`legend-${i}`} style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+          <span
+            style={{
+              width: iconSize,
+              height: iconSize,
+              borderRadius: "50%",
+              backgroundColor: entry.color,
+              display: "inline-block",
+            }}
+          />
+          <span>{entry.value}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function ComplaintDonutChart() {
+  const wrapRef = useRef(null);
+  const [w, setW] = useState(0);
+
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver((entries) => {
+      const rect = entries[0].contentRect;
+      setW(rect.width);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  const legendFont = w < 280 ? 11 : 12;
+  const legendIcon = w < 280 ? 7 : 8;
+
+  return (
+    <div ref={wrapRef} className="w-full h-[200px] sm:h-[220px] md:h-[240px]">
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Pie
+            data={data}
+            dataKey="value"
+            innerRadius="50%"
+            outerRadius="72%"
+            paddingAngle={2}
+            labelLine={false}
+            label={renderPercentOutside} 
+            isAnimationActive={false}
+          >
+            {data.map((entry, i) => (
+              <Cell key={`cell-${i}`} fill={COLORS[i % COLORS.length]} />
+            ))}
+          </Pie>
+
+          <Tooltip
+            formatter={(value, name) => [value, name]}
+            contentStyle={{ fontSize: 12, padding: "6px 8px" }}
+          />
+
+          <Legend
+            verticalAlign="bottom"
+            align="center"
+            content={<CompactLegend fontSize={legendFont} iconSize={legendIcon} />}
+          />
+        </PieChart>
+      </ResponsiveContainer>
     </div>
   );
 }

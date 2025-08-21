@@ -1,0 +1,39 @@
+# Dockerfile pour le backend Python (appserver.py)
+FROM python:3.11-alpine AS backend-stage
+
+# Définir le répertoire de travail
+WORKDIR /app
+
+# Variables d'environnement pour Python
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Installer les dépendances système nécessaires
+RUN apk add --no-cache \
+    gcc \
+    musl-dev \
+    linux-headers \
+    postgresql-dev \
+    libffi-dev
+
+# Copier les fichiers de dépendances
+COPY requirements.txt ./
+
+# Installer les dépendances Python
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copier tout le code source
+COPY . .
+
+# Créer un utilisateur non-root pour la sécurité
+RUN adduser -D -s /bin/sh appuser && \
+    chown -R appuser:appuser /app
+USER appuser
+
+# Exposer le port de l'application
+EXPOSE 8080
+
+
+# Commande par défaut pour lancer l'application
+CMD ["python", "appserver.py"]
