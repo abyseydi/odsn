@@ -64,7 +64,7 @@ const NavLinks = ({ onClick }) => {
         className={`${base} ${text} ${afterBar}`}
         activeClass={activeClass}
       >
-        Use Cases IA
+CATALOGUE
       </ScrollLink>
 
       <ScrollLink
@@ -327,57 +327,7 @@ const NavLinks = ({ onClick }) => {
         </div>
       </section>
 
-      {/* ===== PRODUITS ===== */}
-      {/* <section id="section-produits" className="bg-white px-4 sm:px-6 lg:px-10 py-12 md:py-16">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#1e1446] mb-8 sm:mb-12">
-          Nos réalisations
-        </h2>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          {[
-            {
-              title: "Cartographie du parc locatif sénégalais",
-              image: "/img/senegal.png",
-              link: "/tableaux/cnsa-depenses",
-            },
-            {
-              title: "Suivi des recettes de l’État",
-              image: "/img/dgid.png",
-              link: "https://bi-srmt-srmt.apps.origins.heritage.africa/Reports",
-            },
-            {
-              title: "Fond souverain & décisions",
-              image: "/img/fonsis.png",
-              link: "/tableaux/habitats-inclusifs",
-            },
-          ].map((item, i) => (
-            <div key={i} className="bg-white text-[#1e1446] rounded-2xl shadow-lg flex flex-col min-h-[420px]">
-              <div>
-                <h3 className="text-lg md:text-xl font-bold px-6 py-4">{item.title}</h3>
-                <img src={item.image} alt={item.title} className="w-full h-56 sm:h-64 object-cover" />
-              </div>
-              <div className="px-6 py-4 mt-auto">
-                {item.link && item.link.startsWith("/") ? (
-                  <RouterLink
-                    to={item.link}
-                    className="inline-block bg-[#1e1446] hover:bg-[#0f0a2b] text-white px-5 py-2 rounded-full transition text-sm sm:text-base"
-                  >
-                    Voir le tableau de bord
-                  </RouterLink>
-                ) : (
-                  <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-[#1e1446] hover:bg-[#0f0a2b] text-white px-5 py-2 rounded-full transition text-sm sm:text-base"
-                  >
-                    Voir le tableau de bord
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section> */}
+
 {/* ===== PRODUITS ===== */}
 <section id="section-produits" className="bg-[#f9f9fb] px-6 py-16">
   <h2 className="text-3xl md:text-4xl font-extrabold text-center text-[#1e1446] mb-10">
@@ -436,63 +386,113 @@ const NavLinks = ({ onClick }) => {
     ))}
   </div>
 </section>
-
-
-{/* <section id="section-produits" className="bg-[#f9f9fb] px-6 py-16">
+{/* ===== PUBLICATIONS ===== */}
+<section id="section-publications" className="bg-[#f9f9fb] px-6 py-16">
   <h2 className="text-3xl md:text-4xl font-extrabold text-center text-[#1e1446] mb-10">
-  Nos Réalisations
+    Nos Publications
   </h2>
 
   <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
     {[
       {
-        title: "Cartographie du parc locatif sénégalais",
-        desc: "Analyse des logements non fiscalisés sur Airbnb & Booking.",
-        image: "/img/senegal.png",
-        link: "/tableaux/cnsa-depenses",
+        title: "L’IA au service de la fiscalité",
+        desc: "Comment l’intelligence artificielle transforme la collecte et l’analyse des données fiscales.",
+        image: "/img/iaia.jpeg",
+        link: "#",
       },
       {
-        title: "Suivi des recettes de l’État",
-        desc: "Visualisation en temps réel des recettes fiscales.",
-        image: "/img/dgid.png",
-        link: "https://bi-srmt-srmt.apps.origins.heritage.africa/Reports",
+        title: "Big Data & Énergie",
+        desc: "Optimiser la production et la distribution énergétique grâce à la data science.",
+        image: "/img/iaia.jpeg",
+        link: "#",
       },
       {
-        title: "Fond souverain & décisions",
-        desc: "Outils de pilotage stratégique pour le FONSIS.",
-        image: "/img/fonsis.png",
-        link: "/tableaux/habitats-inclusifs",
+        title: "Open Data pour le développement",
+        desc: "Pourquoi l’ouverture des données est un levier stratégique pour les gouvernements africains.",
+        image: "/img/iaia.jpeg",
+        link: "#",
       },
-    ].map((item, i) => (
+    ].map((pub, i) => (
       <div
         key={i}
-        className="relative group rounded-2xl overflow-hidden shadow-xl cursor-pointer"
+        className="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-[1.02] flex flex-col"
       >
+        {/* Image */}
         <img
-          src={item.image}
-          alt={item.title}
-          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+          src={pub.image}
+          alt={pub.title}
+          className="w-full h-48 object-cover"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-6">
-          <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{item.title}</h3>
-          <p className="text-gray-200 text-sm mb-3">{item.desc}</p>
+        {/* Contenu */}
+        <div className="p-6 flex flex-col flex-1">
+          <h3 className="text-lg sm:text-xl font-bold text-[#1e1446] mb-3">
+            {pub.title}
+          </h3>
+          <p className="text-sm text-gray-600 flex-1">{pub.desc}</p>
+
           <a
-            href={item.link}
+            href={pub.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-fuchsia-600 hover:bg-fuchsia-700 text-white px-4 py-2 rounded-full text-sm"
+            className="mt-4 inline-block bg-[#26509e] hover:bg-[#1e1446] text-white px-4 py-2 rounded-full text-sm font-semibold text-center"
           >
-            Voir →
+            Lire →
           </a>
         </div>
       </div>
     ))}
   </div>
-</section> */}
+</section>
 
       {/* ===== TECHNOLOGIES ===== */}
-      <section className="bg-white py-10 sm:py-12 text-center">
+  {/* <section className="relative py-16 bg-gradient-to-br from-[#94cbbd]  to-[#26509e] text-center overflow-hidden"> */}
+<section className="relative py-12 bg-gradient-to-br from-[#ffffff] to-[#26509e] text-center overflow-hidden">
+  {/* Décor avec cercles flous */}
+  <div className="absolute inset-0 -z-10">
+    <div className="absolute w-60 h-60 bg-fuchsia-500/20 rounded-full blur-3xl top-10 left-10" />
+    <div className="absolute w-72 h-72 bg-blue-500/20 rounded-full blur-3xl bottom-0 right-10" />
+  </div>
+
+  <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white mb-10">
+    Les technologies les plus innovantes au cœur de notre expertise
+  </h2>
+
+  <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 px-4">
+    {[
+      { name: "Red Hat", logo: "redhat" },
+      { name: "PyTorch", logo: "pytorch" },
+      { name: "TensorFlow", logo: "tensorflow" },
+      { name: "Scikit-learn", logo: "scikit-learn" },
+      { name: "Kubernetes", logo: "kubernetes" },
+    ].map((tech, i) => (
+      <div
+        key={i}
+        className="relative group bg-white/10 backdrop-blur-md rounded-xl shadow-md border border-white/20 overflow-hidden transition-transform duration-500 hover:scale-105 hover:shadow-fuchsia-400/40"
+      >
+        {/* Image réduit */}
+        <img
+          src={`img/${tech.logo}.png`}
+          alt={tech.name}
+          className="w-full h-28 sm:h-36 object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+
+        {/* Bandeau nom en bas plus compact */}
+        <div className="absolute bottom-0 left-0 right-0 bg-[#1e1446]/70 text-white py-1 text-xs sm:text-sm font-semibold text-center">
+          {tech.name}
+        </div>
+
+        {/* Glow effet au hover */}
+        <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-fuchsia-500/20 to-blue-500/20 blur-xl -z-10" />
+      </div>
+    ))}
+  </div>
+</section>
+
+
+
+
+      {/* <section className="bg-white py-10 sm:py-12 text-center">
         <h2 className="text-xl sm:text-2xl md:text-3xl text-[#1e1446] mb-6">
           Les technologies les plus innovantes au service de notre expertise.
         </h2>
@@ -506,7 +506,7 @@ const NavLinks = ({ onClick }) => {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
   
    
       {/* ===== FOOTER ===== */}
