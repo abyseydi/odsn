@@ -68,7 +68,7 @@ CATALOGUE
       </ScrollLink>
 
       <ScrollLink
-        to="section-produits"
+        to="section-publications"
         smooth
         duration={700}
         offset={-80}
@@ -410,6 +410,7 @@ CATALOGUE
         title: "Open Data pour le développement",
         desc: "Pourquoi l’ouverture des données est un levier stratégique pour les gouvernements africains.",
         image: "/img/iaia.jpeg",
+
         link: "#",
       },
     ].map((pub, i) => (
