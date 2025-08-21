@@ -26,28 +26,7 @@ export default function LandingPage() {
     ],
   };
 
-  // const NavLinks = ({ onClick }) => (
-  //   <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8 text-[#1C2452] font-semibold">
-  //     <ScrollLink to="section-services" smooth duration={700} offset={-80} className="cursor-pointer hover:text-[#26509e]" onClick={onClick}>
-  //       Nos expertises
-  //     </ScrollLink>
-  //     <ScrollLink to="section-cas-usage" smooth duration={700} offset={-80} className="cursor-pointer hover:text-[#26509e]" onClick={onClick}>
-  //     Catalogue
-  //     </ScrollLink>
-  //     <ScrollLink to="section-produits" smooth duration={700} offset={-80} className="cursor-pointer hover:text-[#26509e]" onClick={onClick}>
-  //       Publications
-  //     </ScrollLink>
-  //     <a
-  //       href="https://www.accel-tech.net/"
-  //       target="_blank"
-  //       rel="noopener noreferrer"
-  //       className="cursor-pointer hover:text-[#26509e]"
-  //       onClick={onClick}
-  //     >
-  //       Découvrez ACCEL Tech
-  //     </a>
-  //   </div>
-  // );
+
 const NavLinks = ({ onClick }) => {
   const base =
     "relative group inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-full text-sm md:text-[15px] font-semibold uppercase tracking-wide transition";
@@ -290,36 +269,51 @@ const NavLinks = ({ onClick }) => {
           </div>
 
           {/* Cartes */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {tabs[activeTab].map((item, idx) =>
-              item.link ? (
-                <RouterLink
-                  to={item.link}
-                  key={idx}
-                  className="relative rounded-3xl bg-white text-[#26509e] font-semibold px-6 py-12 min-h-[200px] shadow-md transition-all duration-300 hover:scale-[1.02] hover:text-white hover:bg-gradient-to-br hover:from-[#26509e] hover:to-[#1e1446] flex items-center justify-center text-center"
-                >
-                  <div className="w-full">
-                    <div className="flex justify-center mb-4">
-                      <img src={item.img} alt={item.title} className="h-14 w-16 sm:h-16 sm:w-20 object-contain" />
-                    </div>
-                    <p className="text-lg sm:text-xl md:text-2xl font-bold leading-snug">{item.title}</p>
-                  </div>
-                </RouterLink>
-              ) : (
-                <div
-                  key={idx}
-                  className="relative rounded-3xl bg-white text-[#26509e] font-semibold px-6 py-12 min-h-[200px] shadow-md flex items-center justify-center text-center"
-                >
-                  <div className="w-full">
-                    <div className="flex justify-center mb-4">
-                      <img src={item.img} alt={item.title} className="h-14 w-16 sm:h-16 sm:w-20 object-contain" />
-                    </div>
-                    <p className="text-lg sm:text-xl md:text-2xl font-bold leading-snug">{item.title}</p>
-                  </div>
-                </div>
-              )
-            )}
+ 
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+  {tabs[activeTab].map((item, idx) =>
+    item.link ? (
+      <RouterLink
+        to={item.link}
+        key={idx}
+        className="relative rounded-3xl bg-white text-[#26509e] font-semibold px-6 py-12 min-h-[200px] shadow-md transition-all duration-300 hover:scale-[1.02] hover:text-white hover:bg-gradient-to-br hover:from-[#26509e] hover:to-[#1e1446] flex items-center justify-center text-center"
+      >
+        {/* Badge CONFIDENTIEL */}
+        {(item.title === "Sûreté & ordre" || item.title === "Économie") && (
+          <span className="absolute top-3 right-3 bg-red-600 text-white text-xs sm:text-sm font-bold px-2 py-1 rounded-full shadow">
+            Confidentiel
+          </span>
+        )}
+
+        <div className="w-full">
+          <div className="flex justify-center mb-4">
+            <img src={item.img} alt={item.title} className="h-14 w-16 sm:h-16 sm:w-20 object-contain" />
           </div>
+          <p className="text-lg sm:text-xl md:text-2xl font-bold leading-snug">{item.title}</p>
+        </div>
+      </RouterLink>
+    ) : (
+      <div
+        key={idx}
+        className="relative rounded-3xl bg-white text-[#26509e] font-semibold px-6 py-12 min-h-[200px] shadow-md flex items-center justify-center text-center"
+      >
+        {/* Badge CONFIDENTIEL */}
+        {(item.title === "Sûreté & ordre" || item.title === "Économie, Finances & Budget") && (
+          <span className="absolute top-3 right-3 bg-red-600 text-white text-xs sm:text-sm font-bold px-2 py-1 rounded-full shadow">
+            Confidentiel
+          </span>
+        )}
+
+        <div className="w-full">
+          <div className="flex justify-center mb-4">
+            <img src={item.img} alt={item.title} className="h-14 w-16 sm:h-16 sm:w-20 object-contain" />
+          </div>
+          <p className="text-lg sm:text-xl md:text-2xl font-bold leading-snug">{item.title}</p>
+        </div>
+      </div>
+    )
+  )}
+</div>
 
           <div className="text-center mt-8 sm:mt-10">
             <RouterLink
