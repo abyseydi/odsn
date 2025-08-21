@@ -379,89 +379,117 @@ const NavLinks = ({ onClick }) => {
         </div>
       </section> */}
 {/* ===== PRODUITS ===== */}
-<section id="section-produits" className="bg-gradient-to-b from-white to-gray-50 px-4 sm:px-6 lg:px-10 py-12 md:py-16">
-  <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center text-[#1e1446] mb-6 sm:mb-8">
-  Nos Réalisations Phare
+<section id="section-produits" className="bg-[#f9f9fb] px-6 py-16">
+  <h2 className="text-3xl md:text-4xl font-extrabold text-center text-[#1e1446] mb-10">
+    Nos Réalisations
   </h2>
-  <p className="text-center text-gray-900 max-w-3xl mx-auto mb-10 sm:mb-12">
-    Découvrez comment nos solutions <span className="font-semibold text-[#26509e]">Data & IA</span> transforment les
-    secteurs stratégiques et apportent un impact réel.
-  </p>
 
-  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
     {[
       {
         title: "Cartographie du parc locatif sénégalais",
-        desc: "Identification des biens immobiliers en location non contrôlés fiscalement.",
+        desc: "Analyse des logements non fiscalisés sur Airbnb & Booking.",
         image: "/img/senegal.png",
         link: "/tableaux/cnsa-depenses",
-        tag: "Exclusif",
       },
       {
         title: "Suivi des recettes de l’État",
-        desc: "Tableaux dynamiques pour la DGID afin d’analyser les recettes en temps réel.",
+        desc: "Visualisation en temps réel des recettes fiscales.",
         image: "/img/dgid.png",
         link: "https://bi-srmt-srmt.apps.origins.heritage.africa/Reports",
-        tag: "Impact national",
       },
       {
         title: "Fond souverain & décisions",
-        desc: "Analyse et simulation pour une meilleure gouvernance financière.",
+        desc: "Outils de pilotage stratégique pour le FONSIS.",
         image: "/img/fonsis.png",
         link: "/tableaux/habitats-inclusifs",
-        tag: "Nouveau",
       },
     ].map((item, i) => (
       <div
         key={i}
-        className="relative group bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col min-h-[420px] transition transform hover:scale-[1.02] hover:shadow-2xl"
+        className="relative group rounded-2xl overflow-hidden shadow-xl cursor-pointer"
       >
-        {/* TAG */}
-        {item.tag && (
-          <span className="absolute top-4 left-4 bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
-            {item.tag}
-          </span>
-        )}
-
         {/* Image */}
-        <div className="relative h-56 sm:h-64 overflow-hidden">
-          <img
-            src={item.image}
-            alt={item.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition" />
-        </div>
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+        />
 
-        {/* Contenu */}
-        <div className="flex flex-col flex-1 p-6">
-          <h3 className="text-lg md:text-xl font-bold text-[#1e1446] mb-2">{item.title}</h3>
-          <p className="text-gray-600 text-sm sm:text-base flex-1">{item.desc}</p>
+        {/* Couche bleue transparente */}
+        <div className="absolute inset-0 bg-[#1e1446]/80" />
 
-          <div className="mt-4">
-            {item.link && item.link.startsWith("/") ? (
-              <RouterLink
-                to={item.link}
-                className="inline-block bg-[#1e1446] hover:bg-[#0f0a2b] text-white px-5 py-2 rounded-full transition text-sm sm:text-base"
-              >
-                Voir le tableau de bord →
-              </RouterLink>
-            ) : (
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-[#1e1446] hover:bg-[#0f0a2b] text-white px-5 py-2 rounded-full transition text-sm sm:text-base"
-              >
-                Voir le tableau de bord →
-              </a>
-            )}
-          </div>
+        {/* Contenu (toujours visible) */}
+        <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+          <h3 className="text-lg sm:text-xl font-bold mb-2">{item.title}</h3>
+          <p className="text-gray-100 text-sm mb-3">{item.desc}</p>
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-fuchsia-600 hover:bg-fuchsia-700 text-white px-4 py-2 rounded-full text-sm"
+          >
+            Voir →
+          </a>
         </div>
       </div>
     ))}
   </div>
 </section>
+
+
+{/* <section id="section-produits" className="bg-[#f9f9fb] px-6 py-16">
+  <h2 className="text-3xl md:text-4xl font-extrabold text-center text-[#1e1446] mb-10">
+  Nos Réalisations
+  </h2>
+
+  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {[
+      {
+        title: "Cartographie du parc locatif sénégalais",
+        desc: "Analyse des logements non fiscalisés sur Airbnb & Booking.",
+        image: "/img/senegal.png",
+        link: "/tableaux/cnsa-depenses",
+      },
+      {
+        title: "Suivi des recettes de l’État",
+        desc: "Visualisation en temps réel des recettes fiscales.",
+        image: "/img/dgid.png",
+        link: "https://bi-srmt-srmt.apps.origins.heritage.africa/Reports",
+      },
+      {
+        title: "Fond souverain & décisions",
+        desc: "Outils de pilotage stratégique pour le FONSIS.",
+        image: "/img/fonsis.png",
+        link: "/tableaux/habitats-inclusifs",
+      },
+    ].map((item, i) => (
+      <div
+        key={i}
+        className="relative group rounded-2xl overflow-hidden shadow-xl cursor-pointer"
+      >
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-end p-6">
+          <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{item.title}</h3>
+          <p className="text-gray-200 text-sm mb-3">{item.desc}</p>
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-fuchsia-600 hover:bg-fuchsia-700 text-white px-4 py-2 rounded-full text-sm"
+          >
+            Voir →
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+</section> */}
 
       {/* ===== TECHNOLOGIES ===== */}
       <section className="bg-white py-10 sm:py-12 text-center">
