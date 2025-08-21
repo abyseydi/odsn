@@ -17,10 +17,11 @@ export default function LandingPage() {
       { title: "BTP et Génie Civil", img: "/img/btp.png", link: "" },
     ],
     public: [
+            { title: "Santé & Protection sociale", img: "/img/sante.png", link: "" },
+      { title: "Éducation & Formation", img: "/img/education.png", link: "" },
+
       { title: "Politique publique", img: "/img/politique_publique.png", link: "/ANSDHome" },
       { title: "Sûreté & ordre", img: "/img/fds_icon.png", link: "/safetyOrderHome" },
-      { title: "Éducation & Formation", img: "/img/education.png", link: "" },
-      { title: "Santé & Protection sociale", img: "/img/sante.png", link: "" },
       { title: "Économie, Finances & Budget", img: "/img/financement.png", link: "" },
       { title: "Énergie & Mines", img: "/img/energie.png", link: "" },
     ],
@@ -327,7 +328,7 @@ const NavLinks = ({ onClick }) => {
       </section>
 
       {/* ===== PRODUITS ===== */}
-      <section id="section-produits" className="bg-white px-4 sm:px-6 lg:px-10 py-12 md:py-16">
+      {/* <section id="section-produits" className="bg-white px-4 sm:px-6 lg:px-10 py-12 md:py-16">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#1e1446] mb-8 sm:mb-12">
           Nos réalisations
         </h2>
@@ -376,7 +377,91 @@ const NavLinks = ({ onClick }) => {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
+{/* ===== PRODUITS ===== */}
+<section id="section-produits" className="bg-gradient-to-b from-white to-gray-50 px-4 sm:px-6 lg:px-10 py-12 md:py-16">
+  <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center text-[#1e1446] mb-6 sm:mb-8">
+  Nos Réalisations Phare
+  </h2>
+  <p className="text-center text-gray-900 max-w-3xl mx-auto mb-10 sm:mb-12">
+    Découvrez comment nos solutions <span className="font-semibold text-[#26509e]">Data & IA</span> transforment les
+    secteurs stratégiques et apportent un impact réel.
+  </p>
+
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+    {[
+      {
+        title: "Cartographie du parc locatif sénégalais",
+        desc: "Identification des biens immobiliers en location non contrôlés fiscalement.",
+        image: "/img/senegal.png",
+        link: "/tableaux/cnsa-depenses",
+        tag: "Exclusif",
+      },
+      {
+        title: "Suivi des recettes de l’État",
+        desc: "Tableaux dynamiques pour la DGID afin d’analyser les recettes en temps réel.",
+        image: "/img/dgid.png",
+        link: "https://bi-srmt-srmt.apps.origins.heritage.africa/Reports",
+        tag: "Impact national",
+      },
+      {
+        title: "Fond souverain & décisions",
+        desc: "Analyse et simulation pour une meilleure gouvernance financière.",
+        image: "/img/fonsis.png",
+        link: "/tableaux/habitats-inclusifs",
+        tag: "Nouveau",
+      },
+    ].map((item, i) => (
+      <div
+        key={i}
+        className="relative group bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col min-h-[420px] transition transform hover:scale-[1.02] hover:shadow-2xl"
+      >
+        {/* TAG */}
+        {item.tag && (
+          <span className="absolute top-4 left-4 bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+            {item.tag}
+          </span>
+        )}
+
+        {/* Image */}
+        <div className="relative h-56 sm:h-64 overflow-hidden">
+          <img
+            src={item.image}
+            alt={item.title}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition" />
+        </div>
+
+        {/* Contenu */}
+        <div className="flex flex-col flex-1 p-6">
+          <h3 className="text-lg md:text-xl font-bold text-[#1e1446] mb-2">{item.title}</h3>
+          <p className="text-gray-600 text-sm sm:text-base flex-1">{item.desc}</p>
+
+          <div className="mt-4">
+            {item.link && item.link.startsWith("/") ? (
+              <RouterLink
+                to={item.link}
+                className="inline-block bg-[#1e1446] hover:bg-[#0f0a2b] text-white px-5 py-2 rounded-full transition text-sm sm:text-base"
+              >
+                Voir le tableau de bord →
+              </RouterLink>
+            ) : (
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-[#1e1446] hover:bg-[#0f0a2b] text-white px-5 py-2 rounded-full transition text-sm sm:text-base"
+              >
+                Voir le tableau de bord →
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* ===== TECHNOLOGIES ===== */}
       <section className="bg-white py-10 sm:py-12 text-center">
