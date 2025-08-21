@@ -26,28 +26,92 @@ export default function LandingPage() {
     ],
   };
 
-  const NavLinks = ({ onClick }) => (
-    <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8 text-[#1C2452] font-semibold">
-      <ScrollLink to="section-services" smooth duration={700} offset={-80} className="cursor-pointer hover:text-[#26509e]" onClick={onClick}>
+  // const NavLinks = ({ onClick }) => (
+  //   <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8 text-[#1C2452] font-semibold">
+  //     <ScrollLink to="section-services" smooth duration={700} offset={-80} className="cursor-pointer hover:text-[#26509e]" onClick={onClick}>
+  //       Nos expertises
+  //     </ScrollLink>
+  //     <ScrollLink to="section-cas-usage" smooth duration={700} offset={-80} className="cursor-pointer hover:text-[#26509e]" onClick={onClick}>
+  //     Catalogue
+  //     </ScrollLink>
+  //     <ScrollLink to="section-produits" smooth duration={700} offset={-80} className="cursor-pointer hover:text-[#26509e]" onClick={onClick}>
+  //       Publications
+  //     </ScrollLink>
+  //     <a
+  //       href="https://www.accel-tech.net/"
+  //       target="_blank"
+  //       rel="noopener noreferrer"
+  //       className="cursor-pointer hover:text-[#26509e]"
+  //       onClick={onClick}
+  //     >
+  //       Découvrez ACCEL Tech
+  //     </a>
+  //   </div>
+  // );
+const NavLinks = ({ onClick }) => {
+  const base =
+    "relative group inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-full text-sm md:text-[15px] font-semibold uppercase tracking-wide transition";
+  const text =
+    "text-[#1C2452] hover:text-[#26509e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26509e]/50";
+  const afterBar =
+    "after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#26509e] after:transition-all after:duration-300 group-hover:after:w-3/4";
+
+  const activeClass =
+    "!text-[#26509e] after:w-3/4"; // appliqué par react-scroll quand la section est active
+
+  return (
+    <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-5">
+      <ScrollLink
+        to="section-services"
+        smooth
+        duration={700}
+        offset={-80}
+        spy
+        onClick={onClick}
+        className={`${base} ${text} ${afterBar}`}
+        activeClass={activeClass}
+      >
         Nos expertises
       </ScrollLink>
-      <ScrollLink to="section-cas-usage" smooth duration={700} offset={-80} className="cursor-pointer hover:text-[#26509e]" onClick={onClick}>
+
+      <ScrollLink
+        to="section-cas-usage"
+        smooth
+        duration={700}
+        offset={-80}
+        spy
+        onClick={onClick}
+        className={`${base} ${text} ${afterBar}`}
+        activeClass={activeClass}
+      >
         Use Cases IA
       </ScrollLink>
-      <ScrollLink to="section-produits" smooth duration={700} offset={-80} className="cursor-pointer hover:text-[#26509e]" onClick={onClick}>
+
+      <ScrollLink
+        to="section-produits"
+        smooth
+        duration={700}
+        offset={-80}
+        spy
+        onClick={onClick}
+        className={`${base} ${text} ${afterBar}`}
+        activeClass={activeClass}
+      >
         Publications
       </ScrollLink>
+
       <a
         href="https://www.accel-tech.net/"
         target="_blank"
         rel="noopener noreferrer"
-        className="cursor-pointer hover:text-[#26509e]"
         onClick={onClick}
+        className={`${base} ${text} ${afterBar}`}
       >
         Découvrez ACCEL Tech
       </a>
     </div>
   );
+};
 
   return (
     <div className="text-white font-sans scroll-smooth">
@@ -78,17 +142,14 @@ export default function LandingPage() {
 
   {/* NAVBAR */}
   <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-4 flex items-center justify-between">
-    {/* Logo */}
     <div className="flex-shrink-0">
       <img src="img/logo_accel.png" alt="Logo Accel" className="h-14 sm:h-16 w-auto" />
     </div>
 
-    {/* Liens (desktop) */}
     <div className="hidden md:flex flex-1 justify-center">
       <NavLinks />
     </div>
 
-    {/* CTA + Burger */}
     <div className="flex items-center gap-3">
       <button className="hidden sm:inline-block bg-[#1e1446] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#120b36]">
         CONTACT
