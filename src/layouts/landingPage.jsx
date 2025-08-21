@@ -18,7 +18,7 @@ export default function LandingPage() {
     ],
     public: [
             { title: "Santé & Protection sociale", img: "/img/sante.png", link: "" },
-      { title: "Éducation & Formation", img: "/img/education.png", link: "" },
+      { title: "Éducation & Formation", img: "/img/education.png", link: "educationHome" },
 
       { title: "Politique publique", img: "/img/politique_publique.png", link: "/ANSDHome" },
       { title: "Sûreté & ordre", img: "/img/fds_icon.png", link: "/safetyOrderHome" },
@@ -318,7 +318,7 @@ CATALOGUE
 
           <div className="text-center mt-8 sm:mt-10">
             <RouterLink
-              to="/toutes-les-donnees"
+              to="/catalogue"
               className="text-white underline underline-offset-4 decoration-white/60 hover:decoration-white text-sm sm:text-base"
             >
               Voir toutes nos réalisations &gt;
@@ -367,7 +367,7 @@ CATALOGUE
         />
 
         {/* Couche bleue transparente */}
-        <div className="absolute inset-0 bg-[#1e1446]/80" />
+        <div className="absolute inset-0 bg-[#1e1446]/40" />
 
         {/* Contenu (toujours visible) */}
         <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
@@ -448,14 +448,14 @@ CATALOGUE
 
       {/* ===== TECHNOLOGIES ===== */}
   {/* <section className="relative py-16 bg-gradient-to-br from-[#94cbbd]  to-[#26509e] text-center overflow-hidden"> */}
-<section className="relative py-12 bg-gradient-to-br from-[#ffffff] to-[#26509e] text-center overflow-hidden">
+<section className="relative py-12 bg-[#f9f9fb] text-center overflow-hidden">
   {/* Décor avec cercles flous */}
   <div className="absolute inset-0 -z-10">
     <div className="absolute w-60 h-60 bg-fuchsia-500/20 rounded-full blur-3xl top-10 left-10" />
     <div className="absolute w-72 h-72 bg-blue-500/20 rounded-full blur-3xl bottom-0 right-10" />
   </div>
 
-  <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white mb-10">
+  <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-black mb-10">
     Les technologies les plus innovantes au cœur de notre expertise
   </h2>
 
