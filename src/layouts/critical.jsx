@@ -74,12 +74,7 @@ const CriticalComplaints = () => {
 
   return (
     <div className="p-5">
-      <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2 text-gray-800">
-        <FaExclamationTriangle className="text-red-500 text-xl" />
-        Plaintes critiques récentes
-      </h2>
 
-      {/* Contrôles */}
       <div className="flex flex-wrap gap-6 mb-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -114,7 +109,6 @@ const CriticalComplaints = () => {
         </div>
       </div>
 
-      {/* Affichage des plaintes */}
       <div
         className={`grid ${
           modeAffichage === "simple"

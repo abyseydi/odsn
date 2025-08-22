@@ -5,7 +5,9 @@ import {
   LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer,
 } from "recharts";
 
-
+const API_BASE_URL = window.location.hostname === 'localhost' 
+  ? '${API_BASE_URL}' 
+  : 'https://odsnback-ansd-app.apps.origins.heritage.africa/api';
 
 export function ANSDHome() {
   const [activeTab, setActiveTab] = useState("tableaux");
@@ -19,7 +21,7 @@ export function ANSDHome() {
   const currentYear = new Date().getFullYear();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/regions")
+    fetch(`${API_BASE_URL}/regions`)
       .then(res => res.json())
       .then(data => setRegions(["ALL", ...data]))
       .catch(err => console.error("Erreur chargement des régions :", err));
@@ -28,8 +30,8 @@ export function ANSDHome() {
   useEffect(() => {
     const url =
       region === "ALL"
-        ? "http://localhost:5000/api/population"
-        : `http://localhost:5000/api/population?region=${encodeURIComponent(region)}`;
+        ? `${API_BASE_URL}/population`
+        : `${API_BASE_URL}/population?region=${encodeURIComponent(region)}`;
 
     fetch(url)
       .then(res => res.json())
@@ -47,8 +49,8 @@ export function ANSDHome() {
   useEffect(() => {
     const url =
       region === "ALL"
-        ? "http://localhost:5000/api/couverture"
-        : `http://localhost:5000/api/couverture?region=${encodeURIComponent(region)}`;
+        ? `${API_BASE_URL}/couverture`
+        : `${API_BASE_URL}/couverture?region=${encodeURIComponent(region)}`;
 
     fetch(url)
       .then(res => res.json())
@@ -74,7 +76,7 @@ export function ANSDHome() {
     //         ? "http://localhost:5000/api/couverture/by_region"
     //         : `http://localhost:5000/api/couverture/by_region?region=${encodeURIComponent(region)}`;
 
-    const url = "http://localhost:5000/api/couverture/by_region"
+    const url = `${API_BASE_URL}/couverture/by_region`
 
     fetch(url)
         .then(res => res.json())
@@ -111,7 +113,7 @@ export function ANSDHome() {
 
         for (const r of individualRegions) {
           try {
-            const res = await fetch(`http://localhost:5000/api/population?region=${encodeURIComponent(r)}`);
+            const res = await fetch(`${API_BASE_URL}/population?region=${encodeURIComponent(r)}`);
             const data = await res.json();
             // Trouver la population pour la dernière année dans les données de cette région
             const latestRegionalPop = data.find(d => d.annee.toString() === latestYear);
@@ -438,7 +440,7 @@ export function ANSDHome() {
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             <div className="bg-white p-4 rounded-xl shadow text-center">
-              <h4 className="text-sm font-medium text-gray-600">Année Courrante ({currentYear})</h4>
+              <h4 className="text-sm font-medium text-gray-600">Année Courante ({currentYear})</h4>
               <p className="text-2xl font-bold text-[#1e1446]">
                 {/*{kpi.population.toLocaleString()} hab*/}
 
@@ -463,7 +465,7 @@ export function ANSDHome() {
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             <div className="bg-white p-4 rounded-xl shadow text-center">
-              <h4 className="text-sm font-medium text-gray-600">Structures Sanitaires(Année Courrante)</h4>
+              <h4 className="text-sm font-medium text-gray-600">Structures Sanitaires(Année Courante)</h4>
               <p className="text-2xl font-bold text-[#1e1446]">
                 {kpi.nbre_structure_current}
               </p>
@@ -489,7 +491,7 @@ export function ANSDHome() {
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             <div className="bg-white p-4 rounded-xl shadow text-center">
-              <h4 className="text-sm font-medium text-gray-600">Couverture Sanitaire(Année Courrante)</h4>
+              <h4 className="text-sm font-medium text-gray-600">Couverture Sanitaire(Année Courante)</h4>
               <p className="text-2xl font-bold text-[#1e1446]">
                 {kpi.couverture_current}
               </p>
@@ -562,7 +564,16 @@ export function ANSDHome() {
             </div>
           </div>
         </div>
-        <p className="text-xs text-gray-300 mt-10">© Accel Technologies</p>
+
+     <div className="flex flex-col items-center mt-auto space-y-4">
+    <a
+      href="/" 
+      className="px-5 py-2 rounded-lg bg-white text-[#1e1446] font-semibold text-sm shadow hover:bg-gray-100 transition-all"
+    >
+      Retour à l’accueil
+    </a>
+    <p className="text-xs text-gray-300">© Accel Technologies</p>
+  </div>
       </aside>
 
       {/* Main content */}
