@@ -22,7 +22,7 @@ export function ANSDHome() {
     fetch(`${API_BASE_URL}/regions`)
       .then(res => res.json())
       .then(data => setRegions(["ALL", ...data]))
-      .catch(err => console.error("Erreur chargement des régions :", err));
+       .catch(err => console.error("Erreur chargement des régions :", err));
   }, []);
 
   useEffect(() => {
