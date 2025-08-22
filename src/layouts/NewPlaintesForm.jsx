@@ -56,7 +56,7 @@ export default function NewPlaintesForm() {
 
 
 
-     fetch(API_ODSN_SERVICE, {
+     fetch(API_ODSN_SERVICE+'odsn/plaintes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

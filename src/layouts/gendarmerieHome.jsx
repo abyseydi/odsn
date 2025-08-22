@@ -47,7 +47,7 @@ export default function GendarmerieHome() {
 
   useEffect(() => {
 
-    const API_URL = API_ODSN_SERVICE;
+    const API_URL = API_ODSN_SERVICE+'odsn/plaintes';
 
     fetch(API_URL)
         .then((response) => {
