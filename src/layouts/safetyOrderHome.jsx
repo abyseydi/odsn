@@ -132,7 +132,7 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import DashboardPage from "./ANSDHomeprime not resp.jsx";
+import DashboardPage from "./ANSDHomeprime";
 
 /* ====== Carte force (responsive) ====== */
 function ForceCard({ logo, alt, onClick }) {
@@ -241,7 +241,7 @@ export default function SafetyOrderHome() {
               <ForceCard
                 logo="/img/logo_armee.jpg"
                 alt="Forces Armées"
-                onClick={() => navigate("/hello")}
+                onClick={() => navigate("/ANSDhomeprime")}
               />
             </div>
           </div>

@@ -6,7 +6,7 @@ import GendarmerieHome from "./layouts/gendarmerieHome";
 import GendarmerieAuth from "./layouts/gendarmerieAuth";
 import SafetyOrderHome from "./layouts/safetyOrderHome";
 import EducationHome from "./layouts/educationHome";
-import HelloWorld from "./layouts/ANSDHomeprime not resp.jsx";
+import DashboardPage from "./layouts/ANSDHomeprime";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <Route path="/safetyOrderHome" element={<SafetyOrderHome />} />
       <Route path="/GendarmerieHome" element={<GendarmerieHome />} />
       <Route path="/GendarmerieHome" element={<EducationHome />} />
-      <Route path="/hello" element={<HelloWorld />} />
+      <Route path="/ANSDHomeprime" element={<DashboardPage />} />
 
     </Routes>
   );
