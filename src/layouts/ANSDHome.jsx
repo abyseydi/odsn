@@ -3,7 +3,7 @@ import {
   LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer,
 } from "recharts";
 
-const API_BASE_URL = window.location.hostname === 'localhost' 
+const API_BASE_URL = window.location.hostname === 'localhost:5000' 
   ? '${API_BASE_URL}' 
   : 'https://odsnback-ansd-app.apps.origins.heritage.africa/api';
 
@@ -69,19 +69,19 @@ export function ANSDHome() {
  // Couverture par région
 
   useEffect(() => {
-    // const url =
-    //     region === "ALL"
-    //         ? "http://localhost:5000/api/couverture/by_region"
-    //         : `http://localhost:5000/api/couverture/by_region?region=${encodeURIComponent(region)}`;
+    const url =
+        region === "ALL"
+            ? "http://localhost:5000/api/couverture/by_region"
+            : `http://localhost:5000/api/couverture/by_region?region=${encodeURIComponent(region)}`;
 
-    const url = `${API_BASE_URL}/couverture/by_region`
+   // const url = `${API_BASE_URL}/couverture/by_region`
 
     fetch(url)
         .then(res => res.json())
         .then(data => {
           console.log("couvertureRegion",data);
           const parsed = data.map(d => ({
-            //year: d.annee.toString(),
+            year: d.annee.toString(),
             nb_str: d.nb_str,
             couv_san: d.couv_san,
             norm_oms: d.norm_oms,
@@ -171,9 +171,6 @@ export function ANSDHome() {
         growthRate = ((currentYearPop - previousYearPop) / previousYearPop) * 100;
       }
     }
-
-
-
 
     const nbStructures = couvertureData.length ? couvertureData.at(-1).nb_str : 0;
     const couvertureSan = couvertureData.length ? couvertureData.at(-1).couv_san : 0;

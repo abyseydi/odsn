@@ -12,7 +12,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      <Route path="/ANSDHome" element={<ANSDHome />} />
+      <Route path="/ANSDHome" element={<ANSDHome/>} />
       <Route path="/GendarmerieAuth" element={<GendarmerieAuth />} />
       <Route path="/safetyOrderHome" element={<SafetyOrderHome />} />
       <Route path="/GendarmerieHome" element={<GendarmerieHome />} />

@@ -1,4 +1,3 @@
-
 import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -12,7 +11,7 @@ CORS(app)
 DB_HOST = os.environ.get('DB_HOST', 'localhost')
 DB_PORT = os.environ.get('DB_PORT', '3306')
 DB_USER = os.environ.get('DB_USER', 'root')
-DB_PASSWORD = os.environ.get('DB_PASSWORD', 'Ha_mim500')
+DB_PASSWORD = os.environ.get('DB_PASSWORD', '')
 DB_NAME = os.environ.get('DB_NAME', 'ansddb')
 
 # Construction de l'URI de connexion
@@ -86,6 +85,7 @@ def get_population():
 
         if region_param:
             data = Population.query.filter(Population.region.ilike(region_param)).order_by(Population.annee).all()
+             
             return jsonify([p.to_dict() for p in data])
         else:
             results = (
@@ -94,6 +94,8 @@ def get_population():
                 .order_by(Population.annee)
                 .all()
             )
+           
+
             return jsonify([
                 {"annee": int(row.annee), "pop_value": float(row.pop_value)}
                 for row in results
