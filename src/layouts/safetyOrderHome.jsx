@@ -105,7 +105,7 @@ export default function SafetyOrderHome() {
               <ForceCard
                 logo="/img/logo_armee.jpg"
                 alt="Forces Armées"
-                onClick={() => navigate("/ANSDhomeprime")}
+                onClick={() => navigate("/forces-armees")}
               />
             </div>
           </div>
