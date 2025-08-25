@@ -17,37 +17,81 @@ export default function LandingPage() {
       { title: "BTP et Génie Civil", img: "/img/btp.png", link: "" },
     ],
     public: [
-      { title: "Politique publique", img: "/img/politique_publique.png", link: "/ANSDHome" },
+            { title: "Santé & Protection sociale", img: "/img/sante.png", link: "" },
+      { title: "Éducation & Formation", img: "/img/education.png", link: "educationHome" },
+
+      { title: "Politique publique", img: "/img/politique_publique.png", link: "/PublicPolicyHome" },
       { title: "Sûreté & ordre", img: "/img/fds_icon.png", link: "/safetyOrderHome" },
-      { title: "Éducation & Formation", img: "/img/education.png", link: "" },
-      { title: "Santé & Protection sociale", img: "/img/sante.png", link: "" },
       { title: "Économie, Finances & Budget", img: "/img/financement.png", link: "" },
       { title: "Énergie & Mines", img: "/img/energie.png", link: "" },
     ],
   };
 
-  const NavLinks = ({ onClick }) => (
-    <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8 text-[#1C2452] font-semibold">
-      <ScrollLink to="section-services" smooth duration={700} offset={-80} className="cursor-pointer hover:text-[#26509e]" onClick={onClick}>
+
+const NavLinks = ({ onClick }) => {
+  const base =
+    "relative group inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-full text-sm md:text-[15px] font-semibold uppercase tracking-wide transition";
+  const text =
+    "text-[#1C2452] hover:text-[#26509e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26509e]/50";
+  const afterBar =
+    "after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#26509e] after:transition-all after:duration-300 group-hover:after:w-3/4";
+
+  const activeClass =
+    "!text-[#26509e] after:w-3/4"; // appliqué par react-scroll quand la section est active
+
+  return (
+    <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-5">
+      <ScrollLink
+        to="section-services"
+        smooth
+        duration={700}
+        offset={-80}
+        spy
+        onClick={onClick}
+        className={`${base} ${text} ${afterBar}`}
+        activeClass={activeClass}
+      >
         Nos expertises
       </ScrollLink>
-      <ScrollLink to="section-cas-usage" smooth duration={700} offset={-80} className="cursor-pointer hover:text-[#26509e]" onClick={onClick}>
-        Use Cases IA
+
+      <ScrollLink
+        to="section-cas-usage"
+        smooth
+        duration={700}
+        offset={-80}
+        spy
+        onClick={onClick}
+        className={`${base} ${text} ${afterBar}`}
+        activeClass={activeClass}
+      >
+CATALOGUE
       </ScrollLink>
-      <ScrollLink to="section-produits" smooth duration={700} offset={-80} className="cursor-pointer hover:text-[#26509e]" onClick={onClick}>
+
+      <ScrollLink
+        to="section-publications"
+        smooth
+        duration={700}
+        offset={-80}
+        spy
+        onClick={onClick}
+        className={`${base} ${text} ${afterBar}`}
+        activeClass={activeClass}
+      >
         Publications
       </ScrollLink>
+
       <a
         href="https://www.accel-tech.net/"
         target="_blank"
         rel="noopener noreferrer"
-        className="cursor-pointer hover:text-[#26509e]"
         onClick={onClick}
+        className={`${base} ${text} ${afterBar}`}
       >
         Découvrez ACCEL Tech
       </a>
     </div>
   );
+};
 
   return (
     <div className="text-white font-sans scroll-smooth">
@@ -78,17 +122,14 @@ export default function LandingPage() {
 
   {/* NAVBAR */}
   <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-4 flex items-center justify-between">
-    {/* Logo */}
     <div className="flex-shrink-0">
       <img src="img/logo_accel.png" alt="Logo Accel" className="h-14 sm:h-16 w-auto" />
     </div>
 
-    {/* Liens (desktop) */}
     <div className="hidden md:flex flex-1 justify-center">
       <NavLinks />
     </div>
 
-    {/* CTA + Burger */}
     <div className="flex items-center gap-3">
       <button className="hidden sm:inline-block bg-[#1e1446] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#120b36]">
         CONTACT
@@ -133,7 +174,7 @@ export default function LandingPage() {
 
 
 
-      {/* ===== EXPERTISES ===== */}
+      {/* ==== EXPERTISES ==== */}
       <section
         id="section-services"
         className="relative z-10 px-4 sm:px-6 lg:px-10 py-10 sm:py-12 md:py-16 bg-white"
@@ -229,40 +270,55 @@ export default function LandingPage() {
           </div>
 
           {/* Cartes */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {tabs[activeTab].map((item, idx) =>
-              item.link ? (
-                <RouterLink
-                  to={item.link}
-                  key={idx}
-                  className="relative rounded-3xl bg-white text-[#26509e] font-semibold px-6 py-12 min-h-[200px] shadow-md transition-all duration-300 hover:scale-[1.02] hover:text-white hover:bg-gradient-to-br hover:from-[#26509e] hover:to-[#1e1446] flex items-center justify-center text-center"
-                >
-                  <div className="w-full">
-                    <div className="flex justify-center mb-4">
-                      <img src={item.img} alt={item.title} className="h-14 w-16 sm:h-16 sm:w-20 object-contain" />
-                    </div>
-                    <p className="text-lg sm:text-xl md:text-2xl font-bold leading-snug">{item.title}</p>
-                  </div>
-                </RouterLink>
-              ) : (
-                <div
-                  key={idx}
-                  className="relative rounded-3xl bg-white text-[#26509e] font-semibold px-6 py-12 min-h-[200px] shadow-md flex items-center justify-center text-center"
-                >
-                  <div className="w-full">
-                    <div className="flex justify-center mb-4">
-                      <img src={item.img} alt={item.title} className="h-14 w-16 sm:h-16 sm:w-20 object-contain" />
-                    </div>
-                    <p className="text-lg sm:text-xl md:text-2xl font-bold leading-snug">{item.title}</p>
-                  </div>
-                </div>
-              )
-            )}
+ 
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+  {tabs[activeTab].map((item, idx) =>
+    item.link ? (
+      <RouterLink
+        to={item.link}
+        key={idx}
+        className="relative rounded-3xl bg-white text-[#26509e] font-semibold px-6 py-12 min-h-[200px] shadow-md transition-all duration-300 hover:scale-[1.02] hover:text-white hover:bg-gradient-to-br hover:from-[#26509e] hover:to-[#1e1446] flex items-center justify-center text-center"
+      >
+        {/* Badge CONFIDENTIEL */}
+        {(item.title === "Sûreté & ordre" || item.title === "Économie") && (
+          <span className="absolute top-3 right-3 bg-red-600 text-white text-xs sm:text-sm font-bold px-2 py-1 rounded-full shadow">
+            Confidentiel
+          </span>
+        )}
+
+        <div className="w-full">
+          <div className="flex justify-center mb-4">
+            <img src={item.img} alt={item.title} className="h-14 w-16 sm:h-16 sm:w-20 object-contain" />
           </div>
+          <p className="text-lg sm:text-xl md:text-2xl font-bold leading-snug">{item.title}</p>
+        </div>
+      </RouterLink>
+    ) : (
+      <div
+        key={idx}
+        className="relative rounded-3xl bg-white text-[#26509e] font-semibold px-6 py-12 min-h-[200px] shadow-md flex items-center justify-center text-center"
+      >
+        {/* Badge CONFIDENTIEL */}
+        {(item.title === "Sûreté & ordre" || item.title === "Économie, Finances & Budget") && (
+          <span className="absolute top-3 right-3 bg-red-600 text-white text-xs sm:text-sm font-bold px-2 py-1 rounded-full shadow">
+            Confidentiel
+          </span>
+        )}
+
+        <div className="w-full">
+          <div className="flex justify-center mb-4">
+            <img src={item.img} alt={item.title} className="h-14 w-16 sm:h-16 sm:w-20 object-contain" />
+          </div>
+          <p className="text-lg sm:text-xl md:text-2xl font-bold leading-snug">{item.title}</p>
+        </div>
+      </div>
+    )
+  )}
+</div>
 
           <div className="text-center mt-8 sm:mt-10">
             <RouterLink
-              to="/toutes-les-donnees"
+              to="/catalogue"
               className="text-white underline underline-offset-4 decoration-white/60 hover:decoration-white text-sm sm:text-base"
             >
               Voir toutes nos réalisations &gt;
@@ -271,60 +327,173 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ===== PRODUITS ===== */}
-      <section id="section-produits" className="bg-white px-4 sm:px-6 lg:px-10 py-12 md:py-16">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#1e1446] mb-8 sm:mb-12">
-          Nos réalisations
-        </h2>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          {[
-            {
-              title: "Cartographie du parc locatif sénégalais",
-              image: "/img/senegal.png",
-              link: "/tableaux/cnsa-depenses",
-            },
-            {
-              title: "Suivi des recettes de l’État",
-              image: "/img/dgid.png",
-              link: "https://bi-srmt-srmt.apps.origins.heritage.africa/Reports",
-            },
-            {
-              title: "Fond souverain & décisions",
-              image: "/img/fonsis.png",
-              link: "/tableaux/habitats-inclusifs",
-            },
-          ].map((item, i) => (
-            <div key={i} className="bg-white text-[#1e1446] rounded-2xl shadow-lg flex flex-col min-h-[420px]">
-              <div>
-                <h3 className="text-lg md:text-xl font-bold px-6 py-4">{item.title}</h3>
-                <img src={item.image} alt={item.title} className="w-full h-56 sm:h-64 object-cover" />
-              </div>
-              <div className="px-6 py-4 mt-auto">
-                {item.link && item.link.startsWith("/") ? (
-                  <RouterLink
-                    to={item.link}
-                    className="inline-block bg-[#1e1446] hover:bg-[#0f0a2b] text-white px-5 py-2 rounded-full transition text-sm sm:text-base"
-                  >
-                    Voir le tableau de bord
-                  </RouterLink>
-                ) : (
-                  <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-[#1e1446] hover:bg-[#0f0a2b] text-white px-5 py-2 rounded-full transition text-sm sm:text-base"
-                  >
-                    Voir le tableau de bord
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
+
+{/* ===== PRODUITS ===== */}
+<section id="section-produits" className="bg-[#f9f9fb] px-6 py-16">
+  <h2 className="text-3xl md:text-4xl font-extrabold text-center text-[#1e1446] mb-10">
+    Nos Réalisations
+  </h2>
+
+  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {[
+      {
+        title: "Cartographie du parc locatif sénégalais",
+        desc: "Analyse des logements non fiscalisés sur Airbnb & Booking.",
+        image: "/img/senegal.png",
+        link: "/tableaux/cnsa-depenses",
+      },
+      {
+        title: "Suivi des recettes de l’État",
+        desc: "Visualisation en temps réel des recettes fiscales.",
+        image: "/img/dgid.png",
+        link: "https://bi-srmt-srmt.apps.origins.heritage.africa/Reports",
+      },
+      {
+        title: "Fond souverain & décisions",
+        desc: "Outils de pilotage stratégique pour le FONSIS.",
+        image: "/img/fonsis.png",
+        link: "/tableaux/habitats-inclusifs",
+      },
+    ].map((item, i) => (
+      <div
+        key={i}
+        className="relative group rounded-2xl overflow-hidden shadow-xl cursor-pointer"
+      >
+        {/* Image */}
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+
+        {/* Couche bleue transparente */}
+        <div className="absolute inset-0 bg-[#1e1446]/40" />
+
+        {/* Contenu (toujours visible) */}
+        <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+          <h3 className="text-lg sm:text-xl font-bold mb-2">{item.title}</h3>
+          <p className="text-gray-100 text-sm mb-3">{item.desc}</p>
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-fuchsia-600 hover:bg-fuchsia-700 text-white px-4 py-2 rounded-full text-sm"
+          >
+            Voir →
+          </a>
         </div>
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
+{/* ===== PUBLICATIONS ===== */}
+<section id="section-publications" className="bg-[#f9f9fb] px-6 py-16">
+  <h2 className="text-3xl md:text-4xl font-extrabold text-center text-[#1e1446] mb-10">
+    Nos Publications
+  </h2>
+
+  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {[
+      {
+        title: "L’IA au service de la fiscalité",
+        desc: "Comment l’intelligence artificielle transforme la collecte et l’analyse des données fiscales.",
+        image: "/img/iaia.jpeg",
+        link: "#",
+      },
+      {
+        title: "Big Data & Énergie",
+        desc: "Optimiser la production et la distribution énergétique grâce à la data science.",
+        image: "/img/iaia.jpeg",
+        link: "#",
+      },
+      {
+        title: "Open Data pour le développement",
+        desc: "Pourquoi l’ouverture des données est un levier stratégique pour les gouvernements africains.",
+        image: "/img/iaia.jpeg",
+
+        link: "#",
+      },
+    ].map((pub, i) => (
+      <div
+        key={i}
+        className="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-[1.02] flex flex-col"
+      >
+        {/* Image */}
+        <img
+          src={pub.image}
+          alt={pub.title}
+          className="w-full h-48 object-cover"
+        />
+
+        {/* Contenu */}
+        <div className="p-6 flex flex-col flex-1">
+          <h3 className="text-lg sm:text-xl font-bold text-[#1e1446] mb-3">
+            {pub.title}
+          </h3>
+          <p className="text-sm text-gray-600 flex-1">{pub.desc}</p>
+
+          <a
+            href={pub.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-block bg-[#26509e] hover:bg-[#1e1446] text-white px-4 py-2 rounded-full text-sm font-semibold text-center"
+          >
+            Lire →
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* ===== TECHNOLOGIES ===== */}
-      <section className="bg-white py-10 sm:py-12 text-center">
+  {/* <section className="relative py-16 bg-gradient-to-br from-[#94cbbd]  to-[#26509e] text-center overflow-hidden"> */}
+<section className="relative py-12 bg-[#f9f9fb] text-center overflow-hidden">
+  {/* Décor avec cercles flous */}
+  <div className="absolute inset-0 -z-10">
+    <div className="absolute w-60 h-60 bg-fuchsia-500/20 rounded-full blur-3xl top-10 left-10" />
+    <div className="absolute w-72 h-72 bg-blue-500/20 rounded-full blur-3xl bottom-0 right-10" />
+  </div>
+
+  <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-black mb-10">
+    Les technologies les plus innovantes au cœur de notre expertise
+  </h2>
+
+  <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 px-4">
+    {[
+      { name: "Red Hat", logo: "redhat" },
+      { name: "PyTorch", logo: "pytorch" },
+      { name: "TensorFlow", logo: "tensorflow" },
+      { name: "Scikit-learn", logo: "scikit-learn" },
+      { name: "Kubernetes", logo: "kubernetes" },
+    ].map((tech, i) => (
+      <div
+        key={i}
+        className="relative group bg-white/10 backdrop-blur-md rounded-xl shadow-md border border-white/20 overflow-hidden transition-transform duration-500 hover:scale-105 hover:shadow-fuchsia-400/40"
+      >
+        {/* Image réduit */}
+        <img
+          src={`img/${tech.logo}.png`}
+          alt={tech.name}
+          className="w-full h-28 sm:h-36 object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+
+        {/* Bandeau nom en bas plus compact */}
+        <div className="absolute bottom-0 left-0 right-0 bg-[#1e1446]/70 text-white py-1 text-xs sm:text-sm font-semibold text-center">
+          {tech.name}
+        </div>
+
+        {/* Glow effet au hover */}
+        <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-fuchsia-500/20 to-blue-500/20 blur-xl -z-10" />
+      </div>
+    ))}
+  </div>
+</section>
+
+
+
+
+      {/* <section className="bg-white py-10 sm:py-12 text-center">
         <h2 className="text-xl sm:text-2xl md:text-3xl text-[#1e1446] mb-6">
           Les technologies les plus innovantes au service de notre expertise.
         </h2>
@@ -338,7 +507,7 @@ export default function LandingPage() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
   
    
       {/* ===== FOOTER ===== */}
