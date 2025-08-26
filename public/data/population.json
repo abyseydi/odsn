@@ -1,0 +1,2270 @@
+[
+	{
+		"id" : 1,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2013,
+		"pop_value" : 3137200
+	},
+	{
+		"id" : 2,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2014,
+		"pop_value" : 3233460
+	},
+	{
+		"id" : 3,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2015,
+		"pop_value" : 3330690
+	},
+	{
+		"id" : 4,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2016,
+		"pop_value" : 3429380
+	},
+	{
+		"id" : 5,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2017,
+		"pop_value" : 3529300
+	},
+	{
+		"id" : 6,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2018,
+		"pop_value" : 3630320
+	},
+	{
+		"id" : 7,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2019,
+		"pop_value" : 3732280
+	},
+	{
+		"id" : 8,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2020,
+		"pop_value" : 3835010
+	},
+	{
+		"id" : 9,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2021,
+		"pop_value" : 3938360
+	},
+	{
+		"id" : 10,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2022,
+		"pop_value" : 4042240
+	},
+	{
+		"id" : 11,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2023,
+		"pop_value" : 4146590
+	},
+	{
+		"id" : 12,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2024,
+		"pop_value" : 4251430
+	},
+	{
+		"id" : 13,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2013,
+		"pop_value" : 1497460
+	},
+	{
+		"id" : 14,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2014,
+		"pop_value" : 1543650
+	},
+	{
+		"id" : 15,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2015,
+		"pop_value" : 1591590
+	},
+	{
+		"id" : 16,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2016,
+		"pop_value" : 1641350
+	},
+	{
+		"id" : 17,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2017,
+		"pop_value" : 1692970
+	},
+	{
+		"id" : 18,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2018,
+		"pop_value" : 1746490
+	},
+	{
+		"id" : 19,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2019,
+		"pop_value" : 1802000
+	},
+	{
+		"id" : 20,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2020,
+		"pop_value" : 1859500
+	},
+	{
+		"id" : 21,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2021,
+		"pop_value" : 1919090
+	},
+	{
+		"id" : 22,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2022,
+		"pop_value" : 1980830
+	},
+	{
+		"id" : 23,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2023,
+		"pop_value" : 2044770
+	},
+	{
+		"id" : 24,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2024,
+		"pop_value" : 2111010
+	},
+	{
+		"id" : 25,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2013,
+		"pop_value" : 714392
+	},
+	{
+		"id" : 26,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2014,
+		"pop_value" : 737487
+	},
+	{
+		"id" : 27,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2015,
+		"pop_value" : 761713
+	},
+	{
+		"id" : 28,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2016,
+		"pop_value" : 787036
+	},
+	{
+		"id" : 29,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2017,
+		"pop_value" : 813544
+	},
+	{
+		"id" : 30,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2018,
+		"pop_value" : 841298
+	},
+	{
+		"id" : 31,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2019,
+		"pop_value" : 870361
+	},
+	{
+		"id" : 32,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2020,
+		"pop_value" : 900800
+	},
+	{
+		"id" : 33,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2021,
+		"pop_value" : 932629
+	},
+	{
+		"id" : 34,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2022,
+		"pop_value" : 965918
+	},
+	{
+		"id" : 35,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2023,
+		"pop_value" : 1000680
+	},
+	{
+		"id" : 36,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2024,
+		"pop_value" : 1036950
+	},
+	{
+		"id" : 37,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2013,
+		"pop_value" : 566992
+	},
+	{
+		"id" : 38,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2014,
+		"pop_value" : 587946
+	},
+	{
+		"id" : 39,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2015,
+		"pop_value" : 609643
+	},
+	{
+		"id" : 40,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2016,
+		"pop_value" : 632025
+	},
+	{
+		"id" : 41,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2017,
+		"pop_value" : 655119
+	},
+	{
+		"id" : 42,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2018,
+		"pop_value" : 678955
+	},
+	{
+		"id" : 43,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2019,
+		"pop_value" : 703560
+	},
+	{
+		"id" : 44,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2020,
+		"pop_value" : 728951
+	},
+	{
+		"id" : 45,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2021,
+		"pop_value" : 755172
+	},
+	{
+		"id" : 46,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2022,
+		"pop_value" : 782273
+	},
+	{
+		"id" : 47,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2023,
+		"pop_value" : 810308
+	},
+	{
+		"id" : 48,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2024,
+		"pop_value" : 839311
+	},
+	{
+		"id" : 49,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2013,
+		"pop_value" : 960875
+	},
+	{
+		"id" : 50,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2014,
+		"pop_value" : 990748
+	},
+	{
+		"id" : 51,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2015,
+		"pop_value" : 1021660
+	},
+	{
+		"id" : 52,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2016,
+		"pop_value" : 1053540
+	},
+	{
+		"id" : 53,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2017,
+		"pop_value" : 1086450
+	},
+	{
+		"id" : 54,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2018,
+		"pop_value" : 1120400
+	},
+	{
+		"id" : 55,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2019,
+		"pop_value" : 1155430
+	},
+	{
+		"id" : 56,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2020,
+		"pop_value" : 1191580
+	},
+	{
+		"id" : 57,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2021,
+		"pop_value" : 1228750
+	},
+	{
+		"id" : 58,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2022,
+		"pop_value" : 1267020
+	},
+	{
+		"id" : 59,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2023,
+		"pop_value" : 1306310
+	},
+	{
+		"id" : 60,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2024,
+		"pop_value" : 1346610
+	},
+	{
+		"id" : 61,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2013,
+		"pop_value" : 151357
+	},
+	{
+		"id" : 62,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2014,
+		"pop_value" : 156352
+	},
+	{
+		"id" : 63,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2015,
+		"pop_value" : 161530
+	},
+	{
+		"id" : 64,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2016,
+		"pop_value" : 166902
+	},
+	{
+		"id" : 65,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2017,
+		"pop_value" : 172482
+	},
+	{
+		"id" : 66,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2018,
+		"pop_value" : 178272
+	},
+	{
+		"id" : 67,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2019,
+		"pop_value" : 184276
+	},
+	{
+		"id" : 68,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2020,
+		"pop_value" : 190509
+	},
+	{
+		"id" : 69,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2021,
+		"pop_value" : 196991
+	},
+	{
+		"id" : 70,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2022,
+		"pop_value" : 203719
+	},
+	{
+		"id" : 71,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2023,
+		"pop_value" : 210722
+	},
+	{
+		"id" : 72,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2024,
+		"pop_value" : 217991
+	},
+	{
+		"id" : 73,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2013,
+		"pop_value" : 874193
+	},
+	{
+		"id" : 74,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2014,
+		"pop_value" : 898732
+	},
+	{
+		"id" : 75,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2015,
+		"pop_value" : 924047
+	},
+	{
+		"id" : 76,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2016,
+		"pop_value" : 950095
+	},
+	{
+		"id" : 77,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2017,
+		"pop_value" : 976884
+	},
+	{
+		"id" : 78,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2018,
+		"pop_value" : 1004400
+	},
+	{
+		"id" : 79,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2019,
+		"pop_value" : 1032640
+	},
+	{
+		"id" : 80,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2020,
+		"pop_value" : 1061610
+	},
+	{
+		"id" : 81,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2021,
+		"pop_value" : 1091270
+	},
+	{
+		"id" : 82,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2022,
+		"pop_value" : 1121620
+	},
+	{
+		"id" : 83,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2023,
+		"pop_value" : 1152650
+	},
+	{
+		"id" : 84,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2024,
+		"pop_value" : 1184350
+	},
+	{
+		"id" : 85,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2013,
+		"pop_value" : 662455
+	},
+	{
+		"id" : 86,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2014,
+		"pop_value" : 682687
+	},
+	{
+		"id" : 87,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2015,
+		"pop_value" : 703779
+	},
+	{
+		"id" : 88,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2016,
+		"pop_value" : 725682
+	},
+	{
+		"id" : 89,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2017,
+		"pop_value" : 748450
+	},
+	{
+		"id" : 90,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2018,
+		"pop_value" : 772068
+	},
+	{
+		"id" : 91,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2019,
+		"pop_value" : 796581
+	},
+	{
+		"id" : 92,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2020,
+		"pop_value" : 822003
+	},
+	{
+		"id" : 93,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2021,
+		"pop_value" : 848348
+	},
+	{
+		"id" : 94,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2022,
+		"pop_value" : 875663
+	},
+	{
+		"id" : 95,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2023,
+		"pop_value" : 903969
+	},
+	{
+		"id" : 96,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2024,
+		"pop_value" : 933287
+	},
+	{
+		"id" : 97,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2013,
+		"pop_value" : 562539
+	},
+	{
+		"id" : 98,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2014,
+		"pop_value" : 584524
+	},
+	{
+		"id" : 99,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2015,
+		"pop_value" : 607231
+	},
+	{
+		"id" : 100,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2016,
+		"pop_value" : 630703
+	},
+	{
+		"id" : 101,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2017,
+		"pop_value" : 654982
+	},
+	{
+		"id" : 102,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2018,
+		"pop_value" : 680087
+	},
+	{
+		"id" : 103,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2019,
+		"pop_value" : 706042
+	},
+	{
+		"id" : 104,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2020,
+		"pop_value" : 732863
+	},
+	{
+		"id" : 105,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2021,
+		"pop_value" : 760588
+	},
+	{
+		"id" : 106,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2022,
+		"pop_value" : 789215
+	},
+	{
+		"id" : 107,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2023,
+		"pop_value" : 818775
+	},
+	{
+		"id" : 108,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2024,
+		"pop_value" : 849273
+	},
+	{
+		"id" : 109,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2013,
+		"pop_value" : 908942
+	},
+	{
+		"id" : 110,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2014,
+		"pop_value" : 932876
+	},
+	{
+		"id" : 111,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2015,
+		"pop_value" : 957600
+	},
+	{
+		"id" : 112,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2016,
+		"pop_value" : 983022
+	},
+	{
+		"id" : 113,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2017,
+		"pop_value" : 1009160
+	},
+	{
+		"id" : 114,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2018,
+		"pop_value" : 1036000
+	},
+	{
+		"id" : 115,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2019,
+		"pop_value" : 1063540
+	},
+	{
+		"id" : 116,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2020,
+		"pop_value" : 1091740
+	},
+	{
+		"id" : 117,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2021,
+		"pop_value" : 1120580
+	},
+	{
+		"id" : 118,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2022,
+		"pop_value" : 1150060
+	},
+	{
+		"id" : 119,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2023,
+		"pop_value" : 1180140
+	},
+	{
+		"id" : 120,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2024,
+		"pop_value" : 1210810
+	},
+	{
+		"id" : 121,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2013,
+		"pop_value" : 452994
+	},
+	{
+		"id" : 122,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2014,
+		"pop_value" : 468098
+	},
+	{
+		"id" : 123,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2015,
+		"pop_value" : 483768
+	},
+	{
+		"id" : 124,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2016,
+		"pop_value" : 500061
+	},
+	{
+		"id" : 125,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2017,
+		"pop_value" : 517012
+	},
+	{
+		"id" : 126,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2018,
+		"pop_value" : 534646
+	},
+	{
+		"id" : 127,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2019,
+		"pop_value" : 553006
+	},
+	{
+		"id" : 128,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2020,
+		"pop_value" : 572101
+	},
+	{
+		"id" : 129,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2021,
+		"pop_value" : 591970
+	},
+	{
+		"id" : 130,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2022,
+		"pop_value" : 612650
+	},
+	{
+		"id" : 131,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2023,
+		"pop_value" : 634177
+	},
+	{
+		"id" : 132,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2024,
+		"pop_value" : 656562
+	},
+	{
+		"id" : 133,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2013,
+		"pop_value" : 681310
+	},
+	{
+		"id" : 134,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2014,
+		"pop_value" : 705396
+	},
+	{
+		"id" : 135,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2015,
+		"pop_value" : 730475
+	},
+	{
+		"id" : 136,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2016,
+		"pop_value" : 756591
+	},
+	{
+		"id" : 137,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2017,
+		"pop_value" : 783781
+	},
+	{
+		"id" : 138,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2018,
+		"pop_value" : 812075
+	},
+	{
+		"id" : 139,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2019,
+		"pop_value" : 841512
+	},
+	{
+		"id" : 140,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2020,
+		"pop_value" : 872155
+	},
+	{
+		"id" : 141,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2021,
+		"pop_value" : 904032
+	},
+	{
+		"id" : 142,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2022,
+		"pop_value" : 937183
+	},
+	{
+		"id" : 143,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2023,
+		"pop_value" : 971659
+	},
+	{
+		"id" : 144,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2024,
+		"pop_value" : 1007510
+	},
+	{
+		"id" : 145,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2013,
+		"pop_value" : 1788860
+	},
+	{
+		"id" : 146,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2014,
+		"pop_value" : 1838370
+	},
+	{
+		"id" : 147,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2015,
+		"pop_value" : 1889320
+	},
+	{
+		"id" : 148,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2016,
+		"pop_value" : 1941550
+	},
+	{
+		"id" : 149,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2017,
+		"pop_value" : 1995030
+	},
+	{
+		"id" : 150,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2018,
+		"pop_value" : 2049760
+	},
+	{
+		"id" : 151,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2019,
+		"pop_value" : 2105710
+	},
+	{
+		"id" : 152,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2020,
+		"pop_value" : 2162830
+	},
+	{
+		"id" : 153,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2021,
+		"pop_value" : 2221100
+	},
+	{
+		"id" : 154,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2022,
+		"pop_value" : 2280460
+	},
+	{
+		"id" : 155,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2023,
+		"pop_value" : 2340870
+	},
+	{
+		"id" : 156,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2024,
+		"pop_value" : 2402260
+	},
+	{
+		"id" : 157,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2013,
+		"pop_value" : 549151
+	},
+	{
+		"id" : 158,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2014,
+		"pop_value" : 565940
+	},
+	{
+		"id" : 159,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2015,
+		"pop_value" : 583525
+	},
+	{
+		"id" : 160,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2016,
+		"pop_value" : 601929
+	},
+	{
+		"id" : 161,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2017,
+		"pop_value" : 621171
+	},
+	{
+		"id" : 162,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2018,
+		"pop_value" : 641253
+	},
+	{
+		"id" : 163,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2019,
+		"pop_value" : 662179
+	},
+	{
+		"id" : 164,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2020,
+		"pop_value" : 683955
+	},
+	{
+		"id" : 165,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2021,
+		"pop_value" : 706554
+	},
+	{
+		"id" : 166,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2022,
+		"pop_value" : 729949
+	},
+	{
+		"id" : 167,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2023,
+		"pop_value" : 754110
+	},
+	{
+		"id" : 168,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2024,
+		"pop_value" : 778985
+	},
+	{
+		"id" : 169,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2025,
+		"pop_value" : 804531
+	},
+	{
+		"id" : 170,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2025,
+		"pop_value" : 4453890
+	},
+	{
+		"id" : 171,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2026,
+		"pop_value" : 4526840
+	},
+	{
+		"id" : 172,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2027,
+		"pop_value" : 4595920
+	},
+	{
+		"id" : 173,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2028,
+		"pop_value" : 4660250
+	},
+	{
+		"id" : 174,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2029,
+		"pop_value" : 4719030
+	},
+	{
+		"id" : 175,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DAKAR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2030,
+		"pop_value" : 4771180
+	},
+	{
+		"id" : 176,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2025,
+		"pop_value" : 2179600
+	},
+	{
+		"id" : 177,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2026,
+		"pop_value" : 2248190
+	},
+	{
+		"id" : 178,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2027,
+		"pop_value" : 2317780
+	},
+	{
+		"id" : 179,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2028,
+		"pop_value" : 2386870
+	},
+	{
+		"id" : 180,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2029,
+		"pop_value" : 2455760
+	},
+	{
+		"id" : 181,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "DIOURBEL",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2030,
+		"pop_value" : 2524150
+	},
+	{
+		"id" : 182,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2025,
+		"pop_value" : 869354
+	},
+	{
+		"id" : 183,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2026,
+		"pop_value" : 901407
+	},
+	{
+		"id" : 184,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2027,
+		"pop_value" : 930950
+	},
+	{
+		"id" : 185,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2028,
+		"pop_value" : 961393
+	},
+	{
+		"id" : 186,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2029,
+		"pop_value" : 991036
+	},
+	{
+		"id" : 187,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAFFRINE",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2030,
+		"pop_value" : 1021880
+	},
+	{
+		"id" : 188,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2025,
+		"pop_value" : 1388010
+	},
+	{
+		"id" : 189,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2026,
+		"pop_value" : 1391010
+	},
+	{
+		"id" : 190,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2027,
+		"pop_value" : 1397980
+	},
+	{
+		"id" : 191,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2028,
+		"pop_value" : 1403920
+	},
+	{
+		"id" : 192,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2029,
+		"pop_value" : 1405040
+	},
+	{
+		"id" : 193,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KAOLACK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2030,
+		"pop_value" : 1400980
+	},
+	{
+		"id" : 194,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2025,
+		"pop_value" : 225547
+	},
+	{
+		"id" : 195,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2026,
+		"pop_value" : 226047
+	},
+	{
+		"id" : 196,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2027,
+		"pop_value" : 227849
+	},
+	{
+		"id" : 197,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2028,
+		"pop_value" : 229502
+	},
+	{
+		"id" : 198,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2029,
+		"pop_value" : 230365
+	},
+	{
+		"id" : 199,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KEDOUGOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2030,
+		"pop_value" : 230363
+	},
+	{
+		"id" : 200,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2025,
+		"pop_value" : 963628
+	},
+	{
+		"id" : 201,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2026,
+		"pop_value" : 967353
+	},
+	{
+		"id" : 202,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2027,
+		"pop_value" : 980156
+	},
+	{
+		"id" : 203,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2028,
+		"pop_value" : 990867
+	},
+	{
+		"id" : 204,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2029,
+		"pop_value" : 999039
+	},
+	{
+		"id" : 205,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "KOLDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2030,
+		"pop_value" : 1004330
+	},
+	{
+		"id" : 206,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2025,
+		"pop_value" : 1216710
+	},
+	{
+		"id" : 207,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2026,
+		"pop_value" : 1217210
+	},
+	{
+		"id" : 208,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2027,
+		"pop_value" : 1226130
+	},
+	{
+		"id" : 209,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2028,
+		"pop_value" : 1232560
+	},
+	{
+		"id" : 210,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2029,
+		"pop_value" : 1235450
+	},
+	{
+		"id" : 211,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "LOUGA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2030,
+		"pop_value" : 1244540
+	},
+	{
+		"id" : 212,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2025,
+		"pop_value" : 880714
+	},
+	{
+		"id" : 213,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2026,
+		"pop_value" : 867632
+	},
+	{
+		"id" : 214,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2027,
+		"pop_value" : 878512
+	},
+	{
+		"id" : 215,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2028,
+		"pop_value" : 886809
+	},
+	{
+		"id" : 216,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2029,
+		"pop_value" : 892028
+	},
+	{
+		"id" : 217,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "MATAM",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2030,
+		"pop_value" : 893859
+	},
+	{
+		"id" : 218,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2025,
+		"pop_value" : 1242010
+	},
+	{
+		"id" : 219,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2026,
+		"pop_value" : 1257370
+	},
+	{
+		"id" : 220,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2027,
+		"pop_value" : 1272440
+	},
+	{
+		"id" : 221,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2028,
+		"pop_value" : 1285510
+	},
+	{
+		"id" : 222,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2029,
+		"pop_value" : 1296190
+	},
+	{
+		"id" : 223,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SAINT-LOUIS",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2030,
+		"pop_value" : 1304160
+	},
+	{
+		"id" : 224,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2025,
+		"pop_value" : 1044780
+	},
+	{
+		"id" : 225,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2026,
+		"pop_value" : 1103830
+	},
+	{
+		"id" : 226,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2027,
+		"pop_value" : 1127580
+	},
+	{
+		"id" : 227,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2028,
+		"pop_value" : 1149890
+	},
+	{
+		"id" : 228,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2029,
+		"pop_value" : 1170340
+	},
+	{
+		"id" : 229,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "TAMBACOUNDA",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2030,
+		"pop_value" : 1188420
+	},
+	{
+		"id" : 230,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2025,
+		"pop_value" : 2464550
+	},
+	{
+		"id" : 231,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2026,
+		"pop_value" : 2585340
+	},
+	{
+		"id" : 232,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2027,
+		"pop_value" : 2628900
+	},
+	{
+		"id" : 233,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2028,
+		"pop_value" : 2670150
+	},
+	{
+		"id" : 234,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2029,
+		"pop_value" : 2708700
+	},
+	{
+		"id" : 235,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "THIES",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2030,
+		"pop_value" : 2743790
+	},
+	{
+		"id" : 237,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2026,
+		"pop_value" : 804767
+	},
+	{
+		"id" : 238,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2027,
+		"pop_value" : 810917
+	},
+	{
+		"id" : 239,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2028,
+		"pop_value" : 813939
+	},
+	{
+		"id" : 240,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2029,
+		"pop_value" : 814853
+	},
+	{
+		"id" : 241,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "ZIGUINCHOR",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2030,
+		"pop_value" : 811639
+	},
+	{
+		"id" : 242,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2025,
+		"pop_value" : 679840
+	},
+	{
+		"id" : 243,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2026,
+		"pop_value" : 680083
+	},
+	{
+		"id" : 244,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2027,
+		"pop_value" : 687768
+	},
+	{
+		"id" : 245,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2028,
+		"pop_value" : 692885
+	},
+	{
+		"id" : 246,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2029,
+		"pop_value" : 694947
+	},
+	{
+		"id" : 247,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "SEDHIOU",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2030,
+		"pop_value" : 695406
+	},
+	{
+		"id" : 248,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2025,
+		"pop_value" : 1074750
+	},
+	{
+		"id" : 249,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2026,
+		"pop_value" : 1112750
+	},
+	{
+		"id" : 250,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2027,
+		"pop_value" : 1152550
+	},
+	{
+		"id" : 251,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2028,
+		"pop_value" : 1189850
+	},
+	{
+		"id" : 252,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2029,
+		"pop_value" : 1228850
+	},
+	{
+		"id" : 253,
+		"indicateur" : "Nombre de la population_bis",
+		"region" : "FATICK",
+		"sexe" : "Ensemble",
+		"unit" : "personnes",
+		"annee" : 2030,
+		"pop_value" : 1265950
+	}
+]

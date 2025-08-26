@@ -1,4 +1,3 @@
-
 import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -86,6 +85,7 @@ def get_population():
 
         if region_param:
             data = Population.query.filter(Population.region.ilike(region_param)).order_by(Population.annee).all()
+             
             return jsonify([p.to_dict() for p in data])
         else:
             results = (
@@ -94,6 +94,8 @@ def get_population():
                 .order_by(Population.annee)
                 .all()
             )
+           
+
             return jsonify([
                 {"annee": int(row.annee), "pop_value": float(row.pop_value)}
                 for row in results
@@ -267,10 +269,6 @@ def get_couverture_by_region():
             }
             for r in results
         ])
-
-
-
-
 
 @app.route('/health')
 def health_check():
