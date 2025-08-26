@@ -6,9 +6,9 @@ import GendarmerieHome from "./layouts/gendarmerieHome";
 import GendarmerieAuth from "./layouts/gendarmerieAuth";
 import SafetyOrderHome from "./layouts/safetyOrderHome";
 import EducationHome from "./layouts/educationHome";
-import Catalogue from "./layouts/catalogue";
+// import Catalogue from "./layouts/Catalogue";
 import PublicPolicyHome from "./layouts/PublicPolicyHome";
-import UseCasePage from "./layouts/UseCasePage";
+
 
 
 import DashboardPage from "./layouts/ANSDHomeprime";

@@ -18,6 +18,11 @@ import IconHeart from '../../public/img/healt_cover.png';
 import IconWorld from '../../public/img/world-health.png';
 import DoctorIllustration from '../../public/img/doctor.png';
 
+// Configuration API - identique à ANSDHome.jsx
+const API_BASE_URL = window.location.hostname === 'localhost' 
+  ? '${API_BASE_URL}' 
+  : 'https://odsnback-ansd-app.apps.origins.heritage.africa/api';
+
 // Composant d'icône de la sidebar
 
 const SidebarIcon = ({ src, alt, label, onClick }) => (
@@ -52,24 +57,52 @@ const DashboardPage = () => {
   const [populationData, setPopulationData] = useState([]);
   const [structuresData, setStructuresData] = useState([]);
   const [coverageData, setCoverageData] = useState([]);
+  const [regions, setRegions] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState("");
   const [indicators, setIndicators] = useState({ current: 0, future: 0, growth: 0 });
   const [view, setView] = useState("population"); // population / structures / coverage / oms
 
   // Chargement des fichiers JSON
-
   useEffect(() => {
-    fetch("../../public/data/population.json")
+    const url = selectedRegion === "" || !selectedRegion
+      ? `${API_BASE_URL}/population`
+      : `${API_BASE_URL}/population?region=${encodeURIComponent(selectedRegion)}`;
+
+    fetch(url)
       .then(res => res.json())
-      .then(json => setPopulationData(json));
-    fetch("../../public/data/couverture.json")
-      .then(res => res.json())
-      .then(json => {
-        setStructuresData(json);
-        setCoverageData(json);
+      .then(data => {
+        const parsed = data.map(d => ({
+          annee: d.annee,
+          pop_value: d.pop_value,
+          region: d.region
+        }));
+        setPopulationData(parsed);
       })
-      .catch(err => console.error(err));
-  }, []);
+      .catch(err => console.error("Erreur de chargement des données population :", err));
+  }, [selectedRegion]);
+
+  // Chargement des données de couverture depuis l'API
+  useEffect(() => {
+    const url = selectedRegion === "" || !selectedRegion
+      ? `${API_BASE_URL}/couverture`
+      : `${API_BASE_URL}/couverture?region=${encodeURIComponent(selectedRegion)}`;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        const parsed = data.map(d => ({
+          annee: d.annee,
+          nb_str: d.nb_str,
+          couv_san: d.couv_san,
+          norm_oms: d.norm_oms,
+          ajouter: d.ajouter,
+          region: d.region
+        }));
+        setStructuresData(parsed);
+        setCoverageData(parsed);
+      })
+      .catch(err => console.error("Erreur de chargement des données couverture :", err));
+  }, [selectedRegion]);
 
   // Choix des données selon la vue active
 
@@ -82,13 +115,12 @@ const DashboardPage = () => {
   }, [view, populationData, structuresData, coverageData]);
 
   // Liste des régions
-
   const regions = useMemo(() => [...new Set(data.map(d => d.region))].sort(), [data]);
 
   // Filtrage et agrégation selon la vue
 
   const filteredData = useMemo(() => {
-    let relevantData = selectedRegion ? data.filter(d => d.region.toLowerCase() === selectedRegion.toLowerCase()) : data;
+    let relevantData = selectedRegion ? data.filter(d => d.region && d.region.toLowerCase() === selectedRegion.toLowerCase()) : data;
 
     if (view === "population") {
       if (!selectedRegion) {
@@ -192,28 +224,35 @@ const DashboardPage = () => {
   }, [sortedData, view]);
 
   // Données 2030 par région
-
   const data2030ByRegion = useMemo(() => {
+    if (regionalData.length > 0) {
+      if (view === "population") return regionalData.sort((a, b) => b.pop_value - a.pop_value);
+      if (view === "structures") return regionalData.sort((a, b) => b.nb_str - a.nb_str);
+      if (view === "coverage") return regionalData.sort((a, b) => Number(b.couv_san) - Number(a.couv_san));
+      if (view === "oms") return regionalData.sort((a, b) => b.norm_oms - a.norm_oms);
+    }
+    
+    // Fallback sur les données existantes
     const year2030 = data.filter(d => d.annee === 2030);
     if (view === "population") return year2030.sort((a, b) => b.pop_value - a.pop_value);
     if (view === "structures") return year2030.sort((a, b) => b.nb_str - a.nb_str);
     if (view === "coverage") return year2030.sort((a, b) => Number(b.couv_san) - Number(a.couv_san));
     if (view === "oms") return year2030.sort((a, b) => b.norm_oms - a.norm_oms);
     return [];
-  }, [data, view]);
+  }, [data, view, regionalData]);
 
   // Définition des plages et titres selon la vue
   
   const getChartConfig = () => {
     switch (view) {
       case "population":
-        return { title: "Démographie et population : évolution au Sénégal de 2013 à 2030, avec projections jusqu’en 2030", xMin: 2013, xMax: 2030 };
+        return { title: "Démographie et population : évolution au Sénégal de 2013 à 2030, avec projections jusqu'en 2030", xMin: 2013, xMax: 2030 };
       case "structures":
-        return { title: "Évolution du nombre de structures sanitaires au Sénégal : 2018–2025 et perspectives jusqu’en 2030", xMin: 2020, xMax: 2030 };
+        return { title: "Évolution du nombre de structures sanitaires au Sénégal : 2018—2025 et perspectives jusqu'en 2030", xMin: 2020, xMax: 2030 };
       case "coverage":
-        return { title: "Couverture sanitaires : tendances de 2018 à 2025 et projections à l’horizon 2030", xMin: 2020, xMax: 2030 };
+        return { title: "Couverture sanitaires : tendances de 2018 à 2025 et projections à l'horizon 2030", xMin: 2020, xMax: 2030 };
       case "oms":
-        return { title: "Normes de couverture sanitaire : recommandations de l’OMS à atteindre à partir de 2025", xMin: 2025, xMax: 2030 };
+        return { title: "Normes de couverture sanitaire : recommandations de l'OMS à atteindre à partir de 2025", xMin: 2025, xMax: 2030 };
       default:
         return { title: "", xMin: 2013, xMax: 2030 };
     }
@@ -253,7 +292,11 @@ const DashboardPage = () => {
                 className="w-full p-2 rounded-lg bg-white text-gray-800 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Toutes les régions</option>
-                {regions.map((r, i) => <option key={i} value={r}>{r}</option>)}
+                {regions.map((r, i) => (
+                  <option key={i} value={r}>
+                    {r === "" ? "Toutes les régions" : r}
+                  </option>
+                ))}
               </select>
             </div>
             <img src={DoctorIllustration} alt="Docteure" className="w-full h-full object-contain" />
@@ -285,7 +328,7 @@ const DashboardPage = () => {
                 <>
                   <BoxBorder color="green" label="Norme OMS (2030)" value={indicators.current} />
                   <BoxBorder color="yellow" label="Nombre de structures" value={indicators.future} />
-                  <BoxBorder color="red" label=" A ajouter (structure)" value={indicators.current - indicators.future} />
+                  <BoxBorder color="red" label="A ajouter (structure)" value={indicators.current - indicators.future} />
                 </>
               )}
             </div>
@@ -304,8 +347,8 @@ const DashboardPage = () => {
                     <Legend verticalAlign="top" height={36} />
                     {view === "population" && <Line name="population" type="monotone" dataKey="pop_value" stroke="#2563eb" strokeWidth={3} dot={{ r: 5, stroke: "#1C2241", strokeWidth: 2, fill: "#2563eb" }} activeDot={{ r: 8 }} animationDuration={1500} />}
                     {view === "structures" && <Line name="nombre de structure" type="monotone" dataKey="nb_str" stroke="#2563eb" strokeWidth={3} dot={{ r: 5, stroke: "#1C2241", strokeWidth: 2, fill: "#2563eb" }} activeDot={{ r: 8 }} animationDuration={1500} />}
-                    {view === "coverage" && <Line name= "couverture sanitaire" type="monotone" dataKey="couv_san" stroke="#2563eb" strokeWidth={3} dot={{ r: 5, stroke: "#1C2241", strokeWidth: 2, fill: "#2563eb" }} activeDot={{ r: 8 }} animationDuration={1500} />}
-                    {view === "oms" && <Line name= "norme OMS" type="monotone" dataKey="norm_oms" stroke="#e11d48" strokeWidth={3} dot={{ r: 5, stroke: "#1C2241", strokeWidth: 2, fill: "#e11d48" }} activeDot={{ r: 8 }} animationDuration={1500} />}
+                    {view === "coverage" && <Line name="couverture sanitaire" type="monotone" dataKey="couv_san" stroke="#2563eb" strokeWidth={3} dot={{ r: 5, stroke: "#1C2241", strokeWidth: 2, fill: "#2563eb" }} activeDot={{ r: 8 }} animationDuration={1500} />}
+                    {view === "oms" && <Line name="norme OMS" type="monotone" dataKey="norm_oms" stroke="#e11d48" strokeWidth={3} dot={{ r: 5, stroke: "#1C2241", strokeWidth: 2, fill: "#e11d48" }} activeDot={{ r: 8 }} animationDuration={1500} />}
                   </LineChart>
                 </ResponsiveContainer>
               </div>
@@ -342,7 +385,7 @@ const DashboardPage = () => {
                     </>
                   ) : (
                     <>
-                      <h3 className="text-lg font-semibold text-center mb-3"> Norme OMS & Ajouts (2025–2030) </h3>
+                      <h3 className="text-lg font-semibold text-center mb-3">Norme OMS & Ajouts (2025—2030)</h3>
                       <table className="w-full text-sm border border-gray-200">
                         <thead className="bg-gray-100">
                           <tr>
@@ -367,7 +410,6 @@ const DashboardPage = () => {
                   )}
                 </div>
               )}
-
             </div>
           </div>
         </div>
