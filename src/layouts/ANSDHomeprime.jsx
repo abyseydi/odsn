@@ -11,6 +11,7 @@ import {
 } from "recharts";
 
 // Images
+
 import IconStats from '../../public/img/public.png';
 import IconHospital from '../../public/img/health-structure.png';
 import IconHeart from '../../public/img/healt_cover.png';
@@ -18,6 +19,7 @@ import IconWorld from '../../public/img/world-health.png';
 import DoctorIllustration from '../../public/img/doctor.png';
 
 // Composant d'icône de la sidebar
+
 const SidebarIcon = ({ src, alt, label, onClick }) => (
   <button
     className="group relative my-4 md:my-6 w-10 h-12 md:w-12 md:h-14 flex items-center justify-center focus:outline-none"
@@ -31,6 +33,7 @@ const SidebarIcon = ({ src, alt, label, onClick }) => (
 );
 
 // Composant pour les petites boîtes d'indicateurs
+
 const BoxBorder = ({ color, label, value }) => {
   const colorMap = {
     green: 'border-green-600',
@@ -54,6 +57,7 @@ const DashboardPage = () => {
   const [view, setView] = useState("population"); // population / structures / coverage / oms
 
   // Chargement des fichiers JSON
+
   useEffect(() => {
     fetch("../../public/data/population.json")
       .then(res => res.json())
@@ -68,6 +72,7 @@ const DashboardPage = () => {
   }, []);
 
   // Choix des données selon la vue active
+
   const data = useMemo(() => {
     if (view === "population") return populationData;
     if (view === "structures") return structuresData;
@@ -77,9 +82,11 @@ const DashboardPage = () => {
   }, [view, populationData, structuresData, coverageData]);
 
   // Liste des régions
+
   const regions = useMemo(() => [...new Set(data.map(d => d.region))].sort(), [data]);
 
   // Filtrage et agrégation selon la vue
+
   const filteredData = useMemo(() => {
     let relevantData = selectedRegion ? data.filter(d => d.region.toLowerCase() === selectedRegion.toLowerCase()) : data;
 
@@ -127,6 +134,7 @@ const DashboardPage = () => {
   const sortedData = useMemo(() => [...filteredData].sort((a, b) => a.annee - b.annee), [filteredData]);
 
   // Calcul des indicateurs
+
   useEffect(() => {
     if (!sortedData.length) return;
     const currentYear = 2025;
@@ -184,6 +192,7 @@ const DashboardPage = () => {
   }, [sortedData, view]);
 
   // Données 2030 par région
+
   const data2030ByRegion = useMemo(() => {
     const year2030 = data.filter(d => d.annee === 2030);
     if (view === "population") return year2030.sort((a, b) => b.pop_value - a.pop_value);
@@ -194,6 +203,7 @@ const DashboardPage = () => {
   }, [data, view]);
 
   // Définition des plages et titres selon la vue
+  
   const getChartConfig = () => {
     switch (view) {
       case "population":
@@ -281,6 +291,7 @@ const DashboardPage = () => {
             </div>
 
             {/* Bloc contenu principal */}
+
             <div className="flex flex-col md:flex-row gap-6 border-l-4 border-blue-500 w-full bg-white rounded-xl shadow-md p-6 md:p-8 min-h-[300px] md:min-h-[400px]">
               <div className="flex-1">
                 <h3 className="text-lg font-semibold text-center mb-3">{chartTitle}</h3>
@@ -300,6 +311,7 @@ const DashboardPage = () => {
               </div>
 
               {/* Tableau : affiché uniquement si TOUTES les régions sont sélectionnées OU si vue=oms */}
+
               {(selectedRegion === "" || view === "oms") && (
                 <div className="w-full md:w-1/3">
                   {view !== "oms" ? (
