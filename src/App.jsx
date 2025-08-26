@@ -9,16 +9,17 @@ import EducationHome from "./layouts/educationHome";
 import PublicPolicyHome from "./layouts/publicPolicyHome";
 
 // import Catalogue from "./layouts/Catalogue";
-// import PublicPolicyHome from "./layouts/PublicPolicyHome";
+import PublicPolicyHome from "./layouts/publicPolicyHome";
 
 
 
+import DashboardPage from "./layouts/ANSDHomeprime";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      <Route path="/ANSDHome" element={<ANSDHome />} />
+      <Route path="/ANSDHome" element={<ANSDHome/>} />
       <Route path="/GendarmerieAuth" element={<GendarmerieAuth />} />
       <Route path="/safetyOrderHome" element={<SafetyOrderHome />} />
       <Route path="/GendarmerieHome" element={<GendarmerieHome />} />
@@ -26,7 +27,9 @@ function App() {
             <Route path="/PublicPolicyHome" element={<PublicPolicyHome />} />
 
       {/* <Route path="/Catalogue" element={<Catalogue />} /> */}
-      {/* <Route path="/PublicPolicyHome" element={<PublicPolicyHome />} /> */}
+      <Route path="/PublicPolicyHome" element={<PublicPolicyHome />} />
+      <Route path="/GendarmerieHome" element={<EducationHome />} />
+      <Route path="/ANSDHomeprime" element={<DashboardPage />} />
 
     </Routes>
   );

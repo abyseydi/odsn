@@ -96,7 +96,7 @@ export default function PublicPolicyHome() {
               logo="/img/ansd.png"
               alt="Démographie - ANSD"
               title="Démographie & Statistiques (ANSD)"
-              onClick={() => navigate("/ANSDHome")}
+              onClick={() => navigate("/ANSDHomeprime")}
             />
             <PolicyCard
               logo="/img/senegal-flag.png"
