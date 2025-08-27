@@ -3,6 +3,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 import { Link as ScrollLink } from "react-scroll";
 import UseCasePage from "./UseCasePage";
 
+
 export default function HeaderFooterPage() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -73,11 +74,14 @@ export default function HeaderFooterPage() {
         {/* NAVBAR */}
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-4 flex items-center justify-between">
           <div className="flex-shrink-0">
+            <button onClick={() => navigate("/")}>
             <img
               src="img/logo_accel.png"
               alt="Logo Accel"
               className="h-14 sm:h-16 w-auto"
+              
             />
+            </button>
           </div>
           <div className="hidden md:flex flex-1 justify-center">
             <NavLinks />
