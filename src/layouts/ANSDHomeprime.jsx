@@ -311,6 +311,21 @@ const DashboardPage = () => {
         <SidebarIcon src={IconHospital} alt="Structures de santé" label="Structures Sanitaires" onClick={() => setView("structures")} />
         <SidebarIcon src={IconHeart} alt="Couverture santé" label="Couverture santé" onClick={() => setView("coverage")} />
         <SidebarIcon src={IconWorld} alt="Santé mondiale" label="Recommandations OMS" onClick={() => setView("oms")} />
+               <div className="mt-2 sm:mt-8 text-center">
+              <button
+                onClick={() => navigate("/")}
+                className="
+                  inline-flex items-center gap-2 rounded-full px-6 py-3
+                  bg-red/90 text-blue-700 font-medium
+                  hover:bg-white shadow-md
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400
+                  transition text-sm sm:text-base
+                "
+                aria-label="Retour à l'accueil"
+              >
+                <span aria-hidden>←</span> Retour à l’accueil
+              </button>
+            </div>
       </div>
 
       {/* Contenu principal */}
@@ -454,8 +469,23 @@ const DashboardPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> <div className="mt-6 md:mt-0">
+    <button
+      onClick={() => navigate("/")}
+      className="
+        inline-flex items-center gap-2 rounded-full px-4 py-2
+        bg-red-500 text-white font-medium
+        hover:bg-red-600 shadow-md
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400
+        transition text-sm sm:text-base
+      "
+      aria-label="Retour à l'accueil"
+    >
+      ← Accueil
+    </button>
+  </div>
     </div>
+    
   );
 };
 
