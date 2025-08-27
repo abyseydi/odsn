@@ -1,88 +1,174 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { FiMenu, FiX } from "react-icons/fi";
+import { Link as ScrollLink } from "react-scroll";
+import UseCasePage from "./UseCasePage";
 
-export default function CatalogueBook() {
-  const [open, setOpen] = useState(false);
+
+export default function HeaderFooterPage() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const NavLinks = ({ onClick }) => {
+    const base =
+      "relative group inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-full text-sm md:text-[15px] font-semibold uppercase tracking-wide transition";
+    const text =
+      "text-[#1C2452] hover:text-[#26509e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#26509e]/50";
+    const afterBar =
+      "after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[#26509e] after:transition-all after:duration-300 group-hover:after:w-3/4";
+    const activeClass = "!text-[#26509e] after:w-3/4";
+
+    return (
+      <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-5">
+        <ScrollLink
+          to="section-services"
+          smooth
+          duration={700}
+          offset={-80}
+          spy
+          onClick={onClick}
+          className={`${base} ${text} ${afterBar}`}
+          activeClass={activeClass}
+        >
+          Nos expertises
+        </ScrollLink>
+        <ScrollLink
+          to="section-cas-usage"
+          smooth
+          duration={700}
+          offset={-80}
+          spy
+          onClick={onClick}
+          className={`${base} ${text} ${afterBar}`}
+          activeClass={activeClass}
+        >
+          Catalogue
+        </ScrollLink>
+        <ScrollLink
+          to="section-publications"
+          smooth
+          duration={700}
+          offset={-80}
+          spy
+          onClick={onClick}
+          className={`${base} ${text} ${afterBar}`}
+          activeClass={activeClass}
+        >
+          Publications
+        </ScrollLink>
+        <a
+          href="https://www.accel-tech.net/"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={onClick}
+          className={`${base} ${text} ${afterBar}`}
+        >
+          Découvrez ACCEL Tech
+        </a>
+      </div>
+    );
+  };
 
   return (
-    <div className="flex flex-col items-center justify-center my-12 px-6">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-10 text-[#1e1446]">
-        Explorez nos secteurs
-      </h2>
+    <div className="text-white font-sans scroll-smooth">
+      {/* HEADER */}
+      <header className="w-full h-[80px]">
+        {/* NAVBAR */}
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-4 flex items-center justify-between">
+          <div className="flex-shrink-0">
+            <button onClick={() => navigate("/")}>
+            <img
+              src="img/logo_accel.png"
+              alt="Logo Accel"
+              className="h-14 sm:h-16 w-auto"
+              
+            />
+            </button>
+          </div>
+          <div className="hidden md:flex flex-1 justify-center">
+            <NavLinks />
+          </div>
+          <div className="flex items-center gap-3">
+            <button className="hidden sm:inline-block bg-[#1e1446] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#120b36]">
+              CONTACT
+            </button>
+            <button
+              aria-label="Ouvrir le menu"
+              className="md:hidden p-2 rounded-lg bg-white/90 text-[#1e1446]"
+              onClick={() => setMobileOpen(true)}
+            >
+              <FiMenu className="h-6 w-6" />
+            </button>
+          </div>
+        </nav>
 
-      {/* Livre */}
-      <div
-        className="relative w-[320px] sm:w-[520px] h-[420px] sm:h-[520px] cursor-pointer perspective"
-        onClick={() => setOpen(!open)}
-      >
-        {/* === COUVERTURE === */}
-        <motion.div
-          initial={{ rotateY: 0 }}
-          animate={{ rotateY: open ? -180 : 0 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0 bg-gradient-to-br from-[#1e1446] to-[#0f0a2b] 
-                     rounded-lg shadow-2xl flex items-center justify-center 
-                     backface-hidden border-r-4 border-gray-800"
-          style={{ transformOrigin: "left center" }}
-        >
-          <h3 className="text-3xl font-bold tracking-wider text-white drop-shadow-lg">
-            Catalogue
-          </h3>
-
-          {/* Effet tranche gauche */}
-          <div className="absolute left-0 top-0 h-full w-[12px] bg-gradient-to-r from-black/40 to-transparent rounded-l-md" />
-        </motion.div>
-
-        {/* === PAGE SECTEUR PUBLIC === */}
-        <motion.div
-          initial={{ rotateY: 180 }}
-          animate={{ rotateY: open ? 0 : 180 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0 bg-[#fdfcf9] rounded-lg shadow-inner 
-                     flex flex-col items-center justify-center p-8 
-                     backface-hidden border-l-2 border-gray-300"
-          style={{ transformOrigin: "left center" }}
-        >
-          <h3 className="text-xl font-bold text-fuchsia-600 mb-4 underline">
-            Secteur Public
-          </h3>
-          <ul className="space-y-2 text-sm text-gray-700 font-medium">
-            <li>📊 Suivi des recettes de l’État</li>
-            <li>🏛️ Fond souverain & décisions</li>
-            <li>🛰️ Cartographie fiscale</li>
-          </ul>
-
-          {/* Effet de pages fines */}
-          <div className="absolute right-0 top-0 h-full w-[8px] bg-gradient-to-l from-gray-200 to-transparent rounded-r-md" />
-        </motion.div>
-
-        {/* === PAGE SECTEUR PRIVÉ === */}
-        <motion.div
-          initial={{ rotateY: -180 }}
-          animate={{ rotateY: open ? 0 : -180 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0 bg-[#fdfcf9] rounded-lg shadow-inner 
-                     flex flex-col items-center justify-center p-8 
-                     backface-hidden border-r-2 border-gray-300"
-          style={{ transformOrigin: "right center" }}
-        >
-          <h3 className="text-xl font-bold text-blue-600 mb-4 underline">
-            Secteur Privé
-          </h3>
-          <ul className="space-y-2 text-sm text-gray-700 font-medium">
-            <li>🏦 Banque & Finance</li>
-            <li>🏢 Immobilier & BTP</li>
-            <li>🌾 Agro-industrie</li>
-          </ul>
-
-          {/* Effet tranche droite */}
-          <div className="absolute left-0 top-0 h-full w-[8px] bg-gradient-to-r from-gray-200 to-transparent rounded-l-md" />
-        </motion.div>
+        {/* MENU MOBILE */}
+        {mobileOpen && (
+          <div className="md:hidden fixed inset-0 z-40">
+            <div
+              className="absolute inset-0 bg-black/40"
+              onClick={() => setMobileOpen(false)}
+            />
+            <div className="absolute right-0 top-0 h-full w-[85vw] max-w-[360px] bg-white text-[#1C2452] p-6 shadow-xl">
+              <div className="flex items-center justify-between mb-6">
+                <img
+                  src="img/logo_accel.png"
+                  alt="Logo Accel"
+                  className="h-12 w-auto"
+                />
+                <button
+                  aria-label="Fermer le menu"
+                  onClick={() => setMobileOpen(false)}
+                  className="p-2 rounded-md hover:bg-gray-100"
+                >
+                  <FiX className="h-6 w-6" />
+                </button>
+              </div>
+              <NavLinks onClick={() => setMobileOpen(false)} />
+              <button className="mt-6 w-full bg-[#1e1446] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#120b36]">
+                CONTACT
+              </button>
+            </div>
+          </div>
+        )}
+      </header>
+      {/* LE CATALOGUE */}
+      <div>
+       {/* Le catalogue ici Ici */}
+      <UseCasePage />
       </div>
-
-      <p className="mt-6 text-sm text-gray-500 italic">
-        Cliquez sur le livre pour {open ? "le fermer" : "l’ouvrir"} 📖
-      </p>
+      {/* FOOTER */}
+      <footer className="bg-[#1e1446] text-white px-4 sm:px-6 lg:px-10 py-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 text-sm">
+          <div>
+            <p className="text-lg font-bold mb-2">Powered By</p>
+            <img
+              src="img/accel_logo_light.png"
+              alt="Accel Logo"
+              className="h-16 sm:h-20"
+            />
+          </div>
+          <div>
+            <h3 className="font-bold mb-4">Liens utiles</h3>
+            <ul className="space-y-3">
+              <li>🔗 Red Hat Enterprise Linux</li>
+              <li>🔗 Openshift AI</li>
+              <li>🔗 Heritage Cloud</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-bold mb-4">Contact</h3>
+            <ul className="space-y-3">
+              <li>+221 33 820 83 83</li>
+              <li>info@accel-tech.net</li>
+              <li>165 virage, Route de l'aéroport, Dakar, Sénégal</li>
+            </ul>
+          </div>
+          <div className="flex items-end md:items-center justify-start md:justify-center gap-6 text-fuchsia-500 text-2xl">
+            <i className="fab fa-facebook-f" aria-label="Facebook" />
+            <i className="fab fa-linkedin-in" aria-label="LinkedIn" />
+            <i className="fab fa-youtube" aria-label="YouTube" />
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

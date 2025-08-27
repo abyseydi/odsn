@@ -7,10 +7,11 @@ import GendarmerieAuth from "./layouts/gendarmerieAuth";
 import SafetyOrderHome from "./layouts/safetyOrderHome";
 import EducationHome from "./layouts/educationHome";
 import PublicPolicyHome from "./layouts/publicPolicyHome";
+import UseCasePage from "./layouts/UseCasePage";
 
 import SureteAuth from "./components/SureteAuth";
 
-// import Catalogue from "./layouts/Catalogue";
+import Catalogue from "./layouts/catalogue";
 
 
 
@@ -25,13 +26,13 @@ function App() {
       <Route path="/safetyOrderHome" element={<SafetyOrderHome />} />
       <Route path="/GendarmerieHome" element={<GendarmerieHome />} />
       <Route path="/EducationHome" element={<EducationHome />} />
-            <Route path="/PublicPolicyHome" element={<PublicPolicyHome />} />
-
-      {/* <Route path="/Catalogue" element={<Catalogue />} /> */}
+      <Route path="/Catalogue" element={<Catalogue />} />
+      <Route path="/PublicPolicyHome" element={<PublicPolicyHome />} />
       <Route path="/ANSDHomeprime" element={<DashboardPage />} />
 
       <Route path="/sureteAuth" element={<SureteAuth />} />
 
+      <Route path="/UseCasePage" element={<UseCasePage />} />
     </Routes>
   );
 }

@@ -304,7 +304,7 @@ const DashboardPage = () => {
   const { title: chartTitle, xMin, xMax } = getChartConfig();
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen font-sans" style={{ backgroundImage: "url('../../public/img/background.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className="flex flex-col md:flex-row min-h-screen font-sans" style={{ backgroundImage: "url('/img/background.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
       {/* Sidebar */}
       <div className="w-full md:w-20 bg-[#1C2241] flex flex-row md:flex-col justify-around md:justify-center items-center py-4 md:py-10 rounded-b-4xl md:rounded-r-[3rem] shadow-lg">
         <SidebarIcon src={IconStats} alt="Statistiques" label="Démographie et population" onClick={() => setView("population")} />
@@ -312,7 +312,7 @@ const DashboardPage = () => {
         <SidebarIcon src={IconHeart} alt="Couverture santé" label="Couverture santé" onClick={() => setView("coverage")} />
         <SidebarIcon src={IconWorld} alt="Santé mondiale" label="Recommandations OMS" onClick={() => setView("oms")} />
                <div className="mt-2 sm:mt-8 text-center">
-              <button
+              {/* <button
                 onClick={() => navigate("/")}
                 className="
                   inline-flex items-center gap-2 rounded-full px-6 py-3
@@ -324,7 +324,7 @@ const DashboardPage = () => {
                 aria-label="Retour à l'accueil"
               >
                 <span aria-hidden>←</span> Retour à l’accueil
-              </button>
+              </button> */}
             </div>
       </div>
 
@@ -470,7 +470,7 @@ const DashboardPage = () => {
           </div>
         </div>
       </div> <div className="mt-6 md:mt-0">
-    <button
+    {/* <button
       onClick={() => navigate("/")}
       className="
         inline-flex items-center gap-2 rounded-full px-4 py-2
@@ -482,7 +482,7 @@ const DashboardPage = () => {
       aria-label="Retour à l'accueil"
     >
       ← Accueil
-    </button>
+    </button> */}
   </div>
     </div>
     

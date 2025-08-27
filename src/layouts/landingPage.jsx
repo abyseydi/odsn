@@ -63,8 +63,7 @@ const NavLinks = ({ onClick }) => {
         onClick={onClick}
         className={`${base} ${text} ${afterBar}`}
         activeClass={activeClass}
-      >
-CATALOGUE
+      >CATALOGUE
       </ScrollLink>
 
       <ScrollLink
