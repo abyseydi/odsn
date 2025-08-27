@@ -21,7 +21,7 @@ export default function LandingPage() {
       { title: "Éducation & Formation", img: "/img/education.png", link: "educationHome" },
 
       { title: "Politique publique", img: "/img/politique_publique.png", link: "/PublicPolicyHome" },
-      { title: "Sûreté & ordre", img: "/img/fds_icon.png", link: "/safetyOrderHome" },
+      { title: "Sûreté & ordre", img: "/img/fds_icon.png", link: "/SureteAuth" },
       { title: "Économie, Finances & Budget", img: "/img/financement.png", link: "" },
       { title: "Énergie & Mines", img: "/img/energie.png", link: "" },
     ],
