@@ -44,13 +44,7 @@ export default function UseCasePage() {
 
       {/* Contenu */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-6">
-        {/* Bouton Retour Accueil */}
-        {/* <button
-          onClick={() => navigate("/")}
-          className="flex items-center gap-2 px-4 py-2 mb-6 bg-white shadow-md rounded-full text-blue-700 hover:bg-blue-100 transition"
-        >
-          <ArrowLeft size={20} /> Retour à l'accueil
-        </button> */}
+        
 
         {/* Carte principale */}
         <div className="w-full max-w-6xl bg-white bg-opacity-80 rounded-2xl shadow-2xl p-6 backdrop-blur-md">
@@ -84,8 +78,8 @@ export default function UseCasePage() {
               <div className="bg-blue-700 text-white py-3 font-semibold">Objectif</div>
               <div className="bg-blue-700 text-white py-3 font-semibold">Status</div>
 
-              <div className="bg-blue-100 py-3 px-2">{selected.UseCase}</div>
-              <div className="bg-blue-100 py-3 px-2">{selected.Objectif}</div>
+              <div className="bg-blue-100 py-3 px-2 text-black">{selected.UseCase}</div>
+              <div className="bg-blue-100 py-3 px-2 text-black">{selected.Objectif}</div>
               <div className="bg-blue-100 py-3 px-2 font-medium text-green-800">{selected.Status}</div>
             </div>
 
@@ -104,7 +98,9 @@ export default function UseCasePage() {
               ))}
             </div>
           </div>
+          
         </div>
+        
       </div>
     </div>
   );

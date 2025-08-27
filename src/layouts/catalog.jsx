@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { Link as ScrollLink } from "react-scroll";
 import UseCasePage from "./UseCasePage";
+import { Link, useNavigate } from "react-router-dom";
 
-
-export default function HeaderFooterPage() {
+export default function Catalog() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navigate = useNavigate();
 
   const NavLinks = ({ onClick }) => {
     const base =
@@ -71,21 +72,28 @@ export default function HeaderFooterPage() {
     <div className="text-white font-sans scroll-smooth">
       {/* HEADER */}
       <header className="w-full h-[80px]">
-        {/* NAVBAR */}
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-4 flex items-center justify-between">
-          <div className="flex-shrink-0">
-            <button onClick={() => navigate("/")}>
-            <img
-              src="img/logo_accel.png"
-              alt="Logo Accel"
-              className="h-14 sm:h-16 w-auto"
-              
-            />
+          <div className="flex-shrink-0 flex items-center gap-4">
+            <Link to="/">
+              <img
+                src="img/logo_accel.png"
+                alt="Logo Accel"
+                className="h-14 sm:h-16 w-auto"
+              />
+            </Link>
+            {/* BOUTON RETOUR À L'ACCUEIL */}
+            <button
+              onClick={() => navigate("/")}
+              className="bg-[#26509e] text-white px-3 py-1 rounded-full text-sm font-semibold hover:bg-[#1c3a91]"
+            >
+              Retour à l'accueil
             </button>
           </div>
+
           <div className="hidden md:flex flex-1 justify-center">
             <NavLinks />
           </div>
+
           <div className="flex items-center gap-3">
             <button className="hidden sm:inline-block bg-[#1e1446] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#120b36]">
               CONTACT
@@ -122,19 +130,29 @@ export default function HeaderFooterPage() {
                   <FiX className="h-6 w-6" />
                 </button>
               </div>
+
               <NavLinks onClick={() => setMobileOpen(false)} />
-              <button className="mt-6 w-full bg-[#1e1446] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#120b36]">
+
+              <button
+                className="mt-6 w-full bg-[#1e1446] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#120b36]"
+                onClick={() => navigate("/")}
+              >
+                Retour à l'accueil
+              </button>
+
+              <button className="mt-3 w-full bg-[#1e1446] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#120b36]">
                 CONTACT
               </button>
             </div>
           </div>
         )}
       </header>
+
       {/* LE CATALOGUE */}
-      <div>
-       {/* Le catalogue ici Ici */}
-      <UseCasePage />
+      <div className="mt-6">
+        <UseCasePage />
       </div>
+
       {/* FOOTER */}
       <footer className="bg-[#1e1446] text-white px-4 sm:px-6 lg:px-10 py-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 text-sm">
