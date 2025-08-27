@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { Link as ScrollLink } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
   const [activeTab, setActiveTab] = useState("privé");
@@ -54,17 +55,13 @@ const NavLinks = ({ onClick }) => {
         Nos expertises
       </ScrollLink>
 
-      <ScrollLink
-        to="section-cas-usage"
-        smooth
-        duration={700}
-        offset={-80}
-        spy
-        onClick={onClick}
-        className={`${base} ${text} ${afterBar}`}
-        activeClass={activeClass}
-      >CATALOGUE
-      </ScrollLink>
+      <Link 
+      to="/catalog" 
+      className={`${base} ${text} ${afterBar}`}
+      >
+      CATALOGUE
+    </Link>
+      
 
       <ScrollLink
         to="section-publications"
@@ -317,7 +314,7 @@ const NavLinks = ({ onClick }) => {
 
           <div className="text-center mt-8 sm:mt-10">
             <RouterLink
-              to="/catalogue"
+              to="/catalog"
               className="text-white underline underline-offset-4 decoration-white/60 hover:decoration-white text-sm sm:text-base"
             >
               Voir toutes nos réalisations &gt;
