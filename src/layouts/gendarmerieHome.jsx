@@ -1,5 +1,5 @@
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState,useEffect } from "react";
 import ComplaintDonutChart from "./complaintDonutChart";
 import ComplaintPriorityBarChart from "./complaintPriorityBarChart";
 import GendarmerieNavBar from "./gendarmerieNavBar";
@@ -9,6 +9,7 @@ import NewPlaintesForm from "./NewPlaintesForm";
 import Prediction from "./Prediction";
 import Effectifpred from "./Effectif";
 import CriticalComplaints from "./critical";
+import {API_ODSN_SERVICE} from "@/BASE_API/HttpBase";
 
 
 const STATUTS = ["Traitée", "En attente de traitement", "En cours de traitement", "Classée sans suite"];
@@ -61,6 +62,43 @@ export default function GendarmerieHome() {
     type: "",
     search: "",
   });
+    const [plainteData, setPlainteData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+
+    useEffect(() => {
+
+        const API_URL = API_ODSN_SERVICE+'odsn/plaintes';
+
+        fetch(API_URL)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('error');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                const normalized = (Array.isArray(data) ? data : [])?.map((d, idx) => ({
+                    id: d.id ?? d.plainteId ?? d.code ?? `PL-${idx + 1}`,
+                    description: d.description ?? d.titre ?? d.title ?? "",
+                    statut: d.statut ?? d.status ?? "",
+                    priorite: d.priorite ?? d.priority ?? "",
+                    categorie: d.categorie ?? d.category ?? "",
+                    region: d.region ?? d.lieu ?? d.commune ?? "",
+                    urgence: d.urgence ?? d.urgent ?? "",
+                    canal: d.canal ?? d.channel ?? "",
+                    typePlaignant: d.typePlaignant ?? d.plaignantType ?? d.requesterType ?? "",
+                }));
+                setPlainteData(normalized)
+                console.log("plaintes",data)
+                setLoading(false);
+            })
+            .catch((error) => {
+                setError(error.message);
+                setLoading(false);
+            });
+    }, []);
 
   const complaints = useMemo(() => generateComplaints(120), []);
 
@@ -71,18 +109,28 @@ export default function GendarmerieHome() {
     { color: "indigo-900", title: "Traitées aujourd'hui",  value: faker.number.int({ min: 10, max: 50 }) },
   ]), [complaints]);
 
-  const filteredComplaints = useMemo(() => (
-    complaints.filter((c) =>
-      (!filters.statut   || c.statut   === filters.statut)   &&
-      (!filters.priorite || c.priorite === filters.priorite) &&
-      (!filters.categorie|| c.categorie=== filters.categorie)&&
-      (!filters.region   || c.region   === filters.region)   &&
-      (!filters.urgence  || c.urgence  === filters.urgence)  &&
-      (!filters.canal    || c.canal    === filters.canal)    &&
-      (!filters.type     || c.type     === filters.type)     &&
-      (!filters.search   || c.description.toLowerCase().includes(filters.search.toLowerCase()))
-    )
-  ), [complaints, filters]);
+  // const filteredComplaints = useMemo(() => (
+  //   complaints.filter((c) =>
+  //     (!filters.statut   || c.statut   === filters.statut)   &&
+  //     (!filters.priorite || c.priorite === filters.priorite) &&
+  //     (!filters.categorie|| c.categorie=== filters.categorie)&&
+  //     (!filters.region   || c.region   === filters.region)   &&
+  //     (!filters.urgence  || c.urgence  === filters.urgence)  &&
+  //     (!filters.canal    || c.canal    === filters.canal)    &&
+  //     (!filters.type     || c.type     === filters.type)     &&
+  //     (!filters.search   || c.description.toLowerCase().includes(filters.search.toLowerCase()))
+  //   )
+  // ), [complaints, filters]);
+
+    const filteredComplaints = plainteData.filter((c) =>
+        (!filters.statut || c.statut === filters.statut) &&
+        (!filters.priorite || c.priorite === filters.priorite) &&
+        (!filters.region || c.region === filters.region) &&
+        (!filters.urgence || c.urgence === filters.urgence) &&
+        (!filters.canal || c.canal === filters.canal) &&
+        (!filters.type || c.type === filters.type) &&
+        (!filters.search || c.description.toLowerCase().includes(filters.search.toLowerCase()))
+    );
 
   const renderSelect = (label, name, options) => (
     <div className="w-[200px]">

@@ -223,6 +223,7 @@ import React, { useState } from "react";
 // Sinon, garde ces imports en pointant vers le bon dossier assets.
 import PlaignantIcon from "../../public/img/plaignant.png";
 import DetailsIcon from "../../public/img/details.png";
+import {API_ODSN_SERVICE} from "@/BASE_API/HttpBase";
 
 const initialFormData = {
   // Plaignant
@@ -272,18 +273,54 @@ export default function NewPlaintesForm() {
         isError: true,
       });
       return;
-    }
 
-    setPopup({
-      show: true,
-      message: "Information ajoutée avec succès !",
-      isError: false,
-    });
+
+
 
     // TODO: envoi API
   };
 
-  const handleReset = () => {
+
+
+  fetch(API_ODSN_SERVICE+'odsn/plaintes', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  }).then((response) => {
+    if (response.ok) {
+      setPopup({
+        show: true,
+        message: "plainte enregistré avec success",
+        isError: false,
+      });
+      setFormData(initialFormData);
+    }
+    return response.json();
+  }).catch((error) => {
+    let message = "Une erreur est survenue !";
+
+    if (error.message === "SERVER_ERROR") {
+      message = "Le serveur a répondu avec une erreur !";
+    } else if (error.message.includes("Failed to fetch") ||
+        error.message.includes("ERR_CONNECTION_REFUSED")) {
+      message = "Impossible de se connecter au serveur.";
+    } else {
+      message = "Vérifiez les informations saisies.";
+    }
+
+    setPopup({
+      show: true,
+      message,
+      isError: true,
+    });
+  });
+};
+
+
+
+const handleReset = () => {
     setFormData(initialFormData);
   };
 
