@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   LineChart,
   Line,
@@ -10,16 +11,16 @@ import {
   Legend
 } from "recharts";
 
-// Images
-import IconStats from '../../public/img/public.png';
-import IconHospital from '../../public/img/health-structure.png';
-import IconHeart from '../../public/img/healt_cover.png';
-import IconWorld from '../../public/img/world-health.png';
-import DoctorIllustration from '../../public/img/doctor.png';
+// Images - CHEMINS CORRIGÉS pour production
+const IconStats = '/img/public.png';
+const IconHospital = '/img/health-structure.png';
+const IconHeart = '/img/healt_cover.png';
+const IconWorld = '/img/world-health.png';
+const DoctorIllustration = '/img/doctor.png';
 
-// Configuration API - identique à ANSDHome.jsx
+// Configuration API - CORRIGÉE
 const API_BASE_URL = window.location.hostname === 'localhost' 
-  ? '${API_BASE_URL}' 
+  ? 'http://localhost:8000/api' // URL locale pour développement
   : 'https://odsnback-ansd-app.apps.origins.heritage.africa/api';
 
 // Composant d'icône de la sidebar
@@ -51,6 +52,7 @@ const BoxBorder = ({ color, label, value }) => {
 };
 
 const DashboardPage = () => {
+  const navigate = useNavigate();
   const [populationData, setPopulationData] = useState([]);
   const [structuresData, setStructuresData] = useState([]);
   const [coverageData, setCoverageData] = useState([]);
@@ -63,7 +65,7 @@ const DashboardPage = () => {
   useEffect(() => {
     fetch(`${API_BASE_URL}/regions`)
       .then(res => res.json())
-      .then(data => setRegions(["", ...data])) // "" pour "Toutes les régions"
+      .then(data => setRegions(data))
       .catch(err => console.error("Erreur chargement des régions :", err));
   }, []);
 
@@ -118,12 +120,15 @@ const DashboardPage = () => {
     return [];
   }, [view, populationData, structuresData, coverageData]);
 
-  // Filtrage et agrégation selon la vue
+  // Filtrage et agrégation selon la vue - LOGIQUE CORRIGÉE
   const filteredData = useMemo(() => {
-    let relevantData = selectedRegion ? data.filter(d => d.region && d.region.toLowerCase() === selectedRegion.toLowerCase()) : data;
+    // Si une région est sélectionnée, les données sont déjà filtrées par l'API
+    // Si aucune région n'est sélectionnée, on agrège toutes les données par année
+    let relevantData = data;
 
     if (view === "population") {
-      if (!selectedRegion) {
+      if (selectedRegion === "" || !selectedRegion) {
+        // Agrégation par année pour toutes les régions
         const yearMap = {};
         relevantData.forEach(d => {
           if (!yearMap[d.annee]) yearMap[d.annee] = { annee: d.annee, pop_value: 0 };
@@ -135,7 +140,8 @@ const DashboardPage = () => {
     }
 
     if (view === "structures" || view === "oms") {
-      if (!selectedRegion) {
+      if (selectedRegion === "" || !selectedRegion) {
+        // Agrégation par année pour toutes les régions
         const yearMap = {};
         relevantData.forEach(d => {
           if (!yearMap[d.annee]) yearMap[d.annee] = { annee: d.annee, nb_str: 0, norm_oms: 0, ajouter: 0 };
@@ -149,7 +155,8 @@ const DashboardPage = () => {
     }
 
     if (view === "coverage") {
-      if (!selectedRegion) {
+      if (selectedRegion === "" || !selectedRegion) {
+        // Agrégation par année pour toutes les régions
         const yearMap = {};
         relevantData.forEach(d => {
           if (!yearMap[d.annee]) yearMap[d.annee] = { annee: d.annee, couv_san: 0 };
@@ -227,12 +234,11 @@ const DashboardPage = () => {
 
   // Chargement des données par région quand "Toutes les régions" est sélectionné
   useEffect(() => {
-    if (selectedRegion === "" && regions.length > 1) {
+    if ((selectedRegion === "" || !selectedRegion) && regions.length > 0) {
       const fetchRegionalData = async () => {
         const breakdown = [];
-        const individualRegions = regions.filter(r => r !== "");
 
-        for (const r of individualRegions) {
+        for (const r of regions) {
           try {
             // Charger les données de population pour cette région
             const popRes = await fetch(`${API_BASE_URL}/population?region=${encodeURIComponent(r)}`);
@@ -267,7 +273,7 @@ const DashboardPage = () => {
     }
   }, [selectedRegion, regions]);
 
-  // Données 2030 par région - utilise regionalData quand disponible
+  // Données 2030 par région
   const data2030ByRegion = useMemo(() => {
     if (regionalData.length > 0) {
       if (view === "population") return regionalData.sort((a, b) => b.pop_value - a.pop_value);
@@ -291,7 +297,7 @@ const DashboardPage = () => {
       case "population":
         return { title: "Démographie et population : évolution au Sénégal de 2013 à 2030, avec projections jusqu'en 2030", xMin: 2013, xMax: 2030 };
       case "structures":
-        return { title: "Évolution du nombre de structures sanitaires au Sénégal : 2018—2025 et perspectives jusqu'en 2030", xMin: 2020, xMax: 2030 };
+        return { title: "Évolution du nombre de structures sanitaires au Sénégal : 2018–2025 et perspectives jusqu'en 2030", xMin: 2020, xMax: 2030 };
       case "coverage":
         return { title: "Couverture sanitaires : tendances de 2018 à 2025 et projections à l'horizon 2030", xMin: 2020, xMax: 2030 };
       case "oms":
@@ -306,26 +312,30 @@ const DashboardPage = () => {
   return (
     <div className="flex flex-col md:flex-row min-h-screen font-sans" style={{ backgroundImage: "url('/img/background.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
       {/* Sidebar */}
-      <div className="w-full md:w-20 bg-[#1C2241] flex flex-row md:flex-col justify-around md:justify-center items-center py-4 md:py-10 rounded-b-4xl md:rounded-r-[3rem] shadow-lg">
-        <SidebarIcon src={IconStats} alt="Statistiques" label="Démographie et population" onClick={() => setView("population")} />
-        <SidebarIcon src={IconHospital} alt="Structures de santé" label="Structures Sanitaires" onClick={() => setView("structures")} />
-        <SidebarIcon src={IconHeart} alt="Couverture santé" label="Couverture santé" onClick={() => setView("coverage")} />
-        <SidebarIcon src={IconWorld} alt="Santé mondiale" label="Recommandations OMS" onClick={() => setView("oms")} />
-               <div className="mt-2 sm:mt-8 text-center">
-              {/* <button
-                onClick={() => navigate("/")}
-                className="
-                  inline-flex items-center gap-2 rounded-full px-6 py-3
-                  bg-red/90 text-blue-700 font-medium
-                  hover:bg-white shadow-md
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400
-                  transition text-sm sm:text-base
-                "
-                aria-label="Retour à l'accueil"
-              >
-                <span aria-hidden>←</span> Retour à l’accueil
-              </button> */}
-            </div>
+      <div className="w-full md:w-20 bg-[#1C2241] flex flex-row md:flex-col justify-around md:justify-between items-center py-4 md:py-10 rounded-b-4xl md:rounded-r-[3rem] shadow-lg">
+        {/* Section des icônes */}
+        <div className="flex flex-row md:flex-col justify-around md:justify-center items-center flex-1">
+          <SidebarIcon src={IconStats} alt="Statistiques" label="Démographie et population" onClick={() => setView("population")} />
+          <SidebarIcon src={IconHospital} alt="Structures de santé" label="Structures Sanitaires" onClick={() => setView("structures")} />
+          <SidebarIcon src={IconHeart} alt="Couverture santé" label="Couverture santé" onClick={() => setView("coverage")} />
+          <SidebarIcon src={IconWorld} alt="Santé mondiale" label="Recommandations OMS" onClick={() => setView("oms")} />
+        </div>
+
+        {/* Logo et bouton de retour - uniquement visible sur desktop */}
+        <div className="hidden md:flex flex-col items-center mt-auto space-y-4">
+          <img
+            src="/img/accel_logo_light.png"
+            alt="Logo Accel"
+            className="h-12"
+          />
+          <button
+            onClick={() => navigate("/")}
+            className="px-3 py-2 rounded-lg bg-white text-[#1C2241] font-semibold text-xs shadow hover:bg-gray-100 transition-all text-center"
+          >
+            Retour à l'accueil
+          </button>
+          <p className="text-xs text-gray-300">© Accel Technologies</p>
+        </div>
       </div>
 
       {/* Contenu principal */}
@@ -350,11 +360,7 @@ const DashboardPage = () => {
                 className="w-full p-2 rounded-lg bg-white text-gray-800 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Toutes les régions</option>
-                {regions.map((r, i) => (
-                  <option key={i} value={r}>
-                    {r === "" ? "Toutes les régions" : r}
-                  </option>
-                ))}
+                {regions.map((r, i) => <option key={i} value={r}>{r}</option>)}
               </select>
             </div>
             <img src={DoctorIllustration} alt="Docteure" className="w-full h-full object-contain" />
@@ -441,7 +447,7 @@ const DashboardPage = () => {
                     </>
                   ) : (
                     <>
-                      <h3 className="text-lg font-semibold text-center mb-3">Norme OMS & Ajouts (2025—2030)</h3>
+                      <h3 className="text-lg font-semibold text-center mb-3">Norme OMS & Ajouts (2025–2030)</h3>
                       <table className="w-full text-sm border border-gray-200">
                         <thead className="bg-gray-100">
                           <tr>
@@ -469,23 +475,8 @@ const DashboardPage = () => {
             </div>
           </div>
         </div>
-      </div> <div className="mt-6 md:mt-0">
-    {/* <button
-      onClick={() => navigate("/")}
-      className="
-        inline-flex items-center gap-2 rounded-full px-4 py-2
-        bg-red-500 text-white font-medium
-        hover:bg-red-600 shadow-md
-        focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400
-        transition text-sm sm:text-base
-      "
-      aria-label="Retour à l'accueil"
-    >
-      ← Accueil
-    </button> */}
-  </div>
+      </div>
     </div>
-    
   );
 };
 
