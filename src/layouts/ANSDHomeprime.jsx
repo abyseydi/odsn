@@ -312,7 +312,7 @@ const DashboardPage = () => {
         <SidebarIcon src={IconHeart} alt="Couverture santé" label="Couverture santé" onClick={() => setView("coverage")} />
         <SidebarIcon src={IconWorld} alt="Santé mondiale" label="Recommandations OMS" onClick={() => setView("oms")} />
                <div className="mt-2 sm:mt-8 text-center">
-              <button
+              {/* <button
                 onClick={() => navigate("/")}
                 className="
                   inline-flex items-center gap-2 rounded-full px-6 py-3
@@ -324,7 +324,7 @@ const DashboardPage = () => {
                 aria-label="Retour à l'accueil"
               >
                 <span aria-hidden>←</span> Retour à l’accueil
-              </button>
+              </button> */}
             </div>
       </div>
 
@@ -470,7 +470,7 @@ const DashboardPage = () => {
           </div>
         </div>
       </div> <div className="mt-6 md:mt-0">
-    <button
+    {/* <button
       onClick={() => navigate("/")}
       className="
         inline-flex items-center gap-2 rounded-full px-4 py-2
@@ -482,7 +482,7 @@ const DashboardPage = () => {
       aria-label="Retour à l'accueil"
     >
       ← Accueil
-    </button>
+    </button> */}
   </div>
     </div>
     
