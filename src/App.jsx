@@ -9,11 +9,13 @@ import EducationHome from "./layouts/educationHome";
 import Catalog from "./layouts/catalog";
 import PublicPolicyHome from "./layouts/publicPolicyHome";
 import UseCasePage from "./layouts/UseCasePage";
-
 import SureteAuth from "./components/SureteAuth";
 
 
+// import Catalogue from "./layouts/catalogue";
+import SanteHome from "./layouts/santeHome";
 import DashboardPage from "./layouts/ANSDHomeprime";
+import Perantal from "./layouts/perantal";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
       <Route path="/ANSDHomeprime" element={<DashboardPage />} />
 
       <Route path="/sureteAuth" element={<SureteAuth />} />
+      <Route path="/SanteHome" element={<SanteHome />} />
+      <Route path="/Perantal" element={<Perantal />} />
 
       <Route path="/UseCasePage" element={<UseCasePage />} />
     </Routes>

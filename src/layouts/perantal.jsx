@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function EducationHome() {
+export default function Perantal() {
   const iframeRef = useRef(null);
   const navigate = useNavigate();
 
@@ -44,8 +44,8 @@ export default function EducationHome() {
       <div className="flex-grow">
         <iframe
           ref={iframeRef}
-          title="Rapport Power BI"
-          src="https://bi-srmt-srmt.apps.origins.heritage.africa/Reports/powerbi/MEN_Performance_Scolaire?rs:Embed=true"
+          title=""
+          src="https://perantal.apps.origins.heritage.africa/"
           frameBorder="0"
           allowFullScreen={true}
           className="w-full h-full"

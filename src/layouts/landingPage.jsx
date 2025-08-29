@@ -18,7 +18,7 @@ export default function LandingPage() {
       { title: "BTP et Génie Civil", img: "/img/btp.png", link: "" },
     ],
     public: [
-            { title: "Santé & Protection sociale", img: "/img/sante.png", link: "" },
+            { title: "Santé & Protection sociale", img: "/img/sante.png", link: "/SanteHome" },
       { title: "Éducation & Formation", img: "/img/education.png", link: "educationHome" },
 
       { title: "Politique publique", img: "/img/politique_publique.png", link: "/PublicPolicyHome" },
