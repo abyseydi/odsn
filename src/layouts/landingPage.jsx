@@ -281,11 +281,11 @@ const NavLinks = ({ onClick }) => {
         className="relative rounded-3xl bg-white text-[#26509e] font-semibold px-6 py-12 min-h-[200px] shadow-md transition-all duration-300 hover:scale-[1.02] hover:text-white hover:bg-gradient-to-br hover:from-[#26509e] hover:to-[#1e1446] flex items-center justify-center text-center"
       >
         {/* Badge CONFIDENTIEL */}
-        {(item.title === "Sûreté & ordre" || item.title === "Économie") && (
+        {/* {(item.title === "Sûreté & ordre" || item.title === "Économie") && (
           <span className="absolute top-3 right-3 bg-red-600 text-white text-xs sm:text-sm font-bold px-2 py-1 rounded-full shadow">
             Confidentiel
           </span>
-        )}
+        )} */}
 
         <div className="w-full">
           <div className="flex justify-center mb-4">
@@ -300,11 +300,11 @@ const NavLinks = ({ onClick }) => {
         className="relative rounded-3xl bg-white text-[#26509e] font-semibold px-6 py-12 min-h-[200px] shadow-md flex items-center justify-center text-center"
       >
         {/* Badge CONFIDENTIEL */}
-        {(item.title === "Sûreté & ordre" || item.title === "Économie, Finances & Budget") && (
+        {/* {(item.title === "Sûreté & ordre" || item.title === "Économie, Finances & Budget") && (
           <span className="absolute top-3 right-3 bg-red-600 text-white text-xs sm:text-sm font-bold px-2 py-1 rounded-full shadow">
             Confidentiel
           </span>
-        )}
+        )} */}
 
         <div className="w-full">
           <div className="flex justify-center mb-4">
