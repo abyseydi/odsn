@@ -117,9 +117,9 @@ const NavLinks = ({ onClick }) => {
   </div>
 
   {/* NAVBAR */}
-  <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-4 flex items-center justify-between">
+  <nav className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-10 py-4 flex items-center justify-between">
     <div className="flex-shrink-0">
-      <img src="img/logo_accel.png" alt="Logo Accel" className="h-14 sm:h-16 w-auto" />
+      <img src="img/logo_accel.png" alt="Logo Accel" className="h-20 sm:h-25 w-auto" />
     </div>
 
     <div className="hidden md:flex flex-1 justify-center">
