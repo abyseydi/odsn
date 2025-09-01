@@ -1,3 +1,4 @@
+import Navbar from "@/components/realnavbar";
 import React, { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -308,8 +309,12 @@ const DashboardPage = () => {
   };
 
   const { title: chartTitle, xMin, xMax } = getChartConfig();
-
+   
   return (
+    <div>
+      <div>
+      <Navbar />
+    </div>
     <div className="flex flex-col md:flex-row min-h-screen font-sans" style={{ backgroundImage: "url('/img/background.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
       {/* Sidebar */}
       <div className="w-full md:w-20 bg-[#1C2241] flex flex-row md:flex-col justify-around md:justify-between items-center py-4 md:py-10 rounded-b-4xl md:rounded-r-[3rem] shadow-lg">
@@ -322,7 +327,7 @@ const DashboardPage = () => {
         </div>
 
         {/* Logo et bouton de retour - uniquement visible sur desktop */}
-        <div className="hidden md:flex flex-col items-center mt-auto space-y-4">
+        {/* <div className="hidden md:flex flex-col items-center mt-auto space-y-4">
           <img
             src="/img/accel_logo_light.png"
             alt="Logo Accel"
@@ -335,10 +340,9 @@ const DashboardPage = () => {
             Retour à l'accueil
           </button>
           <p className="text-xs text-gray-300">© Accel Technologies</p>
-        </div>
+        </div> */}
       </div>
-
-      {/* Contenu principal */}
+            {/* Contenu principal */}
       <div className="flex-1 p-4 md:p-8">
         <div className="w-full max-w-7xl mx-auto mb-6">
           <div className="bg-white px-4 py-3 md:px-6 md:py-4 rounded-xl shadow text-3xl font-semibold text-[#1C2241] text-center">
@@ -476,6 +480,7 @@ const DashboardPage = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

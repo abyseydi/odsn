@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "@/components/realnavbar";
 
 export default function EducationHome() {
   const iframeRef = useRef(null);
@@ -23,9 +24,12 @@ export default function EducationHome() {
   };
 
   return (
+    <div>
+      <Navbar />
+    
     <div className="w-screen h-screen flex flex-col">
       {/* Barre d’actions */}
-      <div className="flex justify-between items-center bg-gray-100 p-3 shadow-md">
+      {/* <div className="flex justify-between items-center bg-gray-100 p-3 shadow-md">
         <button
           onClick={() => navigate("/")}
           className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
@@ -38,7 +42,7 @@ export default function EducationHome() {
         >
           Plein écran
         </button>
-      </div>
+      </div> */}
 
       {/* Iframe */}
       <div className="flex-grow">
@@ -51,6 +55,7 @@ export default function EducationHome() {
           className="w-full h-full"
         ></iframe>
       </div>
+    </div>
     </div>
   );
 }

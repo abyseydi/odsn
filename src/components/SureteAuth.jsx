@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "@/components/realnavbar";
 
 export default function SureteAuth() {
   const navigate = useNavigate();
@@ -35,7 +36,10 @@ export default function SureteAuth() {
   };
 
   return (
-    <div
+    <div>
+      <Navbar />
+
+      <div
       className="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 gap-x-16 px-6 md:px-12"
       style={{
         backgroundImage: "url('/img/surete_bg.png')", // Changez selon votre image
@@ -130,7 +134,7 @@ export default function SureteAuth() {
         </form>
 
         {/* Bouton retour */}
-        <div className="text-center mt-6">
+        {/* <div className="text-center mt-6">
           <button
             onClick={() => navigate("/")}
             className="text-gray-600 hover:text-blue-600 text-sm underline"
@@ -138,8 +142,9 @@ export default function SureteAuth() {
           >
             ← Retour à l'accueil
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
+    </div> 
   );
 }

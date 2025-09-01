@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import Navbar from "@/components/realnavbar";
 import {
   ChartPieIcon,
   UserIcon,
@@ -33,6 +34,8 @@ export function Auth() {
   ];
 
   return (
+    <div>
+       <Navbar/>
     <div className="relative min-h-screen w-full">
       <Routes>
         {routes.map(
@@ -43,6 +46,7 @@ export function Auth() {
             ))
         )}
       </Routes>
+    </div>
     </div>
   );
 }

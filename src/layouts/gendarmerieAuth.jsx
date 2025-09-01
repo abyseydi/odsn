@@ -1,7 +1,6 @@
-
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "@/components/realnavbar";
 
 export default function GendarmerieAuth() {
   const navigate = useNavigate();
@@ -12,9 +11,12 @@ export default function GendarmerieAuth() {
   };
 
   return (
-    <div
-      className="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 gap-x-16 px-6 md:px-12"
-      style={{
+    <div>
+      <Navbar />
+
+      <div
+        className="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 gap-x-16 px-6 md:px-12"
+        style={{
         backgroundImage: "url('/img/gend_login_bg.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -85,6 +87,7 @@ export default function GendarmerieAuth() {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 }

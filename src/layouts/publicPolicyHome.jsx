@@ -1,8 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "@/components/realnavbar";
 
 function PolicyCard({ logo, alt, title, onClick }) {
   return (
+    
     <div
       className="
         relative w-full 
@@ -46,6 +48,7 @@ function PolicyCard({ logo, alt, title, onClick }) {
         Accéder
       </button>
     </div>
+    
   );
 }
 
@@ -53,6 +56,8 @@ export default function PublicPolicyHome() {
   const navigate = useNavigate();
 
   return (
+    <div>
+      <Navbar />
     <section
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-4"
       aria-label="Accueil Forces de Défense et de Sécurité"
@@ -111,7 +116,7 @@ export default function PublicPolicyHome() {
               onClick={() => navigate("")}
             />
           </div>
-             <div className="mt-2 sm:mt-8 text-center">
+             {/* <div className="mt-2 sm:mt-8 text-center">
               <button
                 onClick={() => navigate("/")}
                 className="
@@ -125,9 +130,11 @@ export default function PublicPolicyHome() {
               >
                 <span aria-hidden>←</span> Retour à l’accueil
               </button>
-            </div>
+            </div> */}
         </div>
       </div>
     </section>
+    </div> 
   );
+
 }

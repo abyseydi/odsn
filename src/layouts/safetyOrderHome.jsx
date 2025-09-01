@@ -135,9 +135,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardPage from "./ANSDHomeprime";
+import Navbar from "@/components/realnavbar";
 
 function ForceCard({ logo, alt, onClick }) {
   return (
+   
     <div
       className="
         relative w-full 
@@ -183,11 +185,13 @@ export default function SafetyOrderHome() {
   const navigate = useNavigate();
 
   return (
-    <section
-      className="relative flex h-screen items-center justify-center overflow-hidden"
-      aria-label="Accueil Forces de Défense et de Sécurité"
-    >
-      {/* Image de fond */}
+    <div>
+      <Navbar />
+      <section
+        className="relative flex h-screen items-center justify-center overflow-hidden"
+        aria-label="Accueil Forces de Défense et de Sécurité"
+      >
+        {/* Image de fond */}
       <div className="absolute inset-0 -z-10">
         <img
           src="/img/fds.png"
@@ -240,21 +244,7 @@ export default function SafetyOrderHome() {
             </div>
 
             {/* --- Bouton "Retour à l’accueil" juste après les trois blocs blancs --- */}
-            <div className="mt-2 sm:mt-8 text-center">
-              <button
-                onClick={() => navigate("/")}
-                className="
-                  inline-flex items-center gap-2 rounded-full px-6 py-3
-                  bg-red/90 text-blue-700 font-medium
-                  hover:bg-white shadow-md
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400
-                  transition text-sm sm:text-base
-                "
-                aria-label="Retour à l'accueil"
-              >
-                <span aria-hidden>←</span> Retour à l’accueil
-              </button>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -275,6 +265,7 @@ export default function SafetyOrderHome() {
         </div>
       </div>
     </section>
+    </div>
   );
 }
 

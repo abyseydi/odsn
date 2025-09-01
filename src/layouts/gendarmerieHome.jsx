@@ -9,6 +9,7 @@ import NewPlaintesForm from "./NewPlaintesForm";
 import Prediction from "./Prediction";
 import Effectifpred from "./Effectif";
 import CriticalComplaints from "./critical";
+import Navbar from "@/components/realnavbar";
 
 
 const STATUTS = ["Traitée", "En attente de traitement", "En cours de traitement", "Classée sans suite"];
@@ -102,6 +103,8 @@ export default function GendarmerieHome() {
   );
 
   return (
+    <div>
+      <Navbar />
     <div className="relative h-screen overflow-hidden bg-gray-100">
       <div className="absolute top-0 left-0 w-full h-[25vh] bg-[#1e2454] z-0">
         <svg
@@ -304,6 +307,7 @@ export default function GendarmerieHome() {
           </section>
         </div>
       </main>
+    </div>
     </div>
   );
 }

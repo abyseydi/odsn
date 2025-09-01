@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "@/components/realnavbar";
 
 function PolicyCard({ logo, alt, title, onClick }) {
   return (
@@ -53,6 +54,8 @@ export default function SanteHome() {
   const navigate = useNavigate();
 
   return (
+    <div>
+      <Navbar />
     <section
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-4"
       aria-label="Accueil Forces de Défense et de Sécurité"
@@ -111,23 +114,10 @@ export default function SanteHome() {
               onClick={() => navigate("")}
             />
           </div>
-             <div className="mt-2 sm:mt-8 text-center">
-              <button
-                onClick={() => navigate("/")}
-                className="
-                  inline-flex items-center gap-2 rounded-full px-6 py-3
-                  bg-red/90 text-blue-700 font-medium
-                  hover:bg-white shadow-md
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400
-                  transition text-sm sm:text-base
-                "
-                aria-label="Retour à l'accueil"
-              >
-                <span aria-hidden>←</span> Retour à l’accueil
-              </button>
-            </div>
+            
         </div>
       </div>
     </section>
+    </div>
   );
 }

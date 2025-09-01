@@ -1,3 +1,4 @@
+import { Import } from "lucide-react";
 import React, { useEffect, useState, useMemo } from "react";
 import {
   LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer,
