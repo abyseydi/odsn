@@ -1,106 +1,74 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import React from 'react';
 
 const data = [
   {
     Domaine: "Santé & Démographie",
     UseCase: "Prédiction de la couverture sanitaire corrélée à l'évolution de la population",
     Objectif: "Mettre en place, grâce à l'IA, un système permettant d'avoir une vue sur l'évolution jusqu'en 2030 de la couverture sanitaire et la position du Sénégal par rapport aux normes OMS",
-    Impact: "Avoir une vue claire sur la couverture sanitaire\n\nAider à la planification de construction de structures sanitaires",
+    Impact: "Avoir une vue claire sur la couverture sanitaire\nAider à la planification de construction de structures sanitaires",
     Status: "Terminé",
   },
   {
     Domaine: "Sûreté et Ordre",
     UseCase: "PLAINTE-IA: Classification automatique des plaintes",
     Objectif: "Mettre en place un système simple d’intelligence artificielle capable de classer automatiquement les plaintes selon leur nature",
-    Impact: "Gagner du temps lors de la saisie des plaintes\n\nPrioriser les cas urgents\n\nFaciliter la création de rapports statistiques",
+    Impact: "Gagner du temps lors de la saisie des plaintes\nPrioriser les cas urgents\nFaciliter la création de rapports statistiques",
     Status: "Terminé",
   },
   {
     Domaine: "Contrôle Routier",
     UseCase: "Lecture automatique de plaques pour alerte véhicules suspects",
-    Objectif: "Lire automatiquement les plaques d’immatriculation de véhicules à partir d’images\n\nComparer ces plaques à une liste noire\n\nAlerter immédiatement les forces de l’ordre si un véhicule suspect est détecté",
-    Impact: "Renforcement du contrôle routier\n\nRéduction de la criminalité liée aux véhicules",
+    Objectif: "Lire automatiquement les plaques d’immatriculation de véhicules à partir d’images\nComparer ces plaques à une liste noire\nAlerter immédiatement les forces de l’ordre si un véhicule suspect est détecté",
+    Impact: "Renforcement du contrôle routier\nRéduction de la criminalité liée aux véhicules",
     Status: "Terminé",
   },
 ];
 
+const renderImpact = (impactText) =>
+  impactText.split('\n').map((line, idx) => (
+    <li key={idx} className="text-sm text-gray-700">{line}</li>
+  ));
+
 export default function UseCasePage() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const selected = data[selectedIndex];
-  const navigate = useNavigate();
-
-  const renderList = (text) =>
-    text.split("\n").map((line, i) => <li key={i}>{line}</li>);
-
   return (
-    <div className="relative min-h-screen w-full bg-gradient-to-br from-blue-50 to-blue-200 overflow-hidden">
-      {/* Image de fond */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-100"
-        style={{ backgroundImage: "url('/img/gb_cata5.png')" }}
-      />
+    <div className="min-h-screen bg-gray-100 p-10">
+      <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-lg p-8">
+        <h1 className="text-4xl font-bold text-center text-gray-800 mb-10">
+          Cas d’usage de l’IA
+        </h1>
 
-      {/* Contenu */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-6">
-        
-
-        {/* Carte principale */}
-        <div className="w-full max-w-6xl bg-white bg-opacity-80 rounded-2xl shadow-2xl p-6 backdrop-blur-md">
-          
-          {/* Boutons Domaines */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {data.map((item, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedIndex(index)}
-                className={`px-5 py-2 rounded-full font-semibold transition-all duration-300 shadow ${
-                  selectedIndex === index
-                    ? "bg-blue-600 text-white shadow-lg scale-105"
-                    : "bg-gray-200 text-gray-800 hover:bg-blue-100"
-                }`}
-              >
-                {item.Domaine}
-              </button>
-            ))}
-          </div>
-
-          {/* Section sélectionnée */}
-          <div className="space-y-6">
-            <div className="text-center text-2xl font-bold text-blue-900">
-              {selected.Domaine}
-            </div>
-
-            {/* Tableau Use Case */}
-            <div className="grid grid-cols-1 md:grid-cols-3 text-center rounded-lg overflow-hidden shadow-md">
-              <div className="bg-blue-700 text-white py-3 font-semibold">Use Case</div>
-              <div className="bg-blue-700 text-white py-3 font-semibold">Objectif</div>
-              <div className="bg-blue-700 text-white py-3 font-semibold">Status</div>
-
-              <div className="bg-blue-100 py-3 px-2 text-black">{selected.UseCase}</div>
-              <div className="bg-blue-100 py-3 px-2 text-black">{selected.Objectif}</div>
-              <div className="bg-blue-100 py-3 px-2 font-medium text-green-800">{selected.Status}</div>
-            </div>
-
-            {/* Impacts Concrets */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[1].map((col) => (
-                <div key={col} className="bg-white rounded-xl shadow-lg p-4">
-                  <h3 className="text-blue-700 text-lg font-semibold mb-2">Impacts Concrets</h3>
-                  <ul className="list-disc list-inside text-gray-700">
-                    {renderList(selected.Impact).slice(
-                      col * Math.ceil(renderList(selected.Impact).length / 2),
-                      (col + 1) * Math.ceil(renderList(selected.Impact).length / 2)
-                    )}
-                  </ul>
-                </div>
+        <div className="overflow-x-auto">
+          <table className="min-w-full table-auto border-collapse">
+            <thead>
+              <tr className="bg-[#1E1446] text-white text-sm uppercase tracking-wider">
+                <th className="text-left p-6">Domaine</th>
+                <th className="text-left p-6">Use Case</th>
+                <th className="text-left p-6">Objectif</th>
+                <th className="text-left p-6">Impact Concret</th>
+                <th className="text-left p-6">Statut</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200 text-gray-800">
+              {data.map((item, index) => (
+                <tr key={index} className="hover:bg-gray-50 transition-colors">
+                  <td className="p-8 font-medium text-indigo-800">{item.Domaine}</td>
+                  <td className="p-8 font-semibold">{item.UseCase}</td>
+                  <td className="p-8 text-sm leading-relaxed">{item.Objectif}</td>
+                  <td className="p-8">
+                    <ul className="list-disc list-inside space-y-1">
+                      {renderImpact(item.Impact)}
+                    </ul>
+                  </td>
+                  <td className="p-8">
+                    <span className="inline-block px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-green-700">
+                      {item.Status}
+                    </span>
+                  </td>
+                </tr>
               ))}
-            </div>
-          </div>
-          
+            </tbody>
+          </table>
         </div>
-        
       </div>
     </div>
   );

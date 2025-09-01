@@ -82,12 +82,12 @@ export default function Catalog() {
               />
             </Link>
             {/* BOUTON RETOUR À L'ACCUEIL */}
-            <button
+            {/* <button
               onClick={() => navigate("/")}
               className="bg-[#26509e] text-white px-3 py-1 rounded-full text-sm font-semibold hover:bg-[#1c3a91]"
             >
               Retour à l'accueil
-            </button>
+            </button> */}
           </div>
 
           <div className="hidden md:flex flex-1 justify-center">
@@ -133,12 +133,12 @@ export default function Catalog() {
 
               <NavLinks onClick={() => setMobileOpen(false)} />
 
-              <button
+              {/* <button
                 className="mt-6 w-full bg-[#1e1446] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#120b36]"
                 onClick={() => navigate("/")}
               >
                 Retour à l'accueil
-              </button>
+              </button> */}
 
               <button className="mt-3 w-full bg-[#1e1446] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#120b36]">
                 CONTACT

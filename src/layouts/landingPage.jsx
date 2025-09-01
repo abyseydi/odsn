@@ -112,7 +112,7 @@ const NavLinks = ({ onClick }) => {
       loop
       playsInline
     >
-      <source src="img/intro.mp4" type="video/mp4" />
+      <source src="img/intro3.mp4" type="video/mp4" />
     </video>
   </div>
 
