@@ -315,7 +315,7 @@ const DashboardPage = () => {
       <div>
       <Navbar />
     </div>
-    <div className="flex flex-col md:flex-row min-h-screen font-sans" style={{ backgroundImage: "url('/img/background.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className="pt-[90px] flex flex-col md:flex-row min-h-screen font-sans" style={{ backgroundImage: "url('/img/background.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
       {/* Sidebar */}
       <div className="w-full md:w-20 bg-[#1C2241] flex flex-row md:flex-col justify-around md:justify-between items-center py-4 md:py-10 rounded-b-4xl md:rounded-r-[3rem] shadow-lg">
         {/* Section des icônes */}

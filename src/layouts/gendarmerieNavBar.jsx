@@ -50,7 +50,7 @@ export default function GendarmerieNavBar({ onSectionChange, activeSection }) {
       </div>
 
       {/* Logo + Baseline + Bouton Retour */}
-      <div className="text-center mt-10">
+      {/* <div className="text-center mt-10">
         <img
           src="/img/accel_logo_light.png"
           alt="Logo Accel"
@@ -65,7 +65,7 @@ export default function GendarmerieNavBar({ onSectionChange, activeSection }) {
         >
           Retour à l’accueil
         </Link>
-      </div>
+      </div> */}
     </>
   );
 
@@ -74,6 +74,7 @@ export default function GendarmerieNavBar({ onSectionChange, activeSection }) {
       {/* ===== Desktop ===== */}
       <aside
         className="
+          
           hidden md:flex flex-col justify-between
           absolute top-1/2 -translate-y-1/2 left-0
           w-[250px] h-[85%] bg-white rounded-2xl shadow-xl z-20 m-4 p-6

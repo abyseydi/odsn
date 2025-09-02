@@ -105,9 +105,9 @@ export default function GendarmerieHome() {
   return (
     <div>
       <Navbar />
-    <div className="relative h-screen overflow-hidden bg-gray-100">
+    <div className=" pt-[90px] relative h-screen overflow-hidden bg-gray-100">
       <div className="absolute top-0 left-0 w-full h-[25vh] bg-[#1e2454] z-0">
-        <svg
+        <svg 
           className="absolute bottom-0 left-0 w-full h-[70px]"
           viewBox="0 0 1440 320"
           preserveAspectRatio="none"
@@ -118,7 +118,7 @@ export default function GendarmerieHome() {
           />
         </svg>
       </div>
-
+      
       <GendarmerieNavBar
         onSectionChange={setActiveSection}
         activeSection={activeSection}

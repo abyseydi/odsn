@@ -17,7 +17,7 @@ const Navbar = () => {
   );
 
   return (
-    <header className="relative h-[90px]">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md h-[90px]">
       {/* Arrière-plan mobile */}
       {/* <div className="bg-white absolute inset-0 -z-10 block md:hidden flex items-center justify-center">
         <img src="img/bg_mobile.png" alt="Arrière-plan" className="max-w-full max-h-full object-contain p-1" />
