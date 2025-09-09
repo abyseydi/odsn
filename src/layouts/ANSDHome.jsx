@@ -1,21 +1,21 @@
-import { Import } from "lucide-react";
+// import { Import } from "lucide-react";
 import React, { useEffect, useState, useMemo } from "react";
 import {
   LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer,
 } from "recharts";
 
-const API_BASE_URL = window.location.hostname === 'localhost:5000' 
-  ? '${API_BASE_URL}' 
+const API_BASE_URL = window.location.hostname === 'localhost:5000'
+  ? '${API_BASE_URL}'
   : 'https://odsnback-ansd-app.apps.origins.heritage.africa/api';
 
 export function ANSDHome() {
   const [activeTab, setActiveTab] = useState("tableaux");
   const [region, setRegion] = useState("DAKAR");
   const [regions, setRegions] = useState([]);
-  const [populationData, setPopulationData] = useState([]); 
-  const [couvertureData, setCouvertureData] = useState([]); 
+  const [populationData, setPopulationData] = useState([]);
+  const [couvertureData, setCouvertureData] = useState([]);
   const [regionalPopulationBreakdown, setRegionalPopulationBreakdown] = useState([]);
-  const  [couvertureRegion, setCouvertureRegion] = useState([]);
+  const [couvertureRegion, setCouvertureRegion] = useState([]);
 
   const currentYear = new Date().getFullYear();
 
@@ -23,7 +23,7 @@ export function ANSDHome() {
     fetch(`${API_BASE_URL}/regions`)
       .then(res => res.json())
       .then(data => setRegions(["ALL", ...data]))
-       .catch(err => console.error("Erreur chargement des régions :", err));
+      .catch(err => console.error("Erreur chargement des régions :", err));
   }, []);
 
   useEffect(() => {
@@ -67,33 +67,33 @@ export function ANSDHome() {
   }, [region]);
 
 
- // Couverture par région
+  // Couverture par région
 
   useEffect(() => {
     const url =
-        region === "ALL"
-            ? "http://localhost:5000/api/couverture/by_region"
-            : `http://localhost:5000/api/couverture/by_region?region=${encodeURIComponent(region)}`;
+      region === "ALL"
+        ? "http://localhost:5000/api/couverture/by_region"
+        : `http://localhost:5000/api/couverture/by_region?region=${encodeURIComponent(region)}`;
 
-   // const url = `${API_BASE_URL}/couverture/by_region`
+    // const url = `${API_BASE_URL}/couverture/by_region`
 
     fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          console.log("couvertureRegion",data);
-          const parsed = data.map(d => ({
-            year: d.annee.toString(),
-            nb_str: d.nb_str,
-            couv_san: d.couv_san,
-            norm_oms: d.norm_oms,
-            ajouter: d.ajouter,
-            region: d.region
-          }));
-          setCouvertureRegion(parsed);
+      .then(res => res.json())
+      .then(data => {
+        console.log("couvertureRegion", data);
+        const parsed = data.map(d => ({
+          year: d.annee.toString(),
+          nb_str: d.nb_str,
+          couv_san: d.couv_san,
+          norm_oms: d.norm_oms,
+          ajouter: d.ajouter,
+          region: d.region
+        }));
+        setCouvertureRegion(parsed);
 
 
-        })
-        .catch(err => console.error("Erreur de chargement des données couverture :", err));
+      })
+      .catch(err => console.error("Erreur de chargement des données couverture :", err));
   }, []);
 
 
@@ -130,15 +130,15 @@ export function ANSDHome() {
       };
       fetchRegionalData();
     } else {
-      setRegionalPopulationBreakdown([]); 
+      setRegionalPopulationBreakdown([]);
     }
-  }, [region, regions, populationData]); 
+  }, [region, regions, populationData]);
 
   // --- Calcul des KPIs ---
   const kpi = useMemo(() => {
     const latestPopulation = populationData.length ? populationData.at(-1).population : 0;
     const population2030 = populationData.find(d => d.year === "2030")?.population || 0;
-    const population_current_year = populationData.find(d => d.year === currentYear.toString())?.population ;
+    const population_current_year = populationData.find(d => d.year === currentYear.toString())?.population;
 
     // Taux de croissance annuelle moyeene (Structure Sanitaire)
 
@@ -163,7 +163,7 @@ export function ANSDHome() {
     }
 
 
-//
+    //
     let growthRate = 0;
     if (populationData.length >= 2) {
       const currentYearPop = populationData.at(-1).population;
@@ -177,8 +177,8 @@ export function ANSDHome() {
     const couvertureSan = couvertureData.length ? couvertureData.at(-1).couv_san : 0;
     const normOms = couvertureData.length ? couvertureData.at(-1).norm_oms : 0;
     const ajouter = couvertureData.length ? couvertureData.at(-1).ajouter : 0;
-    const nbre_structure_current= couvertureData.find(d => d.year === currentYear.toString())?.nb_str;
-    const couverture_current = couvertureData.find(d => d.year === currentYear.toString())?.couv_san ;
+    const nbre_structure_current = couvertureData.find(d => d.year === currentYear.toString())?.nb_str;
+    const couverture_current = couvertureData.find(d => d.year === currentYear.toString())?.couv_san;
 
 
     return {
@@ -258,57 +258,57 @@ export function ANSDHome() {
       value: "indicateurs",
       content: (
 
-          <div className="flex flex-col lg:flex-row gap-6 h-[600px]">
-            <div className="flex-1 min-h-[300px] lg:min-h-full">
-          <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
-            Évolution du nombre de structures sanitaires au Sénégal : 2018–2025 et perspectives jusqu’en 2030
-          </h3>
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={couvertureData}>
-              <CartesianGrid strokeDasharray="33" />
-              <XAxis dataKey="year" />
-              <YAxis yAxisId="left" label={{ value: "Structures", angle: -90, position: "insideLeft" }} />
-              <Tooltip formatter={(value, name) =>
-                name === "nb_str" ? [`${value} structures`, "Structures"] : [`${value}%`, "Couverture"]
-              } />
-              <Line
-                yAxisId="left"
-                type="monotone"
-                dataKey="nb_str"
-                stroke="#e84041"
-                strokeWidth={3}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-
-
-            {region === "ALL" && couvertureData.length > 0 && (
-                <div className="w-full lg:w-1/3 min-h-[300px] lg:min-h-full overflow-y-auto bg-white p-4 rounded-xl shadow">
-                  <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
-                    Structures Sanitaires ({populationData.length ? populationData.at(-1).year : 'N/A'})
-                  </h3>
-                  <table className="min-w-full text-sm text-left border border-gray-300 rounded">
-                    <thead className="bg-[#f3f4f6] text-gray-700 font-medium sticky top-0">
-                    <tr>
-                      <th className="px-4 py-2 border">Région</th>
-                      <th className="px-4 py-2 border text-right">Structures</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {couvertureRegion.map((row, idx) => (
-                        <tr key={idx} className="hover:bg-gray-50">
-                          <td className="px-4 py-2 border">{row.region}</td>
-                          <td className="px-4 py-2 border text-right">{row.nb_str.toLocaleString()}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                  </table>
-                </div>
-            )}
-
-
+        <div className="flex flex-col lg:flex-row gap-6 h-[600px]">
+          <div className="flex-1 min-h-[300px] lg:min-h-full">
+            <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
+              Évolution du nombre de structures sanitaires au Sénégal : 2018–2025 et perspectives jusqu’en 2030
+            </h3>
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={couvertureData}>
+                <CartesianGrid strokeDasharray="33" />
+                <XAxis dataKey="year" />
+                <YAxis yAxisId="left" label={{ value: "Structures", angle: -90, position: "insideLeft" }} />
+                <Tooltip formatter={(value, name) =>
+                  name === "nb_str" ? [`${value} structures`, "Structures"] : [`${value}%`, "Couverture"]
+                } />
+                <Line
+                  yAxisId="left"
+                  type="monotone"
+                  dataKey="nb_str"
+                  stroke="#e84041"
+                  strokeWidth={3}
+                />
+              </LineChart>
+            </ResponsiveContainer>
           </div>
+
+
+          {region === "ALL" && couvertureData.length > 0 && (
+            <div className="w-full lg:w-1/3 min-h-[300px] lg:min-h-full overflow-y-auto bg-white p-4 rounded-xl shadow">
+              <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
+                Structures Sanitaires ({populationData.length ? populationData.at(-1).year : 'N/A'})
+              </h3>
+              <table className="min-w-full text-sm text-left border border-gray-300 rounded">
+                <thead className="bg-[#f3f4f6] text-gray-700 font-medium sticky top-0">
+                  <tr>
+                    <th className="px-4 py-2 border">Région</th>
+                    <th className="px-4 py-2 border text-right">Structures</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {couvertureRegion.map((row, idx) => (
+                    <tr key={idx} className="hover:bg-gray-50">
+                      <td className="px-4 py-2 border">{row.region}</td>
+                      <td className="px-4 py-2 border text-right">{row.nb_str.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+
+        </div>
 
 
       ),
@@ -318,48 +318,48 @@ export function ANSDHome() {
       value: "rapports",
       content: (
         //<div className="h-[600px]">
-          <div className="flex flex-col lg:flex-row gap-6 h-[600px]">
-            <div className="flex-1 min-h-[300px] lg:min-h-full">
-          <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
-            Couverture sanitaires : tendances de 2018 à 2025 et projections à l’horizon 2030
-          </h3>
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={couvertureData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="year" />
-              <YAxis domain={[0, 100]} label={{ value: "Couverture sanitaire", angle: -90, position: "insideLeft" }} />
-              <Tooltip formatter={(value) => [`${value}`, "Couverture"]} />
-              <Line type="monotone" dataKey="couv_san" stroke="#3182ce" strokeWidth={3} />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-
-
-            {region === "ALL" && couvertureData.length > 0 && (
-                <div className="w-full lg:w-1/3 min-h-[300px] lg:min-h-full overflow-y-auto bg-white p-4 rounded-xl shadow">
-                  <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
-                    Structures Sanitaires ({populationData.length ? populationData.at(-1).year : 'N/A'})
-                  </h3>
-                  <table className="min-w-full text-sm text-left border border-gray-300 rounded">
-                    <thead className="bg-[#f3f4f6] text-gray-700 font-medium sticky top-0">
-                    <tr>
-                      <th className="px-4 py-2 border">Région</th>
-                      <th className="px-4 py-2 border text-right">Couverture</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {couvertureRegion.map((row, idx) => (
-                        <tr key={idx} className="hover:bg-gray-50">
-                          <td className="px-4 py-2 border">{row.region}</td>
-                          <td className="px-4 py-2 border text-right">{row.couv_san.toLocaleString()}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                  </table>
-                </div>
-            )}
-
+        <div className="flex flex-col lg:flex-row gap-6 h-[600px]">
+          <div className="flex-1 min-h-[300px] lg:min-h-full">
+            <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
+              Couverture sanitaires : tendances de 2018 à 2025 et projections à l’horizon 2030
+            </h3>
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={couvertureData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="year" />
+                <YAxis domain={[0, 100]} label={{ value: "Couverture sanitaire", angle: -90, position: "insideLeft" }} />
+                <Tooltip formatter={(value) => [`${value}`, "Couverture"]} />
+                <Line type="monotone" dataKey="couv_san" stroke="#3182ce" strokeWidth={3} />
+              </LineChart>
+            </ResponsiveContainer>
           </div>
+
+
+          {region === "ALL" && couvertureData.length > 0 && (
+            <div className="w-full lg:w-1/3 min-h-[300px] lg:min-h-full overflow-y-auto bg-white p-4 rounded-xl shadow">
+              <h3 className="text-lg font-semibold text-[#1e1446] mb-2">
+                Structures Sanitaires ({populationData.length ? populationData.at(-1).year : 'N/A'})
+              </h3>
+              <table className="min-w-full text-sm text-left border border-gray-300 rounded">
+                <thead className="bg-[#f3f4f6] text-gray-700 font-medium sticky top-0">
+                  <tr>
+                    <th className="px-4 py-2 border">Région</th>
+                    <th className="px-4 py-2 border text-right">Couverture</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {couvertureRegion.map((row, idx) => (
+                    <tr key={idx} className="hover:bg-gray-50">
+                      <td className="px-4 py-2 border">{row.region}</td>
+                      <td className="px-4 py-2 border text-right">{row.couv_san.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+        </div>
 
       ),
     },
@@ -478,7 +478,7 @@ export function ANSDHome() {
             <div className="bg-white p-4 rounded-xl shadow text-center">
               <h4 className="text-sm font-medium text-gray-600">Taux de croissance annuelle moyenne</h4>
               <p className="text-2xl font-bold text-[#1e1446]">
-                 {kpi.structGrowthrate} %
+                {kpi.structGrowthrate} %
               </p>
             </div>
           </div>
@@ -561,15 +561,15 @@ export function ANSDHome() {
           </div>
         </div>
 
-     <div className="flex flex-col items-center mt-auto space-y-4">
-    <a
-      href="/" 
-      className="px-5 py-2 rounded-lg bg-white text-[#1e1446] font-semibold text-sm shadow hover:bg-gray-100 transition-all"
-    >
-      Retour à l’accueil
-    </a>
-    <p className="text-xs text-gray-300">© Accel Technologies</p>
-  </div>
+        <div className="flex flex-col items-center mt-auto space-y-4">
+          <a
+            href="/"
+            className="px-5 py-2 rounded-lg bg-white text-[#1e1446] font-semibold text-sm shadow hover:bg-gray-100 transition-all"
+          >
+            Retour à l’accueil
+          </a>
+          <p className="text-xs text-gray-300">© Accel Technologies</p>
+        </div>
       </aside>
 
       {/* Main content */}
@@ -579,7 +579,7 @@ export function ANSDHome() {
           <h1 className="text-xl md:text-2xl font-bold text-[#1e1446] max-w-5xl leading-tight">
             ANSD – Planification : vers une meilleure couverture sanitaire au Sénégal – État des lieux & perspectives 2030
           </h1>
-   
+
         </div>
 
         {/* Main content area with KPIs and Tabs */}
