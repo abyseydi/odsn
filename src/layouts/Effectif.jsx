@@ -14,31 +14,31 @@ export default function Effectifpred() {
   // ------------------ Pondération régionale ------------------
   const REGION_WEIGHTS = useMemo(
     () => ({
-      "Dakar": 1.50,
-      "Thiès": 1.30,
-      "Saint-Louis": 1.15,
-      "Kaolack": 1.15,
-      "Ziguinchor": 1.10,
-      "Louga": 1.05,
-      "Fatick": 1.00,
-      "Diourbel": 1.00,
-      "Matam": 0.95,
-      "Kolda": 0.90,
-      "Tambacounda": 0.90,
-      "Sédhiou": 0.75,
-      "Kédougou": 0.75,
-      "Kaffrine": 0.95,
+      "Dakar": 0.50,
+      "Thiès": 0.45,
+      "Saint-Louis": 0.4,
+      "Kaolack": 0.4,
+      "Ziguinchor": 0.38,
+      "Louga": 0.35,
+      "Fatick": 0.32,
+      "Diourbel": 0.32,
+      "Matam": 0.3,
+      "Kolda": 0.3,
+      "Tambacounda": 0.3,
+      "Sédhiou": 0.28,
+      "Kédougou": 0.25,
+      "Kaffrine": 0.25,
     }),
     []
   );
 
   // ------------------ Coefficients métier ------------------
   const EVENT_COEF = { "Football": 1.0, "Lutte": 1.35 };
-  const RISK_BONUS = { "Faible": 0, "Moyen": 100, "Élevé": 200, "Très élevé": 300 };
+  const RISK_BONUS = { "Faible": 0, "Moyen": 10, "Élevé": 20, "Très élevé": 30 };
 
   function affluenceBonus(n) {
-    if (n <= 1000) return 0;
-    if (n <= 5000) return Math.floor(n / 25);
+    if (n <= 500) return 0;
+    if (n <= 1000) return Math.floor(n / 25);
     return Math.floor(n / 15);
   }
 

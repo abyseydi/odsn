@@ -601,7 +601,7 @@ export default function GendarmerieHome() {
               <div className="flex flex-col items-center text-center">
                 <div className="flex items-center justify-center gap-3 mb-2">
                   <img
-                    src="/img/senegal1.png"
+                    src="/img/sen_logo.png"
                     alt="Logo gauche"
                     className="w-[44px] h-[44px] md:w-[52px] md:h-[52px]"
                   />
